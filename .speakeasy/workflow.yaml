@@ -13,6 +13,9 @@ targets:
         target: csharp
         source: Gusto-OAS
         output: ./gusto_embedded
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-oas-csharp-code-samples
