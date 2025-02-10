@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [Create](#create) - Create a garnishment
+* [PostV1EmployeesEmployeeIdGarnishments](#postv1employeesemployeeidgarnishments) - Create a garnishment
 * [Get](#get) - Get a garnishment
-* [Update](#update) - Update a garnishment
-* [GetChildSupport](#getchildsupport) - Get child support garnishment data
+* [PutV1GarnishmentsGarnishmentId](#putv1garnishmentsgarnishmentid) - Update a garnishment
+* [GetV1GarnishmentsChildSupport](#getv1garnishmentschildsupport) - Get child support garnishment data
 
-## Create
+## PostV1EmployeesEmployeeIdGarnishments
 
 Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments.
 
@@ -25,7 +25,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Garnishments.CreateAsync(
+var res = await sdk.Garnishments.PostV1EmployeesEmployeeIdGarnishmentsAsync(
     employeeId: "<id>",
     requestBody: new PostV1EmployeesEmployeeIdGarnishmentsRequestBody() {
         Amount = "<value>",
@@ -95,7 +95,7 @@ var res = await sdk.Garnishments.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutV1GarnishmentsGarnishmentId
 
 Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments.
 
@@ -110,7 +110,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Garnishments.UpdateAsync(
+var res = await sdk.Garnishments.PutV1GarnishmentsGarnishmentIdAsync(
     garnishmentId: "<id>",
     requestBody: new PutV1GarnishmentsGarnishmentIdRequestBody() {
         Version = "<value>",
@@ -140,7 +140,7 @@ var res = await sdk.Garnishments.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetChildSupport
+## GetV1GarnishmentsChildSupport
 
 Agency data and requirements to be used for creating child support garnishments
 
@@ -154,7 +154,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Garnishments.GetChildSupportAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Garnishments.GetV1GarnishmentsChildSupportAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```

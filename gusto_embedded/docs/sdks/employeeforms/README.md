@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [GenerateW2](#generatew2) - Generate a W2 form [DEMO]
+* [PostV1SandboxGenerateW2](#postv1sandboxgeneratew2) - Generate a W2 form [DEMO]
 * [List](#list) - Get all employee forms
 * [Get](#get) - Get an employee form
-* [GetPdf](#getpdf) - Get the employee form pdf
-* [Sign](#sign) - Sign an employee form
+* [GetV1EmployeeFormPdf](#getv1employeeformpdf) - Get the employee form pdf
+* [PutV1EmployeeFormSign](#putv1employeeformsign) - Sign an employee form
 
-## GenerateW2
+## PostV1SandboxGenerateW2
 
 > 🚧 Demo action
 >
@@ -30,7 +30,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeForms.GenerateW2Async(
+var res = await sdk.EmployeeForms.PostV1SandboxGenerateW2Async(
     requestBody: new PostV1SandboxGenerateW2RequestBody() {
         EmployeeId = "<id>",
     },
@@ -138,7 +138,7 @@ var res = await sdk.EmployeeForms.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetPdf
+## GetV1EmployeeFormPdf
 
 Get the link to the employee form PDF
 
@@ -152,7 +152,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeForms.GetPdfAsync(
+var res = await sdk.EmployeeForms.GetV1EmployeeFormPdfAsync(
     employeeId: "<id>",
     formId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -179,7 +179,7 @@ var res = await sdk.EmployeeForms.GetPdfAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Sign
+## PutV1EmployeeFormSign
 
 Sign an employee form.
 
@@ -197,7 +197,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeForms.SignAsync(
+var res = await sdk.EmployeeForms.PutV1EmployeeFormSignAsync(
     employeeId: "<id>",
     formId: "<id>",
     requestBody: new PutV1EmployeeFormSignRequestBody() {

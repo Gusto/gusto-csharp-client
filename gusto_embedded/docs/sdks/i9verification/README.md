@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [GetDocumentOptions](#getdocumentoptions) - Get an employee's I-9 verification document options
+* [GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptions](#getv1employeesemployeeidi9authorizationdocumentoptions) - Get an employee's I-9 verification document options
 * [GetEmployeeDocuments](#getemployeedocuments) - Get an employee's I-9 verification documents
-* [CreateDocuments](#createdocuments) - Create an employee's I-9 authorization verification documents
-* [DeleteDocument](#deletedocument) - Delete an employee's I-9 verification document
-* [EmployerSign](#employersign) - Employer sign an employee's Form I-9
+* [PutV1EmployeesEmployeeIdI9AuthorizationDocuments](#putv1employeesemployeeidi9authorizationdocuments) - Create an employee's I-9 authorization verification documents
+* [DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentId](#deletev1employeesemployeeidi9authorizationdocumentsdocumentid) - Delete an employee's I-9 verification document
+* [PutV1EmployeesEmployeeIdI9AuthorizationEmployerSign](#putv1employeesemployeeidi9authorizationemployersign) - Employer sign an employee's Form I-9
 
-## GetDocumentOptions
+## GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptions
 
 An employee's I-9 verification documents are the documents an employee has provided the employer to verify their identity and authorization to work in the United States. This endpoint returns the possible document options based on the employee's authorization status. These options can then be used to create the I-9 verification documents.
 
@@ -25,7 +25,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.I9Verification.GetDocumentOptionsAsync(
+var res = await sdk.I9Verification.GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -89,7 +89,7 @@ var res = await sdk.I9Verification.GetEmployeeDocumentsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## CreateDocuments
+## PutV1EmployeesEmployeeIdI9AuthorizationDocuments
 
 An employee's I-9 verification documents are the documents an employee has provided the employer to verify their identity and authorization to work in the United States.
 
@@ -112,7 +112,7 @@ using System.Collections.Generic;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.I9Verification.CreateDocumentsAsync(
+var res = await sdk.I9Verification.PutV1EmployeesEmployeeIdI9AuthorizationDocumentsAsync(
     employeeId: "<id>",
     requestBody: new PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody() {
         Documents = new List<Documents>() {
@@ -148,7 +148,7 @@ var res = await sdk.I9Verification.CreateDocumentsAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## DeleteDocument
+## DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentId
 
 An employee's I-9 verification documents are the documents an employee has provided the employer to verify their identity and authorization to work in the United States. This endpoint deletes a specific verification document.
 
@@ -162,7 +162,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.I9Verification.DeleteDocumentAsync(
+var res = await sdk.I9Verification.DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdAsync(
     employeeId: "<id>",
     documentId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -189,7 +189,7 @@ var res = await sdk.I9Verification.DeleteDocumentAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## EmployerSign
+## PutV1EmployeesEmployeeIdI9AuthorizationEmployerSign
 
 Sign an employee's Form I-9 as an employer. Once the form is signed, the employee's I-9 authorization is considered complete and cannot be modified.
 
@@ -204,7 +204,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.I9Verification.EmployerSignAsync(
+var res = await sdk.I9Verification.PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignAsync(
     employeeId: "<id>",
     requestBody: new PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody() {
         SignatureText = "<value>",

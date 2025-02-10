@@ -7,11 +7,11 @@
 
 * [Create](#create) - Create an employee benefit
 * [List](#list) - Get all benefits for an employee
-* [Get](#get) - Get an employee benefit
-* [Update](#update) - Update an employee benefit
-* [Delete](#delete) - Delete an employee benefit
-* [GetEmployeeYtdBenefitAmountsFromDifferentCompany](#getemployeeytdbenefitamountsfromdifferentcompany) - Get year-to-date benefit amounts from a different company
+* [GetV1EmployeeBenefitsEmployeeBenefitId](#getv1employeebenefitsemployeebenefitid) - Get an employee benefit
+* [PutV1EmployeeBenefitsEmployeeBenefitId](#putv1employeebenefitsemployeebenefitid) - Update an employee benefit
+* [DeleteV1EmployeeBenefitsEmployeeBenefitId](#deletev1employeebenefitsemployeebenefitid) - Delete an employee benefit
 * [CreateYtdAmounts](#createytdamounts) - Create year-to-date benefit amounts from a different company
+* [GetEmployeeYtdBenefitAmountsFromDifferentCompany](#getemployeeytdbenefitamountsfromdifferentcompany) - Get year-to-date benefit amounts from a different company
 
 ## Create
 
@@ -105,7 +105,7 @@ var res = await sdk.EmployeeBenefits.ListAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Get
+## GetV1EmployeeBenefitsEmployeeBenefitId
 
 Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment.
 
@@ -121,7 +121,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeBenefits.GetAsync(
+var res = await sdk.EmployeeBenefits.GetV1EmployeeBenefitsEmployeeBenefitIdAsync(
     employeeBenefitId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -146,7 +146,7 @@ var res = await sdk.EmployeeBenefits.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutV1EmployeeBenefitsEmployeeBenefitId
 
 Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment.
 
@@ -161,7 +161,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeBenefits.UpdateAsync(
+var res = await sdk.EmployeeBenefits.PutV1EmployeeBenefitsEmployeeBenefitIdAsync(
     employeeBenefitId: "<id>",
     requestBody: new PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody() {
         Version = "<value>",
@@ -191,7 +191,7 @@ var res = await sdk.EmployeeBenefits.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Delete
+## DeleteV1EmployeeBenefitsEmployeeBenefitId
 
 Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment.
 
@@ -205,7 +205,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeBenefits.DeleteAsync(
+var res = await sdk.EmployeeBenefits.DeleteV1EmployeeBenefitsEmployeeBenefitIdAsync(
     employeeBenefitId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -223,50 +223,6 @@ var res = await sdk.EmployeeBenefits.DeleteAsync(
 ### Response
 
 **[DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse](../../Models/Requests/DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse.md)**
-
-### Errors
-
-| Error Type                               | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
-
-## GetEmployeeYtdBenefitAmountsFromDifferentCompany
-
-Retrieves year-to-date benefit amounts that were contributed at a different company for the specified employee.
-Returns benefit amounts for the requested tax year (defaults to current year if not specified).
-
-This endpoint only supports retrieving outside contributions for 401(k) benefits.
-
-scope: `employee_benefits:read`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.EmployeeBenefits.GetEmployeeYtdBenefitAmountsFromDifferentCompanyAsync(
-    employeeId: "<id>",
-    taxYear: 2024,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  | Example                                                                                                                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |                                                                                                                                                                                                                              |
-| `TaxYear`                                                                                                                                                                                                                    | *long*                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                           | The tax year for which to retrieve YTD benefit amounts. Defaults to current year if not specified.                                                                                                                           | 2024                                                                                                                                                                                                                         |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |                                                                                                                                                                                                                              |
-
-### Response
-
-**[GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse](../../Models/Requests/GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse.md)**
 
 ### Errors
 
@@ -319,3 +275,47 @@ var res = await sdk.EmployeeBenefits.CreateYtdAmountsAsync(
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
+
+## GetEmployeeYtdBenefitAmountsFromDifferentCompany
+
+Retrieves year-to-date benefit amounts that were contributed at a different company for the specified employee.
+Returns benefit amounts for the requested tax year (defaults to current year if not specified).
+
+This endpoint only supports retrieving outside contributions for 401(k) benefits.
+
+scope: `employee_benefits:read`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.EmployeeBenefits.GetEmployeeYtdBenefitAmountsFromDifferentCompanyAsync(
+    employeeId: "<id>",
+    taxYear: 2024,
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  | Example                                                                                                                                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |                                                                                                                                                                                                                              |
+| `TaxYear`                                                                                                                                                                                                                    | *long*                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                           | The tax year for which to retrieve YTD benefit amounts. Defaults to current year if not specified.                                                                                                                           | 2024                                                                                                                                                                                                                         |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |                                                                                                                                                                                                                              |
+
+### Response
+
+**[GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse](../../Models/Requests/GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse.md)**
+
+### Errors
+
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |

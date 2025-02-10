@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesResponse> CreateAsync(string companyId, PostV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesResponse> PostV1EmployeesAsync(string companyId, PostV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get employees of a company
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PostV1HistoricalEmployeesResponse> CreateHistoricalAsync(string companyUuid, HistoricalEmployeeBody historicalEmployeeBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1HistoricalEmployeesResponse> PostV1HistoricalEmployeesAsync(string companyUuid, HistoricalEmployeeBody historicalEmployeeBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update a historical employee
@@ -67,7 +67,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PutV1HistoricalEmployeesResponse> UpdateHistoricalAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1HistoricalEmployeesResponse> PutV1HistoricalEmployeesAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get an employee
@@ -90,7 +90,7 @@ namespace GustoEmbedded
         /// scope: `employees:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesResponse> UpdateAsync(string employeeId, PutV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesResponse> PutV1EmployeesAsync(string employeeId, PutV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete an onboarding employee
@@ -103,7 +103,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1EmployeeResponse> DeleteAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1EmployeeResponse> DeleteV1EmployeeAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get an employee&apos;s custom fields
@@ -114,7 +114,7 @@ namespace GustoEmbedded
         /// scope: `employees:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdCustomFieldsResponse> GetCustomFieldsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdCustomFieldsResponse> GetV1EmployeesEmployeeIdCustomFieldsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update an employee&apos;s onboarding documents config
@@ -125,7 +125,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdOnboardingDocumentsConfigResponse> UpdateOnboardingDocumentsConfigAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesEmployeeIdOnboardingDocumentsConfigResponse> PutV1EmployeesEmployeeIdOnboardingDocumentsConfigAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get the employee&apos;s onboarding status
@@ -172,7 +172,7 @@ namespace GustoEmbedded
         /// | `admin_review` | Admin reviews &amp; confirms employee details (only required for Employee self-onboarding) |
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdOnboardingStatusResponse> GetOnboardingStatusAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdOnboardingStatusResponse> GetV1EmployeesEmployeeIdOnboardingStatusAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update the employee&apos;s onboarding status
@@ -192,7 +192,7 @@ namespace GustoEmbedded
         /// | Finish an employee&apos;s onboarding | `admin_onboarding_incomplete` or `self_onboarding_awaiting_admin_review` | `onboarding_completed` |
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdOnboardingStatusResponse> UpdateOnboardingStatusAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesEmployeeIdOnboardingStatusResponse> PutV1EmployeesEmployeeIdOnboardingStatusAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get employee time off activities
@@ -203,7 +203,7 @@ namespace GustoEmbedded
         /// scope: `employee_time_off_activities:read`
         /// </remarks>
         /// </summary>
-        Task<GetVersionEmployeesTimeOffActivitiesResponse> GetTimeOffActivitiesAsync(string employeeUuid, string timeOffType, VersionHeader? xGustoAPIVersion = null);
+        Task<GetVersionEmployeesTimeOffActivitiesResponse> GetVersionEmployeesTimeOffActivitiesAsync(string employeeUuid, string timeOffType, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get terminations for an employee
@@ -228,7 +228,7 @@ namespace GustoEmbedded
         /// scope: `employee_payment_methods:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteBankAccountAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Create a job
@@ -239,7 +239,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1JobsJobIdResponse> PostV1JobsJobIdAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get garnishments for an employee
@@ -257,10 +257,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -273,7 +273,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1EmployeesResponse> CreateAsync(string companyId, PostV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesResponse> PostV1EmployeesAsync(string companyId, PostV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1EmployeesRequest()
             {
@@ -457,7 +457,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1HistoricalEmployeesResponse> CreateHistoricalAsync(string companyUuid, HistoricalEmployeeBody historicalEmployeeBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1HistoricalEmployeesResponse> PostV1HistoricalEmployeesAsync(string companyUuid, HistoricalEmployeeBody historicalEmployeeBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1HistoricalEmployeesRequest()
             {
@@ -560,7 +560,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1HistoricalEmployeesResponse> UpdateHistoricalAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1HistoricalEmployeesResponse> PutV1HistoricalEmployeesAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1HistoricalEmployeesRequest()
             {
@@ -741,7 +741,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesResponse> UpdateAsync(string employeeId, PutV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesResponse> PutV1EmployeesAsync(string employeeId, PutV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeesRequest()
             {
@@ -844,7 +844,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1EmployeeResponse> DeleteAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1EmployeeResponse> DeleteV1EmployeeAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1EmployeeRequest()
             {
@@ -932,7 +932,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdCustomFieldsResponse> GetCustomFieldsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdCustomFieldsResponse> GetV1EmployeesEmployeeIdCustomFieldsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1EmployeesEmployeeIdCustomFieldsRequest()
             {
@@ -1020,7 +1020,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdOnboardingDocumentsConfigResponse> UpdateOnboardingDocumentsConfigAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesEmployeeIdOnboardingDocumentsConfigResponse> PutV1EmployeesEmployeeIdOnboardingDocumentsConfigAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequest()
             {
@@ -1113,7 +1113,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdOnboardingStatusResponse> GetOnboardingStatusAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdOnboardingStatusResponse> GetV1EmployeesEmployeeIdOnboardingStatusAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1EmployeesEmployeeIdOnboardingStatusRequest()
             {
@@ -1199,7 +1199,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdOnboardingStatusResponse> UpdateOnboardingStatusAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesEmployeeIdOnboardingStatusResponse> PutV1EmployeesEmployeeIdOnboardingStatusAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeesEmployeeIdOnboardingStatusRequest()
             {
@@ -1302,7 +1302,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetVersionEmployeesTimeOffActivitiesResponse> GetTimeOffActivitiesAsync(string employeeUuid, string timeOffType, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetVersionEmployeesTimeOffActivitiesResponse> GetVersionEmployeesTimeOffActivitiesAsync(string employeeUuid, string timeOffType, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetVersionEmployeesTimeOffActivitiesRequest()
             {
@@ -1475,7 +1475,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteBankAccountAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdRequest()
             {
@@ -1554,7 +1554,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1JobsJobIdResponse> PostV1JobsJobIdAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1JobsJobIdRequest()
             {

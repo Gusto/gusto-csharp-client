@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `contractor_forms:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorFormPdfResponse> GetPdfAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorFormPdfResponse> GetV1ContractorFormPdfAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Generate a 1099 form [DEMO]
@@ -60,17 +60,17 @@ namespace GustoEmbedded
         /// scope: `contractors:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1SandboxGenerate1099Response> Generate1099Async(PostV1SandboxGenerate1099RequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1SandboxGenerate1099Response> PostV1SandboxGenerate1099Async(PostV1SandboxGenerate1099RequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class ContractorForms: IContractorForms
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -169,7 +169,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorFormPdfResponse> GetPdfAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorFormPdfResponse> GetV1ContractorFormPdfAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorFormPdfRequest()
             {
@@ -256,7 +256,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1SandboxGenerate1099Response> Generate1099Async(PostV1SandboxGenerate1099RequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1SandboxGenerate1099Response> PostV1SandboxGenerate1099Async(PostV1SandboxGenerate1099RequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1SandboxGenerate1099Request()
             {

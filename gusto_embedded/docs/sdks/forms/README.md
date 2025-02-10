@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [Get](#get) - Get a contractor form
+* [GetV1ContractorForm](#getv1contractorform) - Get a contractor form
 
-## Get
+## GetV1ContractorForm
 
 Get a contractor form
 
@@ -21,7 +21,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.Forms.GetAsync(
+var res = await sdk.Contractors.Forms.GetV1ContractorFormAsync(
     contractorUuid: "<id>",
     formId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

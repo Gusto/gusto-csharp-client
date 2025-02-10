@@ -6,12 +6,12 @@
 ### Available Operations
 
 * [Get](#get) - Get an employee's home addresses
-* [Create](#create) - Create an employee's home address
+* [PostV1EmployeesEmployeeIdHomeAddresses](#postv1employeesemployeeidhomeaddresses) - Create an employee's home address
 * [GetHome](#gethome) - Get an employee's home address
 * [Update](#update) - Update an employee's home address
 * [RemoveHome](#removehome) - Delete an employee's home address
 * [UpdateWork](#updatework) - Update an employee work address
-* [Delete](#delete) - Delete an employee's work address
+* [DeleteV1WorkAddressesWorkAddressUuid](#deletev1workaddressesworkaddressuuid) - Delete an employee's work address
 
 ## Get
 
@@ -54,7 +54,7 @@ var res = await sdk.EmployeeAddresses.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Create
+## PostV1EmployeesEmployeeIdHomeAddresses
 
 The home address of an employee is used to determine certain tax information about them. Addresses are geocoded on create and update to ensure validity.
 
@@ -71,7 +71,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeAddresses.CreateAsync(
+var res = await sdk.EmployeeAddresses.PostV1EmployeesEmployeeIdHomeAddressesAsync(
     employeeId: "<id>",
     requestBody: new PostV1EmployeesEmployeeIdHomeAddressesRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -272,7 +272,7 @@ var res = await sdk.EmployeeAddresses.UpdateWorkAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Delete
+## DeleteV1WorkAddressesWorkAddressUuid
 
 Used for deleting an employee's work address.  Cannot delete the employee's active work address.
 
@@ -286,7 +286,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeAddresses.DeleteAsync(
+var res = await sdk.EmployeeAddresses.DeleteV1WorkAddressesWorkAddressUuidAsync(
     workAddressUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

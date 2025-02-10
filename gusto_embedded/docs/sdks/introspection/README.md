@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [GetTokenInfo](#gettokeninfo) - Get info about the current access token
+* [GetV1TokenInfo](#getv1tokeninfo) - Get info about the current access token
 * [RefreshAccessToken](#refreshaccesstoken) - Refresh access token
 
-## GetTokenInfo
+## GetV1TokenInfo
 
 Returns scope and resource information associated with the current access token.
 
@@ -20,7 +20,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.GetTokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```

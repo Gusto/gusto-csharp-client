@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1JobsJobIdResponse> PutV1JobsJobIdAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get compensations for a job
@@ -61,17 +61,17 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompensationsCompensationIdResponse> GetV1CompensationsCompensationIdAsync(string compensationId, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class JobsAndCompensations: IJobsAndCompensations
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -84,7 +84,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1JobsJobIdResponse> PutV1JobsJobIdAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1JobsJobIdRequest()
             {
@@ -268,7 +268,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompensationsCompensationIdResponse> GetV1CompensationsCompensationIdAsync(string compensationId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompensationsCompensationIdRequest()
             {

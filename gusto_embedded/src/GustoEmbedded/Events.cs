@@ -38,17 +38,17 @@ namespace GustoEmbedded
         /// scope: `events:read`
         /// </remarks>
         /// </summary>
-        Task<GetEventsResponse> ListAsync(GetEventsSecurity security, GetEventsRequest? request = null);
+        Task<GetEventsResponse> GetEventsAsync(GetEventsSecurity security, GetEventsRequest? request = null);
     }
 
     public class Events: IEvents
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -61,7 +61,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetEventsResponse> ListAsync(GetEventsSecurity security, GetEventsRequest? request = null)
+        public async Task<GetEventsResponse> GetEventsAsync(GetEventsSecurity security, GetEventsRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/events", request);

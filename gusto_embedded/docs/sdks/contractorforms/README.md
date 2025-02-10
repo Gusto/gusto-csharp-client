@@ -6,8 +6,8 @@
 ### Available Operations
 
 * [List](#list) - Get all contractor forms
-* [GetPdf](#getpdf) - Get the contractor form pdf
-* [Generate1099](#generate1099) - Generate a 1099 form [DEMO]
+* [GetV1ContractorFormPdf](#getv1contractorformpdf) - Get the contractor form pdf
+* [PostV1SandboxGenerate1099](#postv1sandboxgenerate1099) - Generate a 1099 form [DEMO]
 
 ## List
 
@@ -48,7 +48,7 @@ var res = await sdk.ContractorForms.ListAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetPdf
+## GetV1ContractorFormPdf
 
 Get the link to the form PDF
 
@@ -62,7 +62,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorForms.GetPdfAsync(
+var res = await sdk.ContractorForms.GetV1ContractorFormPdfAsync(
     contractorUuid: "<id>",
     formId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -89,7 +89,7 @@ var res = await sdk.ContractorForms.GetPdfAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Generate1099
+## PostV1SandboxGenerate1099
 
 > 🚧 Demo action
 >
@@ -108,7 +108,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorForms.Generate1099Async(
+var res = await sdk.ContractorForms.PostV1SandboxGenerate1099Async(
     requestBody: new PostV1SandboxGenerate1099RequestBody() {
         ContractorId = "<id>",
     },

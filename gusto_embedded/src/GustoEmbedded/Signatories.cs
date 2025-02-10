@@ -36,7 +36,7 @@ namespace GustoEmbedded
         /// scope: `signatories:manage`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompanySignatoriesResponse> CreateAsync(string companyUuid, PostV1CompanySignatoriesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompanySignatoriesResponse> PostV1CompanySignatoriesAsync(string companyUuid, PostV1CompanySignatoriesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Invite a signatory
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// Create a signatory with minimal information. This signatory can be invited to provide more information through the `PUT /v1/companies/{company_uuid}/signatories/{signatory_uuid}` endpoint. This will start the identity verification process and allow the signatory to be verified to sign documents.
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyUuidSignatoriesInviteResponse> InviteAsync(string companyUuid, PostV1CompaniesCompanyUuidSignatoriesInviteRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyUuidSignatoriesInviteResponse> PostV1CompaniesCompanyUuidSignatoriesInviteAsync(string companyUuid, PostV1CompaniesCompanyUuidSignatoriesInviteRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update a signatory
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `signatories:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidResponse> UpdateAsync(string companyUuid, string signatoryUuid, PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidResponse> PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidAsync(string companyUuid, string signatoryUuid, PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete a signatory
@@ -67,17 +67,17 @@ namespace GustoEmbedded
         /// scope: `signatories:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuidResponse> DeleteAsync(string companyUuid, string signatoryUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuidResponse> DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuidAsync(string companyUuid, string signatoryUuid, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Signatories: ISignatories
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -90,7 +90,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1CompanySignatoriesResponse> CreateAsync(string companyUuid, PostV1CompanySignatoriesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompanySignatoriesResponse> PostV1CompanySignatoriesAsync(string companyUuid, PostV1CompanySignatoriesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1CompanySignatoriesRequest()
             {
@@ -193,7 +193,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1CompaniesCompanyUuidSignatoriesInviteResponse> InviteAsync(string companyUuid, PostV1CompaniesCompanyUuidSignatoriesInviteRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyUuidSignatoriesInviteResponse> PostV1CompaniesCompanyUuidSignatoriesInviteAsync(string companyUuid, PostV1CompaniesCompanyUuidSignatoriesInviteRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1CompaniesCompanyUuidSignatoriesInviteRequest()
             {
@@ -296,7 +296,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidResponse> UpdateAsync(string companyUuid, string signatoryUuid, PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidResponse> PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidAsync(string companyUuid, string signatoryUuid, PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidRequest()
             {
@@ -400,7 +400,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuidResponse> DeleteAsync(string companyUuid, string signatoryUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuidResponse> DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuidAsync(string companyUuid, string signatoryUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuidRequest()
             {

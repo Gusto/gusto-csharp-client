@@ -5,24 +5,24 @@
 
 ### Available Operations
 
-* [Create](#create) - Create an employee
+* [PostV1Employees](#postv1employees) - Create an employee
 * [List](#list) - Get employees of a company
-* [CreateHistorical](#createhistorical) - Create a historical employee
-* [UpdateHistorical](#updatehistorical) - Update a historical employee
+* [PostV1HistoricalEmployees](#postv1historicalemployees) - Create a historical employee
+* [PutV1HistoricalEmployees](#putv1historicalemployees) - Update a historical employee
 * [Get](#get) - Get an employee
-* [Update](#update) - Update an employee
-* [Delete](#delete) - Delete an onboarding employee
-* [GetCustomFields](#getcustomfields) - Get an employee's custom fields
-* [UpdateOnboardingDocumentsConfig](#updateonboardingdocumentsconfig) - Update an employee's onboarding documents config
-* [GetOnboardingStatus](#getonboardingstatus) - Get the employee's onboarding status
-* [UpdateOnboardingStatus](#updateonboardingstatus) - Update the employee's onboarding status
-* [GetTimeOffActivities](#gettimeoffactivities) - Get employee time off activities
+* [PutV1Employees](#putv1employees) - Update an employee
+* [DeleteV1Employee](#deletev1employee) - Delete an onboarding employee
+* [GetV1EmployeesEmployeeIdCustomFields](#getv1employeesemployeeidcustomfields) - Get an employee's custom fields
+* [PutV1EmployeesEmployeeIdOnboardingDocumentsConfig](#putv1employeesemployeeidonboardingdocumentsconfig) - Update an employee's onboarding documents config
+* [GetV1EmployeesEmployeeIdOnboardingStatus](#getv1employeesemployeeidonboardingstatus) - Get the employee's onboarding status
+* [PutV1EmployeesEmployeeIdOnboardingStatus](#putv1employeesemployeeidonboardingstatus) - Update the employee's onboarding status
+* [GetVersionEmployeesTimeOffActivities](#getversionemployeestimeoffactivities) - Get employee time off activities
 * [GetTerminations](#getterminations) - Get terminations for an employee
-* [DeleteBankAccount](#deletebankaccount) - Delete an employee bank account
-* [CreateJob](#createjob) - Create a job
+* [DeleteV1EmployeesEmployeeIdBankAccountsBankAccountId](#deletev1employeesemployeeidbankaccountsbankaccountid) - Delete an employee bank account
+* [PostV1JobsJobId](#postv1jobsjobid) - Create a job
 * [GetGarnishments](#getgarnishments) - Get garnishments for an employee
 
-## Create
+## PostV1Employees
 
 Create an employee.
 
@@ -37,11 +37,11 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.CreateAsync(
+var res = await sdk.Employees.PostV1EmployeesAsync(
     companyId: "<id>",
     requestBody: new PostV1EmployeesRequestBody() {
-        FirstName = "Jed",
-        LastName = "Johnson",
+        FirstName = "Carmine",
+        LastName = "McLaughlin",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -108,7 +108,7 @@ var res = await sdk.Employees.ListAsync(req);
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## CreateHistorical
+## PostV1HistoricalEmployees
 
 Create a historical employee, an employee that was previously dismissed from the company in the current year.
 
@@ -122,19 +122,19 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.CreateHistoricalAsync(
+var res = await sdk.Employees.PostV1HistoricalEmployeesAsync(
     companyUuid: "<id>",
     historicalEmployeeBody: new HistoricalEmployeeBody() {
-        FirstName = "Cortez",
-        LastName = "Dickens",
-        DateOfBirth = "1995-11-09",
+        FirstName = "Pinkie",
+        LastName = "Torp",
+        DateOfBirth = "1987-04-22",
         Ssn = "<value>",
         WorkAddress = new Models.Components.WorkAddress() {},
         HomeAddress = new HistoricalEmployeeBodyHomeAddress() {
             Street1 = "<value>",
-            City = "Port Gustavehaven",
-            State = "Maine",
-            Zip = "79036-5048",
+            City = "Cronintown",
+            State = "Nevada",
+            Zip = "50684",
         },
         Termination = new HistoricalEmployeeBodyTermination() {},
         Job = new HistoricalEmployeeBodyJob() {},
@@ -164,7 +164,7 @@ var res = await sdk.Employees.CreateHistoricalAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## UpdateHistorical
+## PutV1HistoricalEmployees
 
 Update a historical employee, an employee that was previously dismissed from the company in the current year.
 
@@ -179,21 +179,21 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.UpdateHistoricalAsync(
+var res = await sdk.Employees.PutV1HistoricalEmployeesAsync(
     companyUuid: "<id>",
     historicalEmployeeUuid: "<id>",
     requestBody: new PutV1HistoricalEmployeesRequestBody() {
         Version = "<value>",
-        FirstName = "Sierra",
-        LastName = "Senger",
-        DateOfBirth = "1983-03-04",
+        FirstName = "Nicolette",
+        LastName = "Klocko",
+        DateOfBirth = "1957-01-09",
         Ssn = "<value>",
         WorkAddress = new Models.Requests.WorkAddress() {},
         HomeAddress = new PutV1HistoricalEmployeesHomeAddress() {
             Street1 = "<value>",
-            City = "Topeka",
-            State = "Alabama",
-            Zip = "50655-6219",
+            City = "New Devante",
+            State = "Colorado",
+            Zip = "16406",
         },
         Termination = new Models.Requests.Termination() {},
         Job = new Models.Requests.Job() {},
@@ -269,7 +269,7 @@ var res = await sdk.Employees.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutV1Employees
 
 Update an employee.
 
@@ -284,7 +284,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.UpdateAsync(
+var res = await sdk.Employees.PutV1EmployeesAsync(
     employeeId: "<id>",
     requestBody: new PutV1EmployeesRequestBody() {
         Version = "<value>",
@@ -314,7 +314,7 @@ var res = await sdk.Employees.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Delete
+## DeleteV1Employee
 
 Use this endpoint to delete an employee who is in onboarding. Deleting
 an onboarded employee is not allowed and will return a 422 response. Please check out the Terminations api
@@ -330,7 +330,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.DeleteAsync(
+var res = await sdk.Employees.DeleteV1EmployeeAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -356,7 +356,7 @@ var res = await sdk.Employees.DeleteAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetCustomFields
+## GetV1EmployeesEmployeeIdCustomFields
 
 Returns a list of the employee's custom fields.
 
@@ -370,10 +370,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.GetCustomFieldsAsync(
+var res = await sdk.Employees.GetV1EmployeesEmployeeIdCustomFieldsAsync(
     employeeId: "<id>",
-    page: 6531.7D,
-    per: 3092.2D,
+    page: 6617.63D,
+    per: 9193.31D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -399,7 +399,7 @@ var res = await sdk.Employees.GetCustomFieldsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## UpdateOnboardingDocumentsConfig
+## PutV1EmployeesEmployeeIdOnboardingDocumentsConfig
 
 Indicate whether to include the Form I-9 for an employee during the onboarding process.
 
@@ -414,7 +414,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.UpdateOnboardingDocumentsConfigAsync(
+var res = await sdk.Employees.PutV1EmployeesEmployeeIdOnboardingDocumentsConfigAsync(
     employeeId: "<id>",
     requestBody: new PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -441,7 +441,7 @@ var res = await sdk.Employees.UpdateOnboardingDocumentsConfigAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetOnboardingStatus
+## GetV1EmployeesEmployeeIdOnboardingStatus
 
 # Description
 Retrieves an employee's onboarding status. The data returned helps inform the required onboarding steps and respective completion status.
@@ -491,7 +491,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.GetOnboardingStatusAsync(
+var res = await sdk.Employees.GetV1EmployeesEmployeeIdOnboardingStatusAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -516,7 +516,7 @@ var res = await sdk.Employees.GetOnboardingStatusAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## UpdateOnboardingStatus
+## PutV1EmployeesEmployeeIdOnboardingStatus
 
 scope: `employees:manage`
 
@@ -540,7 +540,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.UpdateOnboardingStatusAsync(
+var res = await sdk.Employees.PutV1EmployeesEmployeeIdOnboardingStatusAsync(
     employeeId: "<id>",
     requestBody: new PutV1EmployeesEmployeeIdOnboardingStatusRequestBody() {
         OnboardingStatus = "<value>",
@@ -570,7 +570,7 @@ var res = await sdk.Employees.UpdateOnboardingStatusAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetTimeOffActivities
+## GetVersionEmployeesTimeOffActivities
 
 Get employee time off activities.
 
@@ -584,7 +584,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.GetTimeOffActivitiesAsync(
+var res = await sdk.Employees.GetVersionEmployeesTimeOffActivitiesAsync(
     employeeUuid: "<id>",
     timeOffType: "<value>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -652,7 +652,7 @@ var res = await sdk.Employees.GetTerminationsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## DeleteBankAccount
+## DeleteV1EmployeesEmployeeIdBankAccountsBankAccountId
 
 Deletes an employee bank account. To update an employee's bank
 account details, delete the bank account first and create a new one.
@@ -667,7 +667,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.DeleteBankAccountAsync(
+var res = await sdk.Employees.DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdAsync(
     employeeId: "<id>",
     bankAccountUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -694,7 +694,7 @@ var res = await sdk.Employees.DeleteBankAccountAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## CreateJob
+## PostV1JobsJobId
 
 Create a job.
 
@@ -709,7 +709,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Employees.CreateJobAsync(
+var res = await sdk.Employees.PostV1JobsJobIdAsync(
     employeeId: "<id>",
     requestBody: new PostV1JobsJobIdRequestBody() {
         Title = "<value>",

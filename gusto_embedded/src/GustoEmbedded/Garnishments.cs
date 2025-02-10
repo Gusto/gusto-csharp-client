@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `garnishments:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> PostV1EmployeesEmployeeIdGarnishmentsAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get a garnishment
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `garnishments:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1GarnishmentsGarnishmentIdResponse> UpdateAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1GarnishmentsGarnishmentIdResponse> PutV1GarnishmentsGarnishmentIdAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get child support garnishment data
@@ -67,17 +67,17 @@ namespace GustoEmbedded
         /// scope: `garnishments:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1GarnishmentsChildSupportResponse> GetChildSupportAsync(VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1GarnishmentsChildSupportResponse> GetV1GarnishmentsChildSupportAsync(VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Garnishments: IGarnishments
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -90,7 +90,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> PostV1EmployeesEmployeeIdGarnishmentsAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1EmployeesEmployeeIdGarnishmentsRequest()
             {
@@ -279,7 +279,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1GarnishmentsGarnishmentIdResponse> UpdateAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1GarnishmentsGarnishmentIdResponse> PutV1GarnishmentsGarnishmentIdAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1GarnishmentsGarnishmentIdRequest()
             {
@@ -382,7 +382,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1GarnishmentsChildSupportResponse> GetChildSupportAsync(VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1GarnishmentsChildSupportResponse> GetV1GarnishmentsChildSupportAsync(VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1GarnishmentsChildSupportRequest()
             {

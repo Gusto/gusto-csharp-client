@@ -23,6 +23,6 @@ namespace GustoEmbedded.Models.Requests
         /// <summary>
         /// Example response
         /// </summary>
-        public List<CompanyAttachment>? CompanyAttachmentList { get; set; }
+        public List<Models.Components.CompanyAttachment>? CompanyAttachmentList { get; set; }
     }
 }

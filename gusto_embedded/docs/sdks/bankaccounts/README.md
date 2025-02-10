@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [Create](#create) - Create a company bank account
-* [List](#list) - Get all company bank accounts
-* [Verify](#verify) - Verify a company bank account
-* [CreateFromProcessorToken](#createfromprocessortoken) - Create a bank account from a plaid processor token
+* [PostV1CompaniesCompanyIdBankAccounts](#postv1companiescompanyidbankaccounts) - Create a company bank account
+* [GetV1CompaniesCompanyIdBankAccounts](#getv1companiescompanyidbankaccounts) - Get all company bank accounts
+* [PutV1CompaniesCompanyIdBankAccountsVerify](#putv1companiescompanyidbankaccountsverify) - Verify a company bank account
+* [PostV1PlaidProcessorToken](#postv1plaidprocessortoken) - Create a bank account from a plaid processor token
 
-## Create
+## PostV1CompaniesCompanyIdBankAccounts
 
 This endpoint creates a new company bank account.
 
@@ -34,7 +34,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.BankAccounts.CreateAsync(
+var res = await sdk.BankAccounts.PostV1CompaniesCompanyIdBankAccountsAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdBankAccountsRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -62,7 +62,7 @@ var res = await sdk.BankAccounts.CreateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## List
+## GetV1CompaniesCompanyIdBankAccounts
 
 Returns company bank accounts. Currently, we only support a single default bank account per company.
 
@@ -76,7 +76,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.BankAccounts.ListAsync(
+var res = await sdk.BankAccounts.GetV1CompaniesCompanyIdBankAccountsAsync(
     companyId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -101,7 +101,7 @@ var res = await sdk.BankAccounts.ListAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Verify
+## PutV1CompaniesCompanyIdBankAccountsVerify
 
 Verify a company bank account by confirming the two micro-deposits sent to the bank account. Note that the order of the two deposits specified in request parameters does not matter. There's a maximum of 5 verification attempts, after which we will automatically initiate a new set of micro-deposits and require the bank account to be verified with the new micro-deposits.
 
@@ -129,12 +129,12 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.BankAccounts.VerifyAsync(
+var res = await sdk.BankAccounts.PutV1CompaniesCompanyIdBankAccountsVerifyAsync(
     bankAccountUuid: "<id>",
     companyId: "<id>",
     requestBody: new PutV1CompaniesCompanyIdBankAccountsVerifyRequestBody() {
-        Deposit1 = 7888.92D,
-        Deposit2 = 1895.95D,
+        Deposit1 = 5019.12D,
+        Deposit2 = 8775.07D,
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -162,7 +162,7 @@ var res = await sdk.BankAccounts.VerifyAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## CreateFromProcessorToken
+## PostV1PlaidProcessorToken
 
 This endpoint creates a new **verified** bank account by using a plaid processor token to retrieve its information.
 
@@ -184,7 +184,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.BankAccounts.CreateFromProcessorTokenAsync(
+var res = await sdk.BankAccounts.PostV1PlaidProcessorTokenAsync(
     requestBody: new PostV1PlaidProcessorTokenRequestBody() {
         OwnerType = OwnerType.Company,
         OwnerId = "<id>",

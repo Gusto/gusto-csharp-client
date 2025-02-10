@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [Create](#create) - Create a flow
+* [PostV1CompanyFlows](#postv1companyflows) - Create a flow
 
-## Create
+## PostV1CompanyFlows
 
 Generate a link to access a pre-built workflow in Gusto white-label UI. For security, all generated flows will expire within 1 hour of inactivity or 24 hours from creation time, whichever comes first.
 
@@ -22,7 +22,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Flows.CreateAsync(
+var res = await sdk.Flows.PostV1CompanyFlowsAsync(
     companyUuid: "<id>",
     requestBody: new PostV1CompanyFlowsRequestBody() {
         FlowType = "<value>",

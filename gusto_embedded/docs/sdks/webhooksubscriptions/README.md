@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [Create](#create) - Create a webhook subscription
-* [RequestVerificationToken](#requestverificationtoken) - Request the webhook subscription verification_token
+* [GetV1WebhookSubscriptionVerificationTokenUuid](#getv1webhooksubscriptionverificationtokenuuid) - Request the webhook subscription verification_token
 
 ## Create
 
@@ -63,7 +63,7 @@ var res = await sdk.WebhookSubscriptions.CreateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## RequestVerificationToken
+## GetV1WebhookSubscriptionVerificationTokenUuid
 
 Request that the webhook subscription `verification_token` be POSTed to the Subscription URL.
 
@@ -83,7 +83,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto();
 
-var res = await sdk.WebhookSubscriptions.RequestVerificationTokenAsync(
+var res = await sdk.WebhookSubscriptions.GetV1WebhookSubscriptionVerificationTokenUuidAsync(
     security: new GetV1WebhookSubscriptionVerificationTokenUuidSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },

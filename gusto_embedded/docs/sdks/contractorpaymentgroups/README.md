@@ -5,14 +5,14 @@
 
 ### Available Operations
 
-* [Create](#create) - Create a contractor payment group
-* [List](#list) - Get contractor payment groups for a company
-* [Preview](#preview) - Preview a contractor payment group
-* [Get](#get) - Fetch a contractor payment group
-* [Delete](#delete) - Cancel a contractor payment group
-* [Fund](#fund) - Fund a contractor payment group [DEMO]
+* [PostV1CompaniesCompanyIdContractorPaymentGroups](#postv1companiescompanyidcontractorpaymentgroups) - Create a contractor payment group
+* [GetV1CompaniesCompanyIdContractorPaymentGroups](#getv1companiescompanyidcontractorpaymentgroups) - Get contractor payment groups for a company
+* [PostV1CompaniesCompanyIdContractorPaymentGroupsPreview](#postv1companiescompanyidcontractorpaymentgroupspreview) - Preview a contractor payment group
+* [GetV1ContractorPaymentGroupsContractorPaymentGroupId](#getv1contractorpaymentgroupscontractorpaymentgroupid) - Fetch a contractor payment group
+* [DeleteV1ContractorPaymentGroupsContractorPaymentGroupId](#deletev1contractorpaymentgroupscontractorpaymentgroupid) - Cancel a contractor payment group
+* [PutV1ContractorPaymentGroupsContractorPaymentGroupIdFund](#putv1contractorpaymentgroupscontractorpaymentgroupidfund) - Fund a contractor payment group [DEMO]
 
-## Create
+## PostV1CompaniesCompanyIdContractorPaymentGroups
 
 Pay a group of contractors. Information needed depends on the contractor's wage type (hourly vs fixed)
 
@@ -29,7 +29,7 @@ using System.Collections.Generic;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPaymentGroups.CreateAsync(
+var res = await sdk.ContractorPaymentGroups.PostV1CompaniesCompanyIdContractorPaymentGroupsAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdContractorPaymentGroupsRequestBody() {
         CheckDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -68,7 +68,7 @@ var res = await sdk.ContractorPaymentGroups.CreateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## List
+## GetV1CompaniesCompanyIdContractorPaymentGroups
 
 Returns a list of minimal contractor payment groups within a given time period, including totals but not associated contractor payments.
 
@@ -89,7 +89,7 @@ GetV1CompaniesCompanyIdContractorPaymentGroupsRequest req = new GetV1CompaniesCo
     EndDate = "2020-12-31",
 };
 
-var res = await sdk.ContractorPaymentGroups.ListAsync(req);
+var res = await sdk.ContractorPaymentGroups.GetV1CompaniesCompanyIdContractorPaymentGroupsAsync(req);
 
 // handle response
 ```
@@ -110,7 +110,7 @@ var res = await sdk.ContractorPaymentGroups.ListAsync(req);
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Preview
+## PostV1CompaniesCompanyIdContractorPaymentGroupsPreview
 
 Preview a group of contractor payments. Request will validate inputs and return preview of the contractor payment group including the expected debit_date.  Uuid will be null in the response.
 
@@ -127,7 +127,7 @@ using System.Collections.Generic;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPaymentGroups.PreviewAsync(
+var res = await sdk.ContractorPaymentGroups.PostV1CompaniesCompanyIdContractorPaymentGroupsPreviewAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdContractorPaymentGroupsPreviewRequestBody() {
         CheckDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -166,7 +166,7 @@ var res = await sdk.ContractorPaymentGroups.PreviewAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Get
+## GetV1ContractorPaymentGroupsContractorPaymentGroupId
 
 Returns a contractor payment group with all associated contractor payments.
 
@@ -180,7 +180,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPaymentGroups.GetAsync(
+var res = await sdk.ContractorPaymentGroups.GetV1ContractorPaymentGroupsContractorPaymentGroupIdAsync(
     contractorPaymentGroupUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -205,7 +205,7 @@ var res = await sdk.ContractorPaymentGroups.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Delete
+## DeleteV1ContractorPaymentGroupsContractorPaymentGroupId
 
 Cancels a contractor payment group and all associated contractor payments. All contractor payments must be cancellable, unfunded.
 
@@ -219,7 +219,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPaymentGroups.DeleteAsync(
+var res = await sdk.ContractorPaymentGroups.DeleteV1ContractorPaymentGroupsContractorPaymentGroupIdAsync(
     contractorPaymentGroupUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -245,7 +245,7 @@ var res = await sdk.ContractorPaymentGroups.DeleteAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Fund
+## PutV1ContractorPaymentGroupsContractorPaymentGroupIdFund
 
 > 🚧 Demo action
 >
@@ -263,7 +263,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPaymentGroups.FundAsync(
+var res = await sdk.ContractorPaymentGroups.PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundAsync(
     contractorPaymentGroupUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

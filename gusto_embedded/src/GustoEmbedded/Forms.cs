@@ -34,17 +34,17 @@ namespace GustoEmbedded
         /// scope: `contractor_forms:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorFormResponse> GetAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorFormResponse> GetV1ContractorFormAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Forms: IForms
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -57,7 +57,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1ContractorFormResponse> GetAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorFormResponse> GetV1ContractorFormAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorFormRequest()
             {

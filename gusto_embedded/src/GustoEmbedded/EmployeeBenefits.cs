@@ -62,7 +62,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeeBenefitsEmployeeBenefitIdResponse> GetAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeeBenefitsEmployeeBenefitIdResponse> GetV1EmployeeBenefitsEmployeeBenefitIdAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update an employee benefit
@@ -73,7 +73,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeeBenefitsEmployeeBenefitIdResponse> UpdateAsync(string employeeBenefitId, PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeeBenefitsEmployeeBenefitIdResponse> PutV1EmployeeBenefitsEmployeeBenefitIdAsync(string employeeBenefitId, PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete an employee benefit
@@ -84,7 +84,20 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse> DeleteAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse> DeleteV1EmployeeBenefitsEmployeeBenefitIdAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
+        /// Create year-to-date benefit amounts from a different company
+        /// 
+        /// <remarks>
+        /// Year-to-date benefit amounts from a different company represents the amount of money added to an employee&apos;s plan during a current year, made outside of the current contribution when they were employed at a different company.<br/>
+        /// <br/>
+        /// This endpoint only supports passing outside contributions for 401(k) benefits.<br/>
+        /// <br/>
+        /// scope: `employee_benefits:write`
+        /// </remarks>
+        /// </summary>
+        Task<PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> CreateYtdAmountsAsync(string employeeId, PostEmployeeYtdBenefitAmountsFromDifferentCompany postEmployeeYtdBenefitAmountsFromDifferentCompany, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get year-to-date benefit amounts from a different company
@@ -99,29 +112,16 @@ namespace GustoEmbedded
         /// </remarks>
         /// </summary>
         Task<GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> GetEmployeeYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, long? taxYear = null, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Create year-to-date benefit amounts from a different company
-        /// 
-        /// <remarks>
-        /// Year-to-date benefit amounts from a different company represents the amount of money added to an employee&apos;s plan during a current year, made outside of the current contribution when they were employed at a different company.<br/>
-        /// <br/>
-        /// This endpoint only supports passing outside contributions for 401(k) benefits.<br/>
-        /// <br/>
-        /// scope: `employee_benefits:write`
-        /// </remarks>
-        /// </summary>
-        Task<PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> CreateYtdAmountsAsync(string employeeId, PostEmployeeYtdBenefitAmountsFromDifferentCompany postEmployeeYtdBenefitAmountsFromDifferentCompany, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class EmployeeBenefits: IEmployeeBenefits
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -325,7 +325,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeeBenefitsEmployeeBenefitIdResponse> GetAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeeBenefitsEmployeeBenefitIdResponse> GetV1EmployeeBenefitsEmployeeBenefitIdAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1EmployeeBenefitsEmployeeBenefitIdRequest()
             {
@@ -411,7 +411,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeeBenefitsEmployeeBenefitIdResponse> UpdateAsync(string employeeBenefitId, PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeeBenefitsEmployeeBenefitIdResponse> PutV1EmployeeBenefitsEmployeeBenefitIdAsync(string employeeBenefitId, PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeeBenefitsEmployeeBenefitIdRequest()
             {
@@ -514,7 +514,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse> DeleteAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse> DeleteV1EmployeeBenefitsEmployeeBenefitIdAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1EmployeeBenefitsEmployeeBenefitIdRequest()
             {
@@ -579,93 +579,6 @@ namespace GustoEmbedded
                         Request = httpRequest
                     }
                 };
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> GetEmployeeYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, long? taxYear = null, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new GetEmployeeYtdBenefitAmountsFromDifferentCompanyRequest()
-            {
-                EmployeeId = employeeId,
-                TaxYear = taxYear,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/ytd_benefit_amounts_from_different_company", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("get-employee-ytd-benefit-amounts-from-different-company", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<YtdBenefitAmountsFromDifferentCompany>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.YtdBenefitAmountsFromDifferentCompanyList = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
             else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
             {
@@ -758,6 +671,93 @@ namespace GustoEmbedded
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> GetEmployeeYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, long? taxYear = null, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new GetEmployeeYtdBenefitAmountsFromDifferentCompanyRequest()
+            {
+                EmployeeId = employeeId,
+                TaxYear = taxYear,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/ytd_benefit_amounts_from_different_company", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("get-employee-ytd-benefit-amounts-from-different-company", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<List<YtdBenefitAmountsFromDifferentCompany>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.YtdBenefitAmountsFromDifferentCompanyList = obj;
+                    return response;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);

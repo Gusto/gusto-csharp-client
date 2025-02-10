@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [Update](#update) - Update a job
+* [PutV1JobsJobId](#putv1jobsjobid) - Update a job
 * [ListCompensations](#listcompensations) - Get compensations for a job
-* [GetCompensation](#getcompensation) - Get a compensation
+* [GetV1CompensationsCompensationId](#getv1compensationscompensationid) - Get a compensation
 
-## Update
+## PutV1JobsJobId
 
 Update a job.
 
@@ -24,7 +24,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.JobsAndCompensations.UpdateAsync(
+var res = await sdk.JobsAndCompensations.PutV1JobsJobIdAsync(
     jobId: "<id>",
     requestBody: new PutV1JobsJobIdRequestBody() {
         Version = "<value>",
@@ -98,7 +98,7 @@ var res = await sdk.JobsAndCompensations.ListCompensationsAsync(req);
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetCompensation
+## GetV1CompensationsCompensationId
 
 Compensations contain information on how much is paid out for a job. Jobs may have many compensations, but only one that is active. The current compensation is the one with the most recent `effective_date`.
 
@@ -113,7 +113,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.JobsAndCompensations.GetCompensationAsync(
+var res = await sdk.JobsAndCompensations.GetV1CompensationsCompensationIdAsync(
     compensationId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

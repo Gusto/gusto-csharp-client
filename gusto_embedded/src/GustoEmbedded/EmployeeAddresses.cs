@@ -49,7 +49,7 @@ namespace GustoEmbedded
         /// scope: `employees:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesEmployeeIdHomeAddressesResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdHomeAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesEmployeeIdHomeAddressesResponse> PostV1EmployeesEmployeeIdHomeAddressesAsync(string employeeId, PostV1EmployeesEmployeeIdHomeAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get an employee&apos;s home address
@@ -108,17 +108,17 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1WorkAddressesWorkAddressUuidResponse> DeleteAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1WorkAddressesWorkAddressUuidResponse> DeleteV1WorkAddressesWorkAddressUuidAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class EmployeeAddresses: IEmployeeAddresses
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -217,7 +217,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1EmployeesEmployeeIdHomeAddressesResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdHomeAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesEmployeeIdHomeAddressesResponse> PostV1EmployeesEmployeeIdHomeAddressesAsync(string employeeId, PostV1EmployeesEmployeeIdHomeAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1EmployeesEmployeeIdHomeAddressesRequest()
             {
@@ -700,7 +700,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1WorkAddressesWorkAddressUuidResponse> DeleteAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1WorkAddressesWorkAddressUuidResponse> DeleteV1WorkAddressesWorkAddressUuidAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1WorkAddressesWorkAddressUuidRequest()
             {

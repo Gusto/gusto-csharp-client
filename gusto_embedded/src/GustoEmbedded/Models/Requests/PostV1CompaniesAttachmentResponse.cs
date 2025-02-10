@@ -22,6 +22,6 @@ namespace GustoEmbedded.Models.Requests
         /// <summary>
         /// Example response
         /// </summary>
-        public CompanyAttachment? CompanyAttachment { get; set; }
+        public Models.Components.CompanyAttachment? CompanyAttachment { get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace GustoEmbedded
         /// scope: `webhook_subscriptions:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1WebhookSubscriptionsResponse> ListSubscriptionsAsync(GetV1WebhookSubscriptionsSecurity security, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1WebhookSubscriptionsResponse> GetV1WebhookSubscriptionsAsync(GetV1WebhookSubscriptionsSecurity security, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update a webhook subscription
@@ -70,7 +70,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetV1WebhookSubscriptionUuidResponse> GetAsync(GetV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1WebhookSubscriptionUuidResponse> GetV1WebhookSubscriptionUuidAsync(GetV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete a webhook subscription
@@ -86,7 +86,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<DeleteV1WebhookSubscriptionUuidResponse> DeleteAsync(DeleteV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1WebhookSubscriptionUuidResponse> DeleteV1WebhookSubscriptionUuidAsync(DeleteV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Verify the webhook subscription
@@ -111,10 +111,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -127,7 +127,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1WebhookSubscriptionsResponse> ListSubscriptionsAsync(GetV1WebhookSubscriptionsSecurity security, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1WebhookSubscriptionsResponse> GetV1WebhookSubscriptionsAsync(GetV1WebhookSubscriptionsSecurity security, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1WebhookSubscriptionsRequest()
             {
@@ -318,7 +318,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1WebhookSubscriptionUuidResponse> GetAsync(GetV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1WebhookSubscriptionUuidResponse> GetV1WebhookSubscriptionUuidAsync(GetV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1WebhookSubscriptionUuidRequest()
             {
@@ -405,7 +405,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1WebhookSubscriptionUuidResponse> DeleteAsync(DeleteV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1WebhookSubscriptionUuidResponse> DeleteV1WebhookSubscriptionUuidAsync(DeleteV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1WebhookSubscriptionUuidRequest()
             {

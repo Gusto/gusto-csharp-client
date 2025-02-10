@@ -28,6 +28,7 @@ namespace GustoEmbedded
         public IIntrospection Introspection { get; }
         public ICompanies Companies { get; }
         public IInvoices Invoices { get; }
+        public ICompanyAttachment CompanyAttachment { get; }
         public ICompanyAttachments CompanyAttachments { get; }
         public IFederalTaxDetails FederalTaxDetails { get; }
         public IIndustrySelection IndustrySelection { get; }
@@ -49,8 +50,8 @@ namespace GustoEmbedded
         public IEmployeeFederalTaxes EmployeeFederalTaxes { get; }
         public IEmployeeTaxes EmployeeTaxes { get; }
         public IEmployeeBankAccounts EmployeeBankAccounts { get; }
-        public IEmployeePaymentMethods EmployeePaymentMethods { get; }
         public IEmployeePaymentMethod EmployeePaymentMethod { get; }
+        public IEmployeePaymentMethods EmployeePaymentMethods { get; }
         public IJobs Jobs { get; }
         public IJobsAndCompensations JobsAndCompensations { get; }
         public ICompensations Compensations { get; }
@@ -81,7 +82,7 @@ namespace GustoEmbedded
         public INotifications Notifications { get; }
         public IEvents Events { get; }
         public IRecoveryCases RecoveryCases { get; }
-        public IAchTransactions AchTransactions { get; }
+        public IACHTransactions ACHTransactions { get; }
         public IWireInRequests WireInRequests { get; }
     }
 
@@ -149,10 +150,10 @@ namespace GustoEmbedded
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
@@ -160,6 +161,7 @@ namespace GustoEmbedded
         public IIntrospection Introspection { get; private set; }
         public ICompanies Companies { get; private set; }
         public IInvoices Invoices { get; private set; }
+        public ICompanyAttachment CompanyAttachment { get; private set; }
         public ICompanyAttachments CompanyAttachments { get; private set; }
         public IFederalTaxDetails FederalTaxDetails { get; private set; }
         public IIndustrySelection IndustrySelection { get; private set; }
@@ -181,8 +183,8 @@ namespace GustoEmbedded
         public IEmployeeFederalTaxes EmployeeFederalTaxes { get; private set; }
         public IEmployeeTaxes EmployeeTaxes { get; private set; }
         public IEmployeeBankAccounts EmployeeBankAccounts { get; private set; }
-        public IEmployeePaymentMethods EmployeePaymentMethods { get; private set; }
         public IEmployeePaymentMethod EmployeePaymentMethod { get; private set; }
+        public IEmployeePaymentMethods EmployeePaymentMethods { get; private set; }
         public IJobs Jobs { get; private set; }
         public IJobsAndCompensations JobsAndCompensations { get; private set; }
         public ICompensations Compensations { get; private set; }
@@ -213,7 +215,7 @@ namespace GustoEmbedded
         public INotifications Notifications { get; private set; }
         public IEvents Events { get; private set; }
         public IRecoveryCases RecoveryCases { get; private set; }
-        public IAchTransactions AchTransactions { get; private set; }
+        public IACHTransactions ACHTransactions { get; private set; }
         public IWireInRequests WireInRequests { get; private set; }
 
         public Gusto(string? companyAccessAuth = null, Func<string>? companyAccessAuthSource = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
@@ -260,6 +262,9 @@ namespace GustoEmbedded
 
 
             Invoices = new Invoices(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            CompanyAttachment = new CompanyAttachment(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             CompanyAttachments = new CompanyAttachments(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -325,10 +330,10 @@ namespace GustoEmbedded
             EmployeeBankAccounts = new EmployeeBankAccounts(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            EmployeePaymentMethods = new EmployeePaymentMethods(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             EmployeePaymentMethod = new EmployeePaymentMethod(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            EmployeePaymentMethods = new EmployeePaymentMethods(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Jobs = new Jobs(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -421,7 +426,7 @@ namespace GustoEmbedded
             RecoveryCases = new RecoveryCases(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            AchTransactions = new AchTransactions(_client, _securitySource, _serverUrl, SDKConfiguration);
+            ACHTransactions = new ACHTransactions(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             WireInRequests = new WireInRequests(_client, _securitySource, _serverUrl, SDKConfiguration);

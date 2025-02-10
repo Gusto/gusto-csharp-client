@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [List](#list) - Get an employee's work addresses
-* [Create](#create) - Create an employee work address
+* [PostV1EmployeesEmployeeIdWorkAddresses](#postv1employeesemployeeidworkaddresses) - Create an employee work address
 * [Get](#get) - Get an employee work address
 
 ## List
@@ -49,7 +49,7 @@ var res = await sdk.EmployeeWorkAddresses.ListAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Create
+## PostV1EmployeesEmployeeIdWorkAddresses
 
 The work address of an employee describes when an employee began working at an associated company location.
 
@@ -64,7 +64,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeWorkAddresses.CreateAsync(
+var res = await sdk.EmployeeWorkAddresses.PostV1EmployeesEmployeeIdWorkAddressesAsync(
     employeeId: "<id>",
     requestBody: new PostV1EmployeesEmployeeIdWorkAddressesRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

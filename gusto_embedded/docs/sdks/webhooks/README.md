@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [ListSubscriptions](#listsubscriptions) - List webhook subscriptions
+* [GetV1WebhookSubscriptions](#getv1webhooksubscriptions) - List webhook subscriptions
 * [Update](#update) - Update a webhook subscription
-* [Get](#get) - Get a webhook subscription
-* [Delete](#delete) - Delete a webhook subscription
+* [GetV1WebhookSubscriptionUuid](#getv1webhooksubscriptionuuid) - Get a webhook subscription
+* [DeleteV1WebhookSubscriptionUuid](#deletev1webhooksubscriptionuuid) - Delete a webhook subscription
 * [Verify](#verify) - Verify the webhook subscription
 
-## ListSubscriptions
+## GetV1WebhookSubscriptions
 
 Returns all webhook subscriptions associated with the provided Partner API token.
 
@@ -30,7 +30,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto();
 
-var res = await sdk.Webhooks.ListSubscriptionsAsync(
+var res = await sdk.Webhooks.GetV1WebhookSubscriptionsAsync(
     security: new GetV1WebhookSubscriptionsSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
@@ -114,7 +114,7 @@ var res = await sdk.Webhooks.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Get
+## GetV1WebhookSubscriptionUuid
 
 Returns the Webhook Subscription associated with the provided UUID.
 
@@ -134,7 +134,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto();
 
-var res = await sdk.Webhooks.GetAsync(
+var res = await sdk.Webhooks.GetV1WebhookSubscriptionUuidAsync(
     security: new GetV1WebhookSubscriptionUuidSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
@@ -163,7 +163,7 @@ var res = await sdk.Webhooks.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Delete
+## DeleteV1WebhookSubscriptionUuid
 
 Deletes the Webhook Subscription associated with the provided UUID.
 
@@ -183,7 +183,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto();
 
-var res = await sdk.Webhooks.DeleteAsync(
+var res = await sdk.Webhooks.DeleteV1WebhookSubscriptionUuidAsync(
     security: new DeleteV1WebhookSubscriptionUuidSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },

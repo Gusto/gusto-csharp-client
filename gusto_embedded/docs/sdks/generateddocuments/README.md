@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [Get](#get) - Get a generated document
+* [GetV1GeneratedDocumentsDocumentTypeRequestUuid](#getv1generateddocumentsdocumenttyperequestuuid) - Get a generated document
 
-## Get
+## GetV1GeneratedDocumentsDocumentTypeRequestUuid
 
 Get a document given the request_uuid. The response will include the generation request's status and urls to the document. A list of urls is returned as certain document types require several urls.
 
@@ -21,7 +21,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.GeneratedDocuments.GetAsync(
+var res = await sdk.GeneratedDocuments.GetV1GeneratedDocumentsDocumentTypeRequestUuidAsync(
     documentType: DocumentType.PrintablePayrollChecks,
     requestUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

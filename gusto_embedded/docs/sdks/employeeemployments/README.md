@@ -5,15 +5,15 @@
 
 ### Available Operations
 
-* [CreateTermination](#createtermination) - Create an employee termination
-* [DeleteTermination](#deletetermination) - Delete an employee termination
-* [UpdateTermination](#updatetermination) - Update an employee termination
+* [PostV1EmployeesEmployeeIdTerminations](#postv1employeesemployeeidterminations) - Create an employee termination
+* [DeleteV1EmployeesEmployeeIdTerminations](#deletev1employeesemployeeidterminations) - Delete an employee termination
+* [PutV1TerminationsEmployeeId](#putv1terminationsemployeeid) - Update an employee termination
 * [Rehire](#rehire) - Create an employee rehire
-* [GetRehire](#getrehire) - Get an employee rehire
-* [DeleteRehire](#deleterehire) - Delete an employee rehire
-* [GetHistory](#gethistory) - Get employment history for an employee
+* [GetV1EmployeesEmployeeIdRehire](#getv1employeesemployeeidrehire) - Get an employee rehire
+* [DeleteV1EmployeesEmployeeIdRehire](#deletev1employeesemployeeidrehire) - Delete an employee rehire
+* [GetV1EmployeesEmployeeIdEmploymentHistory](#getv1employeesemployeeidemploymenthistory) - Get employment history for an employee
 
-## CreateTermination
+## PostV1EmployeesEmployeeIdTerminations
 
 Terminations are created whenever an employee is scheduled to leave the company. The only things required are an effective date (their last day of work) and whether they should receive their wages in a one-off termination payroll or with the rest of the company.
 
@@ -30,7 +30,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeEmployments.CreateTerminationAsync(
+var res = await sdk.EmployeeEmployments.PostV1EmployeesEmployeeIdTerminationsAsync(
     employeeId: "<id>",
     requestBody: new PostV1EmployeesEmployeeIdTerminationsRequestBody() {
         EffectiveDate = "<value>",
@@ -60,7 +60,7 @@ var res = await sdk.EmployeeEmployments.CreateTerminationAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## DeleteTermination
+## DeleteV1EmployeesEmployeeIdTerminations
 
 Delete an employee termination.
 
@@ -74,7 +74,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeEmployments.DeleteTerminationAsync(
+var res = await sdk.EmployeeEmployments.DeleteV1EmployeesEmployeeIdTerminationsAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -100,7 +100,7 @@ var res = await sdk.EmployeeEmployments.DeleteTerminationAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 404                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## UpdateTermination
+## PutV1TerminationsEmployeeId
 
 Terminations are created whenever an employee is scheduled to leave the company. The only things required are an effective date (their last day of work) and whether they should receive their wages in a one-off termination payroll or with the rest of the company.
 
@@ -117,7 +117,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeEmployments.UpdateTerminationAsync(
+var res = await sdk.EmployeeEmployments.PutV1TerminationsEmployeeIdAsync(
     employeeId: "<id>",
     requestBody: new PutV1TerminationsEmployeeIdRequestBody() {
         Version = "<value>",
@@ -194,7 +194,7 @@ var res = await sdk.EmployeeEmployments.RehireAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetRehire
+## GetV1EmployeesEmployeeIdRehire
 
 Retrieve an employee's rehire, which contains information on when the employee returns to work.
 
@@ -208,7 +208,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeEmployments.GetRehireAsync(
+var res = await sdk.EmployeeEmployments.GetV1EmployeesEmployeeIdRehireAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -234,7 +234,7 @@ var res = await sdk.EmployeeEmployments.GetRehireAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 404                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## DeleteRehire
+## DeleteV1EmployeesEmployeeIdRehire
 
 Delete an employee rehire. An employee rehire cannot be deleted if it's active (past effective date).
 
@@ -248,7 +248,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeEmployments.DeleteRehireAsync(
+var res = await sdk.EmployeeEmployments.DeleteV1EmployeesEmployeeIdRehireAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -274,7 +274,7 @@ var res = await sdk.EmployeeEmployments.DeleteRehireAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 404                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetHistory
+## GetV1EmployeesEmployeeIdEmploymentHistory
 
 Retrieve the employment history for a given employee, which includes termination and rehire.
 
@@ -288,7 +288,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeEmployments.GetHistoryAsync(
+var res = await sdk.EmployeeEmployments.GetV1EmployeesEmployeeIdEmploymentHistoryAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

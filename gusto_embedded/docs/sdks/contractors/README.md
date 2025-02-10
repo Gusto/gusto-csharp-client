@@ -5,18 +5,18 @@
 
 ### Available Operations
 
-* [Create](#create) - Create a contractor
-* [List](#list) - Get contractors of a company
-* [Get](#get) - Get a contractor
-* [Update](#update) - Update a contractor
-* [Delete](#delete) - Delete a contractor
-* [GetOnboardingStatus](#getonboardingstatus) - Get the contractor's onboarding status
-* [UpdateOnboardingStatus](#updateonboardingstatus) - Change the contractor's onboarding status
-* [GetAddress](#getaddress) - Get a contractor address
-* [UpdateAddress](#updateaddress) - Update a contractor's address
+* [PostV1CompaniesCompanyUuidContractors](#postv1companiescompanyuuidcontractors) - Create a contractor
+* [GetV1CompaniesCompanyUuidContractors](#getv1companiescompanyuuidcontractors) - Get contractors of a company
+* [GetV1ContractorsContractorUuid](#getv1contractorscontractoruuid) - Get a contractor
+* [PutV1ContractorsContractorUuid](#putv1contractorscontractoruuid) - Update a contractor
+* [DeleteV1ContractorsContractorUuid](#deletev1contractorscontractoruuid) - Delete a contractor
+* [GetV1ContractorsContractorUuidOnboardingStatus](#getv1contractorscontractoruuidonboardingstatus) - Get the contractor's onboarding status
+* [PutV1ContractorsContractorUuidOnboardingStatus](#putv1contractorscontractoruuidonboardingstatus) - Change the contractor's onboarding status
+* [GetV1ContractorsContractorUuidAddress](#getv1contractorscontractoruuidaddress) - Get a contractor address
+* [PutV1ContractorsContractorUuidAddress](#putv1contractorscontractoruuidaddress) - Update a contractor's address
 * [GetPaymentMethod](#getpaymentmethod) - Get a contractor's payment method
 
-## Create
+## PostV1CompaniesCompanyUuidContractors
 
 Create an individual or business contractor.
 
@@ -31,7 +31,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.CreateAsync(
+var res = await sdk.Contractors.PostV1CompaniesCompanyUuidContractorsAsync(
     companyUuid: "<id>",
     requestBody: new PostV1CompaniesCompanyUuidContractorsRequestBody() {
         WageType = WageType.Fixed,
@@ -63,7 +63,7 @@ var res = await sdk.Contractors.CreateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## List
+## GetV1CompaniesCompanyUuidContractors
 
 Get all contractors, active and inactive, individual and business, for a company.
 
@@ -82,7 +82,7 @@ GetV1CompaniesCompanyUuidContractorsRequest req = new GetV1CompaniesCompanyUuidC
     CompanyUuid = "<id>",
 };
 
-var res = await sdk.Contractors.ListAsync(req);
+var res = await sdk.Contractors.GetV1CompaniesCompanyUuidContractorsAsync(req);
 
 // handle response
 ```
@@ -103,7 +103,7 @@ var res = await sdk.Contractors.ListAsync(req);
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Get
+## GetV1ContractorsContractorUuid
 
 Get a contractor.
 
@@ -117,7 +117,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.GetAsync(
+var res = await sdk.Contractors.GetV1ContractorsContractorUuidAsync(
     contractorUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -142,7 +142,7 @@ var res = await sdk.Contractors.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutV1ContractorsContractorUuid
 
 Update a contractor.
 
@@ -161,7 +161,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.UpdateAsync(
+var res = await sdk.Contractors.PutV1ContractorsContractorUuidAsync(
     contractorUuid: "<id>",
     requestBody: new PutV1ContractorsContractorUuidRequestBody() {
         Version = "<value>",
@@ -193,7 +193,7 @@ var res = await sdk.Contractors.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Delete
+## DeleteV1ContractorsContractorUuid
 
 A contractor can only be deleted when there are no contractor payments.
 
@@ -207,7 +207,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.DeleteAsync(
+var res = await sdk.Contractors.DeleteV1ContractorsContractorUuidAsync(
     contractorUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -232,7 +232,7 @@ var res = await sdk.Contractors.DeleteAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetOnboardingStatus
+## GetV1ContractorsContractorUuidOnboardingStatus
 
 Retrieves a contractor's onboarding status. The data returned helps inform the required onboarding steps and respective completion status.
 
@@ -277,7 +277,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.GetOnboardingStatusAsync(
+var res = await sdk.Contractors.GetV1ContractorsContractorUuidOnboardingStatusAsync(
     contractorUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -302,7 +302,7 @@ var res = await sdk.Contractors.GetOnboardingStatusAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## UpdateOnboardingStatus
+## PutV1ContractorsContractorUuidOnboardingStatus
 
 Updates a contractor's onboarding status.
 
@@ -327,7 +327,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.UpdateOnboardingStatusAsync(
+var res = await sdk.Contractors.PutV1ContractorsContractorUuidOnboardingStatusAsync(
     contractorUuid: "<id>",
     requestBody: new PutV1ContractorsContractorUuidOnboardingStatusRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -355,7 +355,7 @@ var res = await sdk.Contractors.UpdateOnboardingStatusAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetAddress
+## GetV1ContractorsContractorUuidAddress
 
 The address of a contractor is used to determine certain tax information about them. Addresses are geocoded on create and update to ensure validity.
 
@@ -369,7 +369,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.GetAddressAsync(
+var res = await sdk.Contractors.GetV1ContractorsContractorUuidAddressAsync(
     contractorUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -394,7 +394,7 @@ var res = await sdk.Contractors.GetAddressAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## UpdateAddress
+## PutV1ContractorsContractorUuidAddress
 
 The address of a contractor is used to determine certain tax information about them. Addresses are geocoded on create and update to ensure validity.
 
@@ -409,7 +409,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Contractors.UpdateAddressAsync(
+var res = await sdk.Contractors.PutV1ContractorsContractorUuidAddressAsync(
     contractorUuid: "<id>",
     requestBody: new PutV1ContractorsContractorUuidAddressRequestBody() {
         Version = "<value>",

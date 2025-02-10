@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [Get](#get) - Get a company industry selection
+* [GetV1CompanyIndustry](#getv1companyindustry) - Get a company industry selection
 
-## Get
+## GetV1CompanyIndustry
 
 Get industry selection for the company.
 
@@ -21,7 +21,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.IndustrySelection.GetAsync(
+var res = await sdk.IndustrySelection.GetV1CompanyIndustryAsync(
     companyId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

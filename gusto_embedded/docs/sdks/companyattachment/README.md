@@ -1,20 +1,19 @@
-# CompanyForms
-(*CompanyForms*)
+# CompanyAttachment
+(*CompanyAttachment*)
 
 ## Overview
 
 ### Available Operations
 
-* [GetV1CompanyForms](#getv1companyforms) - Get all company forms
-* [GetV1CompanyForm](#getv1companyform) - Get a company form
-* [GetV1CompanyFormPdf](#getv1companyformpdf) - Get a company form pdf
-* [PutV1CompanyFormSign](#putv1companyformsign) - Sign a company form
+* [Get](#get) - Get Company Attachment Details
+* [List](#list) - Get List of Company Attachments
+* [PostV1CompaniesAttachment](#postv1companiesattachment) - Create Company Attachment and Upload File
 
-## GetV1CompanyForms
+## Get
 
-Get a list of all company's forms
+Retrieve the detail of an attachment uploaded by the company.
 
-scope: `company_forms:read`
+scope: `company_attachments:read`
 
 ### Example Usage
 
@@ -24,7 +23,48 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyForms.GetV1CompanyFormsAsync(
+var res = await sdk.CompanyAttachment.GetAsync(
+    companyId: "<id>",
+    companyAttachmentUuid: "<id>",
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CompanyId`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
+| `CompanyAttachmentUuid`                                                                                                                                                                                                      | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company attachment                                                                                                                                                                                           |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[GetV1CompaniesAttachmentResponse](../../Models/Requests/GetV1CompaniesAttachmentResponse.md)**
+
+### Errors
+
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
+
+## List
+
+Retrieve a list of all the attachments uploaded by the company.
+
+scope: `company_attachments:read`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.CompanyAttachment.ListAsync(
     companyId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -41,7 +81,7 @@ var res = await sdk.CompanyForms.GetV1CompanyFormsAsync(
 
 ### Response
 
-**[GetV1CompanyFormsResponse](../../Models/Requests/GetV1CompanyFormsResponse.md)**
+**[GetV1CompaniesAttachmentsResponse](../../Models/Requests/GetV1CompaniesAttachmentsResponse.md)**
 
 ### Errors
 
@@ -49,89 +89,13 @@ var res = await sdk.CompanyForms.GetV1CompanyFormsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompanyForm
+## PostV1CompaniesAttachment
 
-Get a company form
+Upload a file and create a company attachment. We recommend uploading
+PDF files for optimal compatibility. However, the following file types are
+allowed: .qbb, .qbm, .gif, .jpg, .png, .pdf, .xls, .xlsx, .doc and .docx. 
 
-scope: `company_forms:read`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.CompanyForms.GetV1CompanyFormAsync(
-    formId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `FormId`                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the form                                                                                                                                                                                                         |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
-
-### Response
-
-**[GetV1CompanyFormResponse](../../Models/Requests/GetV1CompanyFormResponse.md)**
-
-### Errors
-
-| Error Type                               | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
-
-## GetV1CompanyFormPdf
-
-Get the link to the form PDF
-
-scope: `company_forms:read`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.CompanyForms.GetV1CompanyFormPdfAsync(
-    formId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `FormId`                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the form                                                                                                                                                                                                         |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
-
-### Response
-
-**[GetV1CompanyFormPdfResponse](../../Models/Requests/GetV1CompanyFormPdfResponse.md)**
-
-### Errors
-
-| Error Type                               | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
-
-## PutV1CompanyFormSign
-
-Sign a company form. Company forms must be signed by the company signatory.
-
-scope: `company_forms:sign`
+scope: `company_attachments:write`
 
 ### Example Usage
 
@@ -139,15 +103,18 @@ scope: `company_forms:sign`
 using GustoEmbedded;
 using GustoEmbedded.Models.Components;
 using GustoEmbedded.Models.Requests;
+using System;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyForms.PutV1CompanyFormSignAsync(
-    formId: "<id>",
-    requestBody: new PutV1CompanyFormSignRequestBody() {
-        SignatureText = "<value>",
-        Agree = false,
-        SignedByIpAddress = "<value>",
+var res = await sdk.CompanyAttachment.PostV1CompaniesAttachmentAsync(
+    companyId: "<id>",
+    requestBody: new PostV1CompaniesAttachmentRequestBody() {
+        Document = new Models.Requests.Document() {
+            FileName = "example.file",
+            Content = System.Text.Encoding.UTF8.GetBytes("0xeC85ec218a"),
+        },
+        Category = Category.GepNotice,
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -159,13 +126,13 @@ var res = await sdk.CompanyForms.PutV1CompanyFormSignAsync(
 
 | Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `FormId`                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the form                                                                                                                                                                                                         |
-| `RequestBody`                                                                                                                                                                                                                | [PutV1CompanyFormSignRequestBody](../../Models/Requests/PutV1CompanyFormSignRequestBody.md)                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `CompanyId`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
+| `RequestBody`                                                                                                                                                                                                                | [PostV1CompaniesAttachmentRequestBody](../../Models/Requests/PostV1CompaniesAttachmentRequestBody.md)                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
 
 ### Response
 
-**[PutV1CompanyFormSignResponse](../../Models/Requests/PutV1CompanyFormSignResponse.md)**
+**[PostV1CompaniesAttachmentResponse](../../Models/Requests/PostV1CompaniesAttachmentResponse.md)**
 
 ### Errors
 

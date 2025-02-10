@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [Create](#create) - Create a company location
+* [PostV1CompaniesCompanyIdLocations](#postv1companiescompanyidlocations) - Create a company location
 * [GetAllCompanyLocations](#getallcompanylocations) - Get company locations
-* [Get](#get) - Get a location
-* [Update](#update) - Update a location
-* [GetMinimumWages](#getminimumwages) - Get minimum wages for a location
+* [GetV1LocationsLocationId](#getv1locationslocationid) - Get a location
+* [PutV1LocationsLocationId](#putv1locationslocationid) - Update a location
+* [GetV1LocationsLocationUuidMinimumWages](#getv1locationslocationuuidminimumwages) - Get minimum wages for a location
 
-## Create
+## PostV1CompaniesCompanyIdLocations
 
 Company locations represent all addresses associated with a company. These can be filing addresses, mailing addresses, and/or work locations; one address may serve multiple, or all, purposes.
 
@@ -28,14 +28,14 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Locations.CreateAsync(
+var res = await sdk.Locations.PostV1CompaniesCompanyIdLocationsAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdLocationsRequestBody() {
-        PhoneNumber = "741.279.0107 x857",
+        PhoneNumber = "220-550-4922 x350",
         Street1 = "<value>",
-        City = "Grand Island",
-        State = "Illinois",
-        Zip = "22031",
+        City = "New Alaynaboro",
+        State = "Kansas",
+        Zip = "02351",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -107,7 +107,7 @@ var res = await sdk.Locations.GetAllCompanyLocationsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Get
+## GetV1LocationsLocationId
 
 Get a location.
 
@@ -121,7 +121,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Locations.GetAsync(
+var res = await sdk.Locations.GetV1LocationsLocationIdAsync(
     locationId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -146,7 +146,7 @@ var res = await sdk.Locations.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutV1LocationsLocationId
 
 Update a location.
 
@@ -161,7 +161,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Locations.UpdateAsync(
+var res = await sdk.Locations.PutV1LocationsLocationIdAsync(
     locationId: "<id>",
     requestBody: new PutV1LocationsLocationIdRequestBody() {
         Version = "<value>",
@@ -191,7 +191,7 @@ var res = await sdk.Locations.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetMinimumWages
+## GetV1LocationsLocationUuidMinimumWages
 
 Get minimum wages for a location
 
@@ -205,7 +205,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Locations.GetMinimumWagesAsync(
+var res = await sdk.Locations.GetV1LocationsLocationUuidMinimumWagesAsync(
     locationUuid: "<id>",
     effectiveDate: "2020-01-31",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

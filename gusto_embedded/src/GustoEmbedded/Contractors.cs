@@ -35,7 +35,7 @@ namespace GustoEmbedded
         /// scope: `contractors:manage`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyUuidContractorsResponse> CreateAsync(string companyUuid, PostV1CompaniesCompanyUuidContractorsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyUuidContractorsResponse> PostV1CompaniesCompanyUuidContractorsAsync(string companyUuid, PostV1CompaniesCompanyUuidContractorsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get contractors of a company
@@ -46,7 +46,7 @@ namespace GustoEmbedded
         /// scope: `contractors:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyUuidContractorsResponse> ListAsync(GetV1CompaniesCompanyUuidContractorsRequest request);
+        Task<GetV1CompaniesCompanyUuidContractorsResponse> GetV1CompaniesCompanyUuidContractorsAsync(GetV1CompaniesCompanyUuidContractorsRequest request);
 
         /// <summary>
         /// Get a contractor
@@ -57,7 +57,7 @@ namespace GustoEmbedded
         /// scope: `contractors:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorsContractorUuidResponse> GetAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorsContractorUuidResponse> GetV1ContractorsContractorUuidAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update a contractor
@@ -72,7 +72,7 @@ namespace GustoEmbedded
         /// &gt; Watch out when changing a contractor&apos;s type (when the contractor is finished onboarding). Specifically, changing contractor type can be dangerous since Gusto won’t recognize and file two separate 1099s if they simply change from business to individual
         /// </remarks>
         /// </summary>
-        Task<PutV1ContractorsContractorUuidResponse> UpdateAsync(string contractorUuid, PutV1ContractorsContractorUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1ContractorsContractorUuidResponse> PutV1ContractorsContractorUuidAsync(string contractorUuid, PutV1ContractorsContractorUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete a contractor
@@ -83,7 +83,7 @@ namespace GustoEmbedded
         /// scope: `contractors:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1ContractorsContractorUuidResponse> DeleteAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1ContractorsContractorUuidResponse> DeleteV1ContractorsContractorUuidAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get the contractor&apos;s onboarding status
@@ -125,7 +125,7 @@ namespace GustoEmbedded
         /// | `file_new_hire_report` | Contractor new hire report is generated. |
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorsContractorUuidOnboardingStatusResponse> GetOnboardingStatusAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorsContractorUuidOnboardingStatusResponse> GetV1ContractorsContractorUuidOnboardingStatusAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Change the contractor&apos;s onboarding status
@@ -146,7 +146,7 @@ namespace GustoEmbedded
         /// | Finish a contractor&apos;s onboarding | `admin_onboarding_review` or `self_onboarding_review` | `onboarding_completed` |
         /// </remarks>
         /// </summary>
-        Task<PutV1ContractorsContractorUuidOnboardingStatusResponse> UpdateOnboardingStatusAsync(string contractorUuid, PutV1ContractorsContractorUuidOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1ContractorsContractorUuidOnboardingStatusResponse> PutV1ContractorsContractorUuidOnboardingStatusAsync(string contractorUuid, PutV1ContractorsContractorUuidOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get a contractor address
@@ -157,7 +157,7 @@ namespace GustoEmbedded
         /// scope: `contractors:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorsContractorUuidAddressResponse> GetAddressAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorsContractorUuidAddressResponse> GetV1ContractorsContractorUuidAddressAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update a contractor&apos;s address
@@ -168,7 +168,7 @@ namespace GustoEmbedded
         /// scope: `contractors:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1ContractorsContractorUuidAddressResponse> UpdateAddressAsync(string contractorUuid, PutV1ContractorsContractorUuidAddressRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1ContractorsContractorUuidAddressResponse> PutV1ContractorsContractorUuidAddressAsync(string contractorUuid, PutV1ContractorsContractorUuidAddressRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get a contractor&apos;s payment method
@@ -188,10 +188,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -206,7 +206,7 @@ namespace GustoEmbedded
             Forms = new Forms(_client, _securitySource, _serverUrl, SDKConfiguration);
         }
 
-        public async Task<PostV1CompaniesCompanyUuidContractorsResponse> CreateAsync(string companyUuid, PostV1CompaniesCompanyUuidContractorsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyUuidContractorsResponse> PostV1CompaniesCompanyUuidContractorsAsync(string companyUuid, PostV1CompaniesCompanyUuidContractorsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1CompaniesCompanyUuidContractorsRequest()
             {
@@ -309,7 +309,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyUuidContractorsResponse> ListAsync(GetV1CompaniesCompanyUuidContractorsRequest request)
+        public async Task<GetV1CompaniesCompanyUuidContractorsResponse> GetV1CompaniesCompanyUuidContractorsAsync(GetV1CompaniesCompanyUuidContractorsRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_uuid}/contractors", request);
@@ -390,7 +390,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorsContractorUuidResponse> GetAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorsContractorUuidResponse> GetV1ContractorsContractorUuidAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorsContractorUuidRequest()
             {
@@ -476,7 +476,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1ContractorsContractorUuidResponse> UpdateAsync(string contractorUuid, PutV1ContractorsContractorUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1ContractorsContractorUuidResponse> PutV1ContractorsContractorUuidAsync(string contractorUuid, PutV1ContractorsContractorUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1ContractorsContractorUuidRequest()
             {
@@ -579,7 +579,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1ContractorsContractorUuidResponse> DeleteAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1ContractorsContractorUuidResponse> DeleteV1ContractorsContractorUuidAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1ContractorsContractorUuidRequest()
             {
@@ -657,7 +657,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorsContractorUuidOnboardingStatusResponse> GetOnboardingStatusAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorsContractorUuidOnboardingStatusResponse> GetV1ContractorsContractorUuidOnboardingStatusAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorsContractorUuidOnboardingStatusRequest()
             {
@@ -743,7 +743,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1ContractorsContractorUuidOnboardingStatusResponse> UpdateOnboardingStatusAsync(string contractorUuid, PutV1ContractorsContractorUuidOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1ContractorsContractorUuidOnboardingStatusResponse> PutV1ContractorsContractorUuidOnboardingStatusAsync(string contractorUuid, PutV1ContractorsContractorUuidOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1ContractorsContractorUuidOnboardingStatusRequest()
             {
@@ -846,7 +846,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorsContractorUuidAddressResponse> GetAddressAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorsContractorUuidAddressResponse> GetV1ContractorsContractorUuidAddressAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorsContractorUuidAddressRequest()
             {
@@ -932,7 +932,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1ContractorsContractorUuidAddressResponse> UpdateAddressAsync(string contractorUuid, PutV1ContractorsContractorUuidAddressRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1ContractorsContractorUuidAddressResponse> PutV1ContractorsContractorUuidAddressAsync(string contractorUuid, PutV1ContractorsContractorUuidAddressRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1ContractorsContractorUuidAddressRequest()
             {

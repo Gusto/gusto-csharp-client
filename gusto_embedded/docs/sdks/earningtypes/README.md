@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [Update](#update) - Update an earning type
-* [Deactivate](#deactivate) - Deactivate an earning type
+* [PutV1CompaniesCompanyIdEarningTypesEarningTypeUuid](#putv1companiescompanyidearningtypesearningtypeuuid) - Update an earning type
+* [DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuid](#deletev1companiescompanyidearningtypesearningtypeuuid) - Deactivate an earning type
 
-## Update
+## PutV1CompaniesCompanyIdEarningTypesEarningTypeUuid
 
 Update an earning type.
 
@@ -23,7 +23,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EarningTypes.UpdateAsync(
+var res = await sdk.EarningTypes.PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidAsync(
     companyId: "<id>",
     earningTypeUuid: "<id>",
     requestBody: new PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody() {},
@@ -53,7 +53,7 @@ var res = await sdk.EarningTypes.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Deactivate
+## DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuid
 
 Deactivate an earning type.
 
@@ -67,7 +67,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EarningTypes.DeactivateAsync(
+var res = await sdk.EarningTypes.DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidAsync(
     companyId: "<id>",
     earningTypeUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

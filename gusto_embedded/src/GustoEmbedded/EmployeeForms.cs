@@ -38,7 +38,7 @@ namespace GustoEmbedded
         /// scope: `employees:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1SandboxGenerateW2Response> GenerateW2Async(PostV1SandboxGenerateW2RequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1SandboxGenerateW2Response> PostV1SandboxGenerateW2Async(PostV1SandboxGenerateW2RequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get all employee forms
@@ -71,7 +71,7 @@ namespace GustoEmbedded
         /// scope: `employee_forms:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeeFormPdfResponse> GetPdfAsync(string employeeId, string formId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeeFormPdfResponse> GetV1EmployeeFormPdfAsync(string employeeId, string formId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Sign an employee form
@@ -85,17 +85,17 @@ namespace GustoEmbedded
         /// scope: `employee_forms:sign`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeeFormSignResponse> SignAsync(string employeeId, string formId, PutV1EmployeeFormSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeeFormSignResponse> PutV1EmployeeFormSignAsync(string employeeId, string formId, PutV1EmployeeFormSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class EmployeeForms: IEmployeeForms
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -108,7 +108,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1SandboxGenerateW2Response> GenerateW2Async(PostV1SandboxGenerateW2RequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1SandboxGenerateW2Response> PostV1SandboxGenerateW2Async(PostV1SandboxGenerateW2RequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1SandboxGenerateW2Request()
             {
@@ -384,7 +384,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeeFormPdfResponse> GetPdfAsync(string employeeId, string formId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeeFormPdfResponse> GetV1EmployeeFormPdfAsync(string employeeId, string formId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1EmployeeFormPdfRequest()
             {
@@ -471,7 +471,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeeFormSignResponse> SignAsync(string employeeId, string formId, PutV1EmployeeFormSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeeFormSignResponse> PutV1EmployeeFormSignAsync(string employeeId, string formId, PutV1EmployeeFormSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeeFormSignRequest()
             {

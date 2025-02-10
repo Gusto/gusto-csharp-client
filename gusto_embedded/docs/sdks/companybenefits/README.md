@@ -5,17 +5,17 @@
 
 ### Available Operations
 
-* [Create](#create) - Create a company benefit
-* [Get](#get) - Get a company benefit
-* [Update](#update) - Update a company benefit
-* [Delete](#delete) - Delete a company benefit
-* [GetSupportedBenefit](#getsupportedbenefit) - Get a supported benefit by ID
-* [GetSummary](#getsummary) - Get company benefit summary by company benefit id.
-* [GetEmployeeBenefits](#getemployeebenefits) - Get all employee benefits for a company benefit
+* [PostV1CompaniesCompanyIdCompanyBenefits](#postv1companiescompanyidcompanybenefits) - Create a company benefit
+* [GetV1CompanyBenefitsCompanyBenefitId](#getv1companybenefitscompanybenefitid) - Get a company benefit
+* [PutV1CompanyBenefitsCompanyBenefitId](#putv1companybenefitscompanybenefitid) - Update a company benefit
+* [DeleteV1CompanyBenefitsCompanyBenefitId](#deletev1companybenefitscompanybenefitid) - Delete a company benefit
+* [GetV1BenefitsBenefitId](#getv1benefitsbenefitid) - Get a supported benefit by ID
+* [GetV1BenefitsCompanyBenefitIdSummary](#getv1benefitscompanybenefitidsummary) - Get company benefit summary by company benefit id.
+* [GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefits](#getv1companybenefitscompanybenefitidemployeebenefits) - Get all employee benefits for a company benefit
 * [UpdateEmployeeBenefits](#updateemployeebenefits) - Bulk update employee benefits for a company benefit
-* [GetRequirements](#getrequirements) - Get benefit fields requirements by ID
+* [GetV1BenefitsBenefitsIdRequirements](#getv1benefitsbenefitsidrequirements) - Get benefit fields requirements by ID
 
-## Create
+## PostV1CompaniesCompanyIdCompanyBenefits
 
 Company benefits represent the benefits that a company is offering to employees. This ties together a particular supported benefit with the company-specific information for the offering of that benefit.
 
@@ -32,10 +32,10 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyBenefits.CreateAsync(
+var res = await sdk.CompanyBenefits.PostV1CompaniesCompanyIdCompanyBenefitsAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdCompanyBenefitsRequestBody() {
-        Description = "yuck vice between gee ugh ha",
+        Description = "impractical beside amnesty concerning provided mountain gadzooks",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -62,7 +62,7 @@ var res = await sdk.CompanyBenefits.CreateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Get
+## GetV1CompanyBenefitsCompanyBenefitId
 
 Company benefits represent the benefits that a company is offering to employees. This ties together a particular supported benefit with the company-specific information for the offering of that benefit.
 
@@ -80,7 +80,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyBenefits.GetAsync(
+var res = await sdk.CompanyBenefits.GetV1CompanyBenefitsCompanyBenefitIdAsync(
     companyBenefitId: "<id>",
     withEmployeeBenefits: false,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -107,7 +107,7 @@ var res = await sdk.CompanyBenefits.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutV1CompanyBenefitsCompanyBenefitId
 
 Company benefits represent the benefits that a company is offering to employees. This ties together a particular supported benefit with the company-specific information for the offering of that benefit.
 
@@ -124,7 +124,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyBenefits.UpdateAsync(
+var res = await sdk.CompanyBenefits.PutV1CompanyBenefitsCompanyBenefitIdAsync(
     companyBenefitId: "<id>",
     requestBody: new PutV1CompanyBenefitsCompanyBenefitIdRequestBody() {
         Version = "<value>",
@@ -154,7 +154,7 @@ var res = await sdk.CompanyBenefits.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Delete
+## DeleteV1CompanyBenefitsCompanyBenefitId
 
 The following must be true in order to delete a company benefit
   - There are no employee benefits associated with the company benefit
@@ -171,7 +171,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyBenefits.DeleteAsync(
+var res = await sdk.CompanyBenefits.DeleteV1CompanyBenefitsCompanyBenefitIdAsync(
     companyBenefitId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -197,7 +197,7 @@ var res = await sdk.CompanyBenefits.DeleteAsync(
 | GustoEmbedded.Models.Errors.DeleteV1CompanyBenefitsCompanyBenefitIdResponseBody | 422                                                                             | application/json                                                                |
 | GustoEmbedded.Models.Errors.APIException                                        | 4XX, 5XX                                                                        | \*/\*                                                                           |
 
-## GetSupportedBenefit
+## GetV1BenefitsBenefitId
 
 Returns a benefit supported by Gusto.
 
@@ -213,7 +213,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyBenefits.GetSupportedBenefitAsync(
+var res = await sdk.CompanyBenefits.GetV1BenefitsBenefitIdAsync(
     benefitId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -238,7 +238,7 @@ var res = await sdk.CompanyBenefits.GetSupportedBenefitAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetSummary
+## GetV1BenefitsCompanyBenefitIdSummary
 
 Returns summary benefit data for the requested company benefit id.
 
@@ -261,7 +261,7 @@ GetV1BenefitsCompanyBenefitIdSummaryRequest req = new GetV1BenefitsCompanyBenefi
     EndDate = "2022-12-31",
 };
 
-var res = await sdk.CompanyBenefits.GetSummaryAsync(req);
+var res = await sdk.CompanyBenefits.GetV1BenefitsCompanyBenefitIdSummaryAsync(req);
 
 // handle response
 ```
@@ -282,7 +282,7 @@ var res = await sdk.CompanyBenefits.GetSummaryAsync(req);
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetEmployeeBenefits
+## GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefits
 
 Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment.
 
@@ -300,10 +300,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyBenefits.GetEmployeeBenefitsAsync(
+var res = await sdk.CompanyBenefits.GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsAsync(
     companyBenefitId: "<id>",
-    page: 9836.81D,
-    per: 7076.22D,
+    page: 7022.19D,
+    per: 7716.92D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -383,7 +383,7 @@ var res = await sdk.CompanyBenefits.UpdateEmployeeBenefitsAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetRequirements
+## GetV1BenefitsBenefitsIdRequirements
 
 Returns field requirements for the requested benefit type.
 
@@ -397,7 +397,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyBenefits.GetRequirementsAsync(
+var res = await sdk.CompanyBenefits.GetV1BenefitsBenefitsIdRequirementsAsync(
     benefitId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

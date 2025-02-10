@@ -2,8 +2,8 @@ speakeasyVersion: 1.488.0
 sources:
     Gusto-OAS:
         sourceNamespace: gusto-oas
-        sourceRevisionDigest: sha256:4bf6b46eba48c49c9645444113f899d600bfe70ebcfdcae54dbc6fd56e2c7888
-        sourceBlobDigest: sha256:bd2c0b5b64287035d1ca100a0de5f9ff63b9dc7dd3bbf9049824b71d8936ad9c
+        sourceRevisionDigest: sha256:b62f082f59d3dabf19f20aafd46cd4a78d31b9eeab0c2ef5055f92a08e251ae7
+        sourceBlobDigest: sha256:d1f934c113ccb0e7ee7c5f4bdd24e547de11129e4f53a662aeab9bd8e1053433
         tags:
             - latest
             - "2024-04-01"
@@ -11,17 +11,19 @@ targets:
     gusto:
         source: Gusto-OAS
         sourceNamespace: gusto-oas
-        sourceRevisionDigest: sha256:4bf6b46eba48c49c9645444113f899d600bfe70ebcfdcae54dbc6fd56e2c7888
-        sourceBlobDigest: sha256:bd2c0b5b64287035d1ca100a0de5f9ff63b9dc7dd3bbf9049824b71d8936ad9c
+        sourceRevisionDigest: sha256:b62f082f59d3dabf19f20aafd46cd4a78d31b9eeab0c2ef5055f92a08e251ae7
+        sourceBlobDigest: sha256:d1f934c113ccb0e7ee7c5f4bdd24e547de11129e4f53a662aeab9bd8e1053433
         codeSamplesNamespace: gusto-oas-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:10356d78d80778219055d9115b3004238a18ff7cffbda6ae84ecae2cac036b42
+        codeSamplesRevisionDigest: sha256:18ecbbbd7efa4c58ffde38b8286cddaf09ea20232ad8d88e9159f4921f47270d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         Gusto-OAS:
             inputs:
-                - location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-embedded-oas:main
+                - location: https://raw.githubusercontent.com/Gusto/Gusto-Partner-API/refs/heads/main/generated/embedded/api.v2024-04-01.embedded.yaml
+                  authHeader: Authorization
+                  authSecret: $openapi_doc_auth_token
             overlays:
                 - location: gusto_embedded/.speakeasy/speakeasy-modifications-overlay.yaml
             registry:
@@ -31,6 +33,9 @@ workflow:
             target: csharp
             source: Gusto-OAS
             output: ./gusto_embedded
+            publish:
+                nuget:
+                    apiKey: $nuget_api_key
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-oas-csharp-code-samples

@@ -5,15 +5,15 @@
 
 ### Available Operations
 
-* [Create](#create) - Create a department
-* [List](#list) - Get all departments of a company
-* [Get](#get) - Get a department
-* [Update](#update) - Update a department
-* [Delete](#delete) - Delete a department
-* [AddPeople](#addpeople) - Add people to a department
-* [RemovePeople](#removepeople) - Remove people from a department
+* [PostDepartments](#postdepartments) - Create a department
+* [GetCompaniesDepartments](#getcompaniesdepartments) - Get all departments of a company
+* [GetDepartment](#getdepartment) - Get a department
+* [PutDepartments](#putdepartments) - Update a department
+* [DeleteDepartment](#deletedepartment) - Delete a department
+* [PutAddPeopleToDepartment](#putaddpeopletodepartment) - Add people to a department
+* [PutRemovePeopleFromDepartment](#putremovepeoplefromdepartment) - Remove people from a department
 
-## Create
+## PostDepartments
 
 Create a department
 
@@ -28,7 +28,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Departments.CreateAsync(
+var res = await sdk.Departments.PostDepartmentsAsync(
     companyUuid: "<id>",
     requestBody: new PostDepartmentsRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -56,7 +56,7 @@ var res = await sdk.Departments.CreateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## List
+## GetCompaniesDepartments
 
 Get all of the departments for a given company with the employees and contractors assigned to that department.
 
@@ -70,7 +70,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Departments.ListAsync(
+var res = await sdk.Departments.GetCompaniesDepartmentsAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -95,7 +95,7 @@ var res = await sdk.Departments.ListAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Get
+## GetDepartment
 
 Get a department given the UUID
 
@@ -110,7 +110,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Departments.GetAsync(
+var res = await sdk.Departments.GetDepartmentAsync(
     departmentUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -135,7 +135,7 @@ var res = await sdk.Departments.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutDepartments
 
 Update a department
 
@@ -150,7 +150,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Departments.UpdateAsync(
+var res = await sdk.Departments.PutDepartmentsAsync(
     departmentUuid: "<id>",
     requestBody: new PutDepartmentsRequestBody() {
         Version = "<value>",
@@ -180,7 +180,7 @@ var res = await sdk.Departments.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Delete
+## DeleteDepartment
 
 Delete a department. You cannot delete a department until all employees and contractors have been removed.
 
@@ -195,7 +195,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Departments.DeleteAsync(
+var res = await sdk.Departments.DeleteDepartmentAsync(
     departmentUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -221,7 +221,7 @@ var res = await sdk.Departments.DeleteAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## AddPeople
+## PutAddPeopleToDepartment
 
 Add employees and contractors to a department
 
@@ -237,7 +237,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Departments.AddPeopleAsync(
+var res = await sdk.Departments.PutAddPeopleToDepartmentAsync(
     departmentUuid: "<id>",
     requestBody: new PutAddPeopleToDepartmentRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -264,7 +264,7 @@ var res = await sdk.Departments.AddPeopleAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## RemovePeople
+## PutRemovePeopleFromDepartment
 
 Remove employees and contractors from a department
 
@@ -280,7 +280,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Departments.RemovePeopleAsync(
+var res = await sdk.Departments.PutRemovePeopleFromDepartmentAsync(
     departmentUuid: "<id>",
     requestBody: new PutRemovePeopleFromDepartmentRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

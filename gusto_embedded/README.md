@@ -39,6 +39,15 @@ Gusto API: Welcome to Gusto's Embedded Payroll API documentation!
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+### NuGet
+
+To add the [NuGet](https://www.nuget.org/) package to a .NET project:
+```bash
+dotnet add package GustoEmbedded
+```
+
+### Locally
+
 To add a reference to a local instance of the SDK in a .NET project:
 ```bash
 dotnet add reference src/GustoEmbedded/GustoEmbedded.csproj
@@ -56,7 +65,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.GetTokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```
@@ -80,7 +89,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.GetTokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```
@@ -95,15 +104,15 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto();
 
-var res = await sdk.Companies.CreatePartnerManagedAsync(
+var res = await sdk.Companies.PostV1PartnerManagedCompaniesAsync(
     security: new PostV1PartnerManagedCompaniesSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
     requestBody: new PostV1PartnerManagedCompaniesRequestBody() {
         User = new User() {
-            FirstName = "Gail",
-            LastName = "Stracke",
-            Email = "Emanuel.McClure@gmail.com",
+            FirstName = "Khalid",
+            LastName = "Haley",
+            Email = "Eliane.Watsica38@yahoo.com",
         },
         Company = new Models.Requests.Company() {
             Name = "<value>",
@@ -122,16 +131,16 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 <details open>
 <summary>Available methods</summary>
 
-### [AchTransactions](docs/sdks/achtransactions/README.md)
+### [ACHTransactions](docs/sdks/achtransactions/README.md)
 
 * [GetAll](docs/sdks/achtransactions/README.md#getall) - Get all ACH transactions for a company
 
 ### [BankAccounts](docs/sdks/bankaccounts/README.md)
 
-* [Create](docs/sdks/bankaccounts/README.md#create) - Create a company bank account
-* [List](docs/sdks/bankaccounts/README.md#list) - Get all company bank accounts
-* [Verify](docs/sdks/bankaccounts/README.md#verify) - Verify a company bank account
-* [CreateFromProcessorToken](docs/sdks/bankaccounts/README.md#createfromprocessortoken) - Create a bank account from a plaid processor token
+* [PostV1CompaniesCompanyIdBankAccounts](docs/sdks/bankaccounts/README.md#postv1companiescompanyidbankaccounts) - Create a company bank account
+* [GetV1CompaniesCompanyIdBankAccounts](docs/sdks/bankaccounts/README.md#getv1companiescompanyidbankaccounts) - Get all company bank accounts
+* [PutV1CompaniesCompanyIdBankAccountsVerify](docs/sdks/bankaccounts/README.md#putv1companiescompanyidbankaccountsverify) - Verify a company bank account
+* [PostV1PlaidProcessorToken](docs/sdks/bankaccounts/README.md#postv1plaidprocessortoken) - Create a bank account from a plaid processor token
 
 ### [Benefits](docs/sdks/benefits/README.md)
 
@@ -139,48 +148,51 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [Companies](docs/sdks/companies/README.md)
 
-* [CreatePartnerManaged](docs/sdks/companies/README.md#createpartnermanaged) - Create a partner managed company
-* [Get](docs/sdks/companies/README.md#get) - Get a company
-* [Update](docs/sdks/companies/README.md#update) - Update a company
-* [Migrate](docs/sdks/companies/README.md#migrate) - Migrate company to embedded payroll
+* [PostV1PartnerManagedCompanies](docs/sdks/companies/README.md#postv1partnermanagedcompanies) - Create a partner managed company
+* [GetV1Companies](docs/sdks/companies/README.md#getv1companies) - Get a company
+* [PutV1Companies](docs/sdks/companies/README.md#putv1companies) - Update a company
+* [PutV1PartnerManagedCompaniesCompanyUuidMigrate](docs/sdks/companies/README.md#putv1partnermanagedcompaniescompanyuuidmigrate) - Migrate company to embedded payroll
 * [AcceptTerms](docs/sdks/companies/README.md#acceptterms) - Accept terms of service for a company user
-* [RetrieveTermsOfService](docs/sdks/companies/README.md#retrievetermsofservice) - Retrieve terms of service status for a company user
-* [CreateAdmin](docs/sdks/companies/README.md#createadmin) - Create an admin for the company
-* [GetAdmins](docs/sdks/companies/README.md#getadmins) - Get all the admins at a company
-* [GetOnboardingStatus](docs/sdks/companies/README.md#getonboardingstatus) - Get the company's onboarding status
-* [FinishOnboarding](docs/sdks/companies/README.md#finishonboarding) - Finish company onboarding
-* [GetCustomFields](docs/sdks/companies/README.md#getcustomfields) - Get the custom fields of a company
+* [PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfService](docs/sdks/companies/README.md#postpartnermanagedcompaniescompanyuuidretrievetermsofservice) - Retrieve terms of service status for a company user
+* [PostV1CompaniesCompanyIdAdmins](docs/sdks/companies/README.md#postv1companiescompanyidadmins) - Create an admin for the company
+* [GetV1CompaniesCompanyIdAdmins](docs/sdks/companies/README.md#getv1companiescompanyidadmins) - Get all the admins at a company
+* [GetV1CompanyOnboardingStatus](docs/sdks/companies/README.md#getv1companyonboardingstatus) - Get the company's onboarding status
+* [GetV1CompanyFinishOnboarding](docs/sdks/companies/README.md#getv1companyfinishonboarding) - Finish company onboarding
+* [GetV1CompaniesCompanyIdCustomFields](docs/sdks/companies/README.md#getv1companiescompanyidcustomfields) - Get the custom fields of a company
 * [UpdateIndustrySelection](docs/sdks/companies/README.md#updateindustryselection) - Update a company industry selection
 * [GetSignatories](docs/sdks/companies/README.md#getsignatories) - Get all company signatories
 * [CreateEarningType](docs/sdks/companies/README.md#createearningtype) - Create a custom earning type
 * [ListEarningTypes](docs/sdks/companies/README.md#listearningtypes) - Get all earning types for a company
 * [ListBenefits](docs/sdks/companies/README.md#listbenefits) - Get benefits for a company
 
+### [CompanyAttachment](docs/sdks/companyattachment/README.md)
+
+* [Get](docs/sdks/companyattachment/README.md#get) - Get Company Attachment Details
+* [List](docs/sdks/companyattachment/README.md#list) - Get List of Company Attachments
+* [PostV1CompaniesAttachment](docs/sdks/companyattachment/README.md#postv1companiesattachment) - Create Company Attachment and Upload File
+
 ### [CompanyAttachments](docs/sdks/companyattachments/README.md)
 
-* [Get](docs/sdks/companyattachments/README.md#get) - Get Company Attachment Details
-* [GetDownloadUrl](docs/sdks/companyattachments/README.md#getdownloadurl) - Get a temporary url to download the Company Attachment file
-* [List](docs/sdks/companyattachments/README.md#list) - Get List of Company Attachments
-* [Create](docs/sdks/companyattachments/README.md#create) - Create Company Attachment and Upload File
+* [GetV1CompaniesAttachmentUrl](docs/sdks/companyattachments/README.md#getv1companiesattachmenturl) - Get a temporary url to download the Company Attachment file
 
 ### [CompanyBenefits](docs/sdks/companybenefits/README.md)
 
-* [Create](docs/sdks/companybenefits/README.md#create) - Create a company benefit
-* [Get](docs/sdks/companybenefits/README.md#get) - Get a company benefit
-* [Update](docs/sdks/companybenefits/README.md#update) - Update a company benefit
-* [Delete](docs/sdks/companybenefits/README.md#delete) - Delete a company benefit
-* [GetSupportedBenefit](docs/sdks/companybenefits/README.md#getsupportedbenefit) - Get a supported benefit by ID
-* [GetSummary](docs/sdks/companybenefits/README.md#getsummary) - Get company benefit summary by company benefit id.
-* [GetEmployeeBenefits](docs/sdks/companybenefits/README.md#getemployeebenefits) - Get all employee benefits for a company benefit
+* [PostV1CompaniesCompanyIdCompanyBenefits](docs/sdks/companybenefits/README.md#postv1companiescompanyidcompanybenefits) - Create a company benefit
+* [GetV1CompanyBenefitsCompanyBenefitId](docs/sdks/companybenefits/README.md#getv1companybenefitscompanybenefitid) - Get a company benefit
+* [PutV1CompanyBenefitsCompanyBenefitId](docs/sdks/companybenefits/README.md#putv1companybenefitscompanybenefitid) - Update a company benefit
+* [DeleteV1CompanyBenefitsCompanyBenefitId](docs/sdks/companybenefits/README.md#deletev1companybenefitscompanybenefitid) - Delete a company benefit
+* [GetV1BenefitsBenefitId](docs/sdks/companybenefits/README.md#getv1benefitsbenefitid) - Get a supported benefit by ID
+* [GetV1BenefitsCompanyBenefitIdSummary](docs/sdks/companybenefits/README.md#getv1benefitscompanybenefitidsummary) - Get company benefit summary by company benefit id.
+* [GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefits](docs/sdks/companybenefits/README.md#getv1companybenefitscompanybenefitidemployeebenefits) - Get all employee benefits for a company benefit
 * [UpdateEmployeeBenefits](docs/sdks/companybenefits/README.md#updateemployeebenefits) - Bulk update employee benefits for a company benefit
-* [GetRequirements](docs/sdks/companybenefits/README.md#getrequirements) - Get benefit fields requirements by ID
+* [GetV1BenefitsBenefitsIdRequirements](docs/sdks/companybenefits/README.md#getv1benefitsbenefitsidrequirements) - Get benefit fields requirements by ID
 
 ### [CompanyForms](docs/sdks/companyforms/README.md)
 
-* [List](docs/sdks/companyforms/README.md#list) - Get all company forms
-* [Get](docs/sdks/companyforms/README.md#get) - Get a company form
-* [GetPdf](docs/sdks/companyforms/README.md#getpdf) - Get a company form pdf
-* [Sign](docs/sdks/companyforms/README.md#sign) - Sign a company form
+* [GetV1CompanyForms](docs/sdks/companyforms/README.md#getv1companyforms) - Get all company forms
+* [GetV1CompanyForm](docs/sdks/companyforms/README.md#getv1companyform) - Get a company form
+* [GetV1CompanyFormPdf](docs/sdks/companyforms/README.md#getv1companyformpdf) - Get a company form pdf
+* [PutV1CompanyFormSign](docs/sdks/companyforms/README.md#putv1companyformsign) - Sign a company form
 
 ### [Compensations](docs/sdks/compensations/README.md)
 
@@ -193,25 +205,25 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [ContractorDocuments](docs/sdks/contractordocuments/README.md)
 
-* [List](docs/sdks/contractordocuments/README.md#list) - Get all contractor documents
-* [Get](docs/sdks/contractordocuments/README.md#get) - Get a contractor document
-* [GetPdf](docs/sdks/contractordocuments/README.md#getpdf) - Get the contractor document pdf
-* [Sign](docs/sdks/contractordocuments/README.md#sign) - Sign a contractor document
+* [GetV1ContractorDocuments](docs/sdks/contractordocuments/README.md#getv1contractordocuments) - Get all contractor documents
+* [GetV1ContractorDocument](docs/sdks/contractordocuments/README.md#getv1contractordocument) - Get a contractor document
+* [GetV1ContractorDocumentPdf](docs/sdks/contractordocuments/README.md#getv1contractordocumentpdf) - Get the contractor document pdf
+* [PutV1ContractorDocumentSign](docs/sdks/contractordocuments/README.md#putv1contractordocumentsign) - Sign a contractor document
 
 ### [ContractorForms](docs/sdks/contractorforms/README.md)
 
 * [List](docs/sdks/contractorforms/README.md#list) - Get all contractor forms
-* [GetPdf](docs/sdks/contractorforms/README.md#getpdf) - Get the contractor form pdf
-* [Generate1099](docs/sdks/contractorforms/README.md#generate1099) - Generate a 1099 form [DEMO]
+* [GetV1ContractorFormPdf](docs/sdks/contractorforms/README.md#getv1contractorformpdf) - Get the contractor form pdf
+* [PostV1SandboxGenerate1099](docs/sdks/contractorforms/README.md#postv1sandboxgenerate1099) - Generate a 1099 form [DEMO]
 
 ### [ContractorPaymentGroups](docs/sdks/contractorpaymentgroups/README.md)
 
-* [Create](docs/sdks/contractorpaymentgroups/README.md#create) - Create a contractor payment group
-* [List](docs/sdks/contractorpaymentgroups/README.md#list) - Get contractor payment groups for a company
-* [Preview](docs/sdks/contractorpaymentgroups/README.md#preview) - Preview a contractor payment group
-* [Get](docs/sdks/contractorpaymentgroups/README.md#get) - Fetch a contractor payment group
-* [Delete](docs/sdks/contractorpaymentgroups/README.md#delete) - Cancel a contractor payment group
-* [Fund](docs/sdks/contractorpaymentgroups/README.md#fund) - Fund a contractor payment group [DEMO]
+* [PostV1CompaniesCompanyIdContractorPaymentGroups](docs/sdks/contractorpaymentgroups/README.md#postv1companiescompanyidcontractorpaymentgroups) - Create a contractor payment group
+* [GetV1CompaniesCompanyIdContractorPaymentGroups](docs/sdks/contractorpaymentgroups/README.md#getv1companiescompanyidcontractorpaymentgroups) - Get contractor payment groups for a company
+* [PostV1CompaniesCompanyIdContractorPaymentGroupsPreview](docs/sdks/contractorpaymentgroups/README.md#postv1companiescompanyidcontractorpaymentgroupspreview) - Preview a contractor payment group
+* [GetV1ContractorPaymentGroupsContractorPaymentGroupId](docs/sdks/contractorpaymentgroups/README.md#getv1contractorpaymentgroupscontractorpaymentgroupid) - Fetch a contractor payment group
+* [DeleteV1ContractorPaymentGroupsContractorPaymentGroupId](docs/sdks/contractorpaymentgroups/README.md#deletev1contractorpaymentgroupscontractorpaymentgroupid) - Cancel a contractor payment group
+* [PutV1ContractorPaymentGroupsContractorPaymentGroupIdFund](docs/sdks/contractorpaymentgroups/README.md#putv1contractorpaymentgroupscontractorpaymentgroupidfund) - Fund a contractor payment group [DEMO]
 
 ### [ContractorPaymentMethod](docs/sdks/contractorpaymentmethod/README.md)
 
@@ -219,55 +231,55 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [ContractorPayments](docs/sdks/contractorpayments/README.md)
 
-* [GetReceipt](docs/sdks/contractorpayments/README.md#getreceipt) - Get a single contractor payment receipt
-* [Fund](docs/sdks/contractorpayments/README.md#fund) - Fund a contractor payment [DEMO]
-* [Create](docs/sdks/contractorpayments/README.md#create) - Create a contractor payment
+* [GetV1ContractorPaymentsContractorPaymentUuidReceipt](docs/sdks/contractorpayments/README.md#getv1contractorpaymentscontractorpaymentuuidreceipt) - Get a single contractor payment receipt
+* [GetV1ContractorPaymentsContractorPaymentUuidFund](docs/sdks/contractorpayments/README.md#getv1contractorpaymentscontractorpaymentuuidfund) - Fund a contractor payment [DEMO]
+* [PostV1CompaniesCompanyIdContractorPayments](docs/sdks/contractorpayments/README.md#postv1companiescompanyidcontractorpayments) - Create a contractor payment
 * [Get](docs/sdks/contractorpayments/README.md#get) - Get contractor payments for a company
 * [GetById](docs/sdks/contractorpayments/README.md#getbyid) - Get a single contractor payment
 * [Delete](docs/sdks/contractorpayments/README.md#delete) - Cancel a contractor payment
-* [Preview](docs/sdks/contractorpayments/README.md#preview) - Preview contractor payment debit date
+* [GetCompaniesCompanyUuidContractorPaymentsPreview](docs/sdks/contractorpayments/README.md#getcompaniescompanyuuidcontractorpaymentspreview) - Preview contractor payment debit date
 
 ### [Contractors](docs/sdks/contractors/README.md)
 
-* [Create](docs/sdks/contractors/README.md#create) - Create a contractor
-* [List](docs/sdks/contractors/README.md#list) - Get contractors of a company
-* [Get](docs/sdks/contractors/README.md#get) - Get a contractor
-* [Update](docs/sdks/contractors/README.md#update) - Update a contractor
-* [Delete](docs/sdks/contractors/README.md#delete) - Delete a contractor
-* [GetOnboardingStatus](docs/sdks/contractors/README.md#getonboardingstatus) - Get the contractor's onboarding status
-* [UpdateOnboardingStatus](docs/sdks/contractors/README.md#updateonboardingstatus) - Change the contractor's onboarding status
-* [GetAddress](docs/sdks/contractors/README.md#getaddress) - Get a contractor address
-* [UpdateAddress](docs/sdks/contractors/README.md#updateaddress) - Update a contractor's address
+* [PostV1CompaniesCompanyUuidContractors](docs/sdks/contractors/README.md#postv1companiescompanyuuidcontractors) - Create a contractor
+* [GetV1CompaniesCompanyUuidContractors](docs/sdks/contractors/README.md#getv1companiescompanyuuidcontractors) - Get contractors of a company
+* [GetV1ContractorsContractorUuid](docs/sdks/contractors/README.md#getv1contractorscontractoruuid) - Get a contractor
+* [PutV1ContractorsContractorUuid](docs/sdks/contractors/README.md#putv1contractorscontractoruuid) - Update a contractor
+* [DeleteV1ContractorsContractorUuid](docs/sdks/contractors/README.md#deletev1contractorscontractoruuid) - Delete a contractor
+* [GetV1ContractorsContractorUuidOnboardingStatus](docs/sdks/contractors/README.md#getv1contractorscontractoruuidonboardingstatus) - Get the contractor's onboarding status
+* [PutV1ContractorsContractorUuidOnboardingStatus](docs/sdks/contractors/README.md#putv1contractorscontractoruuidonboardingstatus) - Change the contractor's onboarding status
+* [GetV1ContractorsContractorUuidAddress](docs/sdks/contractors/README.md#getv1contractorscontractoruuidaddress) - Get a contractor address
+* [PutV1ContractorsContractorUuidAddress](docs/sdks/contractors/README.md#putv1contractorscontractoruuidaddress) - Update a contractor's address
 * [GetPaymentMethod](docs/sdks/contractors/README.md#getpaymentmethod) - Get a contractor's payment method
 
 #### [Contractors.Forms](docs/sdks/forms/README.md)
 
-* [Get](docs/sdks/forms/README.md#get) - Get a contractor form
+* [GetV1ContractorForm](docs/sdks/forms/README.md#getv1contractorform) - Get a contractor form
 
 ### [Departments](docs/sdks/departments/README.md)
 
-* [Create](docs/sdks/departments/README.md#create) - Create a department
-* [List](docs/sdks/departments/README.md#list) - Get all departments of a company
-* [Get](docs/sdks/departments/README.md#get) - Get a department
-* [Update](docs/sdks/departments/README.md#update) - Update a department
-* [Delete](docs/sdks/departments/README.md#delete) - Delete a department
-* [AddPeople](docs/sdks/departments/README.md#addpeople) - Add people to a department
-* [RemovePeople](docs/sdks/departments/README.md#removepeople) - Remove people from a department
+* [PostDepartments](docs/sdks/departments/README.md#postdepartments) - Create a department
+* [GetCompaniesDepartments](docs/sdks/departments/README.md#getcompaniesdepartments) - Get all departments of a company
+* [GetDepartment](docs/sdks/departments/README.md#getdepartment) - Get a department
+* [PutDepartments](docs/sdks/departments/README.md#putdepartments) - Update a department
+* [DeleteDepartment](docs/sdks/departments/README.md#deletedepartment) - Delete a department
+* [PutAddPeopleToDepartment](docs/sdks/departments/README.md#putaddpeopletodepartment) - Add people to a department
+* [PutRemovePeopleFromDepartment](docs/sdks/departments/README.md#putremovepeoplefromdepartment) - Remove people from a department
 
 ### [EarningTypes](docs/sdks/earningtypes/README.md)
 
-* [Update](docs/sdks/earningtypes/README.md#update) - Update an earning type
-* [Deactivate](docs/sdks/earningtypes/README.md#deactivate) - Deactivate an earning type
+* [PutV1CompaniesCompanyIdEarningTypesEarningTypeUuid](docs/sdks/earningtypes/README.md#putv1companiescompanyidearningtypesearningtypeuuid) - Update an earning type
+* [DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuid](docs/sdks/earningtypes/README.md#deletev1companiescompanyidearningtypesearningtypeuuid) - Deactivate an earning type
 
 ### [EmployeeAddresses](docs/sdks/employeeaddresses/README.md)
 
 * [Get](docs/sdks/employeeaddresses/README.md#get) - Get an employee's home addresses
-* [Create](docs/sdks/employeeaddresses/README.md#create) - Create an employee's home address
+* [PostV1EmployeesEmployeeIdHomeAddresses](docs/sdks/employeeaddresses/README.md#postv1employeesemployeeidhomeaddresses) - Create an employee's home address
 * [GetHome](docs/sdks/employeeaddresses/README.md#gethome) - Get an employee's home address
 * [Update](docs/sdks/employeeaddresses/README.md#update) - Update an employee's home address
 * [RemoveHome](docs/sdks/employeeaddresses/README.md#removehome) - Delete an employee's home address
 * [UpdateWork](docs/sdks/employeeaddresses/README.md#updatework) - Update an employee work address
-* [Delete](docs/sdks/employeeaddresses/README.md#delete) - Delete an employee's work address
+* [DeleteV1WorkAddressesWorkAddressUuid](docs/sdks/employeeaddresses/README.md#deletev1workaddressesworkaddressuuid) - Delete an employee's work address
 
 ### [EmployeeBankAccounts](docs/sdks/employeebankaccounts/README.md)
 
@@ -278,21 +290,21 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 * [Create](docs/sdks/employeebenefits/README.md#create) - Create an employee benefit
 * [List](docs/sdks/employeebenefits/README.md#list) - Get all benefits for an employee
-* [Get](docs/sdks/employeebenefits/README.md#get) - Get an employee benefit
-* [Update](docs/sdks/employeebenefits/README.md#update) - Update an employee benefit
-* [Delete](docs/sdks/employeebenefits/README.md#delete) - Delete an employee benefit
-* [GetEmployeeYtdBenefitAmountsFromDifferentCompany](docs/sdks/employeebenefits/README.md#getemployeeytdbenefitamountsfromdifferentcompany) - Get year-to-date benefit amounts from a different company
+* [GetV1EmployeeBenefitsEmployeeBenefitId](docs/sdks/employeebenefits/README.md#getv1employeebenefitsemployeebenefitid) - Get an employee benefit
+* [PutV1EmployeeBenefitsEmployeeBenefitId](docs/sdks/employeebenefits/README.md#putv1employeebenefitsemployeebenefitid) - Update an employee benefit
+* [DeleteV1EmployeeBenefitsEmployeeBenefitId](docs/sdks/employeebenefits/README.md#deletev1employeebenefitsemployeebenefitid) - Delete an employee benefit
 * [CreateYtdAmounts](docs/sdks/employeebenefits/README.md#createytdamounts) - Create year-to-date benefit amounts from a different company
+* [GetEmployeeYtdBenefitAmountsFromDifferentCompany](docs/sdks/employeebenefits/README.md#getemployeeytdbenefitamountsfromdifferentcompany) - Get year-to-date benefit amounts from a different company
 
 ### [EmployeeEmployments](docs/sdks/employeeemployments/README.md)
 
-* [CreateTermination](docs/sdks/employeeemployments/README.md#createtermination) - Create an employee termination
-* [DeleteTermination](docs/sdks/employeeemployments/README.md#deletetermination) - Delete an employee termination
-* [UpdateTermination](docs/sdks/employeeemployments/README.md#updatetermination) - Update an employee termination
+* [PostV1EmployeesEmployeeIdTerminations](docs/sdks/employeeemployments/README.md#postv1employeesemployeeidterminations) - Create an employee termination
+* [DeleteV1EmployeesEmployeeIdTerminations](docs/sdks/employeeemployments/README.md#deletev1employeesemployeeidterminations) - Delete an employee termination
+* [PutV1TerminationsEmployeeId](docs/sdks/employeeemployments/README.md#putv1terminationsemployeeid) - Update an employee termination
 * [Rehire](docs/sdks/employeeemployments/README.md#rehire) - Create an employee rehire
-* [GetRehire](docs/sdks/employeeemployments/README.md#getrehire) - Get an employee rehire
-* [DeleteRehire](docs/sdks/employeeemployments/README.md#deleterehire) - Delete an employee rehire
-* [GetHistory](docs/sdks/employeeemployments/README.md#gethistory) - Get employment history for an employee
+* [GetV1EmployeesEmployeeIdRehire](docs/sdks/employeeemployments/README.md#getv1employeesemployeeidrehire) - Get an employee rehire
+* [DeleteV1EmployeesEmployeeIdRehire](docs/sdks/employeeemployments/README.md#deletev1employeesemployeeidrehire) - Delete an employee rehire
+* [GetV1EmployeesEmployeeIdEmploymentHistory](docs/sdks/employeeemployments/README.md#getv1employeesemployeeidemploymenthistory) - Get employment history for an employee
 
 ### [EmployeeFederalTaxes](docs/sdks/employeefederaltaxes/README.md)
 
@@ -300,19 +312,19 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [EmployeeForms](docs/sdks/employeeforms/README.md)
 
-* [GenerateW2](docs/sdks/employeeforms/README.md#generatew2) - Generate a W2 form [DEMO]
+* [PostV1SandboxGenerateW2](docs/sdks/employeeforms/README.md#postv1sandboxgeneratew2) - Generate a W2 form [DEMO]
 * [List](docs/sdks/employeeforms/README.md#list) - Get all employee forms
 * [Get](docs/sdks/employeeforms/README.md#get) - Get an employee form
-* [GetPdf](docs/sdks/employeeforms/README.md#getpdf) - Get the employee form pdf
-* [Sign](docs/sdks/employeeforms/README.md#sign) - Sign an employee form
+* [GetV1EmployeeFormPdf](docs/sdks/employeeforms/README.md#getv1employeeformpdf) - Get the employee form pdf
+* [PutV1EmployeeFormSign](docs/sdks/employeeforms/README.md#putv1employeeformsign) - Sign an employee form
 
 ### [EmployeePaymentMethod](docs/sdks/employeepaymentmethod/README.md)
 
-* [Get](docs/sdks/employeepaymentmethod/README.md#get) - Get an employee's payment method
+* [GetV1EmployeesEmployeeIdBankAccounts](docs/sdks/employeepaymentmethod/README.md#getv1employeesemployeeidbankaccounts) - Get all employee bank accounts
+* [GetV1EmployeesEmployeeIdPaymentMethod](docs/sdks/employeepaymentmethod/README.md#getv1employeesemployeeidpaymentmethod) - Get an employee's payment method
 
 ### [EmployeePaymentMethods](docs/sdks/employeepaymentmethods/README.md)
 
-* [GetBankAccounts](docs/sdks/employeepaymentmethods/README.md#getbankaccounts) - Get all employee bank accounts
 * [UpdatePaymentMethod](docs/sdks/employeepaymentmethods/README.md#updatepaymentmethod) - Update an employee's payment method
 
 ### [EmployeeRehires](docs/sdks/employeerehires/README.md)
@@ -321,21 +333,21 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [Employees](docs/sdks/employees/README.md)
 
-* [Create](docs/sdks/employees/README.md#create) - Create an employee
+* [PostV1Employees](docs/sdks/employees/README.md#postv1employees) - Create an employee
 * [List](docs/sdks/employees/README.md#list) - Get employees of a company
-* [CreateHistorical](docs/sdks/employees/README.md#createhistorical) - Create a historical employee
-* [UpdateHistorical](docs/sdks/employees/README.md#updatehistorical) - Update a historical employee
+* [PostV1HistoricalEmployees](docs/sdks/employees/README.md#postv1historicalemployees) - Create a historical employee
+* [PutV1HistoricalEmployees](docs/sdks/employees/README.md#putv1historicalemployees) - Update a historical employee
 * [Get](docs/sdks/employees/README.md#get) - Get an employee
-* [Update](docs/sdks/employees/README.md#update) - Update an employee
-* [Delete](docs/sdks/employees/README.md#delete) - Delete an onboarding employee
-* [GetCustomFields](docs/sdks/employees/README.md#getcustomfields) - Get an employee's custom fields
-* [UpdateOnboardingDocumentsConfig](docs/sdks/employees/README.md#updateonboardingdocumentsconfig) - Update an employee's onboarding documents config
-* [GetOnboardingStatus](docs/sdks/employees/README.md#getonboardingstatus) - Get the employee's onboarding status
-* [UpdateOnboardingStatus](docs/sdks/employees/README.md#updateonboardingstatus) - Update the employee's onboarding status
-* [GetTimeOffActivities](docs/sdks/employees/README.md#gettimeoffactivities) - Get employee time off activities
+* [PutV1Employees](docs/sdks/employees/README.md#putv1employees) - Update an employee
+* [DeleteV1Employee](docs/sdks/employees/README.md#deletev1employee) - Delete an onboarding employee
+* [GetV1EmployeesEmployeeIdCustomFields](docs/sdks/employees/README.md#getv1employeesemployeeidcustomfields) - Get an employee's custom fields
+* [PutV1EmployeesEmployeeIdOnboardingDocumentsConfig](docs/sdks/employees/README.md#putv1employeesemployeeidonboardingdocumentsconfig) - Update an employee's onboarding documents config
+* [GetV1EmployeesEmployeeIdOnboardingStatus](docs/sdks/employees/README.md#getv1employeesemployeeidonboardingstatus) - Get the employee's onboarding status
+* [PutV1EmployeesEmployeeIdOnboardingStatus](docs/sdks/employees/README.md#putv1employeesemployeeidonboardingstatus) - Update the employee's onboarding status
+* [GetVersionEmployeesTimeOffActivities](docs/sdks/employees/README.md#getversionemployeestimeoffactivities) - Get employee time off activities
 * [GetTerminations](docs/sdks/employees/README.md#getterminations) - Get terminations for an employee
-* [DeleteBankAccount](docs/sdks/employees/README.md#deletebankaccount) - Delete an employee bank account
-* [CreateJob](docs/sdks/employees/README.md#createjob) - Create a job
+* [DeleteV1EmployeesEmployeeIdBankAccountsBankAccountId](docs/sdks/employees/README.md#deletev1employeesemployeeidbankaccountsbankaccountid) - Delete an employee bank account
+* [PostV1JobsJobId](docs/sdks/employees/README.md#postv1jobsjobid) - Create a job
 * [GetGarnishments](docs/sdks/employees/README.md#getgarnishments) - Get garnishments for an employee
 
 ### [EmployeeTaxes](docs/sdks/employeetaxes/README.md)
@@ -344,69 +356,69 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [EmployeeTaxSetup](docs/sdks/employeetaxsetup/README.md)
 
-* [GetFederalTaxes](docs/sdks/employeetaxsetup/README.md#getfederaltaxes) - Get an employee's federal taxes
-* [GetStateTaxes](docs/sdks/employeetaxsetup/README.md#getstatetaxes) - Get an employee's state taxes
+* [GetV1EmployeesEmployeeIdFederalTaxes](docs/sdks/employeetaxsetup/README.md#getv1employeesemployeeidfederaltaxes) - Get an employee's federal taxes
+* [GetV1EmployeesEmployeeIdStateTaxes](docs/sdks/employeetaxsetup/README.md#getv1employeesemployeeidstatetaxes) - Get an employee's state taxes
 
 ### [EmployeeWorkAddresses](docs/sdks/employeeworkaddresses/README.md)
 
 * [List](docs/sdks/employeeworkaddresses/README.md#list) - Get an employee's work addresses
-* [Create](docs/sdks/employeeworkaddresses/README.md#create) - Create an employee work address
+* [PostV1EmployeesEmployeeIdWorkAddresses](docs/sdks/employeeworkaddresses/README.md#postv1employeesemployeeidworkaddresses) - Create an employee work address
 * [Get](docs/sdks/employeeworkaddresses/README.md#get) - Get an employee work address
 
 ### [Events](docs/sdks/events/README.md)
 
-* [List](docs/sdks/events/README.md#list) - Get all events
+* [GetEvents](docs/sdks/events/README.md#getevents) - Get all events
 
 ### [ExternalPayrolls](docs/sdks/externalpayrolls/README.md)
 
-* [Create](docs/sdks/externalpayrolls/README.md#create) - Create a new external payroll for a company
-* [List](docs/sdks/externalpayrolls/README.md#list) - Get external payrolls for a company
-* [Get](docs/sdks/externalpayrolls/README.md#get) - Get an external payroll
-* [Delete](docs/sdks/externalpayrolls/README.md#delete) - Delete an external payroll
-* [Update](docs/sdks/externalpayrolls/README.md#update) - Update an external payroll
-* [GetTaxSuggestions](docs/sdks/externalpayrolls/README.md#gettaxsuggestions) - Get tax suggestions for an external payroll
-* [GetTaxLiabilities](docs/sdks/externalpayrolls/README.md#gettaxliabilities) - Get tax liabilities
-* [UpdateTaxLiabilities](docs/sdks/externalpayrolls/README.md#updatetaxliabilities) - Update tax liabilities
-* [FinalizeTaxLiabilities](docs/sdks/externalpayrolls/README.md#finalizetaxliabilities) - Finalize tax liabilities options and convert into processed payrolls
+* [PostV1ExternalPayroll](docs/sdks/externalpayrolls/README.md#postv1externalpayroll) - Create a new external payroll for a company
+* [GetV1CompanyExternalPayrolls](docs/sdks/externalpayrolls/README.md#getv1companyexternalpayrolls) - Get external payrolls for a company
+* [GetV1ExternalPayroll](docs/sdks/externalpayrolls/README.md#getv1externalpayroll) - Get an external payroll
+* [DeleteV1ExternalPayroll](docs/sdks/externalpayrolls/README.md#deletev1externalpayroll) - Delete an external payroll
+* [PutV1ExternalPayroll](docs/sdks/externalpayrolls/README.md#putv1externalpayroll) - Update an external payroll
+* [GetV1ExternalPayrollCalculateTaxes](docs/sdks/externalpayrolls/README.md#getv1externalpayrollcalculatetaxes) - Get tax suggestions for an external payroll
+* [GetV1TaxLiabilities](docs/sdks/externalpayrolls/README.md#getv1taxliabilities) - Get tax liabilities
+* [PutV1TaxLiabilities](docs/sdks/externalpayrolls/README.md#putv1taxliabilities) - Update tax liabilities
+* [PutV1TaxLiabilitiesFinish](docs/sdks/externalpayrolls/README.md#putv1taxliabilitiesfinish) - Finalize tax liabilities options and convert into processed payrolls
 
 ### [FederalTaxDetails](docs/sdks/federaltaxdetails/README.md)
 
-* [Get](docs/sdks/federaltaxdetails/README.md#get) - Get Federal Tax Details
-* [Update](docs/sdks/federaltaxdetails/README.md#update) - Update Federal Tax Details
+* [GetV1CompaniesCompanyIdFederalTaxDetails](docs/sdks/federaltaxdetails/README.md#getv1companiescompanyidfederaltaxdetails) - Get Federal Tax Details
+* [PutV1CompaniesCompanyIdFederalTaxDetails](docs/sdks/federaltaxdetails/README.md#putv1companiescompanyidfederaltaxdetails) - Update Federal Tax Details
 
 ### [Flows](docs/sdks/flows/README.md)
 
-* [Create](docs/sdks/flows/README.md#create) - Create a flow
+* [PostV1CompanyFlows](docs/sdks/flows/README.md#postv1companyflows) - Create a flow
 
 ### [Garnishments](docs/sdks/garnishments/README.md)
 
-* [Create](docs/sdks/garnishments/README.md#create) - Create a garnishment
+* [PostV1EmployeesEmployeeIdGarnishments](docs/sdks/garnishments/README.md#postv1employeesemployeeidgarnishments) - Create a garnishment
 * [Get](docs/sdks/garnishments/README.md#get) - Get a garnishment
-* [Update](docs/sdks/garnishments/README.md#update) - Update a garnishment
-* [GetChildSupport](docs/sdks/garnishments/README.md#getchildsupport) - Get child support garnishment data
+* [PutV1GarnishmentsGarnishmentId](docs/sdks/garnishments/README.md#putv1garnishmentsgarnishmentid) - Update a garnishment
+* [GetV1GarnishmentsChildSupport](docs/sdks/garnishments/README.md#getv1garnishmentschildsupport) - Get child support garnishment data
 
 ### [GeneratedDocuments](docs/sdks/generateddocuments/README.md)
 
-* [Get](docs/sdks/generateddocuments/README.md#get) - Get a generated document
+* [GetV1GeneratedDocumentsDocumentTypeRequestUuid](docs/sdks/generateddocuments/README.md#getv1generateddocumentsdocumenttyperequestuuid) - Get a generated document
 
 
 ### [HolidayPayPolicies](docs/sdks/holidaypaypolicies/README.md)
 
-* [Get](docs/sdks/holidaypaypolicies/README.md#get) - Get a company's holiday pay policy
-* [Create](docs/sdks/holidaypaypolicies/README.md#create) - Create a holiday pay policy for a company
-* [Update](docs/sdks/holidaypaypolicies/README.md#update) - Update a company's holiday pay policy
-* [Delete](docs/sdks/holidaypaypolicies/README.md#delete) - Delete a company's holiday pay policy
-* [AddEmployees](docs/sdks/holidaypaypolicies/README.md#addemployees) - Add employees to a company's holiday pay policy
-* [RemoveEmployees](docs/sdks/holidaypaypolicies/README.md#removeemployees) - Remove employees from a company's holiday pay policy
+* [GetCompaniesCompanyUuidHolidayPayPolicy](docs/sdks/holidaypaypolicies/README.md#getcompaniescompanyuuidholidaypaypolicy) - Get a company's holiday pay policy
+* [PostCompaniesCompanyUuidHolidayPayPolicy](docs/sdks/holidaypaypolicies/README.md#postcompaniescompanyuuidholidaypaypolicy) - Create a holiday pay policy for a company
+* [PutCompaniesCompanyUuidHolidayPayPolicy](docs/sdks/holidaypaypolicies/README.md#putcompaniescompanyuuidholidaypaypolicy) - Update a company's holiday pay policy
+* [DeleteCompaniesCompanyUuidHolidayPayPolicy](docs/sdks/holidaypaypolicies/README.md#deletecompaniescompanyuuidholidaypaypolicy) - Delete a company's holiday pay policy
+* [PutCompaniesCompanyUuidHolidayPayPolicyAdd](docs/sdks/holidaypaypolicies/README.md#putcompaniescompanyuuidholidaypaypolicyadd) - Add employees to a company's holiday pay policy
+* [PutCompaniesCompanyUuidHolidayPayPolicyRemove](docs/sdks/holidaypaypolicies/README.md#putcompaniescompanyuuidholidaypaypolicyremove) - Remove employees from a company's holiday pay policy
 * [Preview](docs/sdks/holidaypaypolicies/README.md#preview) - Preview a company's paid holidays
 
 ### [I9Verification](docs/sdks/i9verification/README.md)
 
-* [GetDocumentOptions](docs/sdks/i9verification/README.md#getdocumentoptions) - Get an employee's I-9 verification document options
+* [GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptions](docs/sdks/i9verification/README.md#getv1employeesemployeeidi9authorizationdocumentoptions) - Get an employee's I-9 verification document options
 * [GetEmployeeDocuments](docs/sdks/i9verification/README.md#getemployeedocuments) - Get an employee's I-9 verification documents
-* [CreateDocuments](docs/sdks/i9verification/README.md#createdocuments) - Create an employee's I-9 authorization verification documents
-* [DeleteDocument](docs/sdks/i9verification/README.md#deletedocument) - Delete an employee's I-9 verification document
-* [EmployerSign](docs/sdks/i9verification/README.md#employersign) - Employer sign an employee's Form I-9
+* [PutV1EmployeesEmployeeIdI9AuthorizationDocuments](docs/sdks/i9verification/README.md#putv1employeesemployeeidi9authorizationdocuments) - Create an employee's I-9 authorization verification documents
+* [DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentId](docs/sdks/i9verification/README.md#deletev1employeesemployeeidi9authorizationdocumentsdocumentid) - Delete an employee's I-9 verification document
+* [PutV1EmployeesEmployeeIdI9AuthorizationEmployerSign](docs/sdks/i9verification/README.md#putv1employeesemployeeidi9authorizationemployersign) - Employer sign an employee's Form I-9
 
 ### [I9Verifications](docs/sdks/i9verifications/README.md)
 
@@ -415,67 +427,67 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [IndustrySelection](docs/sdks/industryselection/README.md)
 
-* [Get](docs/sdks/industryselection/README.md#get) - Get a company industry selection
+* [GetV1CompanyIndustry](docs/sdks/industryselection/README.md#getv1companyindustry) - Get a company industry selection
 
 ### [Introspection](docs/sdks/introspection/README.md)
 
-* [GetTokenInfo](docs/sdks/introspection/README.md#gettokeninfo) - Get info about the current access token
+* [GetV1TokenInfo](docs/sdks/introspection/README.md#getv1tokeninfo) - Get info about the current access token
 * [RefreshAccessToken](docs/sdks/introspection/README.md#refreshaccesstoken) - Refresh access token
 
 ### [Invoices](docs/sdks/invoices/README.md)
 
-* [Get](docs/sdks/invoices/README.md#get) - Retrieve invoicing data for companies
+* [GetInvoicesInvoicePeriod](docs/sdks/invoices/README.md#getinvoicesinvoiceperiod) - Retrieve invoicing data for companies
 
 ### [Jobs](docs/sdks/jobs/README.md)
 
 * [List](docs/sdks/jobs/README.md#list) - Get jobs for an employee
 * [Get](docs/sdks/jobs/README.md#get) - Get a job
 * [Delete](docs/sdks/jobs/README.md#delete) - Delete an individual job
-* [CreateCompensation](docs/sdks/jobs/README.md#createcompensation) - Create a compensation
-* [UpdateCompensation](docs/sdks/jobs/README.md#updatecompensation) - Update a compensation
+* [PostV1CompensationsCompensationId](docs/sdks/jobs/README.md#postv1compensationscompensationid) - Create a compensation
+* [PutV1CompensationsCompensationId](docs/sdks/jobs/README.md#putv1compensationscompensationid) - Update a compensation
 
 ### [JobsAndCompensations](docs/sdks/jobsandcompensations/README.md)
 
-* [Update](docs/sdks/jobsandcompensations/README.md#update) - Update a job
+* [PutV1JobsJobId](docs/sdks/jobsandcompensations/README.md#putv1jobsjobid) - Update a job
 * [ListCompensations](docs/sdks/jobsandcompensations/README.md#listcompensations) - Get compensations for a job
-* [GetCompensation](docs/sdks/jobsandcompensations/README.md#getcompensation) - Get a compensation
+* [GetV1CompensationsCompensationId](docs/sdks/jobsandcompensations/README.md#getv1compensationscompensationid) - Get a compensation
 
 ### [Locations](docs/sdks/locations/README.md)
 
-* [Create](docs/sdks/locations/README.md#create) - Create a company location
+* [PostV1CompaniesCompanyIdLocations](docs/sdks/locations/README.md#postv1companiescompanyidlocations) - Create a company location
 * [GetAllCompanyLocations](docs/sdks/locations/README.md#getallcompanylocations) - Get company locations
-* [Get](docs/sdks/locations/README.md#get) - Get a location
-* [Update](docs/sdks/locations/README.md#update) - Update a location
-* [GetMinimumWages](docs/sdks/locations/README.md#getminimumwages) - Get minimum wages for a location
+* [GetV1LocationsLocationId](docs/sdks/locations/README.md#getv1locationslocationid) - Get a location
+* [PutV1LocationsLocationId](docs/sdks/locations/README.md#putv1locationslocationid) - Update a location
+* [GetV1LocationsLocationUuidMinimumWages](docs/sdks/locations/README.md#getv1locationslocationuuidminimumwages) - Get minimum wages for a location
 
 ### [Notifications](docs/sdks/notifications/README.md)
 
-* [Get](docs/sdks/notifications/README.md#get) - Get a notification's details
+* [GetNotificationsNotificationUuid](docs/sdks/notifications/README.md#getnotificationsnotificationuuid) - Get a notification's details
 
 ### [PaymentConfigs](docs/sdks/paymentconfigs/README.md)
 
-* [Get](docs/sdks/paymentconfigs/README.md#get) - Get a company's payment configs
-* [Update](docs/sdks/paymentconfigs/README.md#update) - Update a company's payment configs
+* [GetV1CompanyPaymentConfigs](docs/sdks/paymentconfigs/README.md#getv1companypaymentconfigs) - Get a company's payment configs
+* [PutV1CompanyPaymentConfigs](docs/sdks/paymentconfigs/README.md#putv1companypaymentconfigs) - Update a company's payment configs
 
 ### [Payrolls](docs/sdks/payrolls/README.md)
 
-* [Create](docs/sdks/payrolls/README.md#create) - Create an off-cycle payroll
+* [PostV1CompaniesCompanyIdPayrolls](docs/sdks/payrolls/README.md#postv1companiescompanyidpayrolls) - Create an off-cycle payroll
 * [List](docs/sdks/payrolls/README.md#list) - Get all payrolls for a company
-* [GetReversals](docs/sdks/payrolls/README.md#getreversals) - Get approved payroll reversals
-* [Get](docs/sdks/payrolls/README.md#get) - Get a single payroll
-* [Update](docs/sdks/payrolls/README.md#update) - Update a payroll by ID
-* [Delete](docs/sdks/payrolls/README.md#delete) - Delete a payroll
-* [PrepareForUpdate](docs/sdks/payrolls/README.md#prepareforupdate) - Prepare a payroll for update
-* [GetReceipt](docs/sdks/payrolls/README.md#getreceipt) - Get a single payroll receipt
-* [GetBlockers](docs/sdks/payrolls/README.md#getblockers) - Get all payroll blockers for a company
-* [Skip](docs/sdks/payrolls/README.md#skip) - Skip a payroll
-* [CalculateGrossUp](docs/sdks/payrolls/README.md#calculategrossup) - Calculate gross up
-* [Calculate](docs/sdks/payrolls/README.md#calculate) - Calculate a payroll
-* [Submit](docs/sdks/payrolls/README.md#submit) - Submit payroll
-* [Cancel](docs/sdks/payrolls/README.md#cancel) - Cancel a payroll
+* [GetV1CompaniesCompanyIdPayrollReversals](docs/sdks/payrolls/README.md#getv1companiescompanyidpayrollreversals) - Get approved payroll reversals
+* [GetV1CompaniesCompanyIdPayrollsPayrollId](docs/sdks/payrolls/README.md#getv1companiescompanyidpayrollspayrollid) - Get a single payroll
+* [PutV1CompaniesCompanyIdPayrolls](docs/sdks/payrolls/README.md#putv1companiescompanyidpayrolls) - Update a payroll by ID
+* [DeleteV1CompaniesCompanyIdPayrolls](docs/sdks/payrolls/README.md#deletev1companiescompanyidpayrolls) - Delete a payroll
+* [PutV1CompaniesCompanyIdPayrollsPayrollIdPrepare](docs/sdks/payrolls/README.md#putv1companiescompanyidpayrollspayrollidprepare) - Prepare a payroll for update
+* [GetV1PaymentReceiptsPayrollsPayrollUuid](docs/sdks/payrolls/README.md#getv1paymentreceiptspayrollspayrolluuid) - Get a single payroll receipt
+* [GetV1CompaniesPayrollBlockersCompanyUuid](docs/sdks/payrolls/README.md#getv1companiespayrollblockerscompanyuuid) - Get all payroll blockers for a company
+* [PostCompaniesPayrollSkipCompanyUuid](docs/sdks/payrolls/README.md#postcompaniespayrollskipcompanyuuid) - Skip a payroll
+* [PostPayrollsGrossUpPayrollUuid](docs/sdks/payrolls/README.md#postpayrollsgrossuppayrolluuid) - Calculate gross up
+* [PutV1CompaniesCompanyIdPayrollsPayrollIdCalculate](docs/sdks/payrolls/README.md#putv1companiescompanyidpayrollspayrollidcalculate) - Calculate a payroll
+* [PutV1CompaniesCompanyIdPayrollsPayrollIdSubmit](docs/sdks/payrolls/README.md#putv1companiescompanyidpayrollspayrollidsubmit) - Submit payroll
+* [PutApiV1CompaniesCompanyIdPayrollsPayrollIdCancel](docs/sdks/payrolls/README.md#putapiv1companiescompanyidpayrollspayrollidcancel) - Cancel a payroll
 * [GetEmployeePayStubPdf](docs/sdks/payrolls/README.md#getemployeepaystubpdf) - Get an employee pay stub (pdf)
 * [GetEmployeePayStubs](docs/sdks/payrolls/README.md#getemployeepaystubs) - Get an employee's pay stubs
-* [GeneratePrintableChecks](docs/sdks/payrolls/README.md#generateprintablechecks) - Generate printable payroll checks (pdf)
+* [PostV1PayrollsPayrollUuidGeneratedDocumentsPrintablePayrollChecks](docs/sdks/payrolls/README.md#postv1payrollspayrolluuidgenerateddocumentsprintablepayrollchecks) - Generate printable payroll checks (pdf)
 
 ### [PayScheduleAssignments](docs/sdks/payscheduleassignments/README.md)
 
@@ -483,33 +495,33 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [PaySchedules](docs/sdks/payschedules/README.md)
 
-* [Create](docs/sdks/payschedules/README.md#create) - Create a new pay schedule
+* [PostV1CompaniesCompanyIdPaySchedules](docs/sdks/payschedules/README.md#postv1companiescompanyidpayschedules) - Create a new pay schedule
 * [Get](docs/sdks/payschedules/README.md#get) - Get the pay schedules for a company
-* [Preview](docs/sdks/payschedules/README.md#preview) - Preview pay schedule dates
+* [GetV1CompaniesCompanyIdPaySchedulesPreview](docs/sdks/payschedules/README.md#getv1companiescompanyidpayschedulespreview) - Preview pay schedule dates
 * [GetById](docs/sdks/payschedules/README.md#getbyid) - Get a pay schedule
-* [Update](docs/sdks/payschedules/README.md#update) - Update a pay schedule
+* [PutV1CompaniesCompanyIdPaySchedulesPayScheduleId](docs/sdks/payschedules/README.md#putv1companiescompanyidpayschedulespayscheduleid) - Update a pay schedule
 * [ListPayPeriods](docs/sdks/payschedules/README.md#listpayperiods) - Get pay periods for a company
-* [ListUnprocessedTerminationPeriods](docs/sdks/payschedules/README.md#listunprocessedterminationperiods) - Get termination pay periods for a company
-* [PreviewAssignment](docs/sdks/payschedules/README.md#previewassignment) - Preview pay schedule assignments for a company
-* [Assign](docs/sdks/payschedules/README.md#assign) - Assign pay schedules for a company
+* [GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriods](docs/sdks/payschedules/README.md#getv1companiescompanyidunprocessedterminationpayperiods) - Get termination pay periods for a company
+* [PostV1CompaniesCompanyIdPaySchedulesAssignmentPreview](docs/sdks/payschedules/README.md#postv1companiescompanyidpayschedulesassignmentpreview) - Preview pay schedule assignments for a company
+* [PostV1CompaniesCompanyIdPaySchedulesAssign](docs/sdks/payschedules/README.md#postv1companiescompanyidpayschedulesassign) - Assign pay schedules for a company
 
 ### [RecoveryCases](docs/sdks/recoverycases/README.md)
 
 * [List](docs/sdks/recoverycases/README.md#list) - Get all recovery cases for a company
-* [Redebit](docs/sdks/recoverycases/README.md#redebit) - Initiate a redebit for a recovery case
+* [RedebitRecoveryCase](docs/sdks/recoverycases/README.md#redebitrecoverycase) - Initiate a redebit for a recovery case
 
 ### [Reports](docs/sdks/reports/README.md)
 
-* [Create](docs/sdks/reports/README.md#create) - Create a custom report
-* [Get](docs/sdks/reports/README.md#get) - Get a report
-* [GetTemplate](docs/sdks/reports/README.md#gettemplate) - Get a report template
+* [PostCompaniesCompanyUuidReports](docs/sdks/reports/README.md#postcompaniescompanyuuidreports) - Create a custom report
+* [GetReportsReportUuid](docs/sdks/reports/README.md#getreportsreportuuid) - Get a report
+* [GetCompaniesCompanyUuidReportTemplatesReportType](docs/sdks/reports/README.md#getcompaniescompanyuuidreporttemplatesreporttype) - Get a report template
 
 ### [Signatories](docs/sdks/signatories/README.md)
 
-* [Create](docs/sdks/signatories/README.md#create) - Create a signatory
-* [Invite](docs/sdks/signatories/README.md#invite) - Invite a signatory
-* [Update](docs/sdks/signatories/README.md#update) - Update a signatory
-* [Delete](docs/sdks/signatories/README.md#delete) - Delete a signatory
+* [PostV1CompanySignatories](docs/sdks/signatories/README.md#postv1companysignatories) - Create a signatory
+* [PostV1CompaniesCompanyUuidSignatoriesInvite](docs/sdks/signatories/README.md#postv1companiescompanyuuidsignatoriesinvite) - Invite a signatory
+* [PutV1CompaniesCompanyUuidSignatoriesSignatoryUuid](docs/sdks/signatories/README.md#putv1companiescompanyuuidsignatoriessignatoryuuid) - Update a signatory
+* [DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuid](docs/sdks/signatories/README.md#deletev1companiescompanyuuidsignatoriessignatoryuuid) - Delete a signatory
 
 ### [TaxRequirements](docs/sdks/taxrequirements/README.md)
 
@@ -519,33 +531,33 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 
 ### [TimeOffPolicies](docs/sdks/timeoffpolicies/README.md)
 
-* [CalculateAccruingHours](docs/sdks/timeoffpolicies/README.md#calculateaccruinghours) - Calculate accruing time off hours
+* [PostV1PayrollsPayrollIdCalculateAccruingTimeOffHours](docs/sdks/timeoffpolicies/README.md#postv1payrollspayrollidcalculateaccruingtimeoffhours) - Calculate accruing time off hours
 * [Get](docs/sdks/timeoffpolicies/README.md#get) - Get a time off policy
-* [Update](docs/sdks/timeoffpolicies/README.md#update) - Update a time off policy
+* [PutTimeOffPoliciesTimeOffPolicyUuid](docs/sdks/timeoffpolicies/README.md#puttimeoffpoliciestimeoffpolicyuuid) - Update a time off policy
 * [List](docs/sdks/timeoffpolicies/README.md#list) - Get all time off policies
-* [Create](docs/sdks/timeoffpolicies/README.md#create) - Create a time off policy
-* [AddEmployees](docs/sdks/timeoffpolicies/README.md#addemployees) - Add employees to a time off policy
-* [RemoveEmployees](docs/sdks/timeoffpolicies/README.md#removeemployees) - Remove employees from a time off policy
-* [UpdateBalance](docs/sdks/timeoffpolicies/README.md#updatebalance) - Update employee time off hour balances
-* [Deactivate](docs/sdks/timeoffpolicies/README.md#deactivate) - Deactivate a time off policy
+* [PostCompaniesCompanyUuidTimeOffPolicies](docs/sdks/timeoffpolicies/README.md#postcompaniescompanyuuidtimeoffpolicies) - Create a time off policy
+* [PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployees](docs/sdks/timeoffpolicies/README.md#putversiontimeoffpoliciestimeoffpolicyuuidaddemployees) - Add employees to a time off policy
+* [PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployees](docs/sdks/timeoffpolicies/README.md#putv1timeoffpoliciestimeoffpolicyuuidremoveemployees) - Remove employees from a time off policy
+* [PutVersionTimeOffPoliciesTimeOffPolicyUuidBalance](docs/sdks/timeoffpolicies/README.md#putversiontimeoffpoliciestimeoffpolicyuuidbalance) - Update employee time off hour balances
+* [PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivate](docs/sdks/timeoffpolicies/README.md#putv1timeoffpoliciestimeoffpolicyuuiddeactivate) - Deactivate a time off policy
 
 ### [Webhooks](docs/sdks/webhooks/README.md)
 
-* [ListSubscriptions](docs/sdks/webhooks/README.md#listsubscriptions) - List webhook subscriptions
+* [GetV1WebhookSubscriptions](docs/sdks/webhooks/README.md#getv1webhooksubscriptions) - List webhook subscriptions
 * [Update](docs/sdks/webhooks/README.md#update) - Update a webhook subscription
-* [Get](docs/sdks/webhooks/README.md#get) - Get a webhook subscription
-* [Delete](docs/sdks/webhooks/README.md#delete) - Delete a webhook subscription
+* [GetV1WebhookSubscriptionUuid](docs/sdks/webhooks/README.md#getv1webhooksubscriptionuuid) - Get a webhook subscription
+* [DeleteV1WebhookSubscriptionUuid](docs/sdks/webhooks/README.md#deletev1webhooksubscriptionuuid) - Delete a webhook subscription
 * [Verify](docs/sdks/webhooks/README.md#verify) - Verify the webhook subscription
 
 ### [WebhookSubscriptions](docs/sdks/webhooksubscriptions/README.md)
 
 * [Create](docs/sdks/webhooksubscriptions/README.md#create) - Create a webhook subscription
-* [RequestVerificationToken](docs/sdks/webhooksubscriptions/README.md#requestverificationtoken) - Request the webhook subscription verification_token
+* [GetV1WebhookSubscriptionVerificationTokenUuid](docs/sdks/webhooksubscriptions/README.md#getv1webhooksubscriptionverificationtokenuuid) - Request the webhook subscription verification_token
 
 ### [WireInRequests](docs/sdks/wireinrequests/README.md)
 
-* [Get](docs/sdks/wireinrequests/README.md#get) - Get a single Wire In Request
-* [SubmitRequest](docs/sdks/wireinrequests/README.md#submitrequest) - Submit a wire in request
+* [GetWireInRequestsWireInRequestUuid](docs/sdks/wireinrequests/README.md#getwireinrequestswireinrequestuuid) - Get a single Wire In Request
+* [PutWireInRequestsWireInRequestUuid](docs/sdks/wireinrequests/README.md#putwireinrequestswireinrequestuuid) - Submit a wire in request
 * [List](docs/sdks/wireinrequests/README.md#list) - Get all Wire In Requests for a company
 
 </details>
@@ -564,7 +576,7 @@ By default, an API error will raise a `GustoEmbedded.Models.Errors.APIException`
 | `Request`     | *HttpRequestMessage*  | The HTTP request      |
 | `Response`    | *HttpResponseMessage* | The HTTP response     |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `CreatePartnerManagedAsync` method throws the following exceptions:
+When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `PostV1PartnerManagedCompaniesAsync` method throws the following exceptions:
 
 | Error Type                                                 | Status Code | Content Type     |
 | ---------------------------------------------------------- | ----------- | ---------------- |
@@ -583,15 +595,15 @@ var sdk = new Gusto();
 
 try
 {
-    var res = await sdk.Companies.CreatePartnerManagedAsync(
+    var res = await sdk.Companies.PostV1PartnerManagedCompaniesAsync(
         security: new PostV1PartnerManagedCompaniesSecurity() {
             SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
         },
         requestBody: new PostV1PartnerManagedCompaniesRequestBody() {
             User = new User() {
-                FirstName = "Gail",
-                LastName = "Stracke",
-                Email = "Emanuel.McClure@gmail.com",
+                FirstName = "Khalid",
+                LastName = "Haley",
+                Email = "Eliane.Watsica38@yahoo.com",
             },
             Company = new Models.Requests.Company() {
                 Name = "<value>",
@@ -641,7 +653,7 @@ var sdk = new Gusto(
     companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Introspection.GetTokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```
@@ -658,7 +670,7 @@ var sdk = new Gusto(
     companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Introspection.GetTokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```

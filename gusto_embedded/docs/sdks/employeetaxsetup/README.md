@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [GetFederalTaxes](#getfederaltaxes) - Get an employee's federal taxes
-* [GetStateTaxes](#getstatetaxes) - Get an employee's state taxes
+* [GetV1EmployeesEmployeeIdFederalTaxes](#getv1employeesemployeeidfederaltaxes) - Get an employee's federal taxes
+* [GetV1EmployeesEmployeeIdStateTaxes](#getv1employeesemployeeidstatetaxes) - Get an employee's state taxes
 
-## GetFederalTaxes
+## GetV1EmployeesEmployeeIdFederalTaxes
 
 Get attributes relevant for an employee's federal taxes.
 
@@ -22,7 +22,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeTaxSetup.GetFederalTaxesAsync(
+var res = await sdk.EmployeeTaxSetup.GetV1EmployeesEmployeeIdFederalTaxesAsync(
     employeeUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -47,7 +47,7 @@ var res = await sdk.EmployeeTaxSetup.GetFederalTaxesAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetStateTaxes
+## GetV1EmployeesEmployeeIdStateTaxes
 
 Get attributes relevant for an employee's state taxes.
 
@@ -73,7 +73,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeTaxSetup.GetStateTaxesAsync(
+var res = await sdk.EmployeeTaxSetup.GetV1EmployeesEmployeeIdStateTaxesAsync(
     employeeUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

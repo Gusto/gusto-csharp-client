@@ -38,17 +38,17 @@ namespace GustoEmbedded
         /// scope: `notifications:read`
         /// </remarks>
         /// </summary>
-        Task<GetNotificationsNotificationUuidResponse> GetAsync(string notificationUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetNotificationsNotificationUuidResponse> GetNotificationsNotificationUuidAsync(string notificationUuid, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Notifications: INotifications
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -61,7 +61,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetNotificationsNotificationUuidResponse> GetAsync(string notificationUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetNotificationsNotificationUuidResponse> GetNotificationsNotificationUuidAsync(string notificationUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetNotificationsNotificationUuidRequest()
             {

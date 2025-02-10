@@ -5,24 +5,24 @@
 
 ### Available Operations
 
-* [CreatePartnerManaged](#createpartnermanaged) - Create a partner managed company
-* [Get](#get) - Get a company
-* [Update](#update) - Update a company
-* [Migrate](#migrate) - Migrate company to embedded payroll
+* [PostV1PartnerManagedCompanies](#postv1partnermanagedcompanies) - Create a partner managed company
+* [GetV1Companies](#getv1companies) - Get a company
+* [PutV1Companies](#putv1companies) - Update a company
+* [PutV1PartnerManagedCompaniesCompanyUuidMigrate](#putv1partnermanagedcompaniescompanyuuidmigrate) - Migrate company to embedded payroll
 * [AcceptTerms](#acceptterms) - Accept terms of service for a company user
-* [RetrieveTermsOfService](#retrievetermsofservice) - Retrieve terms of service status for a company user
-* [CreateAdmin](#createadmin) - Create an admin for the company
-* [GetAdmins](#getadmins) - Get all the admins at a company
-* [GetOnboardingStatus](#getonboardingstatus) - Get the company's onboarding status
-* [FinishOnboarding](#finishonboarding) - Finish company onboarding
-* [GetCustomFields](#getcustomfields) - Get the custom fields of a company
+* [PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfService](#postpartnermanagedcompaniescompanyuuidretrievetermsofservice) - Retrieve terms of service status for a company user
+* [PostV1CompaniesCompanyIdAdmins](#postv1companiescompanyidadmins) - Create an admin for the company
+* [GetV1CompaniesCompanyIdAdmins](#getv1companiescompanyidadmins) - Get all the admins at a company
+* [GetV1CompanyOnboardingStatus](#getv1companyonboardingstatus) - Get the company's onboarding status
+* [GetV1CompanyFinishOnboarding](#getv1companyfinishonboarding) - Finish company onboarding
+* [GetV1CompaniesCompanyIdCustomFields](#getv1companiescompanyidcustomfields) - Get the custom fields of a company
 * [UpdateIndustrySelection](#updateindustryselection) - Update a company industry selection
 * [GetSignatories](#getsignatories) - Get all company signatories
 * [CreateEarningType](#createearningtype) - Create a custom earning type
 * [ListEarningTypes](#listearningtypes) - Get all earning types for a company
 * [ListBenefits](#listbenefits) - Get benefits for a company
 
-## CreatePartnerManaged
+## PostV1PartnerManagedCompanies
 
 Create a partner managed company. When you successfully call the API, it does the following:
 * Creates a new company in Gusto
@@ -46,15 +46,15 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto();
 
-var res = await sdk.Companies.CreatePartnerManagedAsync(
+var res = await sdk.Companies.PostV1PartnerManagedCompaniesAsync(
     security: new PostV1PartnerManagedCompaniesSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
     requestBody: new PostV1PartnerManagedCompaniesRequestBody() {
         User = new User() {
-            FirstName = "Gail",
-            LastName = "Stracke",
-            Email = "Emanuel.McClure@gmail.com",
+            FirstName = "Khalid",
+            LastName = "Haley",
+            Email = "Eliane.Watsica38@yahoo.com",
         },
         Company = new Models.Requests.Company() {
             Name = "<value>",
@@ -85,7 +85,7 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Get
+## GetV1Companies
 
 Get a company.         
 The employees:read scope is required to return home_address and non-work locations.         
@@ -102,7 +102,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetAsync(
+var res = await sdk.Companies.GetV1CompaniesAsync(
     companyId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -127,7 +127,7 @@ var res = await sdk.Companies.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutV1Companies
 
 Update a company.
 
@@ -142,7 +142,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.UpdateAsync(
+var res = await sdk.Companies.PutV1CompaniesAsync(
     companyId: "<id>",
     requestBody: new PutV1CompaniesRequestBody() {
         ContractorOnly = false,
@@ -172,7 +172,7 @@ var res = await sdk.Companies.UpdateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Migrate
+## PutV1PartnerManagedCompaniesCompanyUuidMigrate
 
 Migrate an existing Gusto customer to your embedded payroll product.
 
@@ -189,11 +189,11 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.MigrateAsync(
+var res = await sdk.Companies.PutV1PartnerManagedCompaniesCompanyUuidMigrateAsync(
     companyUuid: "<id>",
     requestBody: new PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody() {
-        Email = "Benjamin_Kihn44@yahoo.com",
-        IpAddress = "198.52.136.51",
+        Email = "Magdalena_Jakubowski46@hotmail.com",
+        IpAddress = "b754:c214:ac13:5dd2:fd79:4570:dde3:55b8",
         ExternalUserId = "<id>",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -269,7 +269,7 @@ var res = await sdk.Companies.AcceptTermsAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## RetrieveTermsOfService
+## PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfService
 
 Retrieve the user acceptance status of the Gusto Embedded Payroll's [Terms of Service](https://flows.gusto.com/terms).
 
@@ -284,10 +284,10 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.RetrieveTermsOfServiceAsync(
+var res = await sdk.Companies.PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceAsync(
     companyUuid: "<id>",
     requestBody: new PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody() {
-        Email = "Erika_Schuster@yahoo.com",
+        Email = "Angus.Becker43@yahoo.com",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -314,7 +314,7 @@ var res = await sdk.Companies.RetrieveTermsOfServiceAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## CreateAdmin
+## PostV1CompaniesCompanyIdAdmins
 
 Creates a new admin for a company.
 If the email matches an existing user, this will create an admin account for the current user. Otherwise, this will create a new user.
@@ -330,12 +330,12 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.CreateAdminAsync(
+var res = await sdk.Companies.PostV1CompaniesCompanyIdAdminsAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdAdminsRequestBody() {
-        FirstName = "Guillermo",
-        LastName = "Koch",
-        Email = "Justine_Gusikowski92@yahoo.com",
+        FirstName = "Jamison",
+        LastName = "Runte",
+        Email = "Justina20@hotmail.com",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -362,7 +362,7 @@ var res = await sdk.Companies.CreateAdminAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetAdmins
+## GetV1CompaniesCompanyIdAdmins
 
 Returns a list of all the admins at a company
 
@@ -376,10 +376,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetAdminsAsync(
+var res = await sdk.Companies.GetV1CompaniesCompanyIdAdminsAsync(
     companyId: "<id>",
-    page: 8501.99D,
-    per: 7757.35D,
+    page: 2654.95D,
+    per: 3390.97D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -405,7 +405,7 @@ var res = await sdk.Companies.GetAdminsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetOnboardingStatus
+## GetV1CompanyOnboardingStatus
 
 Get company's onboarding status.
 The data returned helps inform the required onboarding steps and respective completion status.
@@ -420,7 +420,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetOnboardingStatusAsync(
+var res = await sdk.Companies.GetV1CompanyOnboardingStatusAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -445,7 +445,7 @@ var res = await sdk.Companies.GetOnboardingStatusAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## FinishOnboarding
+## GetV1CompanyFinishOnboarding
 
 Finalize a given company's onboarding process.
 
@@ -471,7 +471,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.FinishOnboardingAsync(
+var res = await sdk.Companies.GetV1CompanyFinishOnboardingAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -497,7 +497,7 @@ var res = await sdk.Companies.FinishOnboardingAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetCustomFields
+## GetV1CompaniesCompanyIdCustomFields
 
 Returns a list of the custom fields of the company. Useful when you need to know the schema of custom fields for an entire company
 
@@ -511,10 +511,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetCustomFieldsAsync(
+var res = await sdk.Companies.GetV1CompaniesCompanyIdCustomFieldsAsync(
     companyId: "<id>",
-    page: 6531.7D,
-    per: 3092.2D,
+    page: 9765.05D,
+    per: 1619.52D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 

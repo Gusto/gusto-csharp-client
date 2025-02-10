@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> UpdateAsync(string companyId, string earningTypeUuid, PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidAsync(string companyId, string earningTypeUuid, PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Deactivate an earning type
@@ -45,17 +45,17 @@ namespace GustoEmbedded
         /// scope: `payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> DeactivateAsync(string companyId, string earningTypeUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidAsync(string companyId, string earningTypeUuid, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class EarningTypes: IEarningTypes
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.506.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.506.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -68,7 +68,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> UpdateAsync(string companyId, string earningTypeUuid, PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidAsync(string companyId, string earningTypeUuid, PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequest()
             {
@@ -172,7 +172,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> DeactivateAsync(string companyId, string earningTypeUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidAsync(string companyId, string earningTypeUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequest()
             {

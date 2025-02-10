@@ -1,5 +1,5 @@
-# AchTransactions
-(*AchTransactions*)
+# ACHTransactions
+(*ACHTransactions*)
 
 ## Overview
 
@@ -26,7 +26,7 @@ GetAchTransactionsRequest req = new GetAchTransactionsRequest() {
     CompanyUuid = "<id>",
 };
 
-var res = await sdk.AchTransactions.GetAllAsync(req);
+var res = await sdk.ACHTransactions.GetAllAsync(req);
 
 // handle response
 ```

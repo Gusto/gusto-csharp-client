@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [Get](#get) - Get a company's payment configs
-* [Update](#update) - Update a company's payment configs
+* [GetV1CompanyPaymentConfigs](#getv1companypaymentconfigs) - Get a company's payment configs
+* [PutV1CompanyPaymentConfigs](#putv1companypaymentconfigs) - Update a company's payment configs
 
-## Get
+## GetV1CompanyPaymentConfigs
 
 Get payment speed for the company and fast payment limit (1-day is only applicable to partners that opt in).
 
@@ -22,7 +22,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaymentConfigs.GetAsync(
+var res = await sdk.PaymentConfigs.GetV1CompanyPaymentConfigsAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -47,7 +47,7 @@ var res = await sdk.PaymentConfigs.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## Update
+## PutV1CompanyPaymentConfigs
 
 Update payment speed and fast payment limit for a company. At least one of `payment_speed` or `fast_payment_limit` parameters is required. 1-day option is only applicable to partners that opt in.
 
@@ -61,11 +61,11 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaymentConfigs.UpdateAsync(
+var res = await sdk.PaymentConfigs.PutV1CompanyPaymentConfigsAsync(
     companyUuid: "<id>",
-    requestBody: PutV1CompanyPaymentConfigsRequestBody.CreatePaymentSpeedRequiredBody(
-        new PaymentSpeedRequiredBody() {
-            PaymentSpeed = PaymentSpeedParam.TwoDay,
+    requestBody: PutV1CompanyPaymentConfigsRequestBody.CreateFastPaymentLimitRequiredBody(
+        new FastPaymentLimitRequiredBody() {
+            FastPaymentLimit = "<value>",
         }
     ),
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
