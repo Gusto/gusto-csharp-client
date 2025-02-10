@@ -1,0 +1,9 @@
+# GetV1ContractorsContractorUuidPaymentMethodResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                      | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                         | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `ContractorPaymentMethod`                                                                       | [Models.Components.ContractorPaymentMethod](../../Models/Components/ContractorPaymentMethod.md) | :heavy_minus_sign:                                                                              | Example response                                                                                |

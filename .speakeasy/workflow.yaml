@@ -1,0 +1,21 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Gusto-OAS:
+        inputs:
+            - location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-embedded-oas:main
+        overlays:
+            - location: gusto_embedded/.speakeasy/speakeasy-modifications-overlay.yaml
+        registry:
+            location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-oas
+targets:
+    gusto:
+        target: csharp
+        source: Gusto-OAS
+        output: ./gusto_embedded
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-oas-csharp-code-samples
+            labelOverride:
+                fixedValue: Csharp (SDK)
+            blocking: false

@@ -1,0 +1,39 @@
+speakeasyVersion: 1.488.0
+sources:
+    Gusto-OAS:
+        sourceNamespace: gusto-oas
+        sourceRevisionDigest: sha256:4bf6b46eba48c49c9645444113f899d600bfe70ebcfdcae54dbc6fd56e2c7888
+        sourceBlobDigest: sha256:bd2c0b5b64287035d1ca100a0de5f9ff63b9dc7dd3bbf9049824b71d8936ad9c
+        tags:
+            - latest
+            - "2024-04-01"
+targets:
+    gusto:
+        source: Gusto-OAS
+        sourceNamespace: gusto-oas
+        sourceRevisionDigest: sha256:4bf6b46eba48c49c9645444113f899d600bfe70ebcfdcae54dbc6fd56e2c7888
+        sourceBlobDigest: sha256:bd2c0b5b64287035d1ca100a0de5f9ff63b9dc7dd3bbf9049824b71d8936ad9c
+        codeSamplesNamespace: gusto-oas-csharp-code-samples
+        codeSamplesRevisionDigest: sha256:10356d78d80778219055d9115b3004238a18ff7cffbda6ae84ecae2cac036b42
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Gusto-OAS:
+            inputs:
+                - location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-embedded-oas:main
+            overlays:
+                - location: gusto_embedded/.speakeasy/speakeasy-modifications-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-oas
+    targets:
+        gusto:
+            target: csharp
+            source: Gusto-OAS
+            output: ./gusto_embedded
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-oas-csharp-code-samples
+                labelOverride:
+                    fixedValue: Csharp (SDK)
+                blocking: false

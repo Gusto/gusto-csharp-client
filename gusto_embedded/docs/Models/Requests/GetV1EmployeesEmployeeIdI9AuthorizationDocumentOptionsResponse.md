@@ -1,0 +1,9 @@
+# GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                      | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                         | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `I9AuthorizationDocumentOptionsObject`                                                          | List<[I9AuthorizationDocumentOption](../../Models/Components/I9AuthorizationDocumentOption.md)> | :heavy_minus_sign:                                                                              | Example response                                                                                |

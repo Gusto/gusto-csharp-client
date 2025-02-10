@@ -1,0 +1,15 @@
+# PayrollCheck
+
+Example response
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `PayrollUuid`                                                                             | *string*                                                                                  | :heavy_minus_sign:                                                                        | A unique identifier of the payroll.                                                       |
+| `PrintingFormat`                                                                          | *string*                                                                                  | :heavy_minus_sign:                                                                        | The format the checks will be printed.                                                    |
+| `StartingCheckNumber`                                                                     | *string*                                                                                  | :heavy_minus_sign:                                                                        | The starting check number for the checks being printed.                                   |
+| `RequestUuid`                                                                             | *string*                                                                                  | :heavy_minus_sign:                                                                        | A unique identifier of the Generated Document request                                     |
+| `Status`                                                                                  | *string*                                                                                  | :heavy_minus_sign:                                                                        | Current status of the Generated Document                                                  |
+| `EmployeeCheckNumberMapping`                                                              | List<[EmployeeCheckNumberMapping](../../Models/Components/EmployeeCheckNumberMapping.md)> | :heavy_minus_sign:                                                                        | An array of mapping employee uuids to their check numbers                                 |

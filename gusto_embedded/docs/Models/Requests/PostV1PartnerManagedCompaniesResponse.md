@@ -1,0 +1,9 @@
+# PostV1PartnerManagedCompaniesResponse
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                                      | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                                         | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| `Object`                                                                                                        | [PostV1PartnerManagedCompaniesResponseBody](../../Models/Requests/PostV1PartnerManagedCompaniesResponseBody.md) | :heavy_minus_sign:                                                                                              | OK                                                                                                              |

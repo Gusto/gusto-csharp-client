@@ -1,0 +1,9 @@
+# PostV1PlaidProcessorTokenResponse
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                              | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                                 | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `OneOf`                                                                                                 | [PostV1PlaidProcessorTokenResponseBody](../../Models/Requests/PostV1PlaidProcessorTokenResponseBody.md) | :heavy_minus_sign:                                                                                      | A JSON object containing bank information                                                               |

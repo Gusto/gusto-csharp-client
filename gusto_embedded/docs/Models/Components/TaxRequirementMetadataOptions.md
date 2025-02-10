@@ -1,0 +1,10 @@
+# TaxRequirementMetadataOptions
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `Label`                                                                               | *string*                                                                              | :heavy_check_mark:                                                                    | A customer facing label for the answer                                                |
+| `Value`                                                                               | [TaxRequirementMetadataValue](../../Models/Components/TaxRequirementMetadataValue.md) | :heavy_check_mark:                                                                    | The actual value to be submitted                                                      |
+| `ShortLabel`                                                                          | *string*                                                                              | :heavy_minus_sign:                                                                    | A less verbose label that may sometimes be available                                  |
