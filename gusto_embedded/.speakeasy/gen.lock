@@ -5,8 +5,10 @@ management:
   docVersion: "2024-04-01"
   speakeasyVersion: 1.488.0
   generationVersion: 2.506.0
-  releaseVersion: 0.0.5
-  configChecksum: 267cdde571d3c59cf96dc0846fa15f57
+  releaseVersion: 0.0.6
+  configChecksum: 399f5702bd60438deb0efc2489fe32e2
+  repoURL: https://github.com/Gusto/gusto-csharp-client.git
+  repoSubDirectory: gusto_embedded
   published: true
 features:
   csharp:

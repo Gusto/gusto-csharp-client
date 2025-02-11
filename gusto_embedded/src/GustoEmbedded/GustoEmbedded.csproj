@@ -3,10 +3,12 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>GustoEmbedded</PackageId>
-    <Version>0.0.5</Version>
+    <Version>0.0.6</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
     <Copyright>Copyright (c) Speakeasy 2025</Copyright>
+    <RepositoryUrl>https://github.com/Gusto/gusto-csharp-client.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <Description>Gusto API: Welcome to Gusto&apos;s Embedded Payroll API documentation!</Description>
   </PropertyGroup>
 
