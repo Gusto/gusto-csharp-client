@@ -5,12 +5,13 @@
 
 ### Available Operations
 
-* [PostV1CompanySignatories](#postv1companysignatories) - Create a signatory
-* [PostV1CompaniesCompanyUuidSignatoriesInvite](#postv1companiescompanyuuidsignatoriesinvite) - Invite a signatory
-* [PutV1CompaniesCompanyUuidSignatoriesSignatoryUuid](#putv1companiescompanyuuidsignatoriessignatoryuuid) - Update a signatory
-* [DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuid](#deletev1companiescompanyuuidsignatoriessignatoryuuid) - Delete a signatory
+* [Create](#create) - Create a signatory
+* [List](#list) - Get all company signatories
+* [Invite](#invite) - Invite a signatory
+* [Update](#update) - Update a signatory
+* [Delete](#delete) - Delete a signatory
 
-## PostV1CompanySignatories
+## Create
 
 Create a company signatory with complete information.
 A signatory can legally sign forms once the identity verification process is successful.
@@ -27,21 +28,21 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Signatories.PostV1CompanySignatoriesAsync(
+var res = await sdk.Signatories.CreateAsync(
     companyUuid: "<id>",
     requestBody: new PostV1CompanySignatoriesRequestBody() {
         Ssn = "<value>",
-        FirstName = "Dejon",
-        LastName = "Cruickshank",
-        Email = "Jedediah90@yahoo.com",
+        FirstName = "Jed",
+        LastName = "Johnson",
+        Email = "Annie.Wiegand16@gmail.com",
         Title = "<value>",
-        Phone = "(782) 700-8368 x74374",
+        Phone = "857-932-0220 x31016",
         Birthday = "<value>",
         HomeAddress = new Models.Requests.HomeAddress() {
             Street1 = "<value>",
-            City = "Lubowitzstead",
-            State = "Mississippi",
-            Zip = "47696-4009",
+            City = "North Lilly",
+            State = "North Carolina",
+            Zip = "05065",
         },
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -69,7 +70,46 @@ var res = await sdk.Signatories.PostV1CompanySignatoriesAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PostV1CompaniesCompanyUuidSignatoriesInvite
+## List
+
+Returns company signatories. Currently we only support a single signatory per company.
+
+scope: `signatories:read`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.Signatories.ListAsync(
+    companyUuid: "<id>",
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CompanyUuid`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[GetV1CompaniesCompanyUuidSignatoriesResponse](../../Models/Requests/GetV1CompaniesCompanyUuidSignatoriesResponse.md)**
+
+### Errors
+
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
+
+## Invite
 
 Create a signatory with minimal information. This signatory can be invited to provide more information through the `PUT /v1/companies/{company_uuid}/signatories/{signatory_uuid}` endpoint. This will start the identity verification process and allow the signatory to be verified to sign documents.
 
@@ -82,10 +122,10 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Signatories.PostV1CompaniesCompanyUuidSignatoriesInviteAsync(
+var res = await sdk.Signatories.InviteAsync(
     companyUuid: "<id>",
     requestBody: new PostV1CompaniesCompanyUuidSignatoriesInviteRequestBody() {
-        Email = "Levi.Gerlach@yahoo.com",
+        Email = "Maureen_Wyman@yahoo.com",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -112,7 +152,7 @@ var res = await sdk.Signatories.PostV1CompaniesCompanyUuidSignatoriesInviteAsync
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutV1CompaniesCompanyUuidSignatoriesSignatoryUuid
+## Update
 
 Update a signatory that has been either invited or created. If the signatory has been created with minimal information through the `POST /v1/companies/{company_uuid}/signatories/invite` endpoint, then the first update must contain all attributes specified in the request body in order to start the identity verification process.
 
@@ -127,7 +167,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Signatories.PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidAsync(
+var res = await sdk.Signatories.UpdateAsync(
     companyUuid: "<id>",
     signatoryUuid: "<id>",
     requestBody: new PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidRequestBody() {},
@@ -157,7 +197,7 @@ var res = await sdk.Signatories.PutV1CompaniesCompanyUuidSignatoriesSignatoryUui
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuid
+## Delete
 
 Delete a company signatory.
 
@@ -171,7 +211,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Signatories.DeleteV1CompaniesCompanyUuidSignatoriesSignatoryUuidAsync(
+var res = await sdk.Signatories.DeleteAsync(
     companyUuid: "<id>",
     signatoryUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

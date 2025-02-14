@@ -43,7 +43,7 @@ namespace GustoEmbedded
         /// &gt; this endpoint uses the <a href="https://docs.gusto.com/embedded-payroll/docs/system-access">Bearer Auth scheme with the system-level access token in the HTTP Authorization header</a>
         /// </remarks>
         /// </summary>
-        Task<PostV1PartnerManagedCompaniesResponse> PostV1PartnerManagedCompaniesAsync(PostV1PartnerManagedCompaniesSecurity security, PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesSecurity security, PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get a company
@@ -57,7 +57,7 @@ namespace GustoEmbedded
         /// scope: `companies:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesResponse> GetV1CompaniesAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update a company
@@ -68,7 +68,7 @@ namespace GustoEmbedded
         /// scope: `companies:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompaniesResponse> PutV1CompaniesAsync(string companyId, PutV1CompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompaniesResponse> UpdateAsync(string companyId, PutV1CompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Migrate company to embedded payroll
@@ -81,7 +81,7 @@ namespace GustoEmbedded
         /// scope: `partner_managed_companies:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1PartnerManagedCompaniesCompanyUuidMigrateResponse> PutV1PartnerManagedCompaniesCompanyUuidMigrateAsync(string companyUuid, PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1PartnerManagedCompaniesCompanyUuidMigrateResponse> MigrateAsync(string companyUuid, PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Accept terms of service for a company user
@@ -93,7 +93,7 @@ namespace GustoEmbedded
         /// scope: `terms_of_services:write`
         /// </remarks>
         /// </summary>
-        Task<PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceResponse> AcceptTermsAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceResponse> AcceptTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Retrieve terms of service status for a company user
@@ -104,7 +104,7 @@ namespace GustoEmbedded
         /// scope: `terms_of_services:read`
         /// </remarks>
         /// </summary>
-        Task<PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceResponse> PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceResponse> RetrieveTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Create an admin for the company
@@ -116,7 +116,7 @@ namespace GustoEmbedded
         /// scope: `company_admin:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdAdminsResponse> PostV1CompaniesCompanyIdAdminsAsync(string companyId, PostV1CompaniesCompanyIdAdminsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyIdAdminsResponse> CreateAdminAsync(string companyId, PostV1CompaniesCompanyIdAdminsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get all the admins at a company
@@ -127,7 +127,7 @@ namespace GustoEmbedded
         /// scope: `company_admin:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdAdminsResponse> GetV1CompaniesCompanyIdAdminsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get the company&apos;s onboarding status
@@ -139,7 +139,7 @@ namespace GustoEmbedded
         /// scope: `company_onboarding_status:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyOnboardingStatusResponse> GetV1CompanyOnboardingStatusAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Finish company onboarding
@@ -162,7 +162,7 @@ namespace GustoEmbedded
         /// scope: `companies:write`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyFinishOnboardingResponse> GetV1CompanyFinishOnboardingAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompanyFinishOnboardingResponse> FinishOnboardingAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get the custom fields of a company
@@ -173,84 +173,17 @@ namespace GustoEmbedded
         /// scope: `companies:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetV1CompaniesCompanyIdCustomFieldsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Update a company industry selection
-        /// 
-        /// <remarks>
-        /// Update the company industry selection by passing in industry classification codes: <a href="https://www.naics.com">NAICS code</a>, <a href="https://siccode.com/">SICS code</a> and industry title. Our UI is leveraging <a href="https://docs.middesk.com/reference/introduction">Middesk API</a> to determine industry classification codes.<br/>
-        /// <br/>
-        /// scope: `companies:write`
-        /// </remarks>
-        /// </summary>
-        Task<PutV1CompanyIndustryResponse> UpdateIndustrySelectionAsync(string companyId, PutV1CompanyIndustryRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Get all company signatories
-        /// 
-        /// <remarks>
-        /// Returns company signatories. Currently we only support a single signatory per company.<br/>
-        /// <br/>
-        /// scope: `signatories:read`
-        /// </remarks>
-        /// </summary>
-        Task<GetV1CompaniesCompanyUuidSignatoriesResponse> GetSignatoriesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Create a custom earning type
-        /// 
-        /// <remarks>
-        /// Create a custom earning type.<br/>
-        /// <br/>
-        /// If an inactive earning type exists with the same name, this will reactivate it instead of creating a new one.<br/>
-        /// <br/>
-        /// scope: `payrolls:write`
-        /// </remarks>
-        /// </summary>
-        Task<PostV1CompaniesCompanyIdEarningTypesResponse> CreateEarningTypeAsync(string companyId, PostV1CompaniesCompanyIdEarningTypesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Get all earning types for a company
-        /// 
-        /// <remarks>
-        /// A payroll item in Gusto is associated to an earning type to name the type of earning described by the payroll item.<br/>
-        /// <br/>
-        /// #### Default Earning Type<br/>
-        /// Certain earning types are special because they have tax considerations. Those earning types are mostly the same for every company depending on its legal structure (LLC, Corporation, etc.)<br/>
-        /// <br/>
-        /// #### Custom Earning Type<br/>
-        /// Custom earning types are all the other earning types added specifically for a company.<br/>
-        /// <br/>
-        /// scope: `payrolls:read`
-        /// </remarks>
-        /// </summary>
-        Task<GetV1CompaniesCompanyIdEarningTypesResponse> ListEarningTypesAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Get benefits for a company
-        /// 
-        /// <remarks>
-        /// Company benefits represent the benefits that a company is offering to employees. This ties together a particular supported benefit with the company-specific information for the offering of that benefit.<br/>
-        /// <br/>
-        /// Note that company benefits can be deactivated only when no employees are enrolled.<br/>
-        /// <br/>
-        /// Benefits containing PHI are only visible to applications with the `company_benefits:read:phi` scope.<br/>
-        /// <br/>
-        /// scope: `company_benefits:read`
-        /// </remarks>
-        /// </summary>
-        Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListBenefitsAsync(string companyId, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Companies: ICompanies
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -263,7 +196,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1PartnerManagedCompaniesResponse> PostV1PartnerManagedCompaniesAsync(PostV1PartnerManagedCompaniesSecurity security, PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesSecurity security, PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1PartnerManagedCompaniesRequest()
             {
@@ -367,7 +300,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesResponse> GetV1CompaniesAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesRequest()
             {
@@ -453,7 +386,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompaniesResponse> PutV1CompaniesAsync(string companyId, PutV1CompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompaniesResponse> UpdateAsync(string companyId, PutV1CompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1CompaniesRequest()
             {
@@ -556,7 +489,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1PartnerManagedCompaniesCompanyUuidMigrateResponse> PutV1PartnerManagedCompaniesCompanyUuidMigrateAsync(string companyUuid, PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1PartnerManagedCompaniesCompanyUuidMigrateResponse> MigrateAsync(string companyUuid, PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1PartnerManagedCompaniesCompanyUuidMigrateRequest()
             {
@@ -659,7 +592,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceResponse> AcceptTermsAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceResponse> AcceptTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequest()
             {
@@ -762,7 +695,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceResponse> PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceResponse> RetrieveTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequest()
             {
@@ -865,7 +798,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1CompaniesCompanyIdAdminsResponse> PostV1CompaniesCompanyIdAdminsAsync(string companyId, PostV1CompaniesCompanyIdAdminsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyIdAdminsResponse> CreateAdminAsync(string companyId, PostV1CompaniesCompanyIdAdminsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1CompaniesCompanyIdAdminsRequest()
             {
@@ -968,7 +901,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdAdminsResponse> GetV1CompaniesCompanyIdAdminsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyIdAdminsRequest()
             {
@@ -1056,7 +989,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyOnboardingStatusResponse> GetV1CompanyOnboardingStatusAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompanyOnboardingStatusRequest()
             {
@@ -1142,7 +1075,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyFinishOnboardingResponse> GetV1CompanyFinishOnboardingAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompanyFinishOnboardingResponse> FinishOnboardingAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompanyFinishOnboardingRequest()
             {
@@ -1238,7 +1171,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetV1CompaniesCompanyIdCustomFieldsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyIdCustomFieldsRequest()
             {
@@ -1309,471 +1242,6 @@ namespace GustoEmbedded
                         }
                     };
                     response.CompanyCustomFieldList = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<PutV1CompanyIndustryResponse> UpdateIndustrySelectionAsync(string companyId, PutV1CompanyIndustryRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new PutV1CompanyIndustryRequest()
-            {
-                CompanyId = companyId,
-                RequestBody = requestBody,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_id}/industry_selection", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("put-v1-company-industry", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 201)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Industry>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new PutV1CompanyIndustryResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.Industry = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<GetV1CompaniesCompanyUuidSignatoriesResponse> GetSignatoriesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new GetV1CompaniesCompanyUuidSignatoriesRequest()
-            {
-                CompanyUuid = companyUuid,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_uuid}/signatories", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("get-v1-companies-company_uuid-signatories", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<Signatory>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetV1CompaniesCompanyUuidSignatoriesResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.SignatoryList = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<PostV1CompaniesCompanyIdEarningTypesResponse> CreateEarningTypeAsync(string companyId, PostV1CompaniesCompanyIdEarningTypesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new PostV1CompaniesCompanyIdEarningTypesRequest()
-            {
-                CompanyId = companyId,
-                RequestBody = requestBody,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_id}/earning_types", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("post-v1-companies-company_id-earning_types", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 201)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.EarningType>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new PostV1CompaniesCompanyIdEarningTypesResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.EarningType = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<GetV1CompaniesCompanyIdEarningTypesResponse> ListEarningTypesAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new GetV1CompaniesCompanyIdEarningTypesRequest()
-            {
-                CompanyId = companyId,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_id}/earning_types", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("get-v1-companies-company_id-earning_types", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<EarningTypeList>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetV1CompaniesCompanyIdEarningTypesResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.EarningTypeList = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListBenefitsAsync(string companyId, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new GetV1CompaniesCompanyIdCompanyBenefitsRequest()
-            {
-                CompanyId = companyId,
-                EnrollmentCount = enrollmentCount,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_id}/company_benefits", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("get-v1-companies-company_id-company_benefits", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<CompanyBenefit>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetV1CompaniesCompanyIdCompanyBenefitsResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.CompanyBenefitList = obj;
                     return response;
                 }
 

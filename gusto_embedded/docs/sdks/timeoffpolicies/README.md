@@ -5,17 +5,17 @@
 
 ### Available Operations
 
-* [PostV1PayrollsPayrollIdCalculateAccruingTimeOffHours](#postv1payrollspayrollidcalculateaccruingtimeoffhours) - Calculate accruing time off hours
+* [CalculateAccruingTimeOffHours](#calculateaccruingtimeoffhours) - Calculate accruing time off hours
 * [Get](#get) - Get a time off policy
-* [PutTimeOffPoliciesTimeOffPolicyUuid](#puttimeoffpoliciestimeoffpolicyuuid) - Update a time off policy
-* [List](#list) - Get all time off policies
-* [PostCompaniesCompanyUuidTimeOffPolicies](#postcompaniescompanyuuidtimeoffpolicies) - Create a time off policy
-* [PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployees](#putversiontimeoffpoliciestimeoffpolicyuuidaddemployees) - Add employees to a time off policy
-* [PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployees](#putv1timeoffpoliciestimeoffpolicyuuidremoveemployees) - Remove employees from a time off policy
-* [PutVersionTimeOffPoliciesTimeOffPolicyUuidBalance](#putversiontimeoffpoliciestimeoffpolicyuuidbalance) - Update employee time off hour balances
-* [PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivate](#putv1timeoffpoliciestimeoffpolicyuuiddeactivate) - Deactivate a time off policy
+* [Update](#update) - Update a time off policy
+* [GetAll](#getall) - Get all time off policies
+* [Create](#create) - Create a time off policy
+* [AddEmployees](#addemployees) - Add employees to a time off policy
+* [RemoveEmployees](#removeemployees) - Remove employees from a time off policy
+* [UpdateBalance](#updatebalance) - Update employee time off hour balances
+* [Deactivate](#deactivate) - Deactivate a time off policy
 
-## PostV1PayrollsPayrollIdCalculateAccruingTimeOffHours
+## CalculateAccruingTimeOffHours
 
 Returns a list of accruing time off for each time off policy associated with the employee.
 
@@ -38,7 +38,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TimeOffPolicies.PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursAsync(
+var res = await sdk.TimeOffPolicies.CalculateAccruingTimeOffHoursAsync(
     payrollId: "<id>",
     employeeId: "<id>",
     requestBody: new PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursRequestBody() {},
@@ -107,7 +107,7 @@ var res = await sdk.TimeOffPolicies.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutTimeOffPoliciesTimeOffPolicyUuid
+## Update
 
 Update a time off policy
 
@@ -122,7 +122,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TimeOffPolicies.PutTimeOffPoliciesTimeOffPolicyUuidAsync(
+var res = await sdk.TimeOffPolicies.UpdateAsync(
     timeOffPolicyUuid: "<id>",
     requestBody: new PutTimeOffPoliciesTimeOffPolicyUuidRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -150,7 +150,7 @@ var res = await sdk.TimeOffPolicies.PutTimeOffPoliciesTimeOffPolicyUuidAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## List
+## GetAll
 
 Get all time off policies for a company
 
@@ -164,7 +164,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TimeOffPolicies.ListAsync(
+var res = await sdk.TimeOffPolicies.GetAllAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -189,7 +189,7 @@ var res = await sdk.TimeOffPolicies.ListAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PostCompaniesCompanyUuidTimeOffPolicies
+## Create
 
 Create a time off policy
 
@@ -204,7 +204,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TimeOffPolicies.PostCompaniesCompanyUuidTimeOffPoliciesAsync(
+var res = await sdk.TimeOffPolicies.CreateAsync(
     companyUuid: "<id>",
     requestBody: new PostCompaniesCompanyUuidTimeOffPoliciesRequestBody() {
         Name = "<value>",
@@ -236,7 +236,7 @@ var res = await sdk.TimeOffPolicies.PostCompaniesCompanyUuidTimeOffPoliciesAsync
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployees
+## AddEmployees
 
 Add employees to a time off policy. Employees are required to have at least one job to be added to a time off policy. Accepts starting balances for non-unlimited policies
 
@@ -251,7 +251,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TimeOffPolicies.PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesAsync(
+var res = await sdk.TimeOffPolicies.AddEmployeesAsync(
     timeOffPolicyUuid: "<id>",
     requestBody: new PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -279,7 +279,7 @@ var res = await sdk.TimeOffPolicies.PutVersionTimeOffPoliciesTimeOffPolicyUuidAd
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployees
+## RemoveEmployees
 
 Remove employees from a time off policy
 
@@ -294,7 +294,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TimeOffPolicies.PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesAsync(
+var res = await sdk.TimeOffPolicies.RemoveEmployeesAsync(
     timeOffPolicyUuid: "<id>",
     requestBody: new PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -322,7 +322,7 @@ var res = await sdk.TimeOffPolicies.PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveE
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutVersionTimeOffPoliciesTimeOffPolicyUuidBalance
+## UpdateBalance
 
 Updates time off hours balances for employees for a time off policy
 
@@ -337,7 +337,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TimeOffPolicies.PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceAsync(
+var res = await sdk.TimeOffPolicies.UpdateBalanceAsync(
     timeOffPolicyUuid: "<id>",
     requestBody: new PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -365,7 +365,7 @@ var res = await sdk.TimeOffPolicies.PutVersionTimeOffPoliciesTimeOffPolicyUuidBa
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivate
+## Deactivate
 
 Deactivate a time off policy
 
@@ -379,7 +379,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TimeOffPolicies.PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivateAsync(
+var res = await sdk.TimeOffPolicies.DeactivateAsync(
     timeOffPolicyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

@@ -26,6 +26,30 @@ namespace GustoEmbedded
     {
 
         /// <summary>
+        /// Get all contractor bank accounts
+        /// 
+        /// <remarks>
+        /// Returns all contractor bank accounts.<br/>
+        /// <br/>
+        /// scope: `contractor_payment_methods:read`
+        /// </remarks>
+        /// </summary>
+        Task<GetV1ContractorsContractorUuidBankAccountsResponse> GetBankAccountsAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
+        /// Get a contractor&apos;s payment method
+        /// 
+        /// <remarks>
+        /// Fetches a contractor&apos;s payment method. A contractor payment method<br/>
+        /// describes how the payment should be split across the contractor&apos;s associated<br/>
+        /// bank accounts.<br/>
+        /// <br/>
+        /// scope: `contractor_payment_methods:read`
+        /// </remarks>
+        /// </summary>
+        Task<GetV1ContractorsContractorUuidPaymentMethodResponse> GetAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
         /// Update a contractor&apos;s payment method
         /// 
         /// <remarks>
@@ -42,10 +66,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -56,6 +80,178 @@ namespace GustoEmbedded
             _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
+        }
+
+        public async Task<GetV1ContractorsContractorUuidBankAccountsResponse> GetBankAccountsAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new GetV1ContractorsContractorUuidBankAccountsRequest()
+            {
+                ContractorUuid = contractorUuid,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/contractors/{contractor_uuid}/bank_accounts", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("get-v1-contractors-contractor_uuid-bank_accounts", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<List<ContractorBankAccount>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetV1ContractorsContractorUuidBankAccountsResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.ContractorBankAccountList = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<GetV1ContractorsContractorUuidPaymentMethodResponse> GetAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new GetV1ContractorsContractorUuidPaymentMethodRequest()
+            {
+                ContractorUuid = contractorUuid,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/contractors/{contractor_uuid}/payment_method", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("get-v1-contractors-contractor_uuid-payment_method", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.ContractorPaymentMethod>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetV1ContractorsContractorUuidPaymentMethodResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.ContractorPaymentMethod = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
         public async Task<PutV1ContractorsContractorIdPaymentMethodResponse> UpdateAsync(string contractorUuid, PutV1ContractorsContractorIdPaymentMethodRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)

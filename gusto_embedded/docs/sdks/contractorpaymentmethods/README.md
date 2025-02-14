@@ -1,17 +1,19 @@
-# EmployeeFederalTaxes
-(*EmployeeFederalTaxes*)
+# ContractorPaymentMethods
+(*ContractorPaymentMethods*)
 
 ## Overview
 
 ### Available Operations
 
-* [Update](#update) - Update an employee's federal taxes
+* [CreateBankAccount](#createbankaccount) - Create a contractor bank account
 
-## Update
+## CreateBankAccount
 
-Update attributes relevant for an employee's federal taxes.
+Creates a contractor bank account.
 
-scope: `employee_federal_taxes:write`
+Note: We currently only support one bank account per contractor. Using this endpoint on a contractor who already has a bank account will just replace it.
+
+scope: `contractor_payment_methods:write`
 
 ### Example Usage
 
@@ -22,10 +24,13 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeFederalTaxes.UpdateAsync(
-    employeeUuid: "<id>",
-    requestBody: new PutV1EmployeesEmployeeIdFederalTaxesRequestBody() {
-        Version = "<value>",
+var res = await sdk.ContractorPaymentMethods.CreateBankAccountAsync(
+    contractorUuid: "<id>",
+    requestBody: new PostV1ContractorsContractorUuidBankAccountsRequestBody() {
+        Name = "<value>",
+        RoutingNumber = "<value>",
+        AccountNumber = "<value>",
+        AccountType = PostV1ContractorsContractorUuidBankAccountsAccountType.Checking,
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -37,13 +42,13 @@ var res = await sdk.EmployeeFederalTaxes.UpdateAsync(
 
 | Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `EmployeeUuid`                                                                                                                                                                                                               | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |
-| `RequestBody`                                                                                                                                                                                                                | [PutV1EmployeesEmployeeIdFederalTaxesRequestBody](../../Models/Requests/PutV1EmployeesEmployeeIdFederalTaxesRequestBody.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `ContractorUuid`                                                                                                                                                                                                             | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the contractor                                                                                                                                                                                                   |
+| `RequestBody`                                                                                                                                                                                                                | [PostV1ContractorsContractorUuidBankAccountsRequestBody](../../Models/Requests/PostV1ContractorsContractorUuidBankAccountsRequestBody.md)                                                                                    | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
 
 ### Response
 
-**[PutV1EmployeesEmployeeIdFederalTaxesResponse](../../Models/Requests/PutV1EmployeesEmployeeIdFederalTaxesResponse.md)**
+**[PostV1ContractorsContractorUuidBankAccountsResponse](../../Models/Requests/PostV1ContractorsContractorUuidBankAccountsResponse.md)**
 
 ### Errors
 

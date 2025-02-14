@@ -22,34 +22,36 @@ namespace GustoEmbedded
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    public interface IForms
+    public interface IContractorPaymentMethods
     {
 
         /// <summary>
-        /// Get a contractor form
+        /// Create a contractor bank account
         /// 
         /// <remarks>
-        /// Get a contractor form<br/>
+        /// Creates a contractor bank account.<br/>
         /// <br/>
-        /// scope: `contractor_forms:read`
+        /// Note: We currently only support one bank account per contractor. Using this endpoint on a contractor who already has a bank account will just replace it.<br/>
+        /// <br/>
+        /// scope: `contractor_payment_methods:write`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorFormResponse> GetV1ContractorFormAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1ContractorsContractorUuidBankAccountsResponse> CreateBankAccountAsync(string contractorUuid, PostV1ContractorsContractorUuidBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
     }
 
-    public class Forms: IForms
+    public class ContractorPaymentMethods: IContractorPaymentMethods
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
 
-        public Forms(ISpeakeasyHttpClient client, Func<GustoEmbedded.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public ContractorPaymentMethods(ISpeakeasyHttpClient client, Func<GustoEmbedded.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _client = client;
             _securitySource = securitySource;
@@ -57,27 +59,33 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1ContractorFormResponse> GetV1ContractorFormAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1ContractorsContractorUuidBankAccountsResponse> CreateBankAccountAsync(string contractorUuid, PostV1ContractorsContractorUuidBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
-            var request = new GetV1ContractorFormRequest()
+            var request = new PostV1ContractorsContractorUuidBankAccountsRequest()
             {
                 ContractorUuid = contractorUuid,
-                FormId = formId,
+                RequestBody = requestBody,
                 XGustoAPIVersion = xGustoAPIVersion,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/contractors/{contractor_uuid}/forms/{form_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/contractors/{contractor_uuid}/bank_accounts", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-contractor-form", null, _securitySource);
+            var hookCtx = new HookContext("post-v1-contractors-contractor_uuid-bank_accounts", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -87,7 +95,7 @@ namespace GustoEmbedded
                 httpResponse = await _client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -113,12 +121,12 @@ namespace GustoEmbedded
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
+            if(responseStatusCode == 201)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Form1099>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetV1ContractorFormResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<ContractorBankAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new PostV1ContractorsContractorUuidBankAccountsResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -126,8 +134,18 @@ namespace GustoEmbedded
                             Request = httpRequest
                         }
                     };
-                    response.Form1099 = obj;
+                    response.ContractorBankAccount = obj;
                     return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);

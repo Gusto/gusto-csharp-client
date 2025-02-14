@@ -28,8 +28,8 @@ namespace GustoEmbedded
         public IIntrospection Introspection { get; }
         public ICompanies Companies { get; }
         public IInvoices Invoices { get; }
-        public ICompanyAttachment CompanyAttachment { get; }
         public ICompanyAttachments CompanyAttachments { get; }
+        public ICompanyAttachment CompanyAttachment { get; }
         public IFederalTaxDetails FederalTaxDetails { get; }
         public IIndustrySelection IndustrySelection { get; }
         public ISignatories Signatories { get; }
@@ -39,31 +39,23 @@ namespace GustoEmbedded
         public IExternalPayrolls ExternalPayrolls { get; }
         public IPaymentConfigs PaymentConfigs { get; }
         public IPaySchedules PaySchedules { get; }
-        public IPayScheduleAssignments PayScheduleAssignments { get; }
         public IEmployees Employees { get; }
+        public IHistoricalEmployees HistoricalEmployees { get; }
         public IDepartments Departments { get; }
         public IEmployeeEmployments EmployeeEmployments { get; }
-        public IEmployeeRehires EmployeeRehires { get; }
         public IEmployeeAddresses EmployeeAddresses { get; }
-        public IEmployeeWorkAddresses EmployeeWorkAddresses { get; }
         public IEmployeeTaxSetup EmployeeTaxSetup { get; }
-        public IEmployeeFederalTaxes EmployeeFederalTaxes { get; }
-        public IEmployeeTaxes EmployeeTaxes { get; }
-        public IEmployeeBankAccounts EmployeeBankAccounts { get; }
         public IEmployeePaymentMethod EmployeePaymentMethod { get; }
         public IEmployeePaymentMethods EmployeePaymentMethods { get; }
-        public IJobs Jobs { get; }
         public IJobsAndCompensations JobsAndCompensations { get; }
-        public ICompensations Compensations { get; }
         public IEarningTypes EarningTypes { get; }
         public IContractors Contractors { get; }
-        public IContractorBankAccounts ContractorBankAccounts { get; }
-        public IWebhookSubscriptions WebhookSubscriptions { get; }
+        public IContractorPaymentMethods ContractorPaymentMethods { get; }
+        public IContractorPaymentMethod ContractorPaymentMethod { get; }
         public IWebhooks Webhooks { get; }
         public IContractorForms ContractorForms { get; }
         public IContractorDocuments ContractorDocuments { get; }
         public IEmployeeForms EmployeeForms { get; }
-        public IContractorPaymentMethod ContractorPaymentMethod { get; }
         public IPayrolls Payrolls { get; }
         public ITimeOffPolicies TimeOffPolicies { get; }
         public IContractorPayments ContractorPayments { get; }
@@ -72,17 +64,15 @@ namespace GustoEmbedded
         public IGeneratedDocuments GeneratedDocuments { get; }
         public IReports Reports { get; }
         public ICompanyBenefits CompanyBenefits { get; }
-        public IBenefits Benefits { get; }
         public IEmployeeBenefits EmployeeBenefits { get; }
         public IGarnishments Garnishments { get; }
-        public II9Verifications I9Verifications { get; }
         public II9Verification I9Verification { get; }
         public ITaxRequirements TaxRequirements { get; }
         public IHolidayPayPolicies HolidayPayPolicies { get; }
         public INotifications Notifications { get; }
         public IEvents Events { get; }
         public IRecoveryCases RecoveryCases { get; }
-        public IACHTransactions ACHTransactions { get; }
+        public IAchTransactions AchTransactions { get; }
         public IWireInRequests WireInRequests { get; }
     }
 
@@ -150,10 +140,10 @@ namespace GustoEmbedded
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
@@ -161,8 +151,8 @@ namespace GustoEmbedded
         public IIntrospection Introspection { get; private set; }
         public ICompanies Companies { get; private set; }
         public IInvoices Invoices { get; private set; }
-        public ICompanyAttachment CompanyAttachment { get; private set; }
         public ICompanyAttachments CompanyAttachments { get; private set; }
+        public ICompanyAttachment CompanyAttachment { get; private set; }
         public IFederalTaxDetails FederalTaxDetails { get; private set; }
         public IIndustrySelection IndustrySelection { get; private set; }
         public ISignatories Signatories { get; private set; }
@@ -172,31 +162,23 @@ namespace GustoEmbedded
         public IExternalPayrolls ExternalPayrolls { get; private set; }
         public IPaymentConfigs PaymentConfigs { get; private set; }
         public IPaySchedules PaySchedules { get; private set; }
-        public IPayScheduleAssignments PayScheduleAssignments { get; private set; }
         public IEmployees Employees { get; private set; }
+        public IHistoricalEmployees HistoricalEmployees { get; private set; }
         public IDepartments Departments { get; private set; }
         public IEmployeeEmployments EmployeeEmployments { get; private set; }
-        public IEmployeeRehires EmployeeRehires { get; private set; }
         public IEmployeeAddresses EmployeeAddresses { get; private set; }
-        public IEmployeeWorkAddresses EmployeeWorkAddresses { get; private set; }
         public IEmployeeTaxSetup EmployeeTaxSetup { get; private set; }
-        public IEmployeeFederalTaxes EmployeeFederalTaxes { get; private set; }
-        public IEmployeeTaxes EmployeeTaxes { get; private set; }
-        public IEmployeeBankAccounts EmployeeBankAccounts { get; private set; }
         public IEmployeePaymentMethod EmployeePaymentMethod { get; private set; }
         public IEmployeePaymentMethods EmployeePaymentMethods { get; private set; }
-        public IJobs Jobs { get; private set; }
         public IJobsAndCompensations JobsAndCompensations { get; private set; }
-        public ICompensations Compensations { get; private set; }
         public IEarningTypes EarningTypes { get; private set; }
         public IContractors Contractors { get; private set; }
-        public IContractorBankAccounts ContractorBankAccounts { get; private set; }
-        public IWebhookSubscriptions WebhookSubscriptions { get; private set; }
+        public IContractorPaymentMethods ContractorPaymentMethods { get; private set; }
+        public IContractorPaymentMethod ContractorPaymentMethod { get; private set; }
         public IWebhooks Webhooks { get; private set; }
         public IContractorForms ContractorForms { get; private set; }
         public IContractorDocuments ContractorDocuments { get; private set; }
         public IEmployeeForms EmployeeForms { get; private set; }
-        public IContractorPaymentMethod ContractorPaymentMethod { get; private set; }
         public IPayrolls Payrolls { get; private set; }
         public ITimeOffPolicies TimeOffPolicies { get; private set; }
         public IContractorPayments ContractorPayments { get; private set; }
@@ -205,17 +187,15 @@ namespace GustoEmbedded
         public IGeneratedDocuments GeneratedDocuments { get; private set; }
         public IReports Reports { get; private set; }
         public ICompanyBenefits CompanyBenefits { get; private set; }
-        public IBenefits Benefits { get; private set; }
         public IEmployeeBenefits EmployeeBenefits { get; private set; }
         public IGarnishments Garnishments { get; private set; }
-        public II9Verifications I9Verifications { get; private set; }
         public II9Verification I9Verification { get; private set; }
         public ITaxRequirements TaxRequirements { get; private set; }
         public IHolidayPayPolicies HolidayPayPolicies { get; private set; }
         public INotifications Notifications { get; private set; }
         public IEvents Events { get; private set; }
         public IRecoveryCases RecoveryCases { get; private set; }
-        public IACHTransactions ACHTransactions { get; private set; }
+        public IAchTransactions AchTransactions { get; private set; }
         public IWireInRequests WireInRequests { get; private set; }
 
         public Gusto(string? companyAccessAuth = null, Func<string>? companyAccessAuthSource = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
@@ -264,10 +244,10 @@ namespace GustoEmbedded
             Invoices = new Invoices(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            CompanyAttachment = new CompanyAttachment(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             CompanyAttachments = new CompanyAttachments(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            CompanyAttachment = new CompanyAttachment(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             FederalTaxDetails = new FederalTaxDetails(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -297,10 +277,10 @@ namespace GustoEmbedded
             PaySchedules = new PaySchedules(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            PayScheduleAssignments = new PayScheduleAssignments(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             Employees = new Employees(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            HistoricalEmployees = new HistoricalEmployees(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Departments = new Departments(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -309,25 +289,10 @@ namespace GustoEmbedded
             EmployeeEmployments = new EmployeeEmployments(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            EmployeeRehires = new EmployeeRehires(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             EmployeeAddresses = new EmployeeAddresses(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            EmployeeWorkAddresses = new EmployeeWorkAddresses(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             EmployeeTaxSetup = new EmployeeTaxSetup(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            EmployeeFederalTaxes = new EmployeeFederalTaxes(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            EmployeeTaxes = new EmployeeTaxes(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            EmployeeBankAccounts = new EmployeeBankAccounts(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             EmployeePaymentMethod = new EmployeePaymentMethod(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -336,13 +301,7 @@ namespace GustoEmbedded
             EmployeePaymentMethods = new EmployeePaymentMethods(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            Jobs = new Jobs(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             JobsAndCompensations = new JobsAndCompensations(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Compensations = new Compensations(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             EarningTypes = new EarningTypes(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -351,10 +310,10 @@ namespace GustoEmbedded
             Contractors = new Contractors(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            ContractorBankAccounts = new ContractorBankAccounts(_client, _securitySource, _serverUrl, SDKConfiguration);
+            ContractorPaymentMethods = new ContractorPaymentMethods(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            WebhookSubscriptions = new WebhookSubscriptions(_client, _securitySource, _serverUrl, SDKConfiguration);
+            ContractorPaymentMethod = new ContractorPaymentMethod(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Webhooks = new Webhooks(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -367,9 +326,6 @@ namespace GustoEmbedded
 
 
             EmployeeForms = new EmployeeForms(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            ContractorPaymentMethod = new ContractorPaymentMethod(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Payrolls = new Payrolls(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -396,16 +352,10 @@ namespace GustoEmbedded
             CompanyBenefits = new CompanyBenefits(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            Benefits = new Benefits(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             EmployeeBenefits = new EmployeeBenefits(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Garnishments = new Garnishments(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            I9Verifications = new I9Verifications(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             I9Verification = new I9Verification(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -426,7 +376,7 @@ namespace GustoEmbedded
             RecoveryCases = new RecoveryCases(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            ACHTransactions = new ACHTransactions(_client, _securitySource, _serverUrl, SDKConfiguration);
+            AchTransactions = new AchTransactions(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             WireInRequests = new WireInRequests(_client, _securitySource, _serverUrl, SDKConfiguration);

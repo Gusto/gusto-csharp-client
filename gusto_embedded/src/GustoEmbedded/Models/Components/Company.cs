@@ -114,7 +114,7 @@ namespace GustoEmbedded.Models.Components
         /// The available company-wide compensation rates for the company.
         /// </summary>
         [JsonProperty("compensations")]
-        public Models.Components.Compensations? Compensations { get; set; }
+        public Compensations? Compensations { get; set; }
 
         /// <summary>
         /// The primary signatory of the company.

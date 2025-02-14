@@ -5,12 +5,13 @@
 
 ### Available Operations
 
-* [PostV1EmployeesEmployeeIdGarnishments](#postv1employeesemployeeidgarnishments) - Create a garnishment
+* [Create](#create) - Create a garnishment
+* [List](#list) - Get garnishments for an employee
 * [Get](#get) - Get a garnishment
-* [PutV1GarnishmentsGarnishmentId](#putv1garnishmentsgarnishmentid) - Update a garnishment
-* [GetV1GarnishmentsChildSupport](#getv1garnishmentschildsupport) - Get child support garnishment data
+* [Update](#update) - Update a garnishment
+* [GetChildSupportData](#getchildsupportdata) - Get child support garnishment data
 
-## PostV1EmployeesEmployeeIdGarnishments
+## Create
 
 Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments.
 
@@ -25,7 +26,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Garnishments.PostV1EmployeesEmployeeIdGarnishmentsAsync(
+var res = await sdk.Garnishments.CreateAsync(
     employeeId: "<id>",
     requestBody: new PostV1EmployeesEmployeeIdGarnishmentsRequestBody() {
         Amount = "<value>",
@@ -55,6 +56,49 @@ var res = await sdk.Garnishments.PostV1EmployeesEmployeeIdGarnishmentsAsync(
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
+
+## List
+
+Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments.
+
+scope: `garnishments:read`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.Garnishments.ListAsync(
+    employeeId: "<id>",
+    page: 7685.78D,
+    per: 5472.72D,
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |
+| `Page`                                                                                                                                                                                                                       | *double*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | The page that is requested. When unspecified, will load all objects unless endpoint forces pagination.                                                                                                                       |
+| `Per`                                                                                                                                                                                                                        | *double*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | Number of objects per page. For majority of endpoints will default to 25                                                                                                                                                     |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[GetV1EmployeesEmployeeIdGarnishmentsResponse](../../Models/Requests/GetV1EmployeesEmployeeIdGarnishmentsResponse.md)**
+
+### Errors
+
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
 ## Get
 
@@ -95,7 +139,7 @@ var res = await sdk.Garnishments.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1GarnishmentsGarnishmentId
+## Update
 
 Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments.
 
@@ -110,7 +154,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Garnishments.PutV1GarnishmentsGarnishmentIdAsync(
+var res = await sdk.Garnishments.UpdateAsync(
     garnishmentId: "<id>",
     requestBody: new PutV1GarnishmentsGarnishmentIdRequestBody() {
         Version = "<value>",
@@ -140,7 +184,7 @@ var res = await sdk.Garnishments.PutV1GarnishmentsGarnishmentIdAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetV1GarnishmentsChildSupport
+## GetChildSupportData
 
 Agency data and requirements to be used for creating child support garnishments
 
@@ -154,7 +198,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Garnishments.GetV1GarnishmentsChildSupportAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Garnishments.GetChildSupportDataAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```

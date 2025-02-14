@@ -1,17 +1,17 @@
-# Flows
-(*Flows*)
+# HistoricalEmployees
+(*HistoricalEmployees*)
 
 ## Overview
 
 ### Available Operations
 
-* [Create](#create) - Create a flow
+* [Update](#update) - Update a historical employee
 
-## Create
+## Update
 
-Generate a link to access a pre-built workflow in Gusto white-label UI. For security, all generated flows will expire within 1 hour of inactivity or 24 hours from creation time, whichever comes first.
+Update a historical employee, an employee that was previously dismissed from the company in the current year.
 
-scope: `flows:write`
+scope: `employees:manage`
 
 ### Example Usage
 
@@ -22,10 +22,24 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Flows.CreateAsync(
+var res = await sdk.HistoricalEmployees.UpdateAsync(
     companyUuid: "<id>",
-    requestBody: new PostV1CompanyFlowsRequestBody() {
-        FlowType = "<value>",
+    historicalEmployeeUuid: "<id>",
+    requestBody: new PutV1HistoricalEmployeesRequestBody() {
+        Version = "<value>",
+        FirstName = "Ruthe",
+        LastName = "Hegmann",
+        DateOfBirth = "2006-08-02",
+        Ssn = "<value>",
+        WorkAddress = new Models.Requests.WorkAddress() {},
+        HomeAddress = new PutV1HistoricalEmployeesHomeAddress() {
+            Street1 = "<value>",
+            City = "Kuhnworth",
+            State = "Arizona",
+            Zip = "43217-8347",
+        },
+        Termination = new Models.Requests.Termination() {},
+        Job = new Models.Requests.Job() {},
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -38,16 +52,16 @@ var res = await sdk.Flows.CreateAsync(
 | Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `CompanyUuid`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
-| `RequestBody`                                                                                                                                                                                                                | [PostV1CompanyFlowsRequestBody](../../Models/Requests/PostV1CompanyFlowsRequestBody.md)                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `HistoricalEmployeeUuid`                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the historical employee                                                                                                                                                                                          |
+| `RequestBody`                                                                                                                                                                                                                | [PutV1HistoricalEmployeesRequestBody](../../Models/Requests/PutV1HistoricalEmployeesRequestBody.md)                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                           | Update a historical employee.                                                                                                                                                                                                |
 | `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
 
 ### Response
 
-**[PostV1CompanyFlowsResponse](../../Models/Requests/PostV1CompanyFlowsResponse.md)**
+**[PutV1HistoricalEmployeesResponse](../../Models/Requests/PutV1HistoricalEmployeesResponse.md)**
 
 ### Errors
 
-| Error Type                                                 | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
-| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |

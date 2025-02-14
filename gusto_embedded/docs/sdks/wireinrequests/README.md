@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [GetWireInRequestsWireInRequestUuid](#getwireinrequestswireinrequestuuid) - Get a single Wire In Request
-* [PutWireInRequestsWireInRequestUuid](#putwireinrequestswireinrequestuuid) - Submit a wire in request
+* [Get](#get) - Get a single Wire In Request
+* [Submit](#submit) - Submit a wire in request
 * [List](#list) - Get all Wire In Requests for a company
 
-## GetWireInRequestsWireInRequestUuid
+## Get
 
 Fetch a Wire In Request.
 
@@ -23,7 +23,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.WireInRequests.GetWireInRequestsWireInRequestUuidAsync(
+var res = await sdk.WireInRequests.GetAsync(
     wireInRequestUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -48,7 +48,7 @@ var res = await sdk.WireInRequests.GetWireInRequestsWireInRequestUuidAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutWireInRequestsWireInRequestUuid
+## Submit
 
 Submit a wire in request for a payment
 
@@ -63,7 +63,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.WireInRequests.PutWireInRequestsWireInRequestUuidAsync(
+var res = await sdk.WireInRequests.SubmitAsync(
     wireInRequestUuid: "<id>",
     requestBody: new PutWireInRequestsWireInRequestUuidRequestBody() {
         DateSent = "<value>",

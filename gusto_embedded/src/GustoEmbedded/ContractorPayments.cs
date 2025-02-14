@@ -41,7 +41,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorPaymentsContractorPaymentUuidReceiptResponse> GetV1ContractorPaymentsContractorPaymentUuidReceiptAsync(string contractorPaymentUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorPaymentsContractorPaymentUuidReceiptResponse> GetReceiptAsync(string contractorPaymentUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Fund a contractor payment [DEMO]
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:run`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorPaymentsContractorPaymentUuidFundResponse> GetV1ContractorPaymentsContractorPaymentUuidFundAsync(string contractorPaymentUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorPaymentsContractorPaymentUuidFundResponse> FundAsync(string contractorPaymentUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Create a contractor payment
@@ -67,7 +67,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:run`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdContractorPaymentsResponse> PostV1CompaniesCompanyIdContractorPaymentsAsync(string companyId, PostV1CompaniesCompanyIdContractorPaymentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyIdContractorPaymentsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdContractorPaymentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get contractor payments for a company
@@ -78,7 +78,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdContractorPaymentsResponse> GetAsync(GetV1CompaniesCompanyIdContractorPaymentsRequest request);
+        Task<GetV1CompaniesCompanyIdContractorPaymentsResponse> ListAsync(GetV1CompaniesCompanyIdContractorPaymentsRequest request);
 
         /// <summary>
         /// Get a single contractor payment
@@ -88,7 +88,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdContractorPaymentContractorPaymentResponse> GetByIdAsync(string companyId, string contractorPaymentId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdContractorPaymentContractorPaymentResponse> GetAsync(string companyId, string contractorPaymentId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Cancel a contractor payment
@@ -112,17 +112,17 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetCompaniesCompanyUuidContractorPaymentsPreviewResponse> GetCompaniesCompanyUuidContractorPaymentsPreviewAsync(string companyUuid, GetCompaniesCompanyUuidContractorPaymentsPreviewRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<GetCompaniesCompanyUuidContractorPaymentsPreviewResponse> PreviewAsync(string companyUuid, GetCompaniesCompanyUuidContractorPaymentsPreviewRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class ContractorPayments: IContractorPayments
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -135,7 +135,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1ContractorPaymentsContractorPaymentUuidReceiptResponse> GetV1ContractorPaymentsContractorPaymentUuidReceiptAsync(string contractorPaymentUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorPaymentsContractorPaymentUuidReceiptResponse> GetReceiptAsync(string contractorPaymentUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorPaymentsContractorPaymentUuidReceiptRequest()
             {
@@ -221,7 +221,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorPaymentsContractorPaymentUuidFundResponse> GetV1ContractorPaymentsContractorPaymentUuidFundAsync(string contractorPaymentUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorPaymentsContractorPaymentUuidFundResponse> FundAsync(string contractorPaymentUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorPaymentsContractorPaymentUuidFundRequest()
             {
@@ -317,7 +317,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1CompaniesCompanyIdContractorPaymentsResponse> PostV1CompaniesCompanyIdContractorPaymentsAsync(string companyId, PostV1CompaniesCompanyIdContractorPaymentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyIdContractorPaymentsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdContractorPaymentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1CompaniesCompanyIdContractorPaymentsRequest()
             {
@@ -420,7 +420,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdContractorPaymentsResponse> GetAsync(GetV1CompaniesCompanyIdContractorPaymentsRequest request)
+        public async Task<GetV1CompaniesCompanyIdContractorPaymentsResponse> ListAsync(GetV1CompaniesCompanyIdContractorPaymentsRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_id}/contractor_payments", request);
@@ -501,7 +501,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdContractorPaymentContractorPaymentResponse> GetByIdAsync(string companyId, string contractorPaymentId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdContractorPaymentContractorPaymentResponse> GetAsync(string companyId, string contractorPaymentId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyIdContractorPaymentContractorPaymentRequest()
             {
@@ -677,7 +677,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetCompaniesCompanyUuidContractorPaymentsPreviewResponse> GetCompaniesCompanyUuidContractorPaymentsPreviewAsync(string companyUuid, GetCompaniesCompanyUuidContractorPaymentsPreviewRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetCompaniesCompanyUuidContractorPaymentsPreviewResponse> PreviewAsync(string companyUuid, GetCompaniesCompanyUuidContractorPaymentsPreviewRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetCompaniesCompanyUuidContractorPaymentsPreviewRequest()
             {

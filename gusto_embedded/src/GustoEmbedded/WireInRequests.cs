@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetWireInRequestsWireInRequestUuidResponse> GetWireInRequestsWireInRequestUuidAsync(string wireInRequestUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetWireInRequestsWireInRequestUuidResponse> GetAsync(string wireInRequestUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Submit a wire in request
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:run`
         /// </remarks>
         /// </summary>
-        Task<PutWireInRequestsWireInRequestUuidResponse> PutWireInRequestsWireInRequestUuidAsync(string wireInRequestUuid, PutWireInRequestsWireInRequestUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutWireInRequestsWireInRequestUuidResponse> SubmitAsync(string wireInRequestUuid, PutWireInRequestsWireInRequestUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get all Wire In Requests for a company
@@ -63,10 +63,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -79,7 +79,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetWireInRequestsWireInRequestUuidResponse> GetWireInRequestsWireInRequestUuidAsync(string wireInRequestUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetWireInRequestsWireInRequestUuidResponse> GetAsync(string wireInRequestUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetWireInRequestsWireInRequestUuidRequest()
             {
@@ -165,7 +165,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutWireInRequestsWireInRequestUuidResponse> PutWireInRequestsWireInRequestUuidAsync(string wireInRequestUuid, PutWireInRequestsWireInRequestUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutWireInRequestsWireInRequestUuidResponse> SubmitAsync(string wireInRequestUuid, PutWireInRequestsWireInRequestUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutWireInRequestsWireInRequestUuidRequest()
             {

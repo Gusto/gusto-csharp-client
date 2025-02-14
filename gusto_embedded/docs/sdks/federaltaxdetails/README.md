@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [GetV1CompaniesCompanyIdFederalTaxDetails](#getv1companiescompanyidfederaltaxdetails) - Get Federal Tax Details
-* [PutV1CompaniesCompanyIdFederalTaxDetails](#putv1companiescompanyidfederaltaxdetails) - Update Federal Tax Details
+* [Get](#get) - Get Federal Tax Details
+* [Update](#update) - Update Federal Tax Details
 
-## GetV1CompaniesCompanyIdFederalTaxDetails
+## Get
 
 Fetches attributes relevant for a company's federal taxes.
 
@@ -22,7 +22,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.FederalTaxDetails.GetV1CompaniesCompanyIdFederalTaxDetailsAsync(
+var res = await sdk.FederalTaxDetails.GetAsync(
     companyId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -47,7 +47,7 @@ var res = await sdk.FederalTaxDetails.GetV1CompaniesCompanyIdFederalTaxDetailsAs
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1CompaniesCompanyIdFederalTaxDetails
+## Update
 
 Updates attributes relevant for a company's federal taxes.
 This information is required is to onboard a company for use with Gusto Embedded Payroll.
@@ -63,7 +63,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.FederalTaxDetails.PutV1CompaniesCompanyIdFederalTaxDetailsAsync(
+var res = await sdk.FederalTaxDetails.UpdateAsync(
     companyId: "<id>",
     requestBody: new PutV1CompaniesCompanyIdFederalTaxDetailsRequestBody() {
         Version = "<value>",

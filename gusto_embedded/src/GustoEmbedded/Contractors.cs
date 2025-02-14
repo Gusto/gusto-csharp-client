@@ -24,7 +24,6 @@ namespace GustoEmbedded
 
     public interface IContractors
     {
-        public IForms Forms { get; }
 
         /// <summary>
         /// Create a contractor
@@ -35,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `contractors:manage`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyUuidContractorsResponse> PostV1CompaniesCompanyUuidContractorsAsync(string companyUuid, PostV1CompaniesCompanyUuidContractorsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyUuidContractorsResponse> CreateAsync(string companyUuid, PostV1CompaniesCompanyUuidContractorsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get contractors of a company
@@ -46,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `contractors:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyUuidContractorsResponse> GetV1CompaniesCompanyUuidContractorsAsync(GetV1CompaniesCompanyUuidContractorsRequest request);
+        Task<GetV1CompaniesCompanyUuidContractorsResponse> ListAsync(GetV1CompaniesCompanyUuidContractorsRequest request);
 
         /// <summary>
         /// Get a contractor
@@ -57,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `contractors:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorsContractorUuidResponse> GetV1ContractorsContractorUuidAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorsContractorUuidResponse> GetAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update a contractor
@@ -72,7 +71,7 @@ namespace GustoEmbedded
         /// &gt; Watch out when changing a contractor&apos;s type (when the contractor is finished onboarding). Specifically, changing contractor type can be dangerous since Gusto won’t recognize and file two separate 1099s if they simply change from business to individual
         /// </remarks>
         /// </summary>
-        Task<PutV1ContractorsContractorUuidResponse> PutV1ContractorsContractorUuidAsync(string contractorUuid, PutV1ContractorsContractorUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1ContractorsContractorUuidResponse> UpdateAsync(string contractorUuid, PutV1ContractorsContractorUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete a contractor
@@ -83,7 +82,7 @@ namespace GustoEmbedded
         /// scope: `contractors:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1ContractorsContractorUuidResponse> DeleteV1ContractorsContractorUuidAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1ContractorsContractorUuidResponse> DeleteAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get the contractor&apos;s onboarding status
@@ -125,7 +124,7 @@ namespace GustoEmbedded
         /// | `file_new_hire_report` | Contractor new hire report is generated. |
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorsContractorUuidOnboardingStatusResponse> GetV1ContractorsContractorUuidOnboardingStatusAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorsContractorUuidOnboardingStatusResponse> GetOnboardingStatusAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Change the contractor&apos;s onboarding status
@@ -146,7 +145,7 @@ namespace GustoEmbedded
         /// | Finish a contractor&apos;s onboarding | `admin_onboarding_review` or `self_onboarding_review` | `onboarding_completed` |
         /// </remarks>
         /// </summary>
-        Task<PutV1ContractorsContractorUuidOnboardingStatusResponse> PutV1ContractorsContractorUuidOnboardingStatusAsync(string contractorUuid, PutV1ContractorsContractorUuidOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1ContractorsContractorUuidOnboardingStatusResponse> UpdateOnboardingStatusAsync(string contractorUuid, PutV1ContractorsContractorUuidOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get a contractor address
@@ -157,7 +156,7 @@ namespace GustoEmbedded
         /// scope: `contractors:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorsContractorUuidAddressResponse> GetV1ContractorsContractorUuidAddressAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1ContractorsContractorUuidAddressResponse> GetAddressAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update a contractor&apos;s address
@@ -168,34 +167,20 @@ namespace GustoEmbedded
         /// scope: `contractors:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1ContractorsContractorUuidAddressResponse> PutV1ContractorsContractorUuidAddressAsync(string contractorUuid, PutV1ContractorsContractorUuidAddressRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Get a contractor&apos;s payment method
-        /// 
-        /// <remarks>
-        /// Fetches a contractor&apos;s payment method. A contractor payment method<br/>
-        /// describes how the payment should be split across the contractor&apos;s associated<br/>
-        /// bank accounts.<br/>
-        /// <br/>
-        /// scope: `contractor_payment_methods:read`
-        /// </remarks>
-        /// </summary>
-        Task<GetV1ContractorsContractorUuidPaymentMethodResponse> GetPaymentMethodAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1ContractorsContractorUuidAddressResponse> UpdateAddressAsync(string contractorUuid, PutV1ContractorsContractorUuidAddressRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Contractors: IContractors
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
-        public IForms Forms { get; private set; }
 
         public Contractors(ISpeakeasyHttpClient client, Func<GustoEmbedded.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
         {
@@ -203,10 +188,9 @@ namespace GustoEmbedded
             _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Forms = new Forms(_client, _securitySource, _serverUrl, SDKConfiguration);
         }
 
-        public async Task<PostV1CompaniesCompanyUuidContractorsResponse> PostV1CompaniesCompanyUuidContractorsAsync(string companyUuid, PostV1CompaniesCompanyUuidContractorsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyUuidContractorsResponse> CreateAsync(string companyUuid, PostV1CompaniesCompanyUuidContractorsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1CompaniesCompanyUuidContractorsRequest()
             {
@@ -309,7 +293,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyUuidContractorsResponse> GetV1CompaniesCompanyUuidContractorsAsync(GetV1CompaniesCompanyUuidContractorsRequest request)
+        public async Task<GetV1CompaniesCompanyUuidContractorsResponse> ListAsync(GetV1CompaniesCompanyUuidContractorsRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_uuid}/contractors", request);
@@ -390,7 +374,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorsContractorUuidResponse> GetV1ContractorsContractorUuidAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorsContractorUuidResponse> GetAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorsContractorUuidRequest()
             {
@@ -476,7 +460,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1ContractorsContractorUuidResponse> PutV1ContractorsContractorUuidAsync(string contractorUuid, PutV1ContractorsContractorUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1ContractorsContractorUuidResponse> UpdateAsync(string contractorUuid, PutV1ContractorsContractorUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1ContractorsContractorUuidRequest()
             {
@@ -579,7 +563,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1ContractorsContractorUuidResponse> DeleteV1ContractorsContractorUuidAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1ContractorsContractorUuidResponse> DeleteAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1ContractorsContractorUuidRequest()
             {
@@ -657,7 +641,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorsContractorUuidOnboardingStatusResponse> GetV1ContractorsContractorUuidOnboardingStatusAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorsContractorUuidOnboardingStatusResponse> GetOnboardingStatusAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorsContractorUuidOnboardingStatusRequest()
             {
@@ -743,7 +727,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1ContractorsContractorUuidOnboardingStatusResponse> PutV1ContractorsContractorUuidOnboardingStatusAsync(string contractorUuid, PutV1ContractorsContractorUuidOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1ContractorsContractorUuidOnboardingStatusResponse> UpdateOnboardingStatusAsync(string contractorUuid, PutV1ContractorsContractorUuidOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1ContractorsContractorUuidOnboardingStatusRequest()
             {
@@ -846,7 +830,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorsContractorUuidAddressResponse> GetV1ContractorsContractorUuidAddressAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1ContractorsContractorUuidAddressResponse> GetAddressAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1ContractorsContractorUuidAddressRequest()
             {
@@ -932,7 +916,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1ContractorsContractorUuidAddressResponse> PutV1ContractorsContractorUuidAddressAsync(string contractorUuid, PutV1ContractorsContractorUuidAddressRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1ContractorsContractorUuidAddressResponse> UpdateAddressAsync(string contractorUuid, PutV1ContractorsContractorUuidAddressRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1ContractorsContractorUuidAddressRequest()
             {
@@ -1019,92 +1003,6 @@ namespace GustoEmbedded
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<GetV1ContractorsContractorUuidPaymentMethodResponse> GetPaymentMethodAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new GetV1ContractorsContractorUuidPaymentMethodRequest()
-            {
-                ContractorUuid = contractorUuid,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/contractors/{contractor_uuid}/payment_method", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("get-v1-contractors-contractor_uuid-payment_method", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.ContractorPaymentMethod>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetV1ContractorsContractorUuidPaymentMethodResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.ContractorPaymentMethod = obj;
-                    return response;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);

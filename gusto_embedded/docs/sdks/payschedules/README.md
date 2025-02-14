@@ -5,17 +5,18 @@
 
 ### Available Operations
 
-* [PostV1CompaniesCompanyIdPaySchedules](#postv1companiescompanyidpayschedules) - Create a new pay schedule
-* [Get](#get) - Get the pay schedules for a company
-* [GetV1CompaniesCompanyIdPaySchedulesPreview](#getv1companiescompanyidpayschedulespreview) - Preview pay schedule dates
-* [GetById](#getbyid) - Get a pay schedule
-* [PutV1CompaniesCompanyIdPaySchedulesPayScheduleId](#putv1companiescompanyidpayschedulespayscheduleid) - Update a pay schedule
-* [ListPayPeriods](#listpayperiods) - Get pay periods for a company
-* [GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriods](#getv1companiescompanyidunprocessedterminationpayperiods) - Get termination pay periods for a company
-* [PostV1CompaniesCompanyIdPaySchedulesAssignmentPreview](#postv1companiescompanyidpayschedulesassignmentpreview) - Preview pay schedule assignments for a company
-* [PostV1CompaniesCompanyIdPaySchedulesAssign](#postv1companiescompanyidpayschedulesassign) - Assign pay schedules for a company
+* [Create](#create) - Create a new pay schedule
+* [GetAll](#getall) - Get the pay schedules for a company
+* [GetPreview](#getpreview) - Preview pay schedule dates
+* [Get](#get) - Get a pay schedule
+* [Update](#update) - Update a pay schedule
+* [GetPayPeriods](#getpayperiods) - Get pay periods for a company
+* [GetUnprocessedTerminationPeriods](#getunprocessedterminationperiods) - Get termination pay periods for a company
+* [GetAssignments](#getassignments) - Get pay schedule assignments for a company
+* [PreviewAssignment](#previewassignment) - Preview pay schedule assignments for a company
+* [Assign](#assign) - Assign pay schedules for a company
 
-## PostV1CompaniesCompanyIdPaySchedules
+## Create
 
 If a company does not have any pay schedules, this endpoint will create a single pay schedule and assign it to all employees. This is a common use case during company onboarding.
 
@@ -34,7 +35,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaySchedules.PostV1CompaniesCompanyIdPaySchedulesAsync(
+var res = await sdk.PaySchedules.CreateAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdPaySchedulesRequestBody() {
         Frequency = Frequency.EveryOtherWeek,
@@ -66,7 +67,7 @@ var res = await sdk.PaySchedules.PostV1CompaniesCompanyIdPaySchedulesAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Get
+## GetAll
 
 The pay schedule object in Gusto captures the details of when employees work and when they should be paid. A company can have multiple pay schedules.
 
@@ -80,10 +81,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaySchedules.GetAsync(
+var res = await sdk.PaySchedules.GetAllAsync(
     companyId: "<id>",
-    page: 7003.47D,
-    per: 5588.34D,
+    page: 4610.08D,
+    per: 592.15D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -109,7 +110,7 @@ var res = await sdk.PaySchedules.GetAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompaniesCompanyIdPaySchedulesPreview
+## GetPreview
 
 Provides a preview of a pay schedule with the specified parameters for the next 18 months.
 
@@ -126,12 +127,12 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 GetV1CompaniesCompanyIdPaySchedulesPreviewRequest req = new GetV1CompaniesCompanyIdPaySchedulesPreviewRequest() {
     CompanyId = "<id>",
-    Frequency = QueryParamFrequency.Monthly,
+    Frequency = QueryParamFrequency.EveryOtherWeek,
     AnchorPayDate = "2020-05-15",
     AnchorEndOfPayPeriod = "2020-05-08",
 };
 
-var res = await sdk.PaySchedules.GetV1CompaniesCompanyIdPaySchedulesPreviewAsync(req);
+var res = await sdk.PaySchedules.GetPreviewAsync(req);
 
 // handle response
 ```
@@ -152,7 +153,7 @@ var res = await sdk.PaySchedules.GetV1CompaniesCompanyIdPaySchedulesPreviewAsync
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetById
+## Get
 
 The pay schedule object in Gusto captures the details of when employees work and when they should be paid. A company can have multiple pay schedules.
 
@@ -166,7 +167,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaySchedules.GetByIdAsync(
+var res = await sdk.PaySchedules.GetAsync(
     companyId: "<id>",
     payScheduleId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -193,7 +194,7 @@ var res = await sdk.PaySchedules.GetByIdAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1CompaniesCompanyIdPaySchedulesPayScheduleId
+## Update
 
 Updates a pay schedule.
 
@@ -208,7 +209,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaySchedules.PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdAsync(
+var res = await sdk.PaySchedules.UpdateAsync(
     companyId: "<id>",
     payScheduleId: "<id>",
     requestBody: new PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdRequestBody() {
@@ -242,7 +243,7 @@ var res = await sdk.PaySchedules.PutV1CompaniesCompanyIdPaySchedulesPayScheduleI
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## ListPayPeriods
+## GetPayPeriods
 
 Pay periods are the foundation of payroll. Compensation, time & attendance, taxes, and expense reports all rely on when they happened. To begin submitting information for a given payroll, we need to agree on the time period.
 
@@ -267,7 +268,7 @@ GetV1CompaniesCompanyIdPayPeriodsRequest req = new GetV1CompaniesCompanyIdPayPer
     EndDate = "2020-01-31",
 };
 
-var res = await sdk.PaySchedules.ListPayPeriodsAsync(req);
+var res = await sdk.PaySchedules.GetPayPeriodsAsync(req);
 
 // handle response
 ```
@@ -288,7 +289,7 @@ var res = await sdk.PaySchedules.ListPayPeriodsAsync(req);
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriods
+## GetUnprocessedTerminationPeriods
 
 When a payroll admin terminates an employee and selects "Dismissal Payroll" as the employee's final payroll, their last pay period will appear on the list.
 
@@ -304,7 +305,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaySchedules.GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriodsAsync(
+var res = await sdk.PaySchedules.GetUnprocessedTerminationPeriodsAsync(
     companyId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -329,7 +330,46 @@ var res = await sdk.PaySchedules.GetV1CompaniesCompanyIdUnprocessedTerminationPa
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PostV1CompaniesCompanyIdPaySchedulesAssignmentPreview
+## GetAssignments
+
+This endpoint returns the current pay schedule assignment for a company, with pay schedule and employee/department mappings depending on the pay schedule type.
+
+scope: `pay_schedules:read`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.PaySchedules.GetAssignmentsAsync(
+    companyId: "<id>",
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CompanyId`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[GetV1CompaniesCompanyIdPaySchedulesAssignmentsResponse](../../Models/Requests/GetV1CompaniesCompanyIdPaySchedulesAssignmentsResponse.md)**
+
+### Errors
+
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
+
+## PreviewAssignment
 
 This endpoint returns the employee changes, including pay period and transition pay periods, for changing the pay schedule.
 
@@ -343,7 +383,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaySchedules.PostV1CompaniesCompanyIdPaySchedulesAssignmentPreviewAsync(
+var res = await sdk.PaySchedules.PreviewAssignmentAsync(
     companyId: "<id>",
     payScheduleAssignmentBody: new PayScheduleAssignmentBody() {
         Type = PayScheduleAssignmentBodyType.HourlySalaried,
@@ -373,7 +413,7 @@ var res = await sdk.PaySchedules.PostV1CompaniesCompanyIdPaySchedulesAssignmentP
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PostV1CompaniesCompanyIdPaySchedulesAssign
+## Assign
 
 This endpoint assigns employees to pay schedules based on the schedule type.
 For `by_employee` and `by_department` schedules, use the `partial_assignment` parameter to control the assignment scope. Set it to `true` for partial assignments (only some employees or departments at a time) and `false` for full assignments (all employees or departments at once).
@@ -388,10 +428,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaySchedules.PostV1CompaniesCompanyIdPaySchedulesAssignAsync(
+var res = await sdk.PaySchedules.AssignAsync(
     companyId: "<id>",
     payScheduleAssignmentBody: new PayScheduleAssignmentBody() {
-        Type = PayScheduleAssignmentBodyType.Single,
+        Type = PayScheduleAssignmentBodyType.ByDepartment,
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

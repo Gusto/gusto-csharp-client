@@ -5,15 +5,15 @@
 
 ### Available Operations
 
-* [GetCompaniesCompanyUuidHolidayPayPolicy](#getcompaniescompanyuuidholidaypaypolicy) - Get a company's holiday pay policy
-* [PostCompaniesCompanyUuidHolidayPayPolicy](#postcompaniescompanyuuidholidaypaypolicy) - Create a holiday pay policy for a company
-* [PutCompaniesCompanyUuidHolidayPayPolicy](#putcompaniescompanyuuidholidaypaypolicy) - Update a company's holiday pay policy
-* [DeleteCompaniesCompanyUuidHolidayPayPolicy](#deletecompaniescompanyuuidholidaypaypolicy) - Delete a company's holiday pay policy
-* [PutCompaniesCompanyUuidHolidayPayPolicyAdd](#putcompaniescompanyuuidholidaypaypolicyadd) - Add employees to a company's holiday pay policy
-* [PutCompaniesCompanyUuidHolidayPayPolicyRemove](#putcompaniescompanyuuidholidaypaypolicyremove) - Remove employees from a company's holiday pay policy
-* [Preview](#preview) - Preview a company's paid holidays
+* [Get](#get) - Get a company's holiday pay policy
+* [Create](#create) - Create a holiday pay policy for a company
+* [Update](#update) - Update a company's holiday pay policy
+* [Delete](#delete) - Delete a company's holiday pay policy
+* [AddEmployees](#addemployees) - Add employees to a company's holiday pay policy
+* [RemoveEmployees](#removeemployees) - Remove employees from a company's holiday pay policy
+* [PreviewPaidHolidays](#previewpaidholidays) - Preview a company's paid holidays
 
-## GetCompaniesCompanyUuidHolidayPayPolicy
+## Get
 
 Get a company's holiday pay policy
 
@@ -27,7 +27,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.HolidayPayPolicies.GetCompaniesCompanyUuidHolidayPayPolicyAsync(
+var res = await sdk.HolidayPayPolicies.GetAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -52,7 +52,7 @@ var res = await sdk.HolidayPayPolicies.GetCompaniesCompanyUuidHolidayPayPolicyAs
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PostCompaniesCompanyUuidHolidayPayPolicy
+## Create
 
 Create a holiday pay policy for a company
 
@@ -67,7 +67,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.HolidayPayPolicies.PostCompaniesCompanyUuidHolidayPayPolicyAsync(
+var res = await sdk.HolidayPayPolicies.CreateAsync(
     companyUuid: "<id>",
     requestBody: new PostCompaniesCompanyUuidHolidayPayPolicyRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -95,7 +95,7 @@ var res = await sdk.HolidayPayPolicies.PostCompaniesCompanyUuidHolidayPayPolicyA
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutCompaniesCompanyUuidHolidayPayPolicy
+## Update
 
 Update a company's holiday pay policy
 
@@ -110,7 +110,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.HolidayPayPolicies.PutCompaniesCompanyUuidHolidayPayPolicyAsync(
+var res = await sdk.HolidayPayPolicies.UpdateAsync(
     companyUuid: "<id>",
     requestBody: new PutCompaniesCompanyUuidHolidayPayPolicyRequestBody() {
         Version = "<value>",
@@ -140,7 +140,7 @@ var res = await sdk.HolidayPayPolicies.PutCompaniesCompanyUuidHolidayPayPolicyAs
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## DeleteCompaniesCompanyUuidHolidayPayPolicy
+## Delete
 
 Delete a company's holiday pay policy
 
@@ -154,7 +154,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.HolidayPayPolicies.DeleteCompaniesCompanyUuidHolidayPayPolicyAsync(
+var res = await sdk.HolidayPayPolicies.DeleteAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -180,7 +180,7 @@ var res = await sdk.HolidayPayPolicies.DeleteCompaniesCompanyUuidHolidayPayPolic
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutCompaniesCompanyUuidHolidayPayPolicyAdd
+## AddEmployees
 
 Add employees to a company's holiday pay policy
 
@@ -195,7 +195,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.HolidayPayPolicies.PutCompaniesCompanyUuidHolidayPayPolicyAddAsync(
+var res = await sdk.HolidayPayPolicies.AddEmployeesAsync(
     companyUuid: "<id>",
     requestBody: new PutCompaniesCompanyUuidHolidayPayPolicyAddRequestBody() {
         Version = "<value>",
@@ -225,7 +225,7 @@ var res = await sdk.HolidayPayPolicies.PutCompaniesCompanyUuidHolidayPayPolicyAd
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutCompaniesCompanyUuidHolidayPayPolicyRemove
+## RemoveEmployees
 
 Remove employees from a company's holiday pay policy
 
@@ -240,7 +240,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.HolidayPayPolicies.PutCompaniesCompanyUuidHolidayPayPolicyRemoveAsync(
+var res = await sdk.HolidayPayPolicies.RemoveEmployeesAsync(
     companyUuid: "<id>",
     requestBody: new PutCompaniesCompanyUuidHolidayPayPolicyRemoveRequestBody() {
         Version = "<value>",
@@ -270,7 +270,7 @@ var res = await sdk.HolidayPayPolicies.PutCompaniesCompanyUuidHolidayPayPolicyRe
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Preview
+## PreviewPaidHolidays
 
 Preview a company's paid holidays
 
@@ -285,7 +285,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.HolidayPayPolicies.PreviewAsync(
+var res = await sdk.HolidayPayPolicies.PreviewPaidHolidaysAsync(
     companyUuid: "<id>",
     requestBody: new GetCompaniesCompanyUuidPaidHolidaysRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

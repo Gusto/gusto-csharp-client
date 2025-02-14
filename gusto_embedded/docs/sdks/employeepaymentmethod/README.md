@@ -5,27 +5,37 @@
 
 ### Available Operations
 
-* [GetV1EmployeesEmployeeIdBankAccounts](#getv1employeesemployeeidbankaccounts) - Get all employee bank accounts
-* [GetV1EmployeesEmployeeIdPaymentMethod](#getv1employeesemployeeidpaymentmethod) - Get an employee's payment method
+* [Create](#create) - Create an employee bank account
+* [DeleteBankAccount](#deletebankaccount) - Delete an employee bank account
+* [UpdateBankAccount](#updatebankaccount) - Update an employee bank account
+* [Get](#get) - Get an employee's payment method
+* [Update](#update) - Update an employee's payment method
 
-## GetV1EmployeesEmployeeIdBankAccounts
+## Create
 
-Returns all employee bank accounts.
+Creates an employee bank account. An employee can have multiple
+bank accounts. Note that creating an employee bank account will also update
+the employee's payment method.
 
-scope: `employee_payment_methods:read`
+scope: `employee_payment_methods:write`
 
 ### Example Usage
 
 ```csharp
 using GustoEmbedded;
 using GustoEmbedded.Models.Components;
+using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeePaymentMethod.GetV1EmployeesEmployeeIdBankAccountsAsync(
+var res = await sdk.EmployeePaymentMethod.CreateAsync(
     employeeId: "<id>",
-    page: 2548.17D,
-    per: 374.41D,
+    requestBody: new PostV1EmployeesEmployeeIdBankAccountsRequestBody() {
+        Name = "<value>",
+        RoutingNumber = "<value>",
+        AccountNumber = "<value>",
+        AccountType = PostV1EmployeesEmployeeIdBankAccountsAccountType.Checking,
+    },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -37,13 +47,55 @@ var res = await sdk.EmployeePaymentMethod.GetV1EmployeesEmployeeIdBankAccountsAs
 | Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |
-| `Page`                                                                                                                                                                                                                       | *double*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | The page that is requested. When unspecified, will load all objects unless endpoint forces pagination.                                                                                                                       |
-| `Per`                                                                                                                                                                                                                        | *double*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | Number of objects per page. For majority of endpoints will default to 25                                                                                                                                                     |
+| `RequestBody`                                                                                                                                                                                                                | [PostV1EmployeesEmployeeIdBankAccountsRequestBody](../../Models/Requests/PostV1EmployeesEmployeeIdBankAccountsRequestBody.md)                                                                                                | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
 
 ### Response
 
-**[GetV1EmployeesEmployeeIdBankAccountsResponse](../../Models/Requests/GetV1EmployeesEmployeeIdBankAccountsResponse.md)**
+**[PostV1EmployeesEmployeeIdBankAccountsResponse](../../Models/Requests/PostV1EmployeesEmployeeIdBankAccountsResponse.md)**
+
+### Errors
+
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
+| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
+
+## DeleteBankAccount
+
+Deletes an employee bank account. To update an employee's bank
+account details, delete the bank account first and create a new one.
+
+scope: `employee_payment_methods:write`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.EmployeePaymentMethod.DeleteBankAccountAsync(
+    employeeId: "<id>",
+    bankAccountUuid: "<id>",
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |
+| `BankAccountUuid`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the bank account                                                                                                                                                                                                 |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse](../../Models/Requests/DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse.md)**
 
 ### Errors
 
@@ -51,7 +103,57 @@ var res = await sdk.EmployeePaymentMethod.GetV1EmployeesEmployeeIdBankAccountsAs
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1EmployeesEmployeeIdPaymentMethod
+## UpdateBankAccount
+
+Updates an employee bank account.
+
+scope: `employee_payment_methods:write`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+using GustoEmbedded.Models.Requests;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.EmployeePaymentMethod.UpdateBankAccountAsync(
+    employeeId: "<id>",
+    bankAccountUuid: "<id>",
+    requestBody: new PutV1EmployeesEmployeeIdBankAccountsRequestBody() {
+        Name = "<value>",
+        RoutingNumber = "<value>",
+        AccountNumber = "<value>",
+        AccountType = PutV1EmployeesEmployeeIdBankAccountsAccountType.Checking,
+    },
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |
+| `BankAccountUuid`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the bank account                                                                                                                                                                                                 |
+| `RequestBody`                                                                                                                                                                                                                | [PutV1EmployeesEmployeeIdBankAccountsRequestBody](../../Models/Requests/PutV1EmployeesEmployeeIdBankAccountsRequestBody.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[PutV1EmployeesEmployeeIdBankAccountsResponse](../../Models/Requests/PutV1EmployeesEmployeeIdBankAccountsResponse.md)**
+
+### Errors
+
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
+| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
+
+## Get
 
 Fetches an employee's payment method. An employee payment method
 describes how the payment should be split across the employee's associated
@@ -67,7 +169,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeePaymentMethod.GetV1EmployeesEmployeeIdPaymentMethodAsync(
+var res = await sdk.EmployeePaymentMethod.GetAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -91,3 +193,50 @@ var res = await sdk.EmployeePaymentMethod.GetV1EmployeesEmployeeIdPaymentMethodA
 | Error Type                               | Status Code                              | Content Type                             |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
+
+## Update
+
+Updates an employee's payment method. Note that creating an employee
+bank account will also update the employee's payment method.
+
+scope: `employee_payment_methods:write`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+using GustoEmbedded.Models.Requests;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.EmployeePaymentMethod.UpdateAsync(
+    employeeId: "<id>",
+    requestBody: new PutV1EmployeesEmployeeIdPaymentMethodRequestBody() {
+        Version = "<value>",
+        Type = GustoEmbedded.Models.Requests.Type.Check,
+    },
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |
+| `RequestBody`                                                                                                                                                                                                                | [PutV1EmployeesEmployeeIdPaymentMethodRequestBody](../../Models/Requests/PutV1EmployeesEmployeeIdPaymentMethodRequestBody.md)                                                                                                | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[PutV1EmployeesEmployeeIdPaymentMethodResponse](../../Models/Requests/PutV1EmployeesEmployeeIdPaymentMethodResponse.md)**
+
+### Errors
+
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
+| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |

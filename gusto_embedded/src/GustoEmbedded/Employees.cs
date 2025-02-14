@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesResponse> PostV1EmployeesAsync(string companyId, PostV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesResponse> CreateAsync(string companyId, PostV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get employees of a company
@@ -56,18 +56,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PostV1HistoricalEmployeesResponse> PostV1HistoricalEmployeesAsync(string companyUuid, HistoricalEmployeeBody historicalEmployeeBody, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Update a historical employee
-        /// 
-        /// <remarks>
-        /// Update a historical employee, an employee that was previously dismissed from the company in the current year.<br/>
-        /// <br/>
-        /// scope: `employees:manage`
-        /// </remarks>
-        /// </summary>
-        Task<PutV1HistoricalEmployeesResponse> PutV1HistoricalEmployeesAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1HistoricalEmployeesResponse> CreateHistoricalAsync(string companyUuid, HistoricalEmployeeBody historicalEmployeeBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get an employee
@@ -90,7 +79,7 @@ namespace GustoEmbedded
         /// scope: `employees:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesResponse> PutV1EmployeesAsync(string employeeId, PutV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesResponse> UpdateAsync(string employeeId, PutV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete an onboarding employee
@@ -103,7 +92,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1EmployeeResponse> DeleteV1EmployeeAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1EmployeeResponse> DeleteAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get an employee&apos;s custom fields
@@ -114,7 +103,7 @@ namespace GustoEmbedded
         /// scope: `employees:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdCustomFieldsResponse> GetV1EmployeesEmployeeIdCustomFieldsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdCustomFieldsResponse> GetCustomFieldsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update an employee&apos;s onboarding documents config
@@ -125,7 +114,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdOnboardingDocumentsConfigResponse> PutV1EmployeesEmployeeIdOnboardingDocumentsConfigAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesEmployeeIdOnboardingDocumentsConfigResponse> UpdateOnboardingDocumentsConfigAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get the employee&apos;s onboarding status
@@ -172,7 +161,7 @@ namespace GustoEmbedded
         /// | `admin_review` | Admin reviews &amp; confirms employee details (only required for Employee self-onboarding) |
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdOnboardingStatusResponse> GetV1EmployeesEmployeeIdOnboardingStatusAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdOnboardingStatusResponse> GetOnboardingStatusAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update the employee&apos;s onboarding status
@@ -192,7 +181,7 @@ namespace GustoEmbedded
         /// | Finish an employee&apos;s onboarding | `admin_onboarding_incomplete` or `self_onboarding_awaiting_admin_review` | `onboarding_completed` |
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdOnboardingStatusResponse> PutV1EmployeesEmployeeIdOnboardingStatusAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesEmployeeIdOnboardingStatusResponse> UpdateOnboardingStatusAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get employee time off activities
@@ -203,64 +192,17 @@ namespace GustoEmbedded
         /// scope: `employee_time_off_activities:read`
         /// </remarks>
         /// </summary>
-        Task<GetVersionEmployeesTimeOffActivitiesResponse> GetVersionEmployeesTimeOffActivitiesAsync(string employeeUuid, string timeOffType, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Get terminations for an employee
-        /// 
-        /// <remarks>
-        /// Terminations are created whenever an employee is scheduled to leave the company. The only things required are an effective date (their last day of work) and whether they should receive their wages in a one-off termination payroll or with the rest of the company.<br/>
-        /// <br/>
-        /// Note that some states require employees to receive their final wages within 24 hours (unless they consent otherwise,) in which case running a one-off payroll may be the only option.<br/>
-        /// <br/>
-        /// scope: `employments:read`
-        /// </remarks>
-        /// </summary>
-        Task<GetV1EmployeesEmployeeIdTerminationsResponse> GetTerminationsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Delete an employee bank account
-        /// 
-        /// <remarks>
-        /// Deletes an employee bank account. To update an employee&apos;s bank<br/>
-        /// account details, delete the bank account first and create a new one.<br/>
-        /// <br/>
-        /// scope: `employee_payment_methods:write`
-        /// </remarks>
-        /// </summary>
-        Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Create a job
-        /// 
-        /// <remarks>
-        /// Create a job.<br/>
-        /// <br/>
-        /// scope: `jobs:write`
-        /// </remarks>
-        /// </summary>
-        Task<PostV1JobsJobIdResponse> PostV1JobsJobIdAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
-
-        /// <summary>
-        /// Get garnishments for an employee
-        /// 
-        /// <remarks>
-        /// Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments.<br/>
-        /// <br/>
-        /// scope: `garnishments:read`
-        /// </remarks>
-        /// </summary>
-        Task<GetV1EmployeesEmployeeIdGarnishmentsResponse> GetGarnishmentsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetVersionEmployeesTimeOffActivitiesResponse> GetTimeOffActivitiesAsync(string employeeUuid, string timeOffType, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Employees: IEmployees
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -273,7 +215,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1EmployeesResponse> PostV1EmployeesAsync(string companyId, PostV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesResponse> CreateAsync(string companyId, PostV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1EmployeesRequest()
             {
@@ -457,7 +399,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1HistoricalEmployeesResponse> PostV1HistoricalEmployeesAsync(string companyUuid, HistoricalEmployeeBody historicalEmployeeBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1HistoricalEmployeesResponse> CreateHistoricalAsync(string companyUuid, HistoricalEmployeeBody historicalEmployeeBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1HistoricalEmployeesRequest()
             {
@@ -544,100 +486,6 @@ namespace GustoEmbedded
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<PutV1HistoricalEmployeesResponse> PutV1HistoricalEmployeesAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new PutV1HistoricalEmployeesRequest()
-            {
-                CompanyUuid = companyUuid,
-                HistoricalEmployeeUuid = historicalEmployeeUuid,
-                RequestBody = requestBody,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_uuid}/historical_employees/{historical_employee_uuid}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("put-v1-historical_employees", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Employee>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new PutV1HistoricalEmployeesResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.Employee = obj;
-                    return response;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
@@ -741,7 +589,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesResponse> PutV1EmployeesAsync(string employeeId, PutV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesResponse> UpdateAsync(string employeeId, PutV1EmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeesRequest()
             {
@@ -844,7 +692,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1EmployeeResponse> DeleteV1EmployeeAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1EmployeeResponse> DeleteAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1EmployeeRequest()
             {
@@ -932,7 +780,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdCustomFieldsResponse> GetV1EmployeesEmployeeIdCustomFieldsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdCustomFieldsResponse> GetCustomFieldsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1EmployeesEmployeeIdCustomFieldsRequest()
             {
@@ -1020,7 +868,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdOnboardingDocumentsConfigResponse> PutV1EmployeesEmployeeIdOnboardingDocumentsConfigAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesEmployeeIdOnboardingDocumentsConfigResponse> UpdateOnboardingDocumentsConfigAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequest()
             {
@@ -1113,7 +961,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdOnboardingStatusResponse> GetV1EmployeesEmployeeIdOnboardingStatusAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdOnboardingStatusResponse> GetOnboardingStatusAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1EmployeesEmployeeIdOnboardingStatusRequest()
             {
@@ -1199,7 +1047,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdOnboardingStatusResponse> PutV1EmployeesEmployeeIdOnboardingStatusAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesEmployeeIdOnboardingStatusResponse> UpdateOnboardingStatusAsync(string employeeId, PutV1EmployeesEmployeeIdOnboardingStatusRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeesEmployeeIdOnboardingStatusRequest()
             {
@@ -1302,7 +1150,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetVersionEmployeesTimeOffActivitiesResponse> GetVersionEmployeesTimeOffActivitiesAsync(string employeeUuid, string timeOffType, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetVersionEmployeesTimeOffActivitiesResponse> GetTimeOffActivitiesAsync(string employeeUuid, string timeOffType, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetVersionEmployeesTimeOffActivitiesRequest()
             {
@@ -1372,362 +1220,6 @@ namespace GustoEmbedded
                         }
                     };
                     response.TimeOffActivity = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<GetV1EmployeesEmployeeIdTerminationsResponse> GetTerminationsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new GetV1EmployeesEmployeeIdTerminationsRequest()
-            {
-                EmployeeId = employeeId,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/terminations", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("get-v1-employees-employee_id-terminations", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<Models.Components.Termination>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetV1EmployeesEmployeeIdTerminationsResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.TerminationList = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdRequest()
-            {
-                EmployeeId = employeeId,
-                BankAccountUuid = bankAccountUuid,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/bank_accounts/{bank_account_uuid}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("delete-v1-employees-employee_id-bank_accounts-bank_account_id", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 204)
-            {                
-                return new DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse()
-                {
-                    HttpMeta = new Models.Components.HTTPMetadata()
-                    {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    }
-                };
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<PostV1JobsJobIdResponse> PostV1JobsJobIdAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new PostV1JobsJobIdRequest()
-            {
-                EmployeeId = employeeId,
-                RequestBody = requestBody,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/jobs", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("post-v1-jobs-job_id", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 201)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.Job>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new PostV1JobsJobIdResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.Job = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<GetV1EmployeesEmployeeIdGarnishmentsResponse> GetGarnishmentsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
-        {
-            var request = new GetV1EmployeesEmployeeIdGarnishmentsRequest()
-            {
-                EmployeeId = employeeId,
-                Page = page,
-                Per = per,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/garnishments", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("get-v1-employees-employee_id-garnishments", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<Garnishment>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetV1EmployeesEmployeeIdGarnishmentsResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.GarnishmentList = obj;
                     return response;
                 }
 

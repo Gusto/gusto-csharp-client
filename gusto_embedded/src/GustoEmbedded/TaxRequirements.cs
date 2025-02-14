@@ -74,7 +74,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyUuidTaxRequirementsStateResponse> GetForStateAsync(string companyUuid, string state, bool? scheduling = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyUuidTaxRequirementsStateResponse> GetAsync(string companyUuid, string state, bool? scheduling = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update State Tax Requirements
@@ -96,17 +96,17 @@ namespace GustoEmbedded
         /// scope: `company_tax_requirements:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyUuidTaxRequirementsResponse> ListAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyUuidTaxRequirementsResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class TaxRequirements: ITaxRequirements
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -119,7 +119,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1CompaniesCompanyUuidTaxRequirementsStateResponse> GetForStateAsync(string companyUuid, string state, bool? scheduling = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyUuidTaxRequirementsStateResponse> GetAsync(string companyUuid, string state, bool? scheduling = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyUuidTaxRequirementsStateRequest()
             {
@@ -303,7 +303,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyUuidTaxRequirementsResponse> ListAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyUuidTaxRequirementsResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyUuidTaxRequirementsRequest()
             {

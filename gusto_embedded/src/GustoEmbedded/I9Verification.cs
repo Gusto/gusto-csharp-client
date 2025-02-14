@@ -26,6 +26,48 @@ namespace GustoEmbedded
     {
 
         /// <summary>
+        /// Get an employee&apos;s I-9 authorization
+        /// 
+        /// <remarks>
+        /// An employee&apos;s I-9 authorization stores information about an employee&apos;s authorization status and I-9 signatures, information required to filled out the Form I-9 for employment eligibility verification.<br/>
+        /// <br/>
+        /// **NOTE:** The `form_uuid` in responses from this endpoint can be used to retrieve the PDF version of the I-9. See the &quot;get employee form PDF&quot; request for more details.<br/>
+        /// <br/>
+        /// scope: `i9_authorizations:read`
+        /// </remarks>
+        /// </summary>
+        Task<GetV1EmployeesEmployeeIdI9AuthorizationResponse> GetAuthorizationAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
+        /// Create or update an employee&apos;s I-9 authorization
+        /// 
+        /// <remarks>
+        /// An employee&apos;s I-9 authorization stores information about an employee&apos;s authorization status, as well as signatures and other information required to complete the Form I-9 for employment eligibility verification.<br/>
+        /// <br/>
+        /// If the version is supplied and the employee I-9 authorization exists, this endpoint acts as an update. Otherwise, it will create an employee I-9 authorization.<br/>
+        /// <br/>
+        /// Validations on this endpoint are conditional:<br/>
+        /// <br/>
+        ///   * `document_type` may be required, depending on `authorization_status`.<br/>
+        ///   * Valid formats for `document_number` vary, depending on `document_type`.<br/>
+        ///   * `country` is only allowed with `document_type: &apos;foreign_passport&apos;`.<br/>
+        ///   * `expiration_date` is only allowed with `authorization_status: &apos;alien&apos;`.<br/>
+        /// <br/>
+        /// &gt; ℹ️ Unneeded information is automatically removed during updates.<br/>
+        /// &gt;<br/>
+        /// &gt; If an update causes some formerly-required fields to be unneeded, the now-unneeded data will be removed automatically.<br/>
+        /// &gt;<br/>
+        /// &gt; **Example:** Updating `authorization_status` from `alien` to `citizen` will cause any data in `document_type`, `document_number`, `country`, and `expiration_date` to be removed, since these fields are unused for `authorization_status:&apos;citizen&apos;`.<br/>
+        /// <br/>
+        /// Detailed instructions for completing Form I-9 can be found at https://www.uscis.gov/sites/default/files/document/forms/i-9instr.pdf<br/>
+        /// <br/>
+        /// scope: `i9_authorizations:write`<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        Task<PutV1EmployeesEmployeeIdI9AuthorizationResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
         /// Get an employee&apos;s I-9 verification document options
         /// 
         /// <remarks>
@@ -34,7 +76,7 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse> GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse> GetDocumentOptionsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get an employee&apos;s I-9 verification documents
@@ -45,7 +87,7 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> GetEmployeeDocumentsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> GetDocumentsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Create an employee&apos;s I-9 authorization verification documents
@@ -63,7 +105,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> PutV1EmployeesEmployeeIdI9AuthorizationDocumentsAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> CreateDocumentsAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete an employee&apos;s I-9 verification document
@@ -74,7 +116,7 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdResponse> DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdAsync(string employeeId, string documentId, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdResponse> DeleteDocumentAsync(string employeeId, string documentId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Employer sign an employee&apos;s Form I-9
@@ -85,17 +127,17 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:manage`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignResponse> PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignResponse> EmployerSignAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class I9Verification: II9Verification
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -108,7 +150,196 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse> GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationResponse> GetAuthorizationAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new GetV1EmployeesEmployeeIdI9AuthorizationRequest()
+            {
+                EmployeeId = employeeId,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/i9_authorization", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("get-v1-employees-employee_id-i9_authorization", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<I9Authorization>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetV1EmployeesEmployeeIdI9AuthorizationResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.I9Authorization = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new PutV1EmployeesEmployeeIdI9AuthorizationRequest()
+            {
+                EmployeeId = employeeId,
+                RequestBody = requestBody,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/i9_authorization", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("put-v1-employees-employee_id-i9_authorization", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<I9Authorization>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new PutV1EmployeesEmployeeIdI9AuthorizationResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.I9Authorization = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse> GetDocumentOptionsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsRequest()
             {
@@ -194,7 +425,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> GetEmployeeDocumentsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> GetDocumentsAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1EmployeesEmployeeIdI9AuthorizationDocumentsRequest()
             {
@@ -280,7 +511,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> PutV1EmployeesEmployeeIdI9AuthorizationDocumentsAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> CreateDocumentsAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequest()
             {
@@ -383,7 +614,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdResponse> DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdAsync(string employeeId, string documentId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdResponse> DeleteDocumentAsync(string employeeId, string documentId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdRequest()
             {
@@ -462,7 +693,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignResponse> PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignResponse> EmployerSignAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequest()
             {
