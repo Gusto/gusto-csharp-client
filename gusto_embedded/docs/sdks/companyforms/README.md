@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [GetV1CompanyForms](#getv1companyforms) - Get all company forms
-* [GetV1CompanyForm](#getv1companyform) - Get a company form
-* [GetV1CompanyFormPdf](#getv1companyformpdf) - Get a company form pdf
-* [PutV1CompanyFormSign](#putv1companyformsign) - Sign a company form
+* [GetAll](#getall) - Get all company forms
+* [Get](#get) - Get a company form
+* [GetPdf](#getpdf) - Get a company form pdf
+* [Sign](#sign) - Sign a company form
 
-## GetV1CompanyForms
+## GetAll
 
 Get a list of all company's forms
 
@@ -24,7 +24,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyForms.GetV1CompanyFormsAsync(
+var res = await sdk.CompanyForms.GetAllAsync(
     companyId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -49,7 +49,7 @@ var res = await sdk.CompanyForms.GetV1CompanyFormsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompanyForm
+## Get
 
 Get a company form
 
@@ -63,7 +63,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyForms.GetV1CompanyFormAsync(
+var res = await sdk.CompanyForms.GetAsync(
     formId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -88,7 +88,7 @@ var res = await sdk.CompanyForms.GetV1CompanyFormAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompanyFormPdf
+## GetPdf
 
 Get the link to the form PDF
 
@@ -102,7 +102,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyForms.GetV1CompanyFormPdfAsync(
+var res = await sdk.CompanyForms.GetPdfAsync(
     formId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -127,7 +127,7 @@ var res = await sdk.CompanyForms.GetV1CompanyFormPdfAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1CompanyFormSign
+## Sign
 
 Sign a company form. Company forms must be signed by the company signatory.
 
@@ -142,7 +142,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyForms.PutV1CompanyFormSignAsync(
+var res = await sdk.CompanyForms.SignAsync(
     formId: "<id>",
     requestBody: new PutV1CompanyFormSignRequestBody() {
         SignatureText = "<value>",

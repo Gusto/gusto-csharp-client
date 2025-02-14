@@ -1,21 +1,21 @@
-speakeasyVersion: 1.488.0
+speakeasyVersion: 1.492.0
 sources:
     Gusto-OAS:
         sourceNamespace: gusto-oas
-        sourceRevisionDigest: sha256:741451508748c2768e042585f9d2013d628e8aecd8103aad420bcb82599dc9f0
-        sourceBlobDigest: sha256:d1f934c113ccb0e7ee7c5f4bdd24e547de11129e4f53a662aeab9bd8e1053433
+        sourceRevisionDigest: sha256:cf1b628c9e2812c91731324cf759691072c4acc7078347bbe8b324f03f873267
+        sourceBlobDigest: sha256:86bc8edd2981e365de5738558d2ea2380fcbe10888897c5e35ca5a46ff902b86
         tags:
             - latest
-            - speakeasy-sdk-regen-1739230463
+            - speakeasy-sdk-regen-1739318818
             - "2024-04-01"
 targets:
     gusto:
         source: Gusto-OAS
         sourceNamespace: gusto-oas
-        sourceRevisionDigest: sha256:741451508748c2768e042585f9d2013d628e8aecd8103aad420bcb82599dc9f0
-        sourceBlobDigest: sha256:d1f934c113ccb0e7ee7c5f4bdd24e547de11129e4f53a662aeab9bd8e1053433
+        sourceRevisionDigest: sha256:cf1b628c9e2812c91731324cf759691072c4acc7078347bbe8b324f03f873267
+        sourceBlobDigest: sha256:86bc8edd2981e365de5738558d2ea2380fcbe10888897c5e35ca5a46ff902b86
         codeSamplesNamespace: gusto-oas-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:532d6faa198703198efd6e51f23cb2f246f9544c08b25c519768a2f23b1be900
+        codeSamplesRevisionDigest: sha256:181ae5b12b70c265ff73037d1230680d63dbbec22281257822d2c05deef7d38d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -26,7 +26,9 @@ workflow:
                   authHeader: Authorization
                   authSecret: $openapi_doc_auth_token
             overlays:
-                - location: gusto_embedded/.speakeasy/speakeasy-modifications-overlay.yaml
+                - location: https://raw.githubusercontent.com/Gusto/Gusto-Partner-API/refs/heads/main/.speakeasy/speakeasy-modifications-overlay.yaml
+                  authHeader: Authorization
+                  authSecret: $openapi_doc_auth_token
             registry:
                 location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-oas
     targets:

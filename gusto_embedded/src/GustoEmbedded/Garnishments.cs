@@ -34,7 +34,18 @@ namespace GustoEmbedded
         /// scope: `garnishments:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> PostV1EmployeesEmployeeIdGarnishmentsAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
+        /// Get garnishments for an employee
+        /// 
+        /// <remarks>
+        /// Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments.<br/>
+        /// <br/>
+        /// scope: `garnishments:read`
+        /// </remarks>
+        /// </summary>
+        Task<GetV1EmployeesEmployeeIdGarnishmentsResponse> ListAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get a garnishment
@@ -56,7 +67,7 @@ namespace GustoEmbedded
         /// scope: `garnishments:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1GarnishmentsGarnishmentIdResponse> PutV1GarnishmentsGarnishmentIdAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1GarnishmentsGarnishmentIdResponse> UpdateAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get child support garnishment data
@@ -67,17 +78,17 @@ namespace GustoEmbedded
         /// scope: `garnishments:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1GarnishmentsChildSupportResponse> GetV1GarnishmentsChildSupportAsync(VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1GarnishmentsChildSupportResponse> GetChildSupportDataAsync(VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Garnishments: IGarnishments
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -90,7 +101,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> PostV1EmployeesEmployeeIdGarnishmentsAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1EmployeesEmployeeIdGarnishmentsRequest()
             {
@@ -193,6 +204,94 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
+        public async Task<GetV1EmployeesEmployeeIdGarnishmentsResponse> ListAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new GetV1EmployeesEmployeeIdGarnishmentsRequest()
+            {
+                EmployeeId = employeeId,
+                Page = page,
+                Per = per,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/garnishments", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("get-v1-employees-employee_id-garnishments", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<List<Garnishment>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetV1EmployeesEmployeeIdGarnishmentsResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.GarnishmentList = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
         public async Task<GetV1GarnishmentsGarnishmentIdResponse> GetAsync(string garnishmentId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1GarnishmentsGarnishmentIdRequest()
@@ -279,7 +378,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1GarnishmentsGarnishmentIdResponse> PutV1GarnishmentsGarnishmentIdAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1GarnishmentsGarnishmentIdResponse> UpdateAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1GarnishmentsGarnishmentIdRequest()
             {
@@ -382,7 +481,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1GarnishmentsChildSupportResponse> GetV1GarnishmentsChildSupportAsync(VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1GarnishmentsChildSupportResponse> GetChildSupportDataAsync(VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1GarnishmentsChildSupportRequest()
             {

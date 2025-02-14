@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [PostCompaniesCompanyUuidReports](#postcompaniescompanyuuidreports) - Create a custom report
-* [GetReportsReportUuid](#getreportsreportuuid) - Get a report
-* [GetCompaniesCompanyUuidReportTemplatesReportType](#getcompaniescompanyuuidreporttemplatesreporttype) - Get a report template
+* [CreateCustom](#createcustom) - Create a custom report
+* [Get](#get) - Get a report
+* [GetTemplate](#gettemplate) - Get a report template
 
-## PostCompaniesCompanyUuidReports
+## CreateCustom
 
 Create a custom report for a company. This endpoint initiates creating a custom report with custom columns, groupings, and filters. The `request_uuid` in the response can then be used to poll for the status and report URL upon completion using the report GET endpoint.
 
@@ -26,14 +26,14 @@ using System.Collections.Generic;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Reports.PostCompaniesCompanyUuidReportsAsync(
+var res = await sdk.Reports.CreateCustomAsync(
     companyUuid: "<id>",
     requestBody: new PostCompaniesCompanyUuidReportsRequestBody() {
         Columns = new List<Columns>() {
-            Columns.PaycheckTips,
+            Columns.PayPeriodStart,
         },
         Groupings = new List<Groupings>() {
-            Groupings.Payroll,
+            Groupings.WorkAddressState,
         },
         FileType = FileType.Csv,
         StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2024-01-01")),
@@ -66,7 +66,7 @@ var res = await sdk.Reports.PostCompaniesCompanyUuidReportsAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetReportsReportUuid
+## Get
 
 Get a company's report given the `request_uuid`. The response will include the report request's status and, if complete, the report URL.
 
@@ -80,7 +80,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Reports.GetReportsReportUuidAsync(
+var res = await sdk.Reports.GetAsync(
     reportUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -105,7 +105,7 @@ var res = await sdk.Reports.GetReportsReportUuidAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetCompaniesCompanyUuidReportTemplatesReportType
+## GetTemplate
 
 Get a company's report template. The only supported report type is `payroll_journal`. The resulting columns and groupings from this endpoint can be used as a guidance to create the report using the POST create report endpoint.
 
@@ -119,7 +119,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Reports.GetCompaniesCompanyUuidReportTemplatesReportTypeAsync(
+var res = await sdk.Reports.GetTemplateAsync(
     companyUuid: "<id>",
     reportType: "<value>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401

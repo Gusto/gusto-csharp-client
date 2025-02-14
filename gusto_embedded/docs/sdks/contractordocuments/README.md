@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [GetV1ContractorDocuments](#getv1contractordocuments) - Get all contractor documents
-* [GetV1ContractorDocument](#getv1contractordocument) - Get a contractor document
-* [GetV1ContractorDocumentPdf](#getv1contractordocumentpdf) - Get the contractor document pdf
-* [PutV1ContractorDocumentSign](#putv1contractordocumentsign) - Sign a contractor document
+* [GetAll](#getall) - Get all contractor documents
+* [Get](#get) - Get a contractor document
+* [GetPdf](#getpdf) - Get the contractor document pdf
+* [Sign](#sign) - Sign a contractor document
 
-## GetV1ContractorDocuments
+## GetAll
 
 Get a list of all contractor's documents
 
@@ -24,7 +24,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorDocuments.GetV1ContractorDocumentsAsync(
+var res = await sdk.ContractorDocuments.GetAllAsync(
     contractorUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -49,7 +49,7 @@ var res = await sdk.ContractorDocuments.GetV1ContractorDocumentsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1ContractorDocument
+## Get
 
 Get a contractor document.
 
@@ -63,7 +63,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorDocuments.GetV1ContractorDocumentAsync(
+var res = await sdk.ContractorDocuments.GetAsync(
     documentUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -88,7 +88,7 @@ var res = await sdk.ContractorDocuments.GetV1ContractorDocumentAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1ContractorDocumentPdf
+## GetPdf
 
 Get the contractor document pdf.
 
@@ -102,7 +102,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorDocuments.GetV1ContractorDocumentPdfAsync(
+var res = await sdk.ContractorDocuments.GetPdfAsync(
     documentUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -127,7 +127,7 @@ var res = await sdk.ContractorDocuments.GetV1ContractorDocumentPdfAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1ContractorDocumentSign
+## Sign
 
 Sign a contractor document.
 
@@ -143,7 +143,7 @@ using System.Collections.Generic;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorDocuments.PutV1ContractorDocumentSignAsync(
+var res = await sdk.ContractorDocuments.SignAsync(
     documentUuid: "<id>",
     requestBody: new PutV1ContractorDocumentSignRequestBody() {
         Fields = new List<Models.Requests.Fields>() {

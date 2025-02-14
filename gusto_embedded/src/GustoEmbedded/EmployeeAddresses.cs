@@ -49,7 +49,7 @@ namespace GustoEmbedded
         /// scope: `employees:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesEmployeeIdHomeAddressesResponse> PostV1EmployeesEmployeeIdHomeAddressesAsync(string employeeId, PostV1EmployeesEmployeeIdHomeAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesEmployeeIdHomeAddressesResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdHomeAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get an employee&apos;s home address
@@ -62,7 +62,7 @@ namespace GustoEmbedded
         /// scope: `employees:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1HomeAddressesHomeAddressUuidResponse> GetHomeAsync(string homeAddressUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1HomeAddressesHomeAddressUuidResponse> RetrieveHomeAddressAsync(string homeAddressUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update an employee&apos;s home address
@@ -86,7 +86,41 @@ namespace GustoEmbedded
         /// scope: `employees:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1HomeAddressesHomeAddressUuidResponse> RemoveHomeAsync(string homeAddressUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1HomeAddressesHomeAddressUuidResponse> DeleteAsync(string homeAddressUuid, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
+        /// Get an employee&apos;s work addresses
+        /// 
+        /// <remarks>
+        /// Returns a list of an employee&apos;s work addresses. Each address includes its effective date and a boolean<br/>
+        /// signifying if it is the currently active work address.<br/>
+        /// <br/>
+        /// scope: `employees:read`
+        /// </remarks>
+        /// </summary>
+        Task<GetV1EmployeesEmployeeIdWorkAddressesResponse> GetWorkAddressesAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
+        /// Create an employee work address
+        /// 
+        /// <remarks>
+        /// The work address of an employee describes when an employee began working at an associated company location.<br/>
+        /// <br/>
+        /// scope: `employees:manage`
+        /// </remarks>
+        /// </summary>
+        Task<PostV1EmployeesEmployeeIdWorkAddressesResponse> CreateWorkAddressAsync(string employeeId, PostV1EmployeesEmployeeIdWorkAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+
+        /// <summary>
+        /// Get an employee work address
+        /// 
+        /// <remarks>
+        /// The work address of an employee is used for payroll tax purposes.<br/>
+        /// <br/>
+        /// scope: `employees:read`
+        /// </remarks>
+        /// </summary>
+        Task<GetV1WorkAddressesWorkAddressUuidResponse> RetrieveWorkAddressAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update an employee work address
@@ -97,7 +131,7 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PutV1WorkAddressesWorkAddressUuidResponse> UpdateWorkAsync(string workAddressUuid, PutV1WorkAddressesWorkAddressUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1WorkAddressesWorkAddressUuidResponse> UpdateWorkAddressAsync(string workAddressUuid, PutV1WorkAddressesWorkAddressUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Delete an employee&apos;s work address
@@ -108,17 +142,17 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1WorkAddressesWorkAddressUuidResponse> DeleteV1WorkAddressesWorkAddressUuidAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1WorkAddressesWorkAddressUuidResponse> DeleteWorkAddressAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class EmployeeAddresses: IEmployeeAddresses
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -217,7 +251,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1EmployeesEmployeeIdHomeAddressesResponse> PostV1EmployeesEmployeeIdHomeAddressesAsync(string employeeId, PostV1EmployeesEmployeeIdHomeAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesEmployeeIdHomeAddressesResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdHomeAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1EmployeesEmployeeIdHomeAddressesRequest()
             {
@@ -320,7 +354,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1HomeAddressesHomeAddressUuidResponse> GetHomeAsync(string homeAddressUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1HomeAddressesHomeAddressUuidResponse> RetrieveHomeAddressAsync(string homeAddressUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1HomeAddressesHomeAddressUuidRequest()
             {
@@ -509,7 +543,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1HomeAddressesHomeAddressUuidResponse> RemoveHomeAsync(string homeAddressUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1HomeAddressesHomeAddressUuidResponse> DeleteAsync(string homeAddressUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1HomeAddressesHomeAddressUuidRequest()
             {
@@ -597,7 +631,282 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1WorkAddressesWorkAddressUuidResponse> UpdateWorkAsync(string workAddressUuid, PutV1WorkAddressesWorkAddressUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdWorkAddressesResponse> GetWorkAddressesAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new GetV1EmployeesEmployeeIdWorkAddressesRequest()
+            {
+                EmployeeId = employeeId,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/work_addresses", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("get-v1-employees-employee_id-work_addresses", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<List<EmployeeWorkAddress>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetV1EmployeesEmployeeIdWorkAddressesResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.EmployeeWorkAddressList = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<PostV1EmployeesEmployeeIdWorkAddressesResponse> CreateWorkAddressAsync(string employeeId, PostV1EmployeesEmployeeIdWorkAddressesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new PostV1EmployeesEmployeeIdWorkAddressesRequest()
+            {
+                EmployeeId = employeeId,
+                RequestBody = requestBody,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/work_addresses", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("post-v1-employees-employee_id-work_addresses", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 201)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<EmployeeWorkAddress>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new PostV1EmployeesEmployeeIdWorkAddressesResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.EmployeeWorkAddress = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<GetV1WorkAddressesWorkAddressUuidResponse> RetrieveWorkAddressAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null)
+        {
+            var request = new GetV1WorkAddressesWorkAddressUuidRequest()
+            {
+                WorkAddressUuid = workAddressUuid,
+                XGustoAPIVersion = xGustoAPIVersion,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/work_addresses/{work_address_uuid}", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("get-v1-work_addresses-work_address_uuid", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<EmployeeWorkAddress>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetV1WorkAddressesWorkAddressUuidResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.EmployeeWorkAddress = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<PutV1WorkAddressesWorkAddressUuidResponse> UpdateWorkAddressAsync(string workAddressUuid, PutV1WorkAddressesWorkAddressUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1WorkAddressesWorkAddressUuidRequest()
             {
@@ -700,7 +1009,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1WorkAddressesWorkAddressUuidResponse> DeleteV1WorkAddressesWorkAddressUuidAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1WorkAddressesWorkAddressUuidResponse> DeleteWorkAddressAsync(string workAddressUuid, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new DeleteV1WorkAddressesWorkAddressUuidRequest()
             {

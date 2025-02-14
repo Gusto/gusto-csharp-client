@@ -5,17 +5,17 @@
 
 ### Available Operations
 
-* [PostV1ExternalPayroll](#postv1externalpayroll) - Create a new external payroll for a company
-* [GetV1CompanyExternalPayrolls](#getv1companyexternalpayrolls) - Get external payrolls for a company
-* [GetV1ExternalPayroll](#getv1externalpayroll) - Get an external payroll
-* [DeleteV1ExternalPayroll](#deletev1externalpayroll) - Delete an external payroll
-* [PutV1ExternalPayroll](#putv1externalpayroll) - Update an external payroll
-* [GetV1ExternalPayrollCalculateTaxes](#getv1externalpayrollcalculatetaxes) - Get tax suggestions for an external payroll
-* [GetV1TaxLiabilities](#getv1taxliabilities) - Get tax liabilities
-* [PutV1TaxLiabilities](#putv1taxliabilities) - Update tax liabilities
-* [PutV1TaxLiabilitiesFinish](#putv1taxliabilitiesfinish) - Finalize tax liabilities options and convert into processed payrolls
+* [Create](#create) - Create a new external payroll for a company
+* [Get](#get) - Get external payrolls for a company
+* [Retrieve](#retrieve) - Get an external payroll
+* [Delete](#delete) - Delete an external payroll
+* [Update](#update) - Update an external payroll
+* [CalculateTaxes](#calculatetaxes) - Get tax suggestions for an external payroll
+* [ListTaxLiabilities](#listtaxliabilities) - Get tax liabilities
+* [UpdateTaxLiabilities](#updatetaxliabilities) - Update tax liabilities
+* [FinalizeTaxLiabilities](#finalizetaxliabilities) - Finalize tax liabilities options and convert into processed payrolls
 
-## PostV1ExternalPayroll
+## Create
 
 Creates a new external payroll for the company.
 
@@ -30,7 +30,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.PostV1ExternalPayrollAsync(
+var res = await sdk.ExternalPayrolls.CreateAsync(
     companyUuid: "<id>",
     requestBody: new PostV1ExternalPayrollRequestBody() {
         CheckDate = "<value>",
@@ -62,7 +62,7 @@ var res = await sdk.ExternalPayrolls.PostV1ExternalPayrollAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetV1CompanyExternalPayrolls
+## Get
 
 Get an external payroll for a given company.
 
@@ -76,7 +76,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.GetV1CompanyExternalPayrollsAsync(
+var res = await sdk.ExternalPayrolls.GetAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -101,7 +101,7 @@ var res = await sdk.ExternalPayrolls.GetV1CompanyExternalPayrollsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1ExternalPayroll
+## Retrieve
 
 Get an external payroll for a given company.
 
@@ -115,7 +115,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.GetV1ExternalPayrollAsync(
+var res = await sdk.ExternalPayrolls.RetrieveAsync(
     companyUuid: "<id>",
     externalPayrollId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -142,7 +142,7 @@ var res = await sdk.ExternalPayrolls.GetV1ExternalPayrollAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## DeleteV1ExternalPayroll
+## Delete
 
 Delete an external payroll.
 
@@ -156,7 +156,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.DeleteV1ExternalPayrollAsync(
+var res = await sdk.ExternalPayrolls.DeleteAsync(
     companyUuid: "<id>",
     externalPayrollId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -183,7 +183,7 @@ var res = await sdk.ExternalPayrolls.DeleteV1ExternalPayrollAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1ExternalPayroll
+## Update
 
 Update an external payroll with a list of external payroll items
 
@@ -198,7 +198,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.PutV1ExternalPayrollAsync(
+var res = await sdk.ExternalPayrolls.UpdateAsync(
     companyUuid: "<id>",
     externalPayrollId: "<id>",
     requestBody: new PutV1ExternalPayrollRequestBody() {},
@@ -228,7 +228,7 @@ var res = await sdk.ExternalPayrolls.PutV1ExternalPayrollAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetV1ExternalPayrollCalculateTaxes
+## CalculateTaxes
 
 Get tax suggestions for an external payroll. Earnings and/or benefits
 data must be saved prior to the calculation in order to retrieve accurate
@@ -244,7 +244,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.GetV1ExternalPayrollCalculateTaxesAsync(
+var res = await sdk.ExternalPayrolls.CalculateTaxesAsync(
     companyUuid: "<id>",
     externalPayrollId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -271,7 +271,7 @@ var res = await sdk.ExternalPayrolls.GetV1ExternalPayrollCalculateTaxesAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1TaxLiabilities
+## ListTaxLiabilities
 
 Get tax liabilities from aggregate external payrolls for a company.
 
@@ -285,7 +285,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.GetV1TaxLiabilitiesAsync(
+var res = await sdk.ExternalPayrolls.ListTaxLiabilitiesAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -310,7 +310,7 @@ var res = await sdk.ExternalPayrolls.GetV1TaxLiabilitiesAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1TaxLiabilities
+## UpdateTaxLiabilities
 
 Update tax liabilities for a company.
 
@@ -325,7 +325,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.PutV1TaxLiabilitiesAsync(
+var res = await sdk.ExternalPayrolls.UpdateTaxLiabilitiesAsync(
     companyUuid: "<id>",
     requestBody: new PutV1TaxLiabilitiesRequestBody() {},
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -353,7 +353,7 @@ var res = await sdk.ExternalPayrolls.PutV1TaxLiabilitiesAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutV1TaxLiabilitiesFinish
+## FinalizeTaxLiabilities
 
 Finalizes tax liabilities for a company. All external payrolls edit action will be disabled.
 
@@ -367,7 +367,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ExternalPayrolls.PutV1TaxLiabilitiesFinishAsync(
+var res = await sdk.ExternalPayrolls.FinalizeTaxLiabilitiesAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `company_federal_taxes:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdFederalTaxDetailsResponse> GetV1CompaniesCompanyIdFederalTaxDetailsAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdFederalTaxDetailsResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Update Federal Tax Details
@@ -46,17 +46,17 @@ namespace GustoEmbedded
         /// scope: `company_federal_taxes:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompaniesCompanyIdFederalTaxDetailsResponse> PutV1CompaniesCompanyIdFederalTaxDetailsAsync(string companyId, PutV1CompaniesCompanyIdFederalTaxDetailsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompaniesCompanyIdFederalTaxDetailsResponse> UpdateAsync(string companyId, PutV1CompaniesCompanyIdFederalTaxDetailsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class FederalTaxDetails: IFederalTaxDetails
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -69,7 +69,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1CompaniesCompanyIdFederalTaxDetailsResponse> GetV1CompaniesCompanyIdFederalTaxDetailsAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdFederalTaxDetailsResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyIdFederalTaxDetailsRequest()
             {
@@ -155,7 +155,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompaniesCompanyIdFederalTaxDetailsResponse> PutV1CompaniesCompanyIdFederalTaxDetailsAsync(string companyId, PutV1CompaniesCompanyIdFederalTaxDetailsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompaniesCompanyIdFederalTaxDetailsResponse> UpdateAsync(string companyId, PutV1CompaniesCompanyIdFederalTaxDetailsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1CompaniesCompanyIdFederalTaxDetailsRequest()
             {

@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [GetNotificationsNotificationUuid](#getnotificationsnotificationuuid) - Get a notification's details
+* [GetDetails](#getdetails) - Get a notification's details
 
-## GetNotificationsNotificationUuid
+## GetDetails
 
 Upon receiving a notification webhook event, use this endpoint to fetch the notification's details. The notification details include basic suggested content that can help you build notifications in your platform.
 
@@ -25,7 +25,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Notifications.GetNotificationsNotificationUuidAsync(
+var res = await sdk.Notifications.GetDetailsAsync(
     notificationUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

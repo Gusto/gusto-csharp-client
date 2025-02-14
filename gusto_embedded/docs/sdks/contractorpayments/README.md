@@ -5,15 +5,15 @@
 
 ### Available Operations
 
-* [GetV1ContractorPaymentsContractorPaymentUuidReceipt](#getv1contractorpaymentscontractorpaymentuuidreceipt) - Get a single contractor payment receipt
-* [GetV1ContractorPaymentsContractorPaymentUuidFund](#getv1contractorpaymentscontractorpaymentuuidfund) - Fund a contractor payment [DEMO]
-* [PostV1CompaniesCompanyIdContractorPayments](#postv1companiescompanyidcontractorpayments) - Create a contractor payment
-* [Get](#get) - Get contractor payments for a company
-* [GetById](#getbyid) - Get a single contractor payment
+* [GetReceipt](#getreceipt) - Get a single contractor payment receipt
+* [Fund](#fund) - Fund a contractor payment [DEMO]
+* [Create](#create) - Create a contractor payment
+* [List](#list) - Get contractor payments for a company
+* [Get](#get) - Get a single contractor payment
 * [Delete](#delete) - Cancel a contractor payment
-* [GetCompaniesCompanyUuidContractorPaymentsPreview](#getcompaniescompanyuuidcontractorpaymentspreview) - Preview contractor payment debit date
+* [Preview](#preview) - Preview contractor payment debit date
 
-## GetV1ContractorPaymentsContractorPaymentUuidReceipt
+## GetReceipt
 
 Returns a contractor payment receipt.
 
@@ -34,7 +34,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPayments.GetV1ContractorPaymentsContractorPaymentUuidReceiptAsync(
+var res = await sdk.ContractorPayments.GetReceiptAsync(
     contractorPaymentUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -59,7 +59,7 @@ var res = await sdk.ContractorPayments.GetV1ContractorPaymentsContractorPaymentU
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1ContractorPaymentsContractorPaymentUuidFund
+## Fund
 
 > 🚧 Demo action
 >
@@ -77,7 +77,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPayments.GetV1ContractorPaymentsContractorPaymentUuidFundAsync(
+var res = await sdk.ContractorPayments.FundAsync(
     contractorPaymentUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -103,7 +103,7 @@ var res = await sdk.ContractorPayments.GetV1ContractorPaymentsContractorPaymentU
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PostV1CompaniesCompanyIdContractorPayments
+## Create
 
 Pay a contractor. Information needed depends on the contractor's wage type (hourly vs fixed)
 
@@ -119,7 +119,7 @@ using NodaTime;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPayments.PostV1CompaniesCompanyIdContractorPaymentsAsync(
+var res = await sdk.ContractorPayments.CreateAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdContractorPaymentsRequestBody() {
         ContractorUuid = "<id>",
@@ -154,7 +154,7 @@ var res = await sdk.ContractorPayments.PostV1CompaniesCompanyIdContractorPayment
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Get
+## List
 
 Returns an object containing individual contractor payments, within a given time period, including totals.
 
@@ -175,7 +175,7 @@ GetV1CompaniesCompanyIdContractorPaymentsRequest req = new GetV1CompaniesCompany
     EndDate = "2020-12-31",
 };
 
-var res = await sdk.ContractorPayments.GetAsync(req);
+var res = await sdk.ContractorPayments.ListAsync(req);
 
 // handle response
 ```
@@ -196,7 +196,7 @@ var res = await sdk.ContractorPayments.GetAsync(req);
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetById
+## Get
 
 Returns a single contractor payment.
 scope: `payrolls:read`
@@ -209,7 +209,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPayments.GetByIdAsync(
+var res = await sdk.ContractorPayments.GetAsync(
     companyId: "<id>",
     contractorPaymentId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -278,7 +278,7 @@ var res = await sdk.ContractorPayments.DeleteAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetCompaniesCompanyUuidContractorPaymentsPreview
+## Preview
 
 Returns a debit_date dependent on the ACH payment speed of the company.
 
@@ -296,7 +296,7 @@ using System.Collections.Generic;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.ContractorPayments.GetCompaniesCompanyUuidContractorPaymentsPreviewAsync(
+var res = await sdk.ContractorPayments.PreviewAsync(
     companyUuid: "<id>",
     requestBody: new GetCompaniesCompanyUuidContractorPaymentsPreviewRequestBody() {
         ContractorPayments = new List<GetCompaniesCompanyUuidContractorPaymentsPreviewContractorPayments>() {

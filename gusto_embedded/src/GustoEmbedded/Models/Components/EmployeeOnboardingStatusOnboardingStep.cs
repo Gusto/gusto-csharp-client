@@ -29,7 +29,7 @@ namespace GustoEmbedded.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// When true, this step has been completed.
+        /// When true, this step is required.
         /// </summary>
         [JsonProperty("required")]
         public bool? Required { get; set; }

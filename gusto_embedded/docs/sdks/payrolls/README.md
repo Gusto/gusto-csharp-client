@@ -5,25 +5,25 @@
 
 ### Available Operations
 
-* [PostV1CompaniesCompanyIdPayrolls](#postv1companiescompanyidpayrolls) - Create an off-cycle payroll
+* [CreateOffCycle](#createoffcycle) - Create an off-cycle payroll
 * [List](#list) - Get all payrolls for a company
-* [GetV1CompaniesCompanyIdPayrollReversals](#getv1companiescompanyidpayrollreversals) - Get approved payroll reversals
-* [GetV1CompaniesCompanyIdPayrollsPayrollId](#getv1companiescompanyidpayrollspayrollid) - Get a single payroll
-* [PutV1CompaniesCompanyIdPayrolls](#putv1companiescompanyidpayrolls) - Update a payroll by ID
-* [DeleteV1CompaniesCompanyIdPayrolls](#deletev1companiescompanyidpayrolls) - Delete a payroll
-* [PutV1CompaniesCompanyIdPayrollsPayrollIdPrepare](#putv1companiescompanyidpayrollspayrollidprepare) - Prepare a payroll for update
-* [GetV1PaymentReceiptsPayrollsPayrollUuid](#getv1paymentreceiptspayrollspayrolluuid) - Get a single payroll receipt
-* [GetV1CompaniesPayrollBlockersCompanyUuid](#getv1companiespayrollblockerscompanyuuid) - Get all payroll blockers for a company
-* [PostCompaniesPayrollSkipCompanyUuid](#postcompaniespayrollskipcompanyuuid) - Skip a payroll
-* [PostPayrollsGrossUpPayrollUuid](#postpayrollsgrossuppayrolluuid) - Calculate gross up
-* [PutV1CompaniesCompanyIdPayrollsPayrollIdCalculate](#putv1companiescompanyidpayrollspayrollidcalculate) - Calculate a payroll
-* [PutV1CompaniesCompanyIdPayrollsPayrollIdSubmit](#putv1companiescompanyidpayrollspayrollidsubmit) - Submit payroll
-* [PutApiV1CompaniesCompanyIdPayrollsPayrollIdCancel](#putapiv1companiescompanyidpayrollspayrollidcancel) - Cancel a payroll
-* [GetEmployeePayStubPdf](#getemployeepaystubpdf) - Get an employee pay stub (pdf)
-* [GetEmployeePayStubs](#getemployeepaystubs) - Get an employee's pay stubs
-* [PostV1PayrollsPayrollUuidGeneratedDocumentsPrintablePayrollChecks](#postv1payrollspayrolluuidgenerateddocumentsprintablepayrollchecks) - Generate printable payroll checks (pdf)
+* [GetApprovedReversals](#getapprovedreversals) - Get approved payroll reversals
+* [Get](#get) - Get a single payroll
+* [Update](#update) - Update a payroll by ID
+* [Delete](#delete) - Delete a payroll
+* [Prepare](#prepare) - Prepare a payroll for update
+* [GetReceipt](#getreceipt) - Get a single payroll receipt
+* [GetBlockers](#getblockers) - Get all payroll blockers for a company
+* [Skip](#skip) - Skip a payroll
+* [CalculateGrossUp](#calculategrossup) - Calculate gross up
+* [Calculate](#calculate) - Calculate a payroll
+* [Submit](#submit) - Submit payroll
+* [Cancel](#cancel) - Cancel a payroll
+* [GetPayStub](#getpaystub) - Get an employee pay stub (pdf)
+* [GetPayStubs](#getpaystubs) - Get an employee's pay stubs
+* [GeneratePrintableChecks](#generateprintablechecks) - Generate printable payroll checks (pdf)
 
-## PostV1CompaniesCompanyIdPayrolls
+## CreateOffCycle
 
 Creates a new, unprocessed, off-cycle payroll.
 
@@ -45,11 +45,11 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PostV1CompaniesCompanyIdPayrollsAsync(
+var res = await sdk.Payrolls.CreateOffCycleAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdPayrollsRequestBody() {
         OffCycle = false,
-        OffCycleReason = OffCycleReason.TransitionFromOldPaySchedule,
+        OffCycleReason = OffCycleReason.Correction,
         StartDate = "<value>",
         EndDate = "<value>",
     },
@@ -125,7 +125,7 @@ var res = await sdk.Payrolls.ListAsync(req);
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompaniesCompanyIdPayrollReversals
+## GetApprovedReversals
 
 Returns all approved Payroll Reversals for a Company.
 
@@ -139,10 +139,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.GetV1CompaniesCompanyIdPayrollReversalsAsync(
+var res = await sdk.Payrolls.GetApprovedReversalsAsync(
     companyId: "<id>",
-    page: 8487.52D,
-    per: 3289.2D,
+    page: 8807.41D,
+    per: 8323.68D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -168,7 +168,7 @@ var res = await sdk.Payrolls.GetV1CompaniesCompanyIdPayrollReversalsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompaniesCompanyIdPayrollsPayrollId
+## Get
 
 Returns a payroll. If payroll is calculated or processed, will return employee_compensations and totals.
 
@@ -192,7 +192,7 @@ using System.Collections.Generic;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.GetV1CompaniesCompanyIdPayrollsPayrollIdAsync(
+var res = await sdk.Payrolls.GetAsync(
     companyId: "<id>",
     payrollId: "<id>",
     include: new List<GetV1CompaniesCompanyIdPayrollsPayrollIdQueryParamInclude>() {
@@ -223,7 +223,7 @@ var res = await sdk.Payrolls.GetV1CompaniesCompanyIdPayrollsPayrollIdAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1CompaniesCompanyIdPayrolls
+## Update
 
 This endpoint allows you to update information for one or more employees for a specific **unprocessed** payroll.  You can think of the **unprocessed**
 payroll object as a template of fields that you can update.  You cannot modify the structure of the payroll object through this endpoint, only values
@@ -242,7 +242,7 @@ using System.Collections.Generic;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PutV1CompaniesCompanyIdPayrollsAsync(
+var res = await sdk.Payrolls.UpdateAsync(
     companyId: "<id>",
     payrollId: "<id>",
     requestBody: new PutV1CompaniesCompanyIdPayrollsRequestBody() {
@@ -276,7 +276,7 @@ var res = await sdk.Payrolls.PutV1CompaniesCompanyIdPayrollsAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## DeleteV1CompaniesCompanyIdPayrolls
+## Delete
 
 This endpoint allows you to delete an **unprocessed** payroll.
 
@@ -292,7 +292,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.DeleteV1CompaniesCompanyIdPayrollsAsync(
+var res = await sdk.Payrolls.DeleteAsync(
     companyId: "<id>",
     payrollId: "<id>",
     asyncP: false,
@@ -321,7 +321,7 @@ var res = await sdk.Payrolls.DeleteV1CompaniesCompanyIdPayrollsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1CompaniesCompanyIdPayrollsPayrollIdPrepare
+## Prepare
 
 This endpoint will build the payroll and get it ready for making updates. This includes adding/removing eligible employees from the Payroll and updating the check_date, payroll_deadline, and payroll_status_meta dates & times.
 
@@ -339,7 +339,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PutV1CompaniesCompanyIdPayrollsPayrollIdPrepareAsync(
+var res = await sdk.Payrolls.PrepareAsync(
     companyId: "<id>",
     payrollId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -366,7 +366,7 @@ var res = await sdk.Payrolls.PutV1CompaniesCompanyIdPayrollsPayrollIdPrepareAsyn
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1PaymentReceiptsPayrollsPayrollUuid
+## GetReceipt
 
 Returns a payroll receipt.
 
@@ -385,7 +385,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.GetV1PaymentReceiptsPayrollsPayrollUuidAsync(
+var res = await sdk.Payrolls.GetReceiptAsync(
     payrollUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -410,7 +410,7 @@ var res = await sdk.Payrolls.GetV1PaymentReceiptsPayrollsPayrollUuidAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompaniesPayrollBlockersCompanyUuid
+## GetBlockers
 
 Returns a list of reasons that prevent the company from running payrolls. See the [payroll blockers guide](https://docs.gusto.com/embedded-payroll/docs/payroll-blockers) for a complete list of reasons.
 
@@ -426,7 +426,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.GetV1CompaniesPayrollBlockersCompanyUuidAsync(
+var res = await sdk.Payrolls.GetBlockersAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -451,7 +451,7 @@ var res = await sdk.Payrolls.GetV1CompaniesPayrollBlockersCompanyUuidAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PostCompaniesPayrollSkipCompanyUuid
+## Skip
 
 Submits a $0 payroll for employees associated with the pay schedule to skip payroll. This submission is asynchronous and a successful request responds with a 202 HTTP status. Upon success, the payroll is transitioned to the `processed` state.
 
@@ -468,7 +468,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PostCompaniesPayrollSkipCompanyUuidAsync(
+var res = await sdk.Payrolls.SkipAsync(
     companyUuid: "<id>",
     requestBody: new PostCompaniesPayrollSkipCompanyUuidRequestBody() {
         PayrollType = PayrollType.Regular,
@@ -499,7 +499,7 @@ var res = await sdk.Payrolls.PostCompaniesPayrollSkipCompanyUuidAsync(
 | GustoEmbedded.Models.Errors.PayrollBlockersError            | 422                                                         | application/json                                            |
 | GustoEmbedded.Models.Errors.APIException                    | 4XX, 5XX                                                    | \*/\*                                                       |
 
-## PostPayrollsGrossUpPayrollUuid
+## CalculateGrossUp
 
 Calculates gross up earnings for an employee's payroll, given net earnings. This endpoint is only applicable to off-cycle unprocessed payrolls.
 
@@ -516,7 +516,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PostPayrollsGrossUpPayrollUuidAsync(
+var res = await sdk.Payrolls.CalculateGrossUpAsync(
     payrollUuid: "<id>",
     requestBody: new PostPayrollsGrossUpPayrollUuidRequestBody() {
         EmployeeUuid = "<id>",
@@ -548,7 +548,7 @@ var res = await sdk.Payrolls.PostPayrollsGrossUpPayrollUuidAsync(
 | GustoEmbedded.Models.Errors.PayrollBlockersError            | 422                                                         | application/json                                            |
 | GustoEmbedded.Models.Errors.APIException                    | 4XX, 5XX                                                    | \*/\*                                                       |
 
-## PutV1CompaniesCompanyIdPayrollsPayrollIdCalculate
+## Calculate
 
 Performs calculations for taxes, benefits, and deductions for an unprocessed payroll. The calculated payroll details provide a preview of the actual values that will be used when the payroll is run.
 
@@ -565,7 +565,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PutV1CompaniesCompanyIdPayrollsPayrollIdCalculateAsync(
+var res = await sdk.Payrolls.CalculateAsync(
     companyId: "<id>",
     payrollId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -594,7 +594,7 @@ var res = await sdk.Payrolls.PutV1CompaniesCompanyIdPayrollsPayrollIdCalculateAs
 | GustoEmbedded.Models.Errors.PayrollBlockersError            | 422                                                         | application/json                                            |
 | GustoEmbedded.Models.Errors.APIException                    | 4XX, 5XX                                                    | \*/\*                                                       |
 
-## PutV1CompaniesCompanyIdPayrollsPayrollIdSubmit
+## Submit
 
 Submits an unprocessed payroll to be calculated and run. This submission is asynchronous and a successful request responds with a 202 HTTP status. Upon success, transitions the payroll to the `processed` state.
 
@@ -613,7 +613,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PutV1CompaniesCompanyIdPayrollsPayrollIdSubmitAsync(
+var res = await sdk.Payrolls.SubmitAsync(
     companyId: "<id>",
     payrollId: "<id>",
     requestBody: new PutV1CompaniesCompanyIdPayrollsPayrollIdSubmitRequestBody() {},
@@ -644,7 +644,7 @@ var res = await sdk.Payrolls.PutV1CompaniesCompanyIdPayrollsPayrollIdSubmitAsync
 | GustoEmbedded.Models.Errors.PayrollBlockersError            | 422                                                         | application/json                                            |
 | GustoEmbedded.Models.Errors.APIException                    | 4XX, 5XX                                                    | \*/\*                                                       |
 
-## PutApiV1CompaniesCompanyIdPayrollsPayrollIdCancel
+## Cancel
 
 Transitions a `processed` payroll back to the `unprocessed` state. A payroll can be canceled if it meets both criteria:
 - `processed` is true
@@ -661,7 +661,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PutApiV1CompaniesCompanyIdPayrollsPayrollIdCancelAsync(
+var res = await sdk.Payrolls.CancelAsync(
     companyId: "<id>",
     payrollId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -689,7 +689,7 @@ var res = await sdk.Payrolls.PutApiV1CompaniesCompanyIdPayrollsPayrollIdCancelAs
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetEmployeePayStubPdf
+## GetPayStub
 
 Get an employee's pay stub for the specified payroll. By default, an application/pdf response will be returned. No other content types are currently supported, but may be supported in the future.
 
@@ -703,7 +703,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.GetEmployeePayStubPdfAsync(
+var res = await sdk.Payrolls.GetPayStubAsync(
     payrollId: "<id>",
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -730,7 +730,7 @@ var res = await sdk.Payrolls.GetEmployeePayStubPdfAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetEmployeePayStubs
+## GetPayStubs
 
 Get an employee's pay stubs
 
@@ -744,7 +744,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.GetEmployeePayStubsAsync(
+var res = await sdk.Payrolls.GetPayStubsAsync(
     employeeId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -769,7 +769,7 @@ var res = await sdk.Payrolls.GetEmployeePayStubsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PostV1PayrollsPayrollUuidGeneratedDocumentsPrintablePayrollChecks
+## GeneratePrintableChecks
 
 This endpoint initiates the generation of employee checks for the payroll specified by payroll_uuid. A generation status and corresponding request_uuid will be returned. Use the generated document GET endpoint with document_type: `printable_payroll_checks` and request_uuid to poll the check generation process and retrieve the generated check URL upon completion.
 
@@ -784,7 +784,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Payrolls.PostV1PayrollsPayrollUuidGeneratedDocumentsPrintablePayrollChecksAsync(
+var res = await sdk.Payrolls.GeneratePrintableChecksAsync(
     payrollUuid: "<id>",
     requestBody: new PostV1PayrollsPayrollUuidGeneratedDocumentsPrintablePayrollChecksRequestBody() {
         PrintingFormat = PrintingFormat.Bottom,

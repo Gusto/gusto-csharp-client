@@ -6,12 +6,12 @@
 ### Available Operations
 
 * [Create](#create) - Create an employee benefit
-* [List](#list) - Get all benefits for an employee
-* [GetV1EmployeeBenefitsEmployeeBenefitId](#getv1employeebenefitsemployeebenefitid) - Get an employee benefit
-* [PutV1EmployeeBenefitsEmployeeBenefitId](#putv1employeebenefitsemployeebenefitid) - Update an employee benefit
-* [DeleteV1EmployeeBenefitsEmployeeBenefitId](#deletev1employeebenefitsemployeebenefitid) - Delete an employee benefit
-* [CreateYtdAmounts](#createytdamounts) - Create year-to-date benefit amounts from a different company
-* [GetEmployeeYtdBenefitAmountsFromDifferentCompany](#getemployeeytdbenefitamountsfromdifferentcompany) - Get year-to-date benefit amounts from a different company
+* [Get](#get) - Get all benefits for an employee
+* [Retrieve](#retrieve) - Get an employee benefit
+* [Update](#update) - Update an employee benefit
+* [Delete](#delete) - Delete an employee benefit
+* [GetYtdBenefitAmountsFromDifferentCompany](#getytdbenefitamountsfromdifferentcompany) - Get year-to-date benefit amounts from a different company
+* [CreateYtdBenefitAmountsFromDifferentCompany](#createytdbenefitamountsfromdifferentcompany) - Create year-to-date benefit amounts from a different company
 
 ## Create
 
@@ -58,7 +58,7 @@ var res = await sdk.EmployeeBenefits.CreateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## List
+## Get
 
 Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment.
 
@@ -76,10 +76,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeBenefits.ListAsync(
+var res = await sdk.EmployeeBenefits.GetAsync(
     employeeId: "<id>",
-    page: 7685.78D,
-    per: 5472.72D,
+    page: 7003.47D,
+    per: 5588.34D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -105,7 +105,7 @@ var res = await sdk.EmployeeBenefits.ListAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1EmployeeBenefitsEmployeeBenefitId
+## Retrieve
 
 Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment.
 
@@ -121,7 +121,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeBenefits.GetV1EmployeeBenefitsEmployeeBenefitIdAsync(
+var res = await sdk.EmployeeBenefits.RetrieveAsync(
     employeeBenefitId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -146,7 +146,7 @@ var res = await sdk.EmployeeBenefits.GetV1EmployeeBenefitsEmployeeBenefitIdAsync
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1EmployeeBenefitsEmployeeBenefitId
+## Update
 
 Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment.
 
@@ -161,7 +161,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeBenefits.PutV1EmployeeBenefitsEmployeeBenefitIdAsync(
+var res = await sdk.EmployeeBenefits.UpdateAsync(
     employeeBenefitId: "<id>",
     requestBody: new PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody() {
         Version = "<value>",
@@ -191,7 +191,7 @@ var res = await sdk.EmployeeBenefits.PutV1EmployeeBenefitsEmployeeBenefitIdAsync
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## DeleteV1EmployeeBenefitsEmployeeBenefitId
+## Delete
 
 Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment.
 
@@ -205,7 +205,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeBenefits.DeleteV1EmployeeBenefitsEmployeeBenefitIdAsync(
+var res = await sdk.EmployeeBenefits.DeleteAsync(
     employeeBenefitId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -230,53 +230,7 @@ var res = await sdk.EmployeeBenefits.DeleteV1EmployeeBenefitsEmployeeBenefitIdAs
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## CreateYtdAmounts
-
-Year-to-date benefit amounts from a different company represents the amount of money added to an employee's plan during a current year, made outside of the current contribution when they were employed at a different company.
-
-This endpoint only supports passing outside contributions for 401(k) benefits.
-
-scope: `employee_benefits:write`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.EmployeeBenefits.CreateYtdAmountsAsync(
-    employeeId: "<id>",
-    postEmployeeYtdBenefitAmountsFromDifferentCompany: new PostEmployeeYtdBenefitAmountsFromDifferentCompany() {
-        TaxYear = 5536.72D,
-    },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |
-| `PostEmployeeYtdBenefitAmountsFromDifferentCompany`                                                                                                                                                                          | [PostEmployeeYtdBenefitAmountsFromDifferentCompany](../../Models/Components/PostEmployeeYtdBenefitAmountsFromDifferentCompany.md)                                                                                            | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
-
-### Response
-
-**[PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse](../../Models/Requests/PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse.md)**
-
-### Errors
-
-| Error Type                                                 | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
-| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
-
-## GetEmployeeYtdBenefitAmountsFromDifferentCompany
+## GetYtdBenefitAmountsFromDifferentCompany
 
 Retrieves year-to-date benefit amounts that were contributed at a different company for the specified employee.
 Returns benefit amounts for the requested tax year (defaults to current year if not specified).
@@ -293,7 +247,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.EmployeeBenefits.GetEmployeeYtdBenefitAmountsFromDifferentCompanyAsync(
+var res = await sdk.EmployeeBenefits.GetYtdBenefitAmountsFromDifferentCompanyAsync(
     employeeId: "<id>",
     taxYear: 2024,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -319,3 +273,49 @@ var res = await sdk.EmployeeBenefits.GetEmployeeYtdBenefitAmountsFromDifferentCo
 | Error Type                               | Status Code                              | Content Type                             |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
+
+## CreateYtdBenefitAmountsFromDifferentCompany
+
+Year-to-date benefit amounts from a different company represents the amount of money added to an employee's plan during a current year, made outside of the current contribution when they were employed at a different company.
+
+This endpoint only supports passing outside contributions for 401(k) benefits.
+
+scope: `employee_benefits:write`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.EmployeeBenefits.CreateYtdBenefitAmountsFromDifferentCompanyAsync(
+    employeeId: "<id>",
+    postEmployeeYtdBenefitAmountsFromDifferentCompany: new PostEmployeeYtdBenefitAmountsFromDifferentCompany() {
+        TaxYear = 5621.31D,
+    },
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `EmployeeId`                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the employee                                                                                                                                                                                                     |
+| `PostEmployeeYtdBenefitAmountsFromDifferentCompany`                                                                                                                                                                          | [PostEmployeeYtdBenefitAmountsFromDifferentCompany](../../Models/Components/PostEmployeeYtdBenefitAmountsFromDifferentCompany.md)                                                                                            | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse](../../Models/Requests/PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse.md)**
+
+### Errors
+
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
+| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |

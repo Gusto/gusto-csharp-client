@@ -5,24 +5,19 @@
 
 ### Available Operations
 
-* [PostV1PartnerManagedCompanies](#postv1partnermanagedcompanies) - Create a partner managed company
-* [GetV1Companies](#getv1companies) - Get a company
-* [PutV1Companies](#putv1companies) - Update a company
-* [PutV1PartnerManagedCompaniesCompanyUuidMigrate](#putv1partnermanagedcompaniescompanyuuidmigrate) - Migrate company to embedded payroll
-* [AcceptTerms](#acceptterms) - Accept terms of service for a company user
-* [PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfService](#postpartnermanagedcompaniescompanyuuidretrievetermsofservice) - Retrieve terms of service status for a company user
-* [PostV1CompaniesCompanyIdAdmins](#postv1companiescompanyidadmins) - Create an admin for the company
-* [GetV1CompaniesCompanyIdAdmins](#getv1companiescompanyidadmins) - Get all the admins at a company
-* [GetV1CompanyOnboardingStatus](#getv1companyonboardingstatus) - Get the company's onboarding status
-* [GetV1CompanyFinishOnboarding](#getv1companyfinishonboarding) - Finish company onboarding
-* [GetV1CompaniesCompanyIdCustomFields](#getv1companiescompanyidcustomfields) - Get the custom fields of a company
-* [UpdateIndustrySelection](#updateindustryselection) - Update a company industry selection
-* [GetSignatories](#getsignatories) - Get all company signatories
-* [CreateEarningType](#createearningtype) - Create a custom earning type
-* [ListEarningTypes](#listearningtypes) - Get all earning types for a company
-* [ListBenefits](#listbenefits) - Get benefits for a company
+* [CreatePartnerManaged](#createpartnermanaged) - Create a partner managed company
+* [Get](#get) - Get a company
+* [Update](#update) - Update a company
+* [Migrate](#migrate) - Migrate company to embedded payroll
+* [AcceptTermsOfService](#accepttermsofservice) - Accept terms of service for a company user
+* [RetrieveTermsOfService](#retrievetermsofservice) - Retrieve terms of service status for a company user
+* [CreateAdmin](#createadmin) - Create an admin for the company
+* [ListAdmins](#listadmins) - Get all the admins at a company
+* [GetOnboardingStatus](#getonboardingstatus) - Get the company's onboarding status
+* [FinishOnboarding](#finishonboarding) - Finish company onboarding
+* [GetCustomFields](#getcustomfields) - Get the custom fields of a company
 
-## PostV1PartnerManagedCompanies
+## CreatePartnerManaged
 
 Create a partner managed company. When you successfully call the API, it does the following:
 * Creates a new company in Gusto
@@ -46,15 +41,15 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto();
 
-var res = await sdk.Companies.PostV1PartnerManagedCompaniesAsync(
+var res = await sdk.Companies.CreatePartnerManagedAsync(
     security: new PostV1PartnerManagedCompaniesSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
     requestBody: new PostV1PartnerManagedCompaniesRequestBody() {
         User = new User() {
-            FirstName = "Khalid",
-            LastName = "Haley",
-            Email = "Eliane.Watsica38@yahoo.com",
+            FirstName = "Gail",
+            LastName = "Stracke",
+            Email = "Emanuel.McClure@gmail.com",
         },
         Company = new Models.Requests.Company() {
             Name = "<value>",
@@ -85,7 +80,7 @@ var res = await sdk.Companies.PostV1PartnerManagedCompaniesAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetV1Companies
+## Get
 
 Get a company.         
 The employees:read scope is required to return home_address and non-work locations.         
@@ -102,7 +97,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetV1CompaniesAsync(
+var res = await sdk.Companies.GetAsync(
     companyId: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -127,7 +122,7 @@ var res = await sdk.Companies.GetV1CompaniesAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1Companies
+## Update
 
 Update a company.
 
@@ -142,7 +137,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.PutV1CompaniesAsync(
+var res = await sdk.Companies.UpdateAsync(
     companyId: "<id>",
     requestBody: new PutV1CompaniesRequestBody() {
         ContractorOnly = false,
@@ -172,7 +167,7 @@ var res = await sdk.Companies.PutV1CompaniesAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PutV1PartnerManagedCompaniesCompanyUuidMigrate
+## Migrate
 
 Migrate an existing Gusto customer to your embedded payroll product.
 
@@ -189,11 +184,11 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.PutV1PartnerManagedCompaniesCompanyUuidMigrateAsync(
+var res = await sdk.Companies.MigrateAsync(
     companyUuid: "<id>",
     requestBody: new PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody() {
-        Email = "Magdalena_Jakubowski46@hotmail.com",
-        IpAddress = "b754:c214:ac13:5dd2:fd79:4570:dde3:55b8",
+        Email = "Benjamin_Kihn44@yahoo.com",
+        IpAddress = "198.52.136.51",
         ExternalUserId = "<id>",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -221,7 +216,7 @@ var res = await sdk.Companies.PutV1PartnerManagedCompaniesCompanyUuidMigrateAsyn
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## AcceptTerms
+## AcceptTermsOfService
 
 Accept the Gusto Embedded Payroll's [Terms of Service](https://flows.gusto.com/terms).
 The user must have a role in the company in order to accept the Terms of Service.
@@ -237,11 +232,11 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.AcceptTermsAsync(
+var res = await sdk.Companies.AcceptTermsOfServiceAsync(
     companyUuid: "<id>",
     requestBody: new PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody() {
-        Email = "Jabari_Stiedemann40@gmail.com",
-        IpAddress = "102.72.228.200",
+        Email = "Justine73@gmail.com",
+        IpAddress = "168.91.169.217",
         ExternalUserId = "<id>",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
@@ -269,7 +264,7 @@ var res = await sdk.Companies.AcceptTermsAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfService
+## RetrieveTermsOfService
 
 Retrieve the user acceptance status of the Gusto Embedded Payroll's [Terms of Service](https://flows.gusto.com/terms).
 
@@ -284,10 +279,10 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceAsync(
+var res = await sdk.Companies.RetrieveTermsOfServiceAsync(
     companyUuid: "<id>",
     requestBody: new PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody() {
-        Email = "Angus.Becker43@yahoo.com",
+        Email = "Erika_Schuster@yahoo.com",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -314,7 +309,7 @@ var res = await sdk.Companies.PostPartnerManagedCompaniesCompanyUuidRetrieveTerm
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## PostV1CompaniesCompanyIdAdmins
+## CreateAdmin
 
 Creates a new admin for a company.
 If the email matches an existing user, this will create an admin account for the current user. Otherwise, this will create a new user.
@@ -330,12 +325,12 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.PostV1CompaniesCompanyIdAdminsAsync(
+var res = await sdk.Companies.CreateAdminAsync(
     companyId: "<id>",
     requestBody: new PostV1CompaniesCompanyIdAdminsRequestBody() {
-        FirstName = "Jamison",
-        LastName = "Runte",
-        Email = "Justina20@hotmail.com",
+        FirstName = "Guillermo",
+        LastName = "Koch",
+        Email = "Justine_Gusikowski92@yahoo.com",
     },
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -362,7 +357,7 @@ var res = await sdk.Companies.PostV1CompaniesCompanyIdAdminsAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetV1CompaniesCompanyIdAdmins
+## ListAdmins
 
 Returns a list of all the admins at a company
 
@@ -376,10 +371,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetV1CompaniesCompanyIdAdminsAsync(
+var res = await sdk.Companies.ListAdminsAsync(
     companyId: "<id>",
-    page: 2654.95D,
-    per: 3390.97D,
+    page: 6206.04D,
+    per: 6963.22D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -405,7 +400,7 @@ var res = await sdk.Companies.GetV1CompaniesCompanyIdAdminsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompanyOnboardingStatus
+## GetOnboardingStatus
 
 Get company's onboarding status.
 The data returned helps inform the required onboarding steps and respective completion status.
@@ -420,7 +415,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetV1CompanyOnboardingStatusAsync(
+var res = await sdk.Companies.GetOnboardingStatusAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -445,7 +440,7 @@ var res = await sdk.Companies.GetV1CompanyOnboardingStatusAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## GetV1CompanyFinishOnboarding
+## FinishOnboarding
 
 Finalize a given company's onboarding process.
 
@@ -471,7 +466,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetV1CompanyFinishOnboardingAsync(
+var res = await sdk.Companies.FinishOnboardingAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -497,7 +492,7 @@ var res = await sdk.Companies.GetV1CompanyFinishOnboardingAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## GetV1CompaniesCompanyIdCustomFields
+## GetCustomFields
 
 Returns a list of the custom fields of the company. Useful when you need to know the schema of custom fields for an entire company
 
@@ -511,10 +506,10 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Companies.GetV1CompaniesCompanyIdCustomFieldsAsync(
+var res = await sdk.Companies.GetCustomFieldsAsync(
     companyId: "<id>",
-    page: 9765.05D,
-    per: 1619.52D,
+    page: 6531.7D,
+    per: 3092.2D,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
 
@@ -533,227 +528,6 @@ var res = await sdk.Companies.GetV1CompaniesCompanyIdCustomFieldsAsync(
 ### Response
 
 **[GetV1CompaniesCompanyIdCustomFieldsResponse](../../Models/Requests/GetV1CompaniesCompanyIdCustomFieldsResponse.md)**
-
-### Errors
-
-| Error Type                               | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
-
-## UpdateIndustrySelection
-
-Update the company industry selection by passing in industry classification codes: [NAICS code](https://www.naics.com), [SICS code](https://siccode.com/) and industry title. Our UI is leveraging [Middesk API](https://docs.middesk.com/reference/introduction) to determine industry classification codes.
-
-scope: `companies:write`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-using GustoEmbedded.Models.Requests;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Companies.UpdateIndustrySelectionAsync(
-    companyId: "<id>",
-    requestBody: new PutV1CompanyIndustryRequestBody() {
-        NaicsCode = "<value>",
-    },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CompanyId`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
-| `RequestBody`                                                                                                                                                                                                                | [PutV1CompanyIndustryRequestBody](../../Models/Requests/PutV1CompanyIndustryRequestBody.md)                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
-
-### Response
-
-**[PutV1CompanyIndustryResponse](../../Models/Requests/PutV1CompanyIndustryResponse.md)**
-
-### Errors
-
-| Error Type                                                 | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
-| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
-
-## GetSignatories
-
-Returns company signatories. Currently we only support a single signatory per company.
-
-scope: `signatories:read`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Companies.GetSignatoriesAsync(
-    companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CompanyUuid`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
-
-### Response
-
-**[GetV1CompaniesCompanyUuidSignatoriesResponse](../../Models/Requests/GetV1CompaniesCompanyUuidSignatoriesResponse.md)**
-
-### Errors
-
-| Error Type                               | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
-
-## CreateEarningType
-
-Create a custom earning type.
-
-If an inactive earning type exists with the same name, this will reactivate it instead of creating a new one.
-
-scope: `payrolls:write`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-using GustoEmbedded.Models.Requests;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Companies.CreateEarningTypeAsync(
-    companyId: "<id>",
-    requestBody: new PostV1CompaniesCompanyIdEarningTypesRequestBody() {
-        Name = "<value>",
-    },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CompanyId`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
-| `RequestBody`                                                                                                                                                                                                                | [PostV1CompaniesCompanyIdEarningTypesRequestBody](../../Models/Requests/PostV1CompaniesCompanyIdEarningTypesRequestBody.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
-
-### Response
-
-**[PostV1CompaniesCompanyIdEarningTypesResponse](../../Models/Requests/PostV1CompaniesCompanyIdEarningTypesResponse.md)**
-
-### Errors
-
-| Error Type                                                 | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
-| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
-
-## ListEarningTypes
-
-A payroll item in Gusto is associated to an earning type to name the type of earning described by the payroll item.
-
-#### Default Earning Type
-Certain earning types are special because they have tax considerations. Those earning types are mostly the same for every company depending on its legal structure (LLC, Corporation, etc.)
-
-#### Custom Earning Type
-Custom earning types are all the other earning types added specifically for a company.
-
-scope: `payrolls:read`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Companies.ListEarningTypesAsync(
-    companyId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CompanyId`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
-
-### Response
-
-**[GetV1CompaniesCompanyIdEarningTypesResponse](../../Models/Requests/GetV1CompaniesCompanyIdEarningTypesResponse.md)**
-
-### Errors
-
-| Error Type                               | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
-
-## ListBenefits
-
-Company benefits represent the benefits that a company is offering to employees. This ties together a particular supported benefit with the company-specific information for the offering of that benefit.
-
-Note that company benefits can be deactivated only when no employees are enrolled.
-
-Benefits containing PHI are only visible to applications with the `company_benefits:read:phi` scope.
-
-scope: `company_benefits:read`
-
-### Example Usage
-
-```csharp
-using GustoEmbedded;
-using GustoEmbedded.Models.Components;
-
-var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Companies.ListBenefitsAsync(
-    companyId: "<id>",
-    enrollmentCount: false,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CompanyId`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
-| `EnrollmentCount`                                                                                                                                                                                                            | *bool*                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                           | Whether to return employee enrollment count                                                                                                                                                                                  |
-| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
-
-### Response
-
-**[GetV1CompaniesCompanyIdCompanyBenefitsResponse](../../Models/Requests/GetV1CompaniesCompanyIdCompanyBenefitsResponse.md)**
 
 ### Errors
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bf9ee6d5-b9a6-4e11-8e95-9b3170216677
 management:
-  docChecksum: 68327d27e843ec5f79a51e6e0cc241e3
+  docChecksum: 29c0a68ff8e4c6ee1ad5406dff3c5929
   docVersion: "2024-04-01"
-  speakeasyVersion: 1.488.0
-  generationVersion: 2.506.0
-  releaseVersion: 0.0.6
-  configChecksum: 399f5702bd60438deb0efc2489fe32e2
+  speakeasyVersion: 1.492.0
+  generationVersion: 2.512.4
+  releaseVersion: 0.0.7
+  configChecksum: f68551e4982557b629abf4e829dcb28c
   repoURL: https://github.com/Gusto/gusto-csharp-client.git
   repoSubDirectory: gusto_embedded
   published: true
@@ -19,7 +19,7 @@ features:
     errorUnions: 0.1.1
     flattening: 2.81.3
     getRequestBodies: 2.81.1
-    globalSecurity: 2.83.6
+    globalSecurity: 2.83.7
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.3
@@ -27,7 +27,7 @@ features:
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
     methodArguments: 0.2.0
-    methodSecurity: 2.82.2
+    methodSecurity: 2.82.3
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.0.4
@@ -1157,56 +1157,46 @@ generatedFiles:
   - docs/Models/Requests/WorkAddress.md
   - docs/sdks/achtransactions/README.md
   - docs/sdks/bankaccounts/README.md
-  - docs/sdks/benefits/README.md
   - docs/sdks/companies/README.md
   - docs/sdks/companyattachment/README.md
   - docs/sdks/companyattachments/README.md
   - docs/sdks/companybenefits/README.md
   - docs/sdks/companyforms/README.md
-  - docs/sdks/compensations/README.md
-  - docs/sdks/contractorbankaccounts/README.md
   - docs/sdks/contractordocuments/README.md
   - docs/sdks/contractorforms/README.md
   - docs/sdks/contractorpaymentgroups/README.md
   - docs/sdks/contractorpaymentmethod/README.md
+  - docs/sdks/contractorpaymentmethods/README.md
   - docs/sdks/contractorpayments/README.md
   - docs/sdks/contractors/README.md
   - docs/sdks/departments/README.md
   - docs/sdks/earningtypes/README.md
   - docs/sdks/employeeaddresses/README.md
-  - docs/sdks/employeebankaccounts/README.md
   - docs/sdks/employeebenefits/README.md
   - docs/sdks/employeeemployments/README.md
-  - docs/sdks/employeefederaltaxes/README.md
   - docs/sdks/employeeforms/README.md
   - docs/sdks/employeepaymentmethod/README.md
   - docs/sdks/employeepaymentmethods/README.md
-  - docs/sdks/employeerehires/README.md
   - docs/sdks/employees/README.md
-  - docs/sdks/employeetaxes/README.md
   - docs/sdks/employeetaxsetup/README.md
-  - docs/sdks/employeeworkaddresses/README.md
   - docs/sdks/events/README.md
   - docs/sdks/externalpayrolls/README.md
   - docs/sdks/federaltaxdetails/README.md
   - docs/sdks/flows/README.md
-  - docs/sdks/forms/README.md
   - docs/sdks/garnishments/README.md
   - docs/sdks/generateddocuments/README.md
   - docs/sdks/gusto/README.md
+  - docs/sdks/historicalemployees/README.md
   - docs/sdks/holidaypaypolicies/README.md
   - docs/sdks/i9verification/README.md
-  - docs/sdks/i9verifications/README.md
   - docs/sdks/industryselection/README.md
   - docs/sdks/introspection/README.md
   - docs/sdks/invoices/README.md
-  - docs/sdks/jobs/README.md
   - docs/sdks/jobsandcompensations/README.md
   - docs/sdks/locations/README.md
   - docs/sdks/notifications/README.md
   - docs/sdks/paymentconfigs/README.md
   - docs/sdks/payrolls/README.md
-  - docs/sdks/payscheduleassignments/README.md
   - docs/sdks/payschedules/README.md
   - docs/sdks/recoverycases/README.md
   - docs/sdks/reports/README.md
@@ -1214,58 +1204,48 @@ generatedFiles:
   - docs/sdks/taxrequirements/README.md
   - docs/sdks/timeoffpolicies/README.md
   - docs/sdks/webhooks/README.md
-  - docs/sdks/webhooksubscriptions/README.md
   - docs/sdks/wireinrequests/README.md
   - global.json
-  - src/GustoEmbedded/ACHTransactions.cs
+  - src/GustoEmbedded/AchTransactions.cs
   - src/GustoEmbedded/BankAccounts.cs
-  - src/GustoEmbedded/Benefits.cs
   - src/GustoEmbedded/Companies.cs
   - src/GustoEmbedded/CompanyAttachment.cs
   - src/GustoEmbedded/CompanyAttachments.cs
   - src/GustoEmbedded/CompanyBenefits.cs
   - src/GustoEmbedded/CompanyForms.cs
-  - src/GustoEmbedded/Compensations.cs
-  - src/GustoEmbedded/ContractorBankAccounts.cs
   - src/GustoEmbedded/ContractorDocuments.cs
   - src/GustoEmbedded/ContractorForms.cs
   - src/GustoEmbedded/ContractorPaymentGroups.cs
   - src/GustoEmbedded/ContractorPaymentMethod.cs
+  - src/GustoEmbedded/ContractorPaymentMethods.cs
   - src/GustoEmbedded/ContractorPayments.cs
   - src/GustoEmbedded/Contractors.cs
   - src/GustoEmbedded/Departments.cs
   - src/GustoEmbedded/EarningTypes.cs
   - src/GustoEmbedded/EmployeeAddresses.cs
-  - src/GustoEmbedded/EmployeeBankAccounts.cs
   - src/GustoEmbedded/EmployeeBenefits.cs
   - src/GustoEmbedded/EmployeeEmployments.cs
-  - src/GustoEmbedded/EmployeeFederalTaxes.cs
   - src/GustoEmbedded/EmployeeForms.cs
   - src/GustoEmbedded/EmployeePaymentMethod.cs
   - src/GustoEmbedded/EmployeePaymentMethods.cs
-  - src/GustoEmbedded/EmployeeRehires.cs
   - src/GustoEmbedded/EmployeeTaxSetup.cs
-  - src/GustoEmbedded/EmployeeTaxes.cs
-  - src/GustoEmbedded/EmployeeWorkAddresses.cs
   - src/GustoEmbedded/Employees.cs
   - src/GustoEmbedded/Events.cs
   - src/GustoEmbedded/ExternalPayrolls.cs
   - src/GustoEmbedded/FederalTaxDetails.cs
   - src/GustoEmbedded/Flows.cs
-  - src/GustoEmbedded/Forms.cs
   - src/GustoEmbedded/Garnishments.cs
   - src/GustoEmbedded/GeneratedDocuments.cs
   - src/GustoEmbedded/Gusto.cs
   - src/GustoEmbedded/GustoEmbedded.csproj
+  - src/GustoEmbedded/HistoricalEmployees.cs
   - src/GustoEmbedded/HolidayPayPolicies.cs
   - src/GustoEmbedded/Hooks/HookTypes.cs
   - src/GustoEmbedded/Hooks/SDKHooks.cs
   - src/GustoEmbedded/I9Verification.cs
-  - src/GustoEmbedded/I9Verifications.cs
   - src/GustoEmbedded/IndustrySelection.cs
   - src/GustoEmbedded/Introspection.cs
   - src/GustoEmbedded/Invoices.cs
-  - src/GustoEmbedded/Jobs.cs
   - src/GustoEmbedded/JobsAndCompensations.cs
   - src/GustoEmbedded/Locations.cs
   - src/GustoEmbedded/Models/Components/AccountType.cs
@@ -2386,7 +2366,6 @@ generatedFiles:
   - src/GustoEmbedded/Models/Requests/WithholdingPayPeriod.cs
   - src/GustoEmbedded/Models/Requests/WorkAddress.cs
   - src/GustoEmbedded/Notifications.cs
-  - src/GustoEmbedded/PayScheduleAssignments.cs
   - src/GustoEmbedded/PaySchedules.cs
   - src/GustoEmbedded/PaymentConfigs.cs
   - src/GustoEmbedded/Payrolls.cs
@@ -2412,7 +2391,6 @@ generatedFiles:
   - src/GustoEmbedded/Utils/SpeakeasyMetadata.cs
   - src/GustoEmbedded/Utils/URLBuilder.cs
   - src/GustoEmbedded/Utils/Utilities.cs
-  - src/GustoEmbedded/WebhookSubscriptions.cs
   - src/GustoEmbedded/Webhooks.cs
   - src/GustoEmbedded/WireInRequests.cs
 examples:
@@ -2811,7 +2789,7 @@ examples:
           company_id: "<id>"
         header: {}
       requestBody:
-        multipart/form-data: {"document": {"": "0xeC85ec218a"}, "category": "compliance"}
+        multipart/form-data: {"document": {"": "0xae921BE031"}, "category": "compliance"}
       responses:
         "201":
           application/json: {"uuid": "1263eae5-4411-48d9-bd6d-18ed93082e65", "name": "Company_Attachment_File.pdf", "category": "gep_notice", "upload_time": "2022-02-01T00:00:00.000Z"}
@@ -2821,7 +2799,7 @@ examples:
           company_id: "<id>"
         header: {}
       requestBody:
-        multipart/form-data: {"document": {"": "0xa63C7Be2d8"}, "category": "gep_notice"}
+        multipart/form-data: {"document": {"": "0xBBcAF75054"}, "category": "gep_notice"}
       responses:
         "422":
           application/json: {"errors": [{"error_key": "base", "category": "payroll_blocker", "message": "Company must complete all onboarding requirements in order to run payroll."}]}
@@ -2831,7 +2809,7 @@ examples:
           company_id: "<id>"
         header: {}
       requestBody:
-        multipart/form-data: {"document": {"": "0x203227Bd08"}, "category": "compliance"}
+        multipart/form-data: {"document": {"": "0x17412e70de"}, "category": "compliance"}
       responses:
         "422":
           application/json: {"errors": [{"error_key": "first_name", "category": "invalid_attribute_value", "message": "First name is required"}, {"error_key": "date_of_birth", "category": "invalid_attribute_value", "message": "Date of birth is not a valid date"}]}
@@ -2841,7 +2819,7 @@ examples:
           company_id: "<id>"
         header: {}
       requestBody:
-        multipart/form-data: {"document": {"": "0xE64967a73e"}, "category": "compliance"}
+        multipart/form-data: {"document": {"": "0x40b0ecD9a5"}, "category": "compliance"}
       responses:
         "422":
           application/json: {"errors": [{"error_key": "contractor_payments", "category": "nested_errors", "errors": [{"error_key": "hours", "category": "invalid_attribute_value", "message": "Ella Fitzgerald is paid fixed wage and hours cannot be set on a contractor payment"}]}, {"error_key": "contractor_payments", "category": "nested_errors", "errors": [{"error_key": "wage", "category": "invalid_attribute_value", "message": "Isaiah Berlin is paid hourly and wage cannot be set on a contractor payment"}]}]}
@@ -6542,7 +6520,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "Unlimited Vacation Policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 423291, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": true, "employees": []}
+          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "Unlimited Vacation Policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 857478, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": true, "employees": []}
     Hourly Vacation Policy:
       parameters:
         path:
@@ -6591,7 +6569,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "Test Vacation Unlimited Policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 768578, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "version": "f5556bce3d75ec2b62bd11990aa7993a", "is_active": true, "employees": [{"uuid": "05ed3150-591e-4f8b-bfd5-55d478edd2d8"}, {"uuid": "3633ce57-abb7-422f-8c5a-455566618e6a"}, {"uuid": "9b37429c-e540-40fb-86b3-738ca9af65c7"}]}, {"uuid": "2439c13f-f6d7-4a93-af8c-175fd4cc7ce8", "company_uuid": "f5f7b10d-2ddb-42f6-a955-d55320ce5316", "name": "Test Vacation Fixed Policy", "policy_type": "vacation", "accrual_method": "per_anniversary_year", "accrual_rate": "120.0", "accrual_rate_unit": "<value>", "paid_out_on_termination": true, "accrual_waiting_period_days": 0, "carryover_limit_hours": "240.0", "max_accrual_hours_per_year": "120.0", "max_hours": "300.0", "complete": true, "version": "f5556bce3d75ec2b62bd11990aa7993a", "is_active": true, "employees": [{"uuid": "de7a5fb3-2e0f-460a-abbf-467fe310bf5c"}, {"uuid": "92af03c7-a833-43ae-bae8-f67007a59b37"}]}, {"uuid": "bd5f354f-12e0-4a5e-ad1f-953bb2685ad4", "company_uuid": "6767445f-5075-4ea4-a7f5-d5b5b93d4d60", "name": "Test Vacation Hourly Policy", "policy_type": "vacation", "accrual_method": "per_hour_paid", "accrual_rate": "4.0", "accrual_rate_unit": "80.0", "paid_out_on_termination": true, "accrual_waiting_period_days": 30, "carryover_limit_hours": "200.0", "max_accrual_hours_per_year": "120.0", "max_hours": "240.0", "complete": true, "version": "f5556bce3d75ec2b62bd11990aa7993a", "is_active": true, "employees": [{"uuid": "1ea2764d-0f1a-4f09-b1d9-3006aecf63c4"}, {"uuid": "a0db19a2-7c8f-42b4-9d4c-2e6246c3d6e8"}]}]
+          application/json: [{"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "Test Vacation Unlimited Policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 461008, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "version": "f5556bce3d75ec2b62bd11990aa7993a", "is_active": true, "employees": [{"uuid": "05ed3150-591e-4f8b-bfd5-55d478edd2d8"}, {"uuid": "3633ce57-abb7-422f-8c5a-455566618e6a"}, {"uuid": "9b37429c-e540-40fb-86b3-738ca9af65c7"}]}, {"uuid": "2439c13f-f6d7-4a93-af8c-175fd4cc7ce8", "company_uuid": "f5f7b10d-2ddb-42f6-a955-d55320ce5316", "name": "Test Vacation Fixed Policy", "policy_type": "vacation", "accrual_method": "per_anniversary_year", "accrual_rate": "120.0", "accrual_rate_unit": "<value>", "paid_out_on_termination": true, "accrual_waiting_period_days": 0, "carryover_limit_hours": "240.0", "max_accrual_hours_per_year": "120.0", "max_hours": "300.0", "complete": true, "version": "f5556bce3d75ec2b62bd11990aa7993a", "is_active": true, "employees": [{"uuid": "de7a5fb3-2e0f-460a-abbf-467fe310bf5c"}, {"uuid": "92af03c7-a833-43ae-bae8-f67007a59b37"}]}, {"uuid": "bd5f354f-12e0-4a5e-ad1f-953bb2685ad4", "company_uuid": "6767445f-5075-4ea4-a7f5-d5b5b93d4d60", "name": "Test Vacation Hourly Policy", "policy_type": "vacation", "accrual_method": "per_hour_paid", "accrual_rate": "4.0", "accrual_rate_unit": "80.0", "paid_out_on_termination": true, "accrual_waiting_period_days": 30, "carryover_limit_hours": "200.0", "max_accrual_hours_per_year": "120.0", "max_hours": "240.0", "complete": true, "version": "f5556bce3d75ec2b62bd11990aa7993a", "is_active": true, "employees": [{"uuid": "1ea2764d-0f1a-4f09-b1d9-3006aecf63c4"}, {"uuid": "a0db19a2-7c8f-42b4-9d4c-2e6246c3d6e8"}]}]
   post-companies-company_uuid-time_off_policies:
     Unlimited Policy:
       parameters:
@@ -6624,7 +6602,7 @@ examples:
         application/json: {"name": "<value>", "policy_type": "<value>", "accrual_method": "per_hour_paid_no_overtime"}
       responses:
         "201":
-          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "Unlimited Vacation Policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 404824, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": true, "employees": []}
+          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "Unlimited Vacation Policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 486589, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": true, "employees": []}
     Hourly Vacation Policy:
       parameters:
         path:
@@ -6675,7 +6653,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "test policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 784667, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": true, "employees": [{"uuid": "05ed3150-591e-4f8b-bfd5-55d478edd2d8"}]}
+          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "test policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 556955, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": true, "employees": [{"uuid": "05ed3150-591e-4f8b-bfd5-55d478edd2d8"}]}
     Fixed/Hourly Policy:
       parameters:
         path:
@@ -6737,7 +6715,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "test policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 717805, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": true, "employees": [{"uuid": "05ed3150-591e-4f8b-bfd5-55d478edd2d8"}]}
+          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "test policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 75298, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": true, "employees": [{"uuid": "05ed3150-591e-4f8b-bfd5-55d478edd2d8"}]}
     Basic:
       parameters:
         path:
@@ -6817,7 +6795,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "test policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 444444, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": false, "employees": [{"uuid": "05ed3150-591e-4f8b-bfd5-55d478edd2d8"}]}
+          application/json: {"uuid": "3f746cd0-dd08-408f-b712-8180c7c621e9", "company_uuid": "de83cff2-8e7a-448e-a28c-14258a9971c3", "name": "test policy", "policy_type": "vacation", "accrual_method": "unlimited", "accrual_rate": "<value>", "accrual_rate_unit": "<value>", "paid_out_on_termination": false, "accrual_waiting_period_days": 340065, "carryover_limit_hours": "<value>", "max_accrual_hours_per_year": "<value>", "max_hours": "<value>", "complete": true, "is_active": false, "employees": [{"uuid": "05ed3150-591e-4f8b-bfd5-55d478edd2d8"}]}
     Basic:
       parameters:
         path:
@@ -7336,7 +7314,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "active": true, "description": "Kaiser Permanente", "deletable": true, "supports_percentage_amounts": true, "responsible_for_employer_taxes": false, "responsible_for_employee_w2": false, "employee_benefits": [{"employee_uuid": "ae44a0b2-3c89-41e1-91c8-5f8224a779ca", "company_benefit_uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "active": true, "deduct_as_percentage": false, "employee_deduction": "3", "company_contribution": "0", "uuid": "9988f241-9aee-4383-bfca-eac79cf58135", "contribution": {"type": "amount", "value": "<value>"}}]}
+          application/json: {"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "active": true, "description": "Kaiser Permanente", "deletable": true, "supports_percentage_amounts": true, "responsible_for_employer_taxes": false, "responsible_for_employee_w2": false, "employee_benefits": [{"employee_uuid": "ae44a0b2-3c89-41e1-91c8-5f8224a779ca", "company_benefit_uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "active": true, "deduct_as_percentage": false, "employee_deduction": "3", "company_contribution": "0", "uuid": "9988f241-9aee-4383-bfca-eac79cf58135", "contribution": {"type": "amount", "value": {}}}]}
   put-v1-company_benefits-company_benefit_id:
     Example:
       parameters:
@@ -7472,7 +7450,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"employee_deduction": {"required": true, "editable": true, "choices": ["<value>", "<value>", "<value>"]}, "contribution": {"required": true, "editable": true, "default_value": {"value": "2", "type": "percentage"}, "choices": ["percentage"]}, "deduct_as_percentage": {"required": true, "editable": true, "choices": ["<value>"]}, "catch_up": {"required": true, "editable": true, "choices": ["<value>", "<value>", "<value>"]}, "limit_option": {"required": false, "editable": false, "choices": ["<value>", "<value>", "<value>"]}, "company_contribution_annual_maximum": {"required": false, "editable": false, "choices": ["<value>", "<value>", "<value>"]}, "coverage_salary_multiplier": {"required": false, "editable": false, "choices": ["<value>", "<value>"]}, "coverage_amount": {"required": false, "editable": false, "choices": ["<value>", "<value>"]}}
+          application/json: {"employee_deduction": {"required": true, "editable": true, "choices": ["<value>"]}, "contribution": {"required": true, "editable": true, "default_value": {"value": "2", "type": "percentage"}, "choices": ["percentage"]}, "deduct_as_percentage": {"required": true, "editable": true, "choices": ["<value>", "<value>", "<value>"]}, "catch_up": {"required": true, "editable": true, "choices": ["<value>"]}, "limit_option": {"required": false, "editable": false, "choices": ["<value>"]}, "company_contribution_annual_maximum": {"required": false, "editable": false, "choices": ["<value>", "<value>"]}, "coverage_salary_multiplier": {"required": false, "editable": false, "choices": ["<value>", "<value>"]}, "coverage_amount": {"required": false, "editable": false, "choices": ["<value>", "<value>", "<value>"]}}
   post-v1-employees-employee_id-employee_benefits:
     Example:
       parameters:
@@ -7710,7 +7688,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"uuid": "f4062799-201b-438b-aea7-5c7f0b41e0c3", "active": true, "times": null, "recurring": false, "annual_maximum": null, "pay_period_maximum": null, "deduct_as_percentage": false}, {"uuid": "1855f1a0-3e63-426d-b171-9508756c0982", "active": true, "times": null, "recurring": false, "annual_maximum": null, "pay_period_maximum": null, "deduct_as_percentage": false}]
+          application/json: [{"uuid": "c8a232aa-0b11-4b8a-b005-71e9e705d0e6", "active": true, "times": null, "recurring": false, "annual_maximum": null, "pay_period_maximum": null, "deduct_as_percentage": false}, {"uuid": "21e27667-18d6-4d46-812e-0aee1b9ddf12", "active": true, "times": null, "recurring": false, "annual_maximum": null, "pay_period_maximum": null, "deduct_as_percentage": false}]
   get-v1-garnishments-garnishment_id:
     Example:
       parameters:
@@ -7788,7 +7766,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"uuid": "b888f774-3e7c-4135-a18c-6b985523c4bc", "version": "<value>", "authorization_status": "alien", "employer_signed": true, "employee_signed": true}
+          application/json: {"uuid": "7fe28e4d-1e30-4ebb-8d22-aae768170b82", "version": "<value>", "authorization_status": "permanent_resident", "employer_signed": false, "employee_signed": false}
   put-v1-employees-employee_id-i9_authorization:
     Example:
       parameters:
@@ -7799,7 +7777,7 @@ examples:
         application/json: {"authorization_status": "citizen", "version": "52b7c567242cb7452e89ba2bc02cb476"}
       responses:
         "200":
-          application/json: {"uuid": "87673c22-1b80-4b69-b5bb-e92af8dcce02", "version": "<value>", "authorization_status": "alien", "employer_signed": false, "employee_signed": false}
+          application/json: {"uuid": "d95fa7f0-e743-42ce-b47c-b60cc78135dd", "version": "<value>", "authorization_status": "permanent_resident", "employer_signed": false, "employee_signed": true}
     Basic:
       parameters:
         path:
@@ -7903,10 +7881,10 @@ examples:
           employee_id: "<id>"
         header: {}
       requestBody:
-        application/json: {"signature_text": "<value>", "signer_title": "<value>", "signed_by_ip_address": "<value>", "agree": true}
+        application/json: {"signature_text": "<value>", "signer_title": "<value>", "signed_by_ip_address": "<value>", "agree": false}
       responses:
         "200":
-          application/json: {"uuid": "e641021c-e706-466c-a98a-908fb0db9604", "version": "<value>", "authorization_status": "noncitizen", "employer_signed": false, "employee_signed": true}
+          application/json: {"uuid": "ab18cec1-6568-4d93-b2ad-8deafd3f650c", "version": "<value>", "authorization_status": "alien", "employer_signed": true, "employee_signed": true}
     Basic:
       parameters:
         path:

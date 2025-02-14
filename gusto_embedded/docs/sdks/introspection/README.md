@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [GetV1TokenInfo](#getv1tokeninfo) - Get info about the current access token
-* [RefreshAccessToken](#refreshaccesstoken) - Refresh access token
+* [GetInfo](#getinfo) - Get info about the current access token
+* [RefreshToken](#refreshtoken) - Refresh access token
 
-## GetV1TokenInfo
+## GetInfo
 
 Returns scope and resource information associated with the current access token.
 
@@ -20,7 +20,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```
@@ -41,7 +41,7 @@ var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionH
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## RefreshAccessToken
+## RefreshToken
 
 Exchange a refresh token for a new access token.
 
@@ -58,7 +58,7 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.RefreshAccessTokenAsync(
+var res = await sdk.Introspection.RefreshTokenAsync(
     requestBody: new RefreshAccessTokenRequestBody() {
         ClientId = "<id>",
         ClientSecret = "<value>",

@@ -26,26 +26,25 @@ namespace GustoEmbedded
     {
 
         /// <summary>
-        /// Update an employee&apos;s payment method
+        /// Get all employee bank accounts
         /// 
         /// <remarks>
-        /// Updates an employee&apos;s payment method. Note that creating an employee<br/>
-        /// bank account will also update the employee&apos;s payment method.<br/>
+        /// Returns all employee bank accounts.<br/>
         /// <br/>
-        /// scope: `employee_payment_methods:write`
+        /// scope: `employee_payment_methods:read`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdPaymentMethodResponse> UpdatePaymentMethodAsync(string employeeId, PutV1EmployeesEmployeeIdPaymentMethodRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdBankAccountsResponse> GetBankAccountsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class EmployeePaymentMethods: IEmployeePaymentMethods
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -58,33 +57,28 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PutV1EmployeesEmployeeIdPaymentMethodResponse> UpdatePaymentMethodAsync(string employeeId, PutV1EmployeesEmployeeIdPaymentMethodRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdBankAccountsResponse> GetBankAccountsAsync(string employeeId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
         {
-            var request = new PutV1EmployeesEmployeeIdPaymentMethodRequest()
+            var request = new GetV1EmployeesEmployeeIdBankAccountsRequest()
             {
                 EmployeeId = employeeId,
-                RequestBody = requestBody,
+                Page = page,
+                Per = per,
                 XGustoAPIVersion = xGustoAPIVersion,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/payment_method", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/bank_accounts", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-employees-employee_id-payment_method", null, _securitySource);
+            var hookCtx = new HookContext("get-v1-employees-employee_id-bank_accounts", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -94,7 +88,7 @@ namespace GustoEmbedded
                 httpResponse = await _client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -124,8 +118,8 @@ namespace GustoEmbedded
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.EmployeePaymentMethod>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new PutV1EmployeesEmployeeIdPaymentMethodResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<List<EmployeeBankAccount>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetV1EmployeesEmployeeIdBankAccountsResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -133,18 +127,8 @@ namespace GustoEmbedded
                             Request = httpRequest
                         }
                     };
-                    response.EmployeePaymentMethod = obj;
+                    response.EmployeeBankAccountList = obj;
                     return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<UnprocessableEntityErrorObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);

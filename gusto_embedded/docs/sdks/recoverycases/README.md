@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [List](#list) - Get all recovery cases for a company
-* [RedebitRecoveryCase](#redebitrecoverycase) - Initiate a redebit for a recovery case
+* [Get](#get) - Get all recovery cases for a company
+* [Redebit](#redebit) - Initiate a redebit for a recovery case
 
-## List
+## Get
 
 Fetch all recovery cases for a company.
 
@@ -22,7 +22,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.RecoveryCases.ListAsync(
+var res = await sdk.RecoveryCases.GetAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -47,7 +47,7 @@ var res = await sdk.RecoveryCases.ListAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## RedebitRecoveryCase
+## Redebit
 
 After resolving the underlying bank error, initiate a redebit for an open recovery case. This submission is asynchronous and a successful request responds with a 202 HTTP status.
 
@@ -65,7 +65,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.RecoveryCases.RedebitRecoveryCaseAsync(
+var res = await sdk.RecoveryCases.RedebitAsync(
     recoveryCaseUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

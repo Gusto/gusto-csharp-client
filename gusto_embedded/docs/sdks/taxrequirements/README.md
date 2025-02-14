@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [GetForState](#getforstate) - Get State Tax Requirements
+* [Get](#get) - Get State Tax Requirements
 * [UpdateState](#updatestate) - Update State Tax Requirements
-* [List](#list) - Get All Tax Requirement States
+* [GetAll](#getall) - Get All Tax Requirement States
 
-## GetForState
+## Get
 
 Get all tax requirements for a given state.
 
@@ -63,9 +63,9 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TaxRequirements.GetForStateAsync(
+var res = await sdk.TaxRequirements.GetAsync(
     companyUuid: "<id>",
-    state: "Kentucky",
+    state: "Oklahoma",
     scheduling: false,
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -137,7 +137,7 @@ var res = await sdk.TaxRequirements.UpdateStateAsync(
 | GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
 | GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## List
+## GetAll
 
 Returns objects describing the states that have tax requirements for the company
 
@@ -151,7 +151,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.TaxRequirements.ListAsync(
+var res = await sdk.TaxRequirements.GetAllAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );

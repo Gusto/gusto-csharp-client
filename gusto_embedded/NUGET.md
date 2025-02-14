@@ -12,7 +12,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```
@@ -36,7 +36,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```
@@ -51,15 +51,15 @@ using GustoEmbedded.Models.Requests;
 
 var sdk = new Gusto();
 
-var res = await sdk.Companies.PostV1PartnerManagedCompaniesAsync(
+var res = await sdk.Companies.CreatePartnerManagedAsync(
     security: new PostV1PartnerManagedCompaniesSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
     requestBody: new PostV1PartnerManagedCompaniesRequestBody() {
         User = new User() {
-            FirstName = "Khalid",
-            LastName = "Haley",
-            Email = "Eliane.Watsica38@yahoo.com",
+            FirstName = "Gail",
+            LastName = "Stracke",
+            Email = "Emanuel.McClure@gmail.com",
         },
         Company = new Models.Requests.Company() {
             Name = "<value>",
@@ -85,7 +85,7 @@ By default, an API error will raise a `GustoEmbedded.Models.Errors.APIException`
 | `Request`     | *HttpRequestMessage*  | The HTTP request      |
 | `Response`    | *HttpResponseMessage* | The HTTP response     |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `PostV1PartnerManagedCompaniesAsync` method throws the following exceptions:
+When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `CreatePartnerManagedAsync` method throws the following exceptions:
 
 | Error Type                                                 | Status Code | Content Type     |
 | ---------------------------------------------------------- | ----------- | ---------------- |
@@ -104,15 +104,15 @@ var sdk = new Gusto();
 
 try
 {
-    var res = await sdk.Companies.PostV1PartnerManagedCompaniesAsync(
+    var res = await sdk.Companies.CreatePartnerManagedAsync(
         security: new PostV1PartnerManagedCompaniesSecurity() {
             SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
         },
         requestBody: new PostV1PartnerManagedCompaniesRequestBody() {
             User = new User() {
-                FirstName = "Khalid",
-                LastName = "Haley",
-                Email = "Eliane.Watsica38@yahoo.com",
+                FirstName = "Gail",
+                LastName = "Stracke",
+                Email = "Emanuel.McClure@gmail.com",
             },
             Company = new Models.Requests.Company() {
                 Name = "<value>",
@@ -162,7 +162,7 @@ var sdk = new Gusto(
     companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```
@@ -179,7 +179,7 @@ var sdk = new Gusto(
     companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Introspection.GetV1TokenInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
 
 // handle response
 ```

@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [GetEvents](#getevents) - Get all events
+* [Get](#get) - Get all events
 
-## GetEvents
+## Get
 
 Fetch all events, going back up to 30 days, that your partner application has the required scopes for. Note that a partner does NOT have to have verified webhook subscriptions in order to utilize this endpoint.
 
@@ -30,7 +30,7 @@ GetEventsRequest req = new GetEventsRequest() {
     SortOrder = SortOrder.Asc,
 };
 
-var res = await sdk.Events.GetEventsAsync(
+var res = await sdk.Events.GetAsync(
     security: new GetEventsSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },

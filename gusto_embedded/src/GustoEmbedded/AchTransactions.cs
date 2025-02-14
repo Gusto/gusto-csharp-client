@@ -15,41 +15,41 @@ namespace GustoEmbedded
     using GustoEmbedded.Models.Requests;
     using GustoEmbedded.Utils;
     using GustoEmbedded.Utils.Retries;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    public interface ICompensations
+    public interface IAchTransactions
     {
 
         /// <summary>
-        /// Delete a compensation
+        /// Get all ACH transactions for a company
         /// 
         /// <remarks>
-        /// Compensations contain information on how much is paid out for a job. Jobs may have many compensations, but only one that is active. The current compensation is the one with the most recent `effective_date`. This endpoint deletes a compensation for a job that hasn&apos;t been processed on payroll.<br/>
+        /// Fetches all ACH transactions for a company.<br/>
         /// <br/>
-        /// scope: `jobs:write`<br/>
-        /// 
+        /// scope: `ach_transactions:read`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1CompensationsCompensationIdResponse> DeleteAsync(string compensationId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetAchTransactionsResponse> GetAllAsync(GetAchTransactionsRequest request);
     }
 
-    public class Compensations: ICompensations
+    public class AchTransactions: IAchTransactions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
 
-        public Compensations(ISpeakeasyHttpClient client, Func<GustoEmbedded.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public AchTransactions(ISpeakeasyHttpClient client, Func<GustoEmbedded.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _client = client;
             _securitySource = securitySource;
@@ -57,17 +57,12 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<DeleteV1CompensationsCompensationIdResponse> DeleteAsync(string compensationId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetAchTransactionsResponse> GetAllAsync(GetAchTransactionsRequest request)
         {
-            var request = new DeleteV1CompensationsCompensationIdRequest()
-            {
-                CompensationId = compensationId,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/compensations/{compensation_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/companies/{company_uuid}/ach_transactions", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
@@ -76,7 +71,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("delete-v1-compensations-compensation_id", null, _securitySource);
+            var hookCtx = new HookContext("get-ach-transactions", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -112,16 +107,24 @@ namespace GustoEmbedded
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 204)
-            {                
-                return new DeleteV1CompensationsCompensationIdResponse()
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    HttpMeta = new Models.Components.HTTPMetadata()
+                    var obj = ResponseBodyDeserializer.Deserialize<List<AchTransaction>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetAchTransactionsResponse()
                     {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    }
-                };
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.AchTransactionList = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
             }
             else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
             {

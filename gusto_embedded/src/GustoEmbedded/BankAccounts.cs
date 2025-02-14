@@ -43,7 +43,7 @@ namespace GustoEmbedded
         /// &gt; If a default bank account exists, it will be disabled and the new bank account will replace it as the company&apos;s default funding method.
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdBankAccountsResponse> PostV1CompaniesCompanyIdBankAccountsAsync(string companyId, PostV1CompaniesCompanyIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyIdBankAccountsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get all company bank accounts
@@ -54,7 +54,7 @@ namespace GustoEmbedded
         /// scope: `company_bank_accounts:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdBankAccountsResponse> GetV1CompaniesCompanyIdBankAccountsAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdBankAccountsResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Verify a company bank account
@@ -78,7 +78,7 @@ namespace GustoEmbedded
         /// scope: `company_bank_accounts:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompaniesCompanyIdBankAccountsVerifyResponse> PutV1CompaniesCompanyIdBankAccountsVerifyAsync(string bankAccountUuid, string companyId, PutV1CompaniesCompanyIdBankAccountsVerifyRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompaniesCompanyIdBankAccountsVerifyResponse> VerifyAsync(string bankAccountUuid, string companyId, PutV1CompaniesCompanyIdBankAccountsVerifyRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Create a bank account from a plaid processor token
@@ -96,17 +96,17 @@ namespace GustoEmbedded
         /// &gt; If a default company bank account exists, it will be disabled and the new bank account will replace it as the company&apos;s default funding method.
         /// </remarks>
         /// </summary>
-        Task<PostV1PlaidProcessorTokenResponse> PostV1PlaidProcessorTokenAsync(PostV1PlaidProcessorTokenRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1PlaidProcessorTokenResponse> CreateFromPlaidTokenAsync(PostV1PlaidProcessorTokenRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class BankAccounts: IBankAccounts
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.6";
-        private const string _sdkGenVersion = "2.506.0";
+        private const string _sdkVersion = "0.0.7";
+        private const string _sdkGenVersion = "2.512.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.6 2.506.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.7 2.512.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -119,7 +119,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1CompaniesCompanyIdBankAccountsResponse> PostV1CompaniesCompanyIdBankAccountsAsync(string companyId, PostV1CompaniesCompanyIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyIdBankAccountsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1CompaniesCompanyIdBankAccountsRequest()
             {
@@ -222,7 +222,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdBankAccountsResponse> GetV1CompaniesCompanyIdBankAccountsAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdBankAccountsResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyIdBankAccountsRequest()
             {
@@ -308,7 +308,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompaniesCompanyIdBankAccountsVerifyResponse> PutV1CompaniesCompanyIdBankAccountsVerifyAsync(string bankAccountUuid, string companyId, PutV1CompaniesCompanyIdBankAccountsVerifyRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompaniesCompanyIdBankAccountsVerifyResponse> VerifyAsync(string bankAccountUuid, string companyId, PutV1CompaniesCompanyIdBankAccountsVerifyRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PutV1CompaniesCompanyIdBankAccountsVerifyRequest()
             {
@@ -412,7 +412,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1PlaidProcessorTokenResponse> PostV1PlaidProcessorTokenAsync(PostV1PlaidProcessorTokenRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1PlaidProcessorTokenResponse> CreateFromPlaidTokenAsync(PostV1PlaidProcessorTokenRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new PostV1PlaidProcessorTokenRequest()
             {

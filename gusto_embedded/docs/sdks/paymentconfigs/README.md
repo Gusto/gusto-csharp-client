@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [GetV1CompanyPaymentConfigs](#getv1companypaymentconfigs) - Get a company's payment configs
-* [PutV1CompanyPaymentConfigs](#putv1companypaymentconfigs) - Update a company's payment configs
+* [Get](#get) - Get a company's payment configs
+* [Update](#update) - Update a company's payment configs
 
-## GetV1CompanyPaymentConfigs
+## Get
 
 Get payment speed for the company and fast payment limit (1-day is only applicable to partners that opt in).
 
@@ -22,7 +22,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaymentConfigs.GetV1CompanyPaymentConfigsAsync(
+var res = await sdk.PaymentConfigs.GetAsync(
     companyUuid: "<id>",
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
 );
@@ -47,7 +47,7 @@ var res = await sdk.PaymentConfigs.GetV1CompanyPaymentConfigsAsync(
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
 
-## PutV1CompanyPaymentConfigs
+## Update
 
 Update payment speed and fast payment limit for a company. At least one of `payment_speed` or `fast_payment_limit` parameters is required. 1-day option is only applicable to partners that opt in.
 
@@ -61,11 +61,11 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.PaymentConfigs.PutV1CompanyPaymentConfigsAsync(
+var res = await sdk.PaymentConfigs.UpdateAsync(
     companyUuid: "<id>",
-    requestBody: PutV1CompanyPaymentConfigsRequestBody.CreateFastPaymentLimitRequiredBody(
-        new FastPaymentLimitRequiredBody() {
-            FastPaymentLimit = "<value>",
+    requestBody: PutV1CompanyPaymentConfigsRequestBody.CreatePaymentSpeedRequiredBody(
+        new PaymentSpeedRequiredBody() {
+            PaymentSpeed = PaymentSpeedParam.TwoDay,
         }
     ),
     xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
