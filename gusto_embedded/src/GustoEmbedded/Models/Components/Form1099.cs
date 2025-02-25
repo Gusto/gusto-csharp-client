@@ -64,6 +64,12 @@ namespace GustoEmbedded.Models.Components
         public bool? RequiresSigning { get; set; }
 
         /// <summary>
+        /// The content type of the associated document. Most forms are PDFs with a content type of `application/pdf`. Some tax file packages will be zip files (containing PDFs) with a content type of `application/zip`. This attribute will be `null` when the document has not been prepared.
+        /// </summary>
+        [JsonProperty("document_content_type")]
+        public string? DocumentContentType { get; set; } = null;
+
+        /// <summary>
         /// The contractor UUID
         /// </summary>
         [JsonProperty("contractor_uuid")]
