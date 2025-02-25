@@ -44,5 +44,11 @@ namespace GustoEmbedded.Models.Components
         /// </summary>
         [JsonProperty("compensation_multiplier")]
         public double? CompensationMultiplier { get; set; }
+
+        /// <summary>
+        /// The FLSA Status of the employee&apos;s primary job compensation
+        /// </summary>
+        [JsonProperty("flsa_status")]
+        public string? FlsaStatus { get; set; }
     }
 }
