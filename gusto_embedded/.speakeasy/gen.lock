@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bf9ee6d5-b9a6-4e11-8e95-9b3170216677
 management:
-  docChecksum: 697b4d10d5cf07f835aaf0ae283a81de
+  docChecksum: 41f4b742b4af12a7747c9276c51c92b9
   docVersion: "2024-04-01"
-  speakeasyVersion: 1.502.0
-  generationVersion: 2.524.1
-  releaseVersion: 0.0.8
-  configChecksum: d0c588bf6f580c34350a94586068df31
+  speakeasyVersion: 1.505.0
+  generationVersion: 2.531.0
+  releaseVersion: 0.0.9
+  configChecksum: 6795ee3dcbbd951843ae04b479c87c67
   repoURL: https://github.com/Gusto/gusto-csharp-client.git
   repoSubDirectory: gusto_embedded
   published: true

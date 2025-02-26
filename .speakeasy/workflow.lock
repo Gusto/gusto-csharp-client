@@ -1,21 +1,21 @@
-speakeasyVersion: 1.502.0
+speakeasyVersion: 1.505.0
 sources:
     Gusto-OAS:
         sourceNamespace: gusto-oas
-        sourceRevisionDigest: sha256:e7c6b694d81b7f3c76d185427b0ff58a7d63526f8adca8a33090bf4ba774ecf1
-        sourceBlobDigest: sha256:a786ac7f2132b8c38181c71f295588b03f82030cd4e59cf900346ed7e3a8a8a1
+        sourceRevisionDigest: sha256:0e07793afa4ce7b0623f679593b397494fad0c40961399e7d1582e30346d8bd8
+        sourceBlobDigest: sha256:671558a17c0a2fa996a59443cb0943d5cdca722e053b08eef2b1ef976bbfbfcb
         tags:
             - latest
-            - speakeasy-sdk-regen-1740182791
+            - speakeasy-sdk-regen-1740591329
             - "2024-04-01"
 targets:
     gusto:
         source: Gusto-OAS
         sourceNamespace: gusto-oas
-        sourceRevisionDigest: sha256:e7c6b694d81b7f3c76d185427b0ff58a7d63526f8adca8a33090bf4ba774ecf1
-        sourceBlobDigest: sha256:a786ac7f2132b8c38181c71f295588b03f82030cd4e59cf900346ed7e3a8a8a1
+        sourceRevisionDigest: sha256:0e07793afa4ce7b0623f679593b397494fad0c40961399e7d1582e30346d8bd8
+        sourceBlobDigest: sha256:671558a17c0a2fa996a59443cb0943d5cdca722e053b08eef2b1ef976bbfbfcb
         codeSamplesNamespace: gusto-oas-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:1d3f51fbe73ad946ba4f4c0c9a363fa04fbde7bd0fa6b381041f03686d942e0e
+        codeSamplesRevisionDigest: sha256:724028a6c39ac141cbbadbb9e4ac72827740b9ce4e1f20fe2a46ed82b5e99151
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -29,6 +29,7 @@ workflow:
                 - location: https://raw.githubusercontent.com/Gusto/Gusto-Partner-API/refs/heads/main/.speakeasy/speakeasy-modifications-overlay.yaml
                   authHeader: Authorization
                   authSecret: $openapi_doc_auth_token
+                - location: gusto_embedded/.speakeasy/speakeasy-modifications-overlay.yaml
             registry:
                 location: registry.speakeasyapi.dev/gusto/ruby-sdk/gusto-oas
     targets:

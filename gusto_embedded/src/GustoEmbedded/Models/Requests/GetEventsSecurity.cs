@@ -15,6 +15,6 @@ namespace GustoEmbedded.Models.Requests
     {
 
         [SpeakeasyMetadata("security:scheme=true,type=http,subType=bearer,name=Authorization")]
-        public string SystemAccessAuth { get; set; } = default!;
+        public string? SystemAccessAuth { get; set; }
     }
 }
