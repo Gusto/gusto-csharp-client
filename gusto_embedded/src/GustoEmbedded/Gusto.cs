@@ -140,10 +140,10 @@ namespace GustoEmbedded
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.8";
-        private const string _sdkGenVersion = "2.524.1";
+        private const string _sdkVersion = "0.0.9";
+        private const string _sdkGenVersion = "2.531.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.8 2.524.1 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.9 2.531.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;

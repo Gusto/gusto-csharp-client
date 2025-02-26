@@ -38,17 +38,17 @@ namespace GustoEmbedded
         /// scope: `invoices:read`
         /// </remarks>
         /// </summary>
-        Task<GetInvoicesInvoicePeriodResponse> GetAsync(GetInvoicesInvoicePeriodSecurity security, GetInvoicesInvoicePeriodRequest request);
+        Task<GetInvoicesInvoicePeriodResponse> GetAsync(GetInvoicesInvoicePeriodRequest request, GetInvoicesInvoicePeriodSecurity? security = null);
     }
 
     public class Invoices: IInvoices
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.8";
-        private const string _sdkGenVersion = "2.524.1";
+        private const string _sdkVersion = "0.0.9";
+        private const string _sdkGenVersion = "2.531.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.8 2.524.1 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.9 2.531.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -61,7 +61,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetInvoicesInvoicePeriodResponse> GetAsync(GetInvoicesInvoicePeriodSecurity security, GetInvoicesInvoicePeriodRequest request)
+        public async Task<GetInvoicesInvoicePeriodResponse> GetAsync(GetInvoicesInvoicePeriodRequest request, GetInvoicesInvoicePeriodSecurity? security = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/invoices/{invoice_period}", request);
@@ -70,13 +70,14 @@ namespace GustoEmbedded
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (security == null)
+            Func<GetInvoicesInvoicePeriodSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("get-invoices-invoice-period", null, () => security);
+            var hookCtx = new HookContext("get-invoices-invoice-period", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

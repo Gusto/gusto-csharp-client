@@ -38,7 +38,7 @@ namespace GustoEmbedded
         /// scope: `webhook_subscriptions:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1WebhookSubscriptionResponse> CreateSubscriptionAsync(PostV1WebhookSubscriptionSecurity security, PostV1WebhookSubscriptionRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1WebhookSubscriptionResponse> CreateSubscriptionAsync(PostV1WebhookSubscriptionRequestBody requestBody, VersionHeader? xGustoAPIVersion = null, PostV1WebhookSubscriptionSecurity? security = null);
 
         /// <summary>
         /// List webhook subscriptions
@@ -53,7 +53,7 @@ namespace GustoEmbedded
         /// scope: `webhook_subscriptions:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1WebhookSubscriptionsResponse> ListSubscriptionsAsync(GetV1WebhookSubscriptionsSecurity security, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1WebhookSubscriptionsResponse> ListSubscriptionsAsync(VersionHeader? xGustoAPIVersion = null, GetV1WebhookSubscriptionsSecurity? security = null);
 
         /// <summary>
         /// Update a webhook subscription
@@ -69,7 +69,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<PutV1WebhookSubscriptionUuidResponse> UpdateSubscriptionAsync(PutV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, PutV1WebhookSubscriptionUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1WebhookSubscriptionUuidResponse> UpdateSubscriptionAsync(string webhookSubscriptionUuid, PutV1WebhookSubscriptionUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null, PutV1WebhookSubscriptionUuidSecurity? security = null);
 
         /// <summary>
         /// Get a webhook subscription
@@ -85,7 +85,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetV1WebhookSubscriptionUuidResponse> GetSubscriptionAsync(GetV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1WebhookSubscriptionUuidResponse> GetSubscriptionAsync(string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null, GetV1WebhookSubscriptionUuidSecurity? security = null);
 
         /// <summary>
         /// Delete a webhook subscription
@@ -101,7 +101,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<DeleteV1WebhookSubscriptionUuidResponse> DeleteSubscriptionAsync(DeleteV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1WebhookSubscriptionUuidResponse> DeleteSubscriptionAsync(string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null, DeleteV1WebhookSubscriptionUuidSecurity? security = null);
 
         /// <summary>
         /// Verify the webhook subscription
@@ -119,7 +119,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<PutV1VerifyWebhookSubscriptionUuidResponse> VerifyAsync(PutV1VerifyWebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, PutV1VerifyWebhookSubscriptionUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1VerifyWebhookSubscriptionUuidResponse> VerifyAsync(string webhookSubscriptionUuid, PutV1VerifyWebhookSubscriptionUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null, PutV1VerifyWebhookSubscriptionUuidSecurity? security = null);
 
         /// <summary>
         /// Request the webhook subscription verification_token
@@ -135,17 +135,17 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetV1WebhookSubscriptionVerificationTokenUuidResponse> RequestVerificationTokenAsync(GetV1WebhookSubscriptionVerificationTokenUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1WebhookSubscriptionVerificationTokenUuidResponse> RequestVerificationTokenAsync(string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null, GetV1WebhookSubscriptionVerificationTokenUuidSecurity? security = null);
     }
 
     public class Webhooks: IWebhooks
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.8";
-        private const string _sdkGenVersion = "2.524.1";
+        private const string _sdkVersion = "0.0.9";
+        private const string _sdkGenVersion = "2.531.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.8 2.524.1 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.9 2.531.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -158,7 +158,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1WebhookSubscriptionResponse> CreateSubscriptionAsync(PostV1WebhookSubscriptionSecurity security, PostV1WebhookSubscriptionRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1WebhookSubscriptionResponse> CreateSubscriptionAsync(PostV1WebhookSubscriptionRequestBody requestBody, VersionHeader? xGustoAPIVersion = null, PostV1WebhookSubscriptionSecurity? security = null)
         {
             var request = new PostV1WebhookSubscriptionRequest()
             {
@@ -179,13 +179,14 @@ namespace GustoEmbedded
                 httpRequest.Content = serializedBody;
             }
 
-            if (security == null)
+            Func<PostV1WebhookSubscriptionSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("post-v1-webhook-subscription", null, () => security);
+            var hookCtx = new HookContext("post-v1-webhook-subscription", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -262,7 +263,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1WebhookSubscriptionsResponse> ListSubscriptionsAsync(GetV1WebhookSubscriptionsSecurity security, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1WebhookSubscriptionsResponse> ListSubscriptionsAsync(VersionHeader? xGustoAPIVersion = null, GetV1WebhookSubscriptionsSecurity? security = null)
         {
             var request = new GetV1WebhookSubscriptionsRequest()
             {
@@ -276,13 +277,14 @@ namespace GustoEmbedded
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (security == null)
+            Func<GetV1WebhookSubscriptionsSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("get-v1-webhook-subscriptions", null, () => security);
+            var hookCtx = new HookContext("get-v1-webhook-subscriptions", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -349,7 +351,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1WebhookSubscriptionUuidResponse> UpdateSubscriptionAsync(PutV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, PutV1WebhookSubscriptionUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1WebhookSubscriptionUuidResponse> UpdateSubscriptionAsync(string webhookSubscriptionUuid, PutV1WebhookSubscriptionUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null, PutV1WebhookSubscriptionUuidSecurity? security = null)
         {
             var request = new PutV1WebhookSubscriptionUuidRequest()
             {
@@ -370,13 +372,14 @@ namespace GustoEmbedded
                 httpRequest.Content = serializedBody;
             }
 
-            if (security == null)
+            Func<PutV1WebhookSubscriptionUuidSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("put-v1-webhook-subscription-uuid", null, () => security);
+            var hookCtx = new HookContext("put-v1-webhook-subscription-uuid", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -453,7 +456,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1WebhookSubscriptionUuidResponse> GetSubscriptionAsync(GetV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1WebhookSubscriptionUuidResponse> GetSubscriptionAsync(string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null, GetV1WebhookSubscriptionUuidSecurity? security = null)
         {
             var request = new GetV1WebhookSubscriptionUuidRequest()
             {
@@ -467,13 +470,14 @@ namespace GustoEmbedded
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (security == null)
+            Func<GetV1WebhookSubscriptionUuidSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("get-v1-webhook-subscription-uuid", null, () => security);
+            var hookCtx = new HookContext("get-v1-webhook-subscription-uuid", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -540,7 +544,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1WebhookSubscriptionUuidResponse> DeleteSubscriptionAsync(DeleteV1WebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1WebhookSubscriptionUuidResponse> DeleteSubscriptionAsync(string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null, DeleteV1WebhookSubscriptionUuidSecurity? security = null)
         {
             var request = new DeleteV1WebhookSubscriptionUuidRequest()
             {
@@ -554,13 +558,14 @@ namespace GustoEmbedded
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (security == null)
+            Func<DeleteV1WebhookSubscriptionUuidSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("delete-v1-webhook-subscription-uuid", null, () => security);
+            var hookCtx = new HookContext("delete-v1-webhook-subscription-uuid", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -619,7 +624,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1VerifyWebhookSubscriptionUuidResponse> VerifyAsync(PutV1VerifyWebhookSubscriptionUuidSecurity security, string webhookSubscriptionUuid, PutV1VerifyWebhookSubscriptionUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1VerifyWebhookSubscriptionUuidResponse> VerifyAsync(string webhookSubscriptionUuid, PutV1VerifyWebhookSubscriptionUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null, PutV1VerifyWebhookSubscriptionUuidSecurity? security = null)
         {
             var request = new PutV1VerifyWebhookSubscriptionUuidRequest()
             {
@@ -640,13 +645,14 @@ namespace GustoEmbedded
                 httpRequest.Content = serializedBody;
             }
 
-            if (security == null)
+            Func<PutV1VerifyWebhookSubscriptionUuidSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("put-v1-verify-webhook-subscription-uuid", null, () => security);
+            var hookCtx = new HookContext("put-v1-verify-webhook-subscription-uuid", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -723,7 +729,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1WebhookSubscriptionVerificationTokenUuidResponse> RequestVerificationTokenAsync(GetV1WebhookSubscriptionVerificationTokenUuidSecurity security, string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1WebhookSubscriptionVerificationTokenUuidResponse> RequestVerificationTokenAsync(string webhookSubscriptionUuid, VersionHeader? xGustoAPIVersion = null, GetV1WebhookSubscriptionVerificationTokenUuidSecurity? security = null)
         {
             var request = new GetV1WebhookSubscriptionVerificationTokenUuidRequest()
             {
@@ -737,13 +743,14 @@ namespace GustoEmbedded
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            if (security == null)
+            Func<GetV1WebhookSubscriptionVerificationTokenUuidSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("get-v1-webhook-subscription-verification-token-uuid", null, () => security);
+            var hookCtx = new HookContext("get-v1-webhook-subscription-verification-token-uuid", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

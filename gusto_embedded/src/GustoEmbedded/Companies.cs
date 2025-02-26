@@ -43,7 +43,7 @@ namespace GustoEmbedded
         /// &gt; this endpoint uses the <a href="https://docs.gusto.com/embedded-payroll/docs/system-access">Bearer Auth scheme with the system-level access token in the HTTP Authorization header</a>
         /// </remarks>
         /// </summary>
-        Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesSecurity security, PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null, PostV1PartnerManagedCompaniesSecurity? security = null);
 
         /// <summary>
         /// Get a company
@@ -180,10 +180,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.8";
-        private const string _sdkGenVersion = "2.524.1";
+        private const string _sdkVersion = "0.0.9";
+        private const string _sdkGenVersion = "2.531.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.8 2.524.1 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.9 2.531.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -196,7 +196,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesSecurity security, PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null, PostV1PartnerManagedCompaniesSecurity? security = null)
         {
             var request = new PostV1PartnerManagedCompaniesRequest()
             {
@@ -217,13 +217,14 @@ namespace GustoEmbedded
                 httpRequest.Content = serializedBody;
             }
 
-            if (security == null)
+            Func<PostV1PartnerManagedCompaniesSecurity>? securitySource = null;
+            if (security != null)
             {
-                throw new ArgumentNullException(nameof(security), "security cannot be null.");
+                httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
+                securitySource = () => security;
             }
 
-            httpRequest = new SecurityMetadata(() => security).Apply(httpRequest);
-            var hookCtx = new HookContext("post-v1-partner-managed-companies", null, () => security);
+            var hookCtx = new HookContext("post-v1-partner-managed-companies", null, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
