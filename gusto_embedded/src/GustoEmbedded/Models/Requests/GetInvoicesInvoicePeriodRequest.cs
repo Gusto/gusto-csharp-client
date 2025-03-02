@@ -25,13 +25,13 @@ namespace GustoEmbedded.Models.Requests
         /// The page that is requested. When unspecified, will load all objects unless endpoint forces pagination.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")]
-        public double? Page { get; set; }
+        public long? Page { get; set; }
 
         /// <summary>
         /// Number of objects per page. For majority of endpoints will default to 25
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=per")]
-        public double? Per { get; set; }
+        public long? Per { get; set; }
 
         /// <summary>
         /// Filter companies returned in the active_companies response, will return an error if company not active during provided invoice period. i.e. `?company_uuids=781922d8-e780-4b6b-bf74-ee303166d022,bbbca930-7322-491c-ba7f-98707a52a9c5`

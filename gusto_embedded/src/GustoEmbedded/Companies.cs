@@ -127,7 +127,7 @@ namespace GustoEmbedded
         /// scope: `company_admin:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get the company&apos;s onboarding status
@@ -139,7 +139,7 @@ namespace GustoEmbedded
         /// scope: `company_onboarding_status:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, string? additionalSteps = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Finish company onboarding
@@ -173,17 +173,17 @@ namespace GustoEmbedded
         /// scope: `companies:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null);
     }
 
     public class Companies: ICompanies
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.9";
-        private const string _sdkGenVersion = "2.531.0";
+        private const string _sdkVersion = "0.0.10";
+        private const string _sdkGenVersion = "2.536.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.9 2.531.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -902,7 +902,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyIdAdminsRequest()
             {
@@ -990,11 +990,12 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, string? additionalSteps = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompanyOnboardingStatusRequest()
             {
                 CompanyUuid = companyUuid,
+                AdditionalSteps = additionalSteps,
                 XGustoAPIVersion = xGustoAPIVersion,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -1172,7 +1173,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyIdCustomFieldsRequest()
             {

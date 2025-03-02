@@ -22,6 +22,12 @@ namespace GustoEmbedded.Models.Requests
         public string CompanyId { get; set; } = default!;
 
         /// <summary>
+        /// Whether the benefit is currently active
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=active")]
+        public bool? Active { get; set; }
+
+        /// <summary>
         /// Whether to return employee enrollment count
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=enrollment_count")]
