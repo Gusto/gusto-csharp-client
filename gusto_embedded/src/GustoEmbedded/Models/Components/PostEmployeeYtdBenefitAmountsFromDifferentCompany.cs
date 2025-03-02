@@ -19,7 +19,7 @@ namespace GustoEmbedded.Models.Components
         /// The benefit type supported by Gusto.
         /// </summary>
         [JsonProperty("benefit_type")]
-        public double? BenefitType { get; set; }
+        public long? BenefitType { get; set; }
 
         /// <summary>
         /// The tax year for which this amount applies.
