@@ -19,7 +19,7 @@ namespace GustoEmbedded.Models.Requests
         /// The ID of the benefit to which the company benefit belongs.
         /// </summary>
         [JsonProperty("benefit_type")]
-        public double? BenefitType { get; set; }
+        public long? BenefitType { get; set; }
 
         /// <summary>
         /// Whether this benefit is active for employee participation.

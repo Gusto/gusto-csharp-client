@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bf9ee6d5-b9a6-4e11-8e95-9b3170216677
 management:
-  docChecksum: 41f4b742b4af12a7747c9276c51c92b9
+  docChecksum: fff4333dacfe6ad5f6dde1c4c621ad60
   docVersion: "2024-04-01"
-  speakeasyVersion: 1.505.0
-  generationVersion: 2.531.0
-  releaseVersion: 0.0.9
-  configChecksum: 6795ee3dcbbd951843ae04b479c87c67
+  speakeasyVersion: 1.508.1
+  generationVersion: 2.536.0
+  releaseVersion: 0.0.10
+  configChecksum: c8bd144c2413614758582ced9c9eade4
   repoURL: https://github.com/Gusto/gusto-csharp-client.git
   repoSubDirectory: gusto_embedded
   published: true
@@ -2660,6 +2660,8 @@ examples:
       parameters:
         path:
           company_uuid: "<id>"
+        query:
+          additional_steps: "external_payroll"
         header: {}
       responses:
         "200":
@@ -2725,7 +2727,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "benefit_type": 1, "active": true, "description": "Kaiser Permanente", "deletable": true, "supports_percentage_amounts": true, "responsible_for_employer_taxes": false, "responsible_for_employee_w2": false}]
+          application/json: [{"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "company_uuid": "528cc543-8a41-497e-b479-23a4c5ec77ac", "uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "benefit_type": 1, "active": true, "description": "Kaiser Permanente", "deletable": true, "supports_percentage_amounts": true, "responsible_for_employer_taxes": false, "responsible_for_employee_w2": false}]
   get-invoices-invoice-period:
     example:
       parameters:
@@ -7274,7 +7276,7 @@ examples:
         application/json: {"active": true, "description": "yuck vice between gee ugh ha"}
       responses:
         "201":
-          application/json: {"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "benefit_type": 1, "active": true, "description": "Kaiser Permanente", "deletable": true, "supports_percentage_amounts": true, "responsible_for_employer_taxes": false, "responsible_for_employee_w2": false}
+          application/json: {"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "company_uuid": "881ce3f2-e3e1-49c9-8ad4-0bcf515f5618", "uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "benefit_type": 1, "active": true, "description": "Kaiser Permanente", "deletable": true, "supports_percentage_amounts": true, "responsible_for_employer_taxes": false, "responsible_for_employee_w2": false}
     Basic:
       parameters:
         path:
@@ -7325,7 +7327,7 @@ examples:
         application/json: {"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "active": false}
       responses:
         "200":
-          application/json: {"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "benefit_type": 1, "active": true, "description": "Kaiser Permanente", "deletable": true, "supports_percentage_amounts": true, "responsible_for_employer_taxes": false, "responsible_for_employee_w2": false}
+          application/json: {"version": "98jr3289h3298hr9329gf9egskt3kagri32qqgiqe3872", "company_uuid": "881ce3f2-e3e1-49c9-8ad4-0bcf515f5618", "uuid": "d2cec746-caee-464a-bcaf-00d93f7049c9", "benefit_type": 1, "active": true, "description": "Kaiser Permanente", "deletable": true, "supports_percentage_amounts": true, "responsible_for_employer_taxes": false, "responsible_for_employee_w2": false}
     Basic:
       parameters:
         path:

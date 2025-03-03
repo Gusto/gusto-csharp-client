@@ -22,7 +22,7 @@ namespace GustoEmbedded.Models.Components
         /// The benefit type in Gusto.
         /// </summary>
         [JsonProperty("benefit_type")]
-        public double? BenefitType { get; set; }
+        public long? BenefitType { get; set; }
 
         /// <summary>
         /// The name of the benefit.

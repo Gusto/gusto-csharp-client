@@ -27,6 +27,12 @@ namespace GustoEmbedded.Models.Components
         public string? Version { get; set; }
 
         /// <summary>
+        /// The UUID of the company.
+        /// </summary>
+        [JsonProperty("company_uuid")]
+        public string? CompanyUuid { get; set; }
+
+        /// <summary>
         /// The UUID of the company benefit.
         /// </summary>
         [JsonProperty("uuid")]
@@ -36,7 +42,7 @@ namespace GustoEmbedded.Models.Components
         /// The type of the benefit to which the company benefit belongs (same as benefit_id).
         /// </summary>
         [JsonProperty("benefit_type")]
-        public double? BenefitType { get; set; }
+        public long? BenefitType { get; set; }
 
         /// <summary>
         /// Whether this benefit is active for employee participation. Company benefits may only be deactivated if no employees are actively participating.
