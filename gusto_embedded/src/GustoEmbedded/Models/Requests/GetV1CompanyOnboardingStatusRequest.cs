@@ -22,6 +22,12 @@ namespace GustoEmbedded.Models.Requests
         public string CompanyUuid { get; set; } = default!;
 
         /// <summary>
+        /// Comma delimited string indicating whether to include any additional steps of onboarding. Currently only supports the value &quot;external_payroll&quot;.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=additional_steps")]
+        public string? AdditionalSteps { get; set; }
+
+        /// <summary>
         /// Determines the date-based API version associated with your API call. If none is provided, your application&apos;s <a href="https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version">minimum API version</a> is used.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Gusto-API-Version")]

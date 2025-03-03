@@ -49,13 +49,13 @@ namespace GustoEmbedded.Models.Requests
         /// The page that is requested. When unspecified, will load all objects unless endpoint forces pagination.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")]
-        public double? Page { get; set; }
+        public long? Page { get; set; }
 
         /// <summary>
         /// Number of objects per page. For majority of endpoints will default to 25
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=per")]
-        public double? Per { get; set; }
+        public long? Per { get; set; }
 
         /// <summary>
         /// Determines the date-based API version associated with your API call. If none is provided, your application&apos;s <a href="https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version">minimum API version</a> is used.

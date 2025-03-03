@@ -25,6 +25,18 @@ namespace GustoEmbedded.Models.Components
         public string? Version { get; set; }
 
         /// <summary>
+        /// The number of employees enrolled in the benefit, only returned when enrollment_count query param is set to true.
+        /// </summary>
+        [JsonProperty("enrollment_count")]
+        public long? EnrollmentCount { get; set; }
+
+        /// <summary>
+        /// The UUID of the company.
+        /// </summary>
+        [JsonProperty("company_uuid")]
+        public string? CompanyUuid { get; set; }
+
+        /// <summary>
         /// The UUID of the company benefit.
         /// </summary>
         [JsonProperty("uuid")]
@@ -34,7 +46,7 @@ namespace GustoEmbedded.Models.Components
         /// The type of the benefit to which the company benefit belongs.
         /// </summary>
         [JsonProperty("benefit_type")]
-        public double? BenefitType { get; set; }
+        public long? BenefitType { get; set; }
 
         /// <summary>
         /// Whether this benefit is active for employee participation. Company benefits may only be deactivated if no employees are actively participating.

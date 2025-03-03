@@ -51,7 +51,7 @@ namespace GustoEmbedded
         /// scope: `company_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListAsync(string companyId, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListAsync(string companyId, bool? active = null, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Get a company benefit
@@ -147,7 +147,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> GetEmployeeBenefitsAsync(string companyBenefitId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> GetEmployeeBenefitsAsync(string companyBenefitId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null);
 
         /// <summary>
         /// Bulk update employee benefits for a company benefit
@@ -180,10 +180,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.9";
-        private const string _sdkGenVersion = "2.531.0";
+        private const string _sdkVersion = "0.0.10";
+        private const string _sdkGenVersion = "2.536.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.9 2.531.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -299,11 +299,12 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListAsync(string companyId, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListAsync(string companyId, bool? active = null, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompaniesCompanyIdCompanyBenefitsRequest()
             {
                 CompanyId = companyId,
+                Active = active,
                 EnrollmentCount = enrollmentCount,
                 XGustoAPIVersion = xGustoAPIVersion,
             };
@@ -922,7 +923,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> GetEmployeeBenefitsAsync(string companyBenefitId, double? page = null, double? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> GetEmployeeBenefitsAsync(string companyBenefitId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null)
         {
             var request = new GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsRequest()
             {

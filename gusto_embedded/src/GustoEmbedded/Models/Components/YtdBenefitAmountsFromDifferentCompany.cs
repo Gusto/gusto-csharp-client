@@ -28,7 +28,7 @@ namespace GustoEmbedded.Models.Components
         /// The benefit type supported by Gusto. See <a href="https://docs.gusto.com/embedded-payroll/reference/get-v1-benefits">Benefit Types</a> for more information.
         /// </summary>
         [JsonProperty("benefit_type")]
-        public double BenefitType { get; set; } = default!;
+        public long BenefitType { get; set; } = default!;
 
         /// <summary>
         /// The year-to-date employee deduction made outside the current company.
