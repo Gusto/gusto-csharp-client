@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get jobs for an employee
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `jobs:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1JobsJobIdResponse> GetJobAsync(string jobId, GetV1JobsJobIdQueryParamInclude? include = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1JobsJobIdResponse> GetJobAsync(string jobId, GetV1JobsJobIdQueryParamInclude? include = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update a job
@@ -67,7 +67,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Delete an individual job
@@ -78,7 +78,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1JobsJobIdResponse> DeleteAsync(string jobId, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1JobsJobIdResponse> DeleteAsync(string jobId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get compensations for a job
@@ -104,7 +104,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompensationsCompensationIdResponse> CreateCompensationAsync(string jobId, PostV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompensationsCompensationIdResponse> CreateCompensationAsync(string jobId, PostV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get a compensation
@@ -116,7 +116,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update a compensation
@@ -127,7 +127,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompensationsCompensationIdResponse> UpdateCompensationAsync(string compensationId, PutV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompensationsCompensationIdResponse> UpdateCompensationAsync(string compensationId, PutV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Delete a compensation
@@ -139,17 +139,17 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<DeleteV1CompensationsCompensationIdResponse> DeleteCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1CompensationsCompensationIdResponse> DeleteCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class JobsAndCompensations: IJobsAndCompensations
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -162,7 +162,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1JobsJobIdRequest()
             {
@@ -346,7 +346,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1JobsJobIdResponse> GetJobAsync(string jobId, GetV1JobsJobIdQueryParamInclude? include = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1JobsJobIdResponse> GetJobAsync(string jobId, GetV1JobsJobIdQueryParamInclude? include = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1JobsJobIdRequest()
             {
@@ -433,7 +433,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1JobsJobIdRequest()
             {
@@ -536,7 +536,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1JobsJobIdResponse> DeleteAsync(string jobId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1JobsJobIdResponse> DeleteAsync(string jobId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new DeleteV1JobsJobIdRequest()
             {
@@ -695,7 +695,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1CompensationsCompensationIdResponse> CreateCompensationAsync(string jobId, PostV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompensationsCompensationIdResponse> CreateCompensationAsync(string jobId, PostV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1CompensationsCompensationIdRequest()
             {
@@ -798,7 +798,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1CompensationsCompensationIdRequest()
             {
@@ -884,7 +884,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompensationsCompensationIdResponse> UpdateCompensationAsync(string compensationId, PutV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompensationsCompensationIdResponse> UpdateCompensationAsync(string compensationId, PutV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1CompensationsCompensationIdRequest()
             {
@@ -987,7 +987,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1CompensationsCompensationIdResponse> DeleteCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1CompensationsCompensationIdResponse> DeleteCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new DeleteV1CompensationsCompensationIdRequest()
             {

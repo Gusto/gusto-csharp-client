@@ -36,7 +36,7 @@ namespace GustoEmbedded
         /// scope: `employee_payment_methods:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesEmployeeIdBankAccountsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesEmployeeIdBankAccountsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Delete an employee bank account
@@ -48,7 +48,7 @@ namespace GustoEmbedded
         /// scope: `employee_payment_methods:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteBankAccountAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteBankAccountAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update an employee bank account
@@ -59,7 +59,7 @@ namespace GustoEmbedded
         /// scope: `employee_payment_methods:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdBankAccountsResponse> UpdateBankAccountAsync(string employeeId, string bankAccountUuid, PutV1EmployeesEmployeeIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesEmployeeIdBankAccountsResponse> UpdateBankAccountAsync(string employeeId, string bankAccountUuid, PutV1EmployeesEmployeeIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get an employee&apos;s payment method
@@ -72,7 +72,7 @@ namespace GustoEmbedded
         /// scope: `employee_payment_methods:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdPaymentMethodResponse> GetAsync(string employeeId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdPaymentMethodResponse> GetAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update an employee&apos;s payment method
@@ -84,17 +84,17 @@ namespace GustoEmbedded
         /// scope: `employee_payment_methods:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdPaymentMethodResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdPaymentMethodRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeesEmployeeIdPaymentMethodResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdPaymentMethodRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class EmployeePaymentMethod: IEmployeePaymentMethod
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -107,7 +107,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1EmployeesEmployeeIdBankAccountsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesEmployeeIdBankAccountsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1EmployeesEmployeeIdBankAccountsRequest()
             {
@@ -210,7 +210,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteBankAccountAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse> DeleteBankAccountAsync(string employeeId, string bankAccountUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdRequest()
             {
@@ -289,7 +289,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdBankAccountsResponse> UpdateBankAccountAsync(string employeeId, string bankAccountUuid, PutV1EmployeesEmployeeIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesEmployeeIdBankAccountsResponse> UpdateBankAccountAsync(string employeeId, string bankAccountUuid, PutV1EmployeesEmployeeIdBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1EmployeesEmployeeIdBankAccountsRequest()
             {
@@ -393,7 +393,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdPaymentMethodResponse> GetAsync(string employeeId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdPaymentMethodResponse> GetAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1EmployeesEmployeeIdPaymentMethodRequest()
             {
@@ -479,7 +479,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdPaymentMethodResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdPaymentMethodRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeesEmployeeIdPaymentMethodResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdPaymentMethodRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1EmployeesEmployeeIdPaymentMethodRequest()
             {

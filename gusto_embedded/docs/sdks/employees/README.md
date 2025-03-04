@@ -122,7 +122,7 @@ var res = await sdk.Employees.CreateHistoricalAsync(
     historicalEmployeeBody: new HistoricalEmployeeBody() {
         FirstName = "Cortez",
         LastName = "Dickens",
-        DateOfBirth = "1995-11-29",
+        DateOfBirth = "1995-12-01",
         Ssn = "<value>",
         WorkAddress = new Models.Components.WorkAddress() {},
         HomeAddress = new HistoricalEmployeeBodyHomeAddress() {

@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `departments:write`
         /// </remarks>
         /// </summary>
-        Task<PostDepartmentsResponse> CreateAsync(string companyUuid, PostDepartmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostDepartmentsResponse> CreateAsync(string companyUuid, PostDepartmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get all departments of a company
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `departments:read`
         /// </remarks>
         /// </summary>
-        Task<GetCompaniesDepartmentsResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetCompaniesDepartmentsResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get a department
@@ -57,7 +57,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetDepartmentResponse> GetAsync(string departmentUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetDepartmentResponse> GetAsync(string departmentUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update a department
@@ -68,7 +68,7 @@ namespace GustoEmbedded
         /// scope: `departments:write`
         /// </remarks>
         /// </summary>
-        Task<PutDepartmentsResponse> UpdateAsync(string departmentUuid, PutDepartmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutDepartmentsResponse> UpdateAsync(string departmentUuid, PutDepartmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Delete a department
@@ -80,7 +80,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<DeleteDepartmentResponse> DeleteAsync(string departmentUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteDepartmentResponse> DeleteAsync(string departmentUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Add people to a department
@@ -92,7 +92,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<PutAddPeopleToDepartmentResponse> AddPeopleAsync(string departmentUuid, PutAddPeopleToDepartmentRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutAddPeopleToDepartmentResponse> AddPeopleAsync(string departmentUuid, PutAddPeopleToDepartmentRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Remove people from a department
@@ -104,17 +104,17 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<PutRemovePeopleFromDepartmentResponse> RemovePeopleAsync(string departmentUuid, PutRemovePeopleFromDepartmentRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutRemovePeopleFromDepartmentResponse> RemovePeopleAsync(string departmentUuid, PutRemovePeopleFromDepartmentRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class Departments: IDepartments
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -127,7 +127,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostDepartmentsResponse> CreateAsync(string companyUuid, PostDepartmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostDepartmentsResponse> CreateAsync(string companyUuid, PostDepartmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostDepartmentsRequest()
             {
@@ -230,7 +230,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetCompaniesDepartmentsResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetCompaniesDepartmentsResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetCompaniesDepartmentsRequest()
             {
@@ -316,7 +316,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetDepartmentResponse> GetAsync(string departmentUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetDepartmentResponse> GetAsync(string departmentUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetDepartmentRequest()
             {
@@ -402,7 +402,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutDepartmentsResponse> UpdateAsync(string departmentUuid, PutDepartmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutDepartmentsResponse> UpdateAsync(string departmentUuid, PutDepartmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutDepartmentsRequest()
             {
@@ -505,7 +505,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteDepartmentResponse> DeleteAsync(string departmentUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteDepartmentResponse> DeleteAsync(string departmentUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new DeleteDepartmentRequest()
             {
@@ -593,7 +593,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutAddPeopleToDepartmentResponse> AddPeopleAsync(string departmentUuid, PutAddPeopleToDepartmentRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutAddPeopleToDepartmentResponse> AddPeopleAsync(string departmentUuid, PutAddPeopleToDepartmentRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutAddPeopleToDepartmentRequest()
             {
@@ -686,7 +686,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutRemovePeopleFromDepartmentResponse> RemovePeopleAsync(string departmentUuid, PutRemovePeopleFromDepartmentRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutRemovePeopleFromDepartmentResponse> RemovePeopleAsync(string departmentUuid, PutRemovePeopleFromDepartmentRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutRemovePeopleFromDepartmentRequest()
             {
