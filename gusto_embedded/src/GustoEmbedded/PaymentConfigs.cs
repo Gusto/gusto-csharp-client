@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `company_payment_configs:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyPaymentConfigsResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompanyPaymentConfigsResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update a company&apos;s payment configs
@@ -45,17 +45,17 @@ namespace GustoEmbedded
         /// scope: `company_payment_configs:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompanyPaymentConfigsResponse> UpdateAsync(string companyUuid, PutV1CompanyPaymentConfigsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompanyPaymentConfigsResponse> UpdateAsync(string companyUuid, PutV1CompanyPaymentConfigsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class PaymentConfigs: IPaymentConfigs
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -68,7 +68,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1CompanyPaymentConfigsResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompanyPaymentConfigsResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1CompanyPaymentConfigsRequest()
             {
@@ -154,7 +154,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompanyPaymentConfigsResponse> UpdateAsync(string companyUuid, PutV1CompanyPaymentConfigsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompanyPaymentConfigsResponse> UpdateAsync(string companyUuid, PutV1CompanyPaymentConfigsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1CompanyPaymentConfigsRequest()
             {

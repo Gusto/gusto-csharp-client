@@ -36,7 +36,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdEarningTypesResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdEarningTypesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyIdEarningTypesResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdEarningTypesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get all earning types for a company
@@ -53,7 +53,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdEarningTypesResponse> ListAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdEarningTypesResponse> ListAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update an earning type
@@ -64,7 +64,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> UpdateAsync(string companyId, string earningTypeUuid, PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> UpdateAsync(string companyId, string earningTypeUuid, PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Deactivate an earning type
@@ -75,17 +75,17 @@ namespace GustoEmbedded
         /// scope: `payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> DeleteAsync(string companyId, string earningTypeUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> DeleteAsync(string companyId, string earningTypeUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class EarningTypes: IEarningTypes
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -98,7 +98,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1CompaniesCompanyIdEarningTypesResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdEarningTypesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyIdEarningTypesResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdEarningTypesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1CompaniesCompanyIdEarningTypesRequest()
             {
@@ -201,7 +201,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdEarningTypesResponse> ListAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdEarningTypesResponse> ListAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1CompaniesCompanyIdEarningTypesRequest()
             {
@@ -287,7 +287,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> UpdateAsync(string companyId, string earningTypeUuid, PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> UpdateAsync(string companyId, string earningTypeUuid, PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequest()
             {
@@ -391,7 +391,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> DeleteAsync(string companyId, string earningTypeUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidResponse> DeleteAsync(string companyId, string earningTypeUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new DeleteV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequest()
             {

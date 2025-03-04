@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `garnishments:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get garnishments for an employee
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `garnishments:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdGarnishmentsResponse> ListAsync(string employeeId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdGarnishmentsResponse> ListAsync(string employeeId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get a garnishment
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `garnishments:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1GarnishmentsGarnishmentIdResponse> GetAsync(string garnishmentId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1GarnishmentsGarnishmentIdResponse> GetAsync(string garnishmentId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update a garnishment
@@ -67,7 +67,7 @@ namespace GustoEmbedded
         /// scope: `garnishments:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1GarnishmentsGarnishmentIdResponse> UpdateAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1GarnishmentsGarnishmentIdResponse> UpdateAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get child support garnishment data
@@ -78,17 +78,17 @@ namespace GustoEmbedded
         /// scope: `garnishments:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1GarnishmentsChildSupportResponse> GetChildSupportDataAsync(VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1GarnishmentsChildSupportResponse> GetChildSupportDataAsync(VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class Garnishments: IGarnishments
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -101,7 +101,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesEmployeeIdGarnishmentsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdGarnishmentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1EmployeesEmployeeIdGarnishmentsRequest()
             {
@@ -204,7 +204,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdGarnishmentsResponse> ListAsync(string employeeId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdGarnishmentsResponse> ListAsync(string employeeId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1EmployeesEmployeeIdGarnishmentsRequest()
             {
@@ -292,7 +292,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1GarnishmentsGarnishmentIdResponse> GetAsync(string garnishmentId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1GarnishmentsGarnishmentIdResponse> GetAsync(string garnishmentId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1GarnishmentsGarnishmentIdRequest()
             {
@@ -378,7 +378,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1GarnishmentsGarnishmentIdResponse> UpdateAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1GarnishmentsGarnishmentIdResponse> UpdateAsync(string garnishmentId, PutV1GarnishmentsGarnishmentIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1GarnishmentsGarnishmentIdRequest()
             {
@@ -481,7 +481,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1GarnishmentsChildSupportResponse> GetChildSupportDataAsync(VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1GarnishmentsChildSupportResponse> GetChildSupportDataAsync(VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1GarnishmentsChildSupportRequest()
             {

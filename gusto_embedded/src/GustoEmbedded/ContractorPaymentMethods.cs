@@ -36,17 +36,17 @@ namespace GustoEmbedded
         /// scope: `contractor_payment_methods:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1ContractorsContractorUuidBankAccountsResponse> CreateBankAccountAsync(string contractorUuid, PostV1ContractorsContractorUuidBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1ContractorsContractorUuidBankAccountsResponse> CreateBankAccountAsync(string contractorUuid, PostV1ContractorsContractorUuidBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class ContractorPaymentMethods: IContractorPaymentMethods
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -59,7 +59,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1ContractorsContractorUuidBankAccountsResponse> CreateBankAccountAsync(string contractorUuid, PostV1ContractorsContractorUuidBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1ContractorsContractorUuidBankAccountsResponse> CreateBankAccountAsync(string contractorUuid, PostV1ContractorsContractorUuidBankAccountsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1ContractorsContractorUuidBankAccountsRequest()
             {

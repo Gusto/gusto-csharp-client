@@ -38,7 +38,7 @@ namespace GustoEmbedded
         /// scope: `pay_schedules:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdPaySchedulesResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdPaySchedulesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyIdPaySchedulesResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdPaySchedulesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get the pay schedules for a company
@@ -49,7 +49,7 @@ namespace GustoEmbedded
         /// scope: `pay_schedules:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdPaySchedulesResponse> GetAllAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdPaySchedulesResponse> GetAllAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Preview pay schedule dates
@@ -71,7 +71,7 @@ namespace GustoEmbedded
         /// scope: `pay_schedules:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdPaySchedulesPayScheduleIdResponse> GetAsync(string companyId, string payScheduleId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdPaySchedulesPayScheduleIdResponse> GetAsync(string companyId, string payScheduleId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update a pay schedule
@@ -82,7 +82,7 @@ namespace GustoEmbedded
         /// scope: `pay_schedules:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdResponse> UpdateAsync(string companyId, string payScheduleId, PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdResponse> UpdateAsync(string companyId, string payScheduleId, PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get pay periods for a company
@@ -110,7 +110,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriodsResponse> GetUnprocessedTerminationPeriodsAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriodsResponse> GetUnprocessedTerminationPeriodsAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get pay schedule assignments for a company
@@ -121,7 +121,7 @@ namespace GustoEmbedded
         /// scope: `pay_schedules:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdPaySchedulesAssignmentsResponse> GetAssignmentsAsync(string companyId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1CompaniesCompanyIdPaySchedulesAssignmentsResponse> GetAssignmentsAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Preview pay schedule assignments for a company
@@ -132,7 +132,7 @@ namespace GustoEmbedded
         /// scope: `pay_schedules:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdPaySchedulesAssignmentPreviewResponse> PreviewAssignmentAsync(string companyId, PayScheduleAssignmentBody payScheduleAssignmentBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyIdPaySchedulesAssignmentPreviewResponse> PreviewAssignmentAsync(string companyId, PayScheduleAssignmentBody payScheduleAssignmentBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Assign pay schedules for a company
@@ -144,17 +144,17 @@ namespace GustoEmbedded
         /// scope: `pay_schedules:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdPaySchedulesAssignResponse> AssignAsync(string companyId, PayScheduleAssignmentBody payScheduleAssignmentBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1CompaniesCompanyIdPaySchedulesAssignResponse> AssignAsync(string companyId, PayScheduleAssignmentBody payScheduleAssignmentBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class PaySchedules: IPaySchedules
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -167,7 +167,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1CompaniesCompanyIdPaySchedulesResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdPaySchedulesRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyIdPaySchedulesResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdPaySchedulesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1CompaniesCompanyIdPaySchedulesRequest()
             {
@@ -270,7 +270,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdPaySchedulesResponse> GetAllAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdPaySchedulesResponse> GetAllAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1CompaniesCompanyIdPaySchedulesRequest()
             {
@@ -439,7 +439,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdPaySchedulesPayScheduleIdResponse> GetAsync(string companyId, string payScheduleId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdPaySchedulesPayScheduleIdResponse> GetAsync(string companyId, string payScheduleId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1CompaniesCompanyIdPaySchedulesPayScheduleIdRequest()
             {
@@ -526,7 +526,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdResponse> UpdateAsync(string companyId, string payScheduleId, PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdResponse> UpdateAsync(string companyId, string payScheduleId, PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1CompaniesCompanyIdPaySchedulesPayScheduleIdRequest()
             {
@@ -711,7 +711,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriodsResponse> GetUnprocessedTerminationPeriodsAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriodsResponse> GetUnprocessedTerminationPeriodsAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriodsRequest()
             {
@@ -797,7 +797,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdPaySchedulesAssignmentsResponse> GetAssignmentsAsync(string companyId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1CompaniesCompanyIdPaySchedulesAssignmentsResponse> GetAssignmentsAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1CompaniesCompanyIdPaySchedulesAssignmentsRequest()
             {
@@ -883,7 +883,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1CompaniesCompanyIdPaySchedulesAssignmentPreviewResponse> PreviewAssignmentAsync(string companyId, PayScheduleAssignmentBody payScheduleAssignmentBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyIdPaySchedulesAssignmentPreviewResponse> PreviewAssignmentAsync(string companyId, PayScheduleAssignmentBody payScheduleAssignmentBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1CompaniesCompanyIdPaySchedulesAssignmentPreviewRequest()
             {
@@ -986,7 +986,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1CompaniesCompanyIdPaySchedulesAssignResponse> AssignAsync(string companyId, PayScheduleAssignmentBody payScheduleAssignmentBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1CompaniesCompanyIdPaySchedulesAssignResponse> AssignAsync(string companyId, PayScheduleAssignmentBody payScheduleAssignmentBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1CompaniesCompanyIdPaySchedulesAssignRequest()
             {

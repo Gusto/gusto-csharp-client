@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `recovery_cases:read`
         /// </remarks>
         /// </summary>
-        Task<GetRecoveryCasesResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<GetRecoveryCasesResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Initiate a redebit for a recovery case
@@ -49,17 +49,17 @@ namespace GustoEmbedded
         /// scope: `recovery_cases:write`
         /// </remarks>
         /// </summary>
-        Task<RedebitRecoveryCaseResponse> RedebitAsync(string recoveryCaseUuid, VersionHeader? xGustoAPIVersion = null);
+        Task<RedebitRecoveryCaseResponse> RedebitAsync(string recoveryCaseUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class RecoveryCases: IRecoveryCases
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -72,7 +72,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetRecoveryCasesResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetRecoveryCasesResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetRecoveryCasesRequest()
             {
@@ -158,7 +158,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<RedebitRecoveryCaseResponse> RedebitAsync(string recoveryCaseUuid, VersionHeader? xGustoAPIVersion = null)
+        public async Task<RedebitRecoveryCaseResponse> RedebitAsync(string recoveryCaseUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new RedebitRecoveryCaseRequest()
             {

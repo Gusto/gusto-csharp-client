@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1EmployeesEmployeeIdEmployeeBenefitsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdEmployeeBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PostV1EmployeesEmployeeIdEmployeeBenefitsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdEmployeeBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get all benefits for an employee
@@ -49,7 +49,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdEmployeeBenefitsResponse> GetAsync(string employeeId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeesEmployeeIdEmployeeBenefitsResponse> GetAsync(string employeeId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get an employee benefit
@@ -62,7 +62,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeeBenefitsEmployeeBenefitIdResponse> RetrieveAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null);
+        Task<GetV1EmployeeBenefitsEmployeeBenefitIdResponse> RetrieveAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Update an employee benefit
@@ -73,7 +73,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeeBenefitsEmployeeBenefitIdResponse> UpdateAsync(string employeeBenefitId, PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null);
+        Task<PutV1EmployeeBenefitsEmployeeBenefitIdResponse> UpdateAsync(string employeeBenefitId, PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Delete an employee benefit
@@ -84,7 +84,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse> DeleteAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null);
+        Task<DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse> DeleteAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Get year-to-date benefit amounts from a different company
@@ -98,7 +98,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> GetYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, long? taxYear = null, VersionHeader? xGustoAPIVersion = null);
+        Task<GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> GetYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, long? taxYear = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
 
         /// <summary>
         /// Create year-to-date benefit amounts from a different company
@@ -111,17 +111,17 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> CreateYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, PostEmployeeYtdBenefitAmountsFromDifferentCompany postEmployeeYtdBenefitAmountsFromDifferentCompany, VersionHeader? xGustoAPIVersion = null);
+        Task<PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> CreateYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, PostEmployeeYtdBenefitAmountsFromDifferentCompany postEmployeeYtdBenefitAmountsFromDifferentCompany, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
     }
 
     public class EmployeeBenefits: IEmployeeBenefits
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.10";
-        private const string _sdkGenVersion = "2.536.0";
+        private const string _sdkVersion = "0.0.11";
+        private const string _sdkGenVersion = "2.539.1";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.10 2.536.0 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -134,7 +134,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1EmployeesEmployeeIdEmployeeBenefitsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdEmployeeBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostV1EmployeesEmployeeIdEmployeeBenefitsResponse> CreateAsync(string employeeId, PostV1EmployeesEmployeeIdEmployeeBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostV1EmployeesEmployeeIdEmployeeBenefitsRequest()
             {
@@ -237,7 +237,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdEmployeeBenefitsResponse> GetAsync(string employeeId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeesEmployeeIdEmployeeBenefitsResponse> GetAsync(string employeeId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1EmployeesEmployeeIdEmployeeBenefitsRequest()
             {
@@ -325,7 +325,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeeBenefitsEmployeeBenefitIdResponse> RetrieveAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetV1EmployeeBenefitsEmployeeBenefitIdResponse> RetrieveAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetV1EmployeeBenefitsEmployeeBenefitIdRequest()
             {
@@ -411,7 +411,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeeBenefitsEmployeeBenefitIdResponse> UpdateAsync(string employeeBenefitId, PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PutV1EmployeeBenefitsEmployeeBenefitIdResponse> UpdateAsync(string employeeBenefitId, PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PutV1EmployeeBenefitsEmployeeBenefitIdRequest()
             {
@@ -514,7 +514,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse> DeleteAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = null)
+        public async Task<DeleteV1EmployeeBenefitsEmployeeBenefitIdResponse> DeleteAsync(string employeeBenefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new DeleteV1EmployeeBenefitsEmployeeBenefitIdRequest()
             {
@@ -592,7 +592,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> GetYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, long? taxYear = null, VersionHeader? xGustoAPIVersion = null)
+        public async Task<GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> GetYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, long? taxYear = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new GetEmployeeYtdBenefitAmountsFromDifferentCompanyRequest()
             {
@@ -679,7 +679,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> CreateYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, PostEmployeeYtdBenefitAmountsFromDifferentCompany postEmployeeYtdBenefitAmountsFromDifferentCompany, VersionHeader? xGustoAPIVersion = null)
+        public async Task<PostEmployeeYtdBenefitAmountsFromDifferentCompanyResponse> CreateYtdBenefitAmountsFromDifferentCompanyAsync(string employeeId, PostEmployeeYtdBenefitAmountsFromDifferentCompany postEmployeeYtdBenefitAmountsFromDifferentCompany, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
         {
             var request = new PostEmployeeYtdBenefitAmountsFromDifferentCompanyRequest()
             {
