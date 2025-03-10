@@ -7,7 +7,7 @@ For detailed information, see the [Payroll Blockers guide](https://docs.gusto.co
 
 ## Fields
 
-| Field                                                       | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `Errors`                                                    | List<[Models.Errors.Errors](../../Models/Errors/Errors.md)> | :heavy_minus_sign:                                          | N/A                                                         |
-| `HttpMeta`                                                  | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)     | :heavy_check_mark:                                          | N/A                                                         |
+| Field                                                   | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `Errors`                                                | List<[Errors](../../Models/Errors/Errors.md)>           | :heavy_minus_sign:                                      | N/A                                                     |
+| `HttpMeta`                                              | [HTTPMetadata](../../Models/Components/HTTPMetadata.md) | :heavy_check_mark:                                      | N/A                                                     |

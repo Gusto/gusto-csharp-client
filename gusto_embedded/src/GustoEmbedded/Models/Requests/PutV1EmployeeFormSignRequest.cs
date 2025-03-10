@@ -28,13 +28,19 @@ namespace GustoEmbedded.Models.Requests
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=form_id")]
         public string FormId { get; set; } = default!;
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public PutV1EmployeeFormSignRequestBody RequestBody { get; set; } = default!;
+        /// <summary>
+        /// Optional header to supply the IP address. This can be used to supply the IP address for signature endpoints instead of the signed_by_ip_address parameter.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gusto-client-ip")]
+        public string? XGustoClientIp { get; set; }
 
         /// <summary>
         /// Determines the date-based API version associated with your API call. If none is provided, your application&apos;s <a href="https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version">minimum API version</a> is used.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Gusto-API-Version")]
         public VersionHeader? XGustoAPIVersion { get; set; } = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401;
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public PutV1EmployeeFormSignRequestBody RequestBody { get; set; } = default!;
     }
 }

@@ -87,6 +87,6 @@ namespace GustoEmbedded.Models.Requests
         /// Additional child support order details
         /// </summary>
         [JsonProperty("child_support")]
-        public GarnishmentChildSupportInput? ChildSupport { get; set; } = null;
+        public GarnishmentChildSupport? ChildSupport { get; set; } = null;
     }
 }

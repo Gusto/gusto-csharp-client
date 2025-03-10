@@ -21,13 +21,13 @@ namespace GustoEmbedded.Models.Components
         /// Specifies where the error occurs. Typically this key identifies the attribute/parameter related to the error.
         /// </summary>
         [JsonProperty("error_key")]
-        public string? ErrorKey { get; set; }
+        public string ErrorKey { get; set; } = default!;
 
         /// <summary>
         /// Specifies the type of error. The category provides error groupings and can be used to build custom error handling in your integration. If category is `nested_errors`, the object will contain a nested `errors` property with entity errors.
         /// </summary>
         [JsonProperty("category")]
-        public string? Category { get; set; }
+        public string Category { get; set; } = default!;
 
         /// <summary>
         /// Provides details about the error - generally this message can be surfaced to an end user.
@@ -45,6 +45,6 @@ namespace GustoEmbedded.Models.Components
         /// Will only exist if category is `nested_errors`. It is possible to have multiple levels of nested errors.
         /// </summary>
         [JsonProperty("errors")]
-        public List<Models.Components.Errors>? Errors { get; set; }
+        public List<EntityErrorObject>? Errors { get; set; }
     }
 }

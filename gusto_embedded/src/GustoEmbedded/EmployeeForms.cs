@@ -85,17 +85,17 @@ namespace GustoEmbedded
         /// scope: `employee_forms:sign`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeeFormSignResponse> SignAsync(string employeeId, string formId, PutV1EmployeeFormSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1EmployeeFormSignResponse> SignAsync(PutV1EmployeeFormSignRequest request);
     }
 
     public class EmployeeForms: IEmployeeForms
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.11";
-        private const string _sdkGenVersion = "2.539.1";
+        private const string _sdkVersion = "0.1.0";
+        private const string _sdkGenVersion = "2.545.4";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.11 2.539.1 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -471,15 +471,8 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeeFormSignResponse> SignAsync(string employeeId, string formId, PutV1EmployeeFormSignRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1EmployeeFormSignResponse> SignAsync(PutV1EmployeeFormSignRequest request)
         {
-            var request = new PutV1EmployeeFormSignRequest()
-            {
-                EmployeeId = employeeId,
-                FormId = formId,
-                RequestBody = requestBody,
-                XGustoAPIVersion = xGustoAPIVersion,
-            };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/employees/{employee_id}/forms/{form_id}/sign", request);
 

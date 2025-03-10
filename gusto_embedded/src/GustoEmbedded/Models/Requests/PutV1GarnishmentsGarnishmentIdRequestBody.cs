@@ -80,7 +80,7 @@ namespace GustoEmbedded.Models.Requests
         /// Additional child support order details
         /// </summary>
         [JsonProperty("child_support")]
-        public GarnishmentChildSupportInput? ChildSupport { get; set; } = null;
+        public GarnishmentChildSupport? ChildSupport { get; set; } = null;
 
         /// <summary>
         /// The current version of the object. See the <a href="https://docs.gusto.com/embedded-payroll/docs/versioning#object-layer">versioning guide</a> for information on how to use this field.

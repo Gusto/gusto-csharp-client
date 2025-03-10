@@ -3,7 +3,16 @@
 Contains relevant data to identify the resource in question when applicable. For example, to identify an entity `entity_type` and `entity_uuid` will be provided.
 
 
-## Fields
+## Supported Types
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+### MetadataWithMultipleEntities
+
+```csharp
+Metadata.CreateMetadataWithMultipleEntities(/* values here */);
+```
+
+### MetadataWithOneEntity
+
+```csharp
+Metadata.CreateMetadataWithOneEntity(/* values here */);
+```
