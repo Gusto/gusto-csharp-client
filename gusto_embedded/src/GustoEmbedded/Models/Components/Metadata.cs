@@ -9,12 +9,198 @@
 #nullable enable
 namespace GustoEmbedded.Models.Components
 {
+    using GustoEmbedded.Models.Components;
     using GustoEmbedded.Utils;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
     
+
+    public class MetadataType
+    {
+        private MetadataType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+        public static MetadataType MetadataWithMultipleEntities { get { return new MetadataType("Metadata-With-Multiple-Entities"); } }
+        
+        public static MetadataType MetadataWithOneEntity { get { return new MetadataType("Metadata-With-One-Entity"); } }
+        
+        public static MetadataType Null { get { return new MetadataType("null"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(MetadataType v) { return v.Value; }
+        public static MetadataType FromString(string v) {
+            switch(v) {
+                case "Metadata-With-Multiple-Entities": return MetadataWithMultipleEntities;
+                case "Metadata-With-One-Entity": return MetadataWithOneEntity;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for MetadataType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((MetadataType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
     /// <summary>
     /// Contains relevant data to identify the resource in question when applicable. For example, to identify an entity `entity_type` and `entity_uuid` will be provided.
     /// </summary>
-    public class Metadata
-    {
+    [JsonConverter(typeof(Metadata.MetadataConverter))]
+    public class Metadata {
+        public Metadata(MetadataType type) {
+            Type = type;
+        }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public MetadataWithMultipleEntities? MetadataWithMultipleEntities { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public MetadataWithOneEntity? MetadataWithOneEntity { get; set; }
+
+        public MetadataType Type { get; set; }
+
+
+        public static Metadata CreateMetadataWithMultipleEntities(MetadataWithMultipleEntities metadataWithMultipleEntities) {
+            MetadataType typ = MetadataType.MetadataWithMultipleEntities;
+
+            Metadata res = new Metadata(typ);
+            res.MetadataWithMultipleEntities = metadataWithMultipleEntities;
+            return res;
+        }
+
+        public static Metadata CreateMetadataWithOneEntity(MetadataWithOneEntity metadataWithOneEntity) {
+            MetadataType typ = MetadataType.MetadataWithOneEntity;
+
+            Metadata res = new Metadata(typ);
+            res.MetadataWithOneEntity = metadataWithOneEntity;
+            return res;
+        }
+
+        public static Metadata CreateNull() {
+            MetadataType typ = MetadataType.Null;
+            return new Metadata(typ);
+        }
+
+        public class MetadataConverter : JsonConverter
+        {
+
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(Metadata);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                var json = JRaw.Create(reader).ToString();
+                if (json == "null")
+                {
+                    return null;
+                }
+
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new Metadata(MetadataType.MetadataWithMultipleEntities)
+                    {
+                        MetadataWithMultipleEntities = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<MetadataWithMultipleEntities>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(MetadataWithMultipleEntities), new Metadata(MetadataType.MetadataWithMultipleEntities), "MetadataWithMultipleEntities"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Metadata(MetadataType.MetadataWithOneEntity)
+                    {
+                        MetadataWithOneEntity = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<MetadataWithOneEntity>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(MetadataWithOneEntity), new Metadata(MetadataType.MetadataWithOneEntity), "MetadataWithOneEntity"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null) {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                Metadata res = (Metadata)value;
+                if (MetadataType.FromString(res.Type).Equals(MetadataType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
+                if (res.MetadataWithMultipleEntities != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MetadataWithMultipleEntities));
+                    return;
+                }
+                if (res.MetadataWithOneEntity != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MetadataWithOneEntity));
+                    return;
+                }
+
+            }
+
+        }
+
     }
 }

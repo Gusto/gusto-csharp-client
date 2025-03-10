@@ -28,10 +28,10 @@ namespace GustoEmbedded.Models.Requests
         public string SignerTitle { get; set; } = default!;
 
         /// <summary>
-        /// The IP address of the signatory who signed the form. Both IPv4 AND IPv6 are supported.
+        /// The IP address of the signatory who signed the form. Both IPv4 AND IPv6 are supported. You must provide the IP address with either this parameter OR you can leave out this parameter and set the IP address in the request header using the `x-gusto-client-ip` header instead.
         /// </summary>
         [JsonProperty("signed_by_ip_address")]
-        public string SignedByIpAddress { get; set; } = default!;
+        public string? SignedByIpAddress { get; set; }
 
         /// <summary>
         /// Whether you agree to sign electronically

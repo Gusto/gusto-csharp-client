@@ -28,7 +28,7 @@ namespace GustoEmbedded.Models.Errors
     {
 
         [JsonProperty("errors")]
-        public List<Models.Errors.Errors>? Errors { get; set; }
+        public List<Errors>? Errors { get; set; }
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;

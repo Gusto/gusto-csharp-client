@@ -80,6 +80,12 @@ namespace GustoEmbedded.Models.Components
         public string? AnnualMaximum { get; set; } = null;
 
         /// <summary>
+        /// A maximum total deduction for the lifetime of this garnishment. A null value indicates no maximum.
+        /// </summary>
+        [JsonProperty("total_amount")]
+        public string? TotalAmount { get; set; } = null;
+
+        /// <summary>
         /// The maximum deduction per pay period. A null value indicates no maximum. Represented as a float, e.g. &quot;16.00&quot;.
         /// </summary>
         [JsonProperty("pay_period_maximum")]

@@ -9,12 +9,18 @@
 #nullable enable
 namespace GustoEmbedded.Models.Components
 {
+    using GustoEmbedded.Models.Components;
     using GustoEmbedded.Utils;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
     
     /// <summary>
-    /// Contains relevant data to identify the resource in question when applicable. For example, to identify an entity `entity_type` and `entity_uuid` will be provided.
+    /// multiple entities
     /// </summary>
-    public class EntityErrorObjectMetadata
+    public class MetadataWithMultipleEntities
     {
+
+        [JsonProperty("entities")]
+        public List<MetadataWithOneEntity>? Entities { get; set; }
     }
 }
