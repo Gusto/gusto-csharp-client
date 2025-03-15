@@ -24,7 +24,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaymentConfigs.GetAsync(
     companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -65,10 +65,10 @@ var res = await sdk.PaymentConfigs.UpdateAsync(
     companyUuid: "<id>",
     requestBody: PutV1CompanyPaymentConfigsRequestBody.CreatePaymentSpeedRequiredBody(
         new PaymentSpeedRequiredBody() {
-            PaymentSpeed = PaymentSpeedParam.TwoDay,
+            PaymentSpeed = PaymentSpeedParam.TwoMinusDay,
         }
     ),
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

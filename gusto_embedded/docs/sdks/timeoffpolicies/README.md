@@ -42,7 +42,7 @@ var res = await sdk.TimeOffPolicies.CalculateAccruingTimeOffHoursAsync(
     payrollId: "<id>",
     employeeId: "<id>",
     requestBody: new PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -84,7 +84,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.TimeOffPolicies.GetAsync(
     timeOffPolicyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -125,7 +125,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.TimeOffPolicies.UpdateAsync(
     timeOffPolicyUuid: "<id>",
     requestBody: new PutTimeOffPoliciesTimeOffPolicyUuidRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -166,7 +166,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.TimeOffPolicies.GetAllAsync(
     companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -211,7 +211,7 @@ var res = await sdk.TimeOffPolicies.CreateAsync(
         PolicyType = "<value>",
         AccrualMethod = PostCompaniesCompanyUuidTimeOffPoliciesAccrualMethod.PerAnniversaryYear,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -254,7 +254,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.TimeOffPolicies.AddEmployeesAsync(
     timeOffPolicyUuid: "<id>",
     requestBody: new PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -297,7 +297,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.TimeOffPolicies.RemoveEmployeesAsync(
     timeOffPolicyUuid: "<id>",
     requestBody: new PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -340,7 +340,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.TimeOffPolicies.UpdateBalanceAsync(
     timeOffPolicyUuid: "<id>",
     requestBody: new PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -381,7 +381,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.TimeOffPolicies.DeactivateAsync(
     timeOffPolicyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

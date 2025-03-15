@@ -27,7 +27,7 @@ var res = await sdk.Flows.CreateAsync(
     requestBody: new PostV1CompanyFlowsRequestBody() {
         FlowType = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

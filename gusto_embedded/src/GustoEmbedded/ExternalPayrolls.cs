@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1ExternalPayrollResponse> CreateAsync(string companyUuid, PostV1ExternalPayrollRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostV1ExternalPayrollResponse> CreateAsync(string companyUuid, PostV1ExternalPayrollRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get external payrolls for a company
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyExternalPayrollsResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompanyExternalPayrollsResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get an external payroll
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ExternalPayrollResponse> RetrieveAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1ExternalPayrollResponse> RetrieveAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Delete an external payroll
@@ -67,7 +67,7 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1ExternalPayrollResponse> DeleteAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<DeleteV1ExternalPayrollResponse> DeleteAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update an external payroll
@@ -78,7 +78,7 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1ExternalPayrollResponse> UpdateAsync(string companyUuid, string externalPayrollId, PutV1ExternalPayrollRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1ExternalPayrollResponse> UpdateAsync(string companyUuid, string externalPayrollId, PutV1ExternalPayrollRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get tax suggestions for an external payroll
@@ -91,7 +91,7 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ExternalPayrollCalculateTaxesResponse> CalculateTaxesAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1ExternalPayrollCalculateTaxesResponse> CalculateTaxesAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get tax liabilities
@@ -102,7 +102,7 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1TaxLiabilitiesResponse> ListTaxLiabilitiesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1TaxLiabilitiesResponse> ListTaxLiabilitiesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update tax liabilities
@@ -113,7 +113,7 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1TaxLiabilitiesResponse> UpdateTaxLiabilitiesAsync(string companyUuid, PutV1TaxLiabilitiesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1TaxLiabilitiesResponse> UpdateTaxLiabilitiesAsync(string companyUuid, PutV1TaxLiabilitiesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Finalize tax liabilities options and convert into processed payrolls
@@ -124,17 +124,17 @@ namespace GustoEmbedded
         /// scope: `external_payrolls:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1TaxLiabilitiesFinishResponse> FinalizeTaxLiabilitiesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1TaxLiabilitiesFinishResponse> FinalizeTaxLiabilitiesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class ExternalPayrolls: IExternalPayrolls
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.548.6";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.548.6 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -147,7 +147,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1ExternalPayrollResponse> CreateAsync(string companyUuid, PostV1ExternalPayrollRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostV1ExternalPayrollResponse> CreateAsync(string companyUuid, PostV1ExternalPayrollRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostV1ExternalPayrollRequest()
             {
@@ -250,7 +250,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyExternalPayrollsResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompanyExternalPayrollsResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompanyExternalPayrollsRequest()
             {
@@ -336,7 +336,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ExternalPayrollResponse> RetrieveAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1ExternalPayrollResponse> RetrieveAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1ExternalPayrollRequest()
             {
@@ -423,7 +423,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1ExternalPayrollResponse> DeleteAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<DeleteV1ExternalPayrollResponse> DeleteAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new DeleteV1ExternalPayrollRequest()
             {
@@ -502,7 +502,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1ExternalPayrollResponse> UpdateAsync(string companyUuid, string externalPayrollId, PutV1ExternalPayrollRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1ExternalPayrollResponse> UpdateAsync(string companyUuid, string externalPayrollId, PutV1ExternalPayrollRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1ExternalPayrollRequest()
             {
@@ -606,7 +606,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ExternalPayrollCalculateTaxesResponse> CalculateTaxesAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1ExternalPayrollCalculateTaxesResponse> CalculateTaxesAsync(string companyUuid, string externalPayrollId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1ExternalPayrollCalculateTaxesRequest()
             {
@@ -693,7 +693,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1TaxLiabilitiesResponse> ListTaxLiabilitiesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1TaxLiabilitiesResponse> ListTaxLiabilitiesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1TaxLiabilitiesRequest()
             {
@@ -779,7 +779,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1TaxLiabilitiesResponse> UpdateTaxLiabilitiesAsync(string companyUuid, PutV1TaxLiabilitiesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1TaxLiabilitiesResponse> UpdateTaxLiabilitiesAsync(string companyUuid, PutV1TaxLiabilitiesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1TaxLiabilitiesRequest()
             {
@@ -882,7 +882,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1TaxLiabilitiesFinishResponse> FinalizeTaxLiabilitiesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1TaxLiabilitiesFinishResponse> FinalizeTaxLiabilitiesAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1TaxLiabilitiesFinishRequest()
             {
