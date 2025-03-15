@@ -34,17 +34,17 @@ namespace GustoEmbedded
         /// scope: `employees:manage`
         /// </remarks>
         /// </summary>
-        Task<PutV1HistoricalEmployeesResponse> UpdateAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1HistoricalEmployeesResponse> UpdateAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class HistoricalEmployees: IHistoricalEmployees
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.548.6";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.548.6 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -57,7 +57,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PutV1HistoricalEmployeesResponse> UpdateAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1HistoricalEmployeesResponse> UpdateAsync(string companyUuid, string historicalEmployeeUuid, PutV1HistoricalEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1HistoricalEmployeesRequest()
             {

@@ -7,21 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace GustoEmbedded.Models.Requests
+namespace GustoEmbedded.Models.Components
 {
     using GustoEmbedded.Models.Components;
     using GustoEmbedded.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     
-    public class PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursResponse
+    /// <summary>
+    /// Example response
+    /// </summary>
+    public class AccruingTimeOffHourObject
     {
 
-        [JsonProperty("-")]
-        public HTTPMetadata HttpMeta { get; set; } = default!;
-
-        /// <summary>
-        /// Example response
-        /// </summary>
-        public AccruingTimeOffHourObject? AccruingTimeOffHourObject { get; set; }
+        [JsonProperty("hours_earned")]
+        public List<AccruingTimeOffHour> HoursEarned { get; set; } = default!;
     }
 }

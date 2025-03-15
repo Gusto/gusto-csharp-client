@@ -42,7 +42,7 @@ var res = await sdk.PaySchedules.CreateAsync(
         AnchorPayDate = "2020-05-15",
         AnchorEndOfPayPeriod = "2020-05-08",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -85,7 +85,7 @@ var res = await sdk.PaySchedules.GetAllAsync(
     companyId: "<id>",
     page: 461008,
     per: 59215,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -170,7 +170,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.PaySchedules.GetAsync(
     companyId: "<id>",
     payScheduleId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -217,7 +217,7 @@ var res = await sdk.PaySchedules.UpdateAsync(
         AnchorPayDate = "2020-05-15",
         AnchorEndOfPayPeriod = "2020-05-08",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -307,7 +307,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaySchedules.GetUnprocessedTerminationPeriodsAsync(
     companyId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -346,7 +346,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaySchedules.GetAssignmentsAsync(
     companyId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -388,7 +388,7 @@ var res = await sdk.PaySchedules.PreviewAssignmentAsync(
     payScheduleAssignmentBody: new PayScheduleAssignmentBody() {
         Type = PayScheduleAssignmentBodyType.HourlySalaried,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -433,7 +433,7 @@ var res = await sdk.PaySchedules.AssignAsync(
     payScheduleAssignmentBody: new PayScheduleAssignmentBody() {
         Type = PayScheduleAssignmentBodyType.ByDepartment,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

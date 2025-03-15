@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bf9ee6d5-b9a6-4e11-8e95-9b3170216677
 management:
-  docChecksum: a082df6f8a758bba214ecc5d65b14014
+  docChecksum: a3b95ca316eceb3d26a9b614ea1c66be
   docVersion: "2024-04-01"
-  speakeasyVersion: 1.513.4
-  generationVersion: 2.545.4
-  releaseVersion: 0.1.0
-  configChecksum: 8d33d26f458b835aa10acf601b694807
+  speakeasyVersion: 1.517.3
+  generationVersion: 2.548.6
+  releaseVersion: 0.1.1
+  configChecksum: 41af1986d6fa04fd2d323cb2143cb435
   repoURL: https://github.com/Gusto/gusto-csharp-client.git
   repoSubDirectory: gusto_embedded
   published: true
@@ -42,6 +42,7 @@ generatedFiles:
   - USAGE.md
   - docs/Models/Components/AccountType.md
   - docs/Models/Components/AccruingTimeOffHour.md
+  - docs/Models/Components/AccruingTimeOffHourObject.md
   - docs/Models/Components/AchTransaction.md
   - docs/Models/Components/AchTransactionRecipientType.md
   - docs/Models/Components/ActiveCompanies.md
@@ -1250,6 +1251,7 @@ generatedFiles:
   - src/GustoEmbedded/Locations.cs
   - src/GustoEmbedded/Models/Components/AccountType.cs
   - src/GustoEmbedded/Models/Components/AccruingTimeOffHour.cs
+  - src/GustoEmbedded/Models/Components/AccruingTimeOffHourObject.cs
   - src/GustoEmbedded/Models/Components/AchTransaction.cs
   - src/GustoEmbedded/Models/Components/AchTransactionRecipientType.cs
   - src/GustoEmbedded/Models/Components/ActiveCompanies.cs
@@ -6917,7 +6919,7 @@ examples:
         application/json: {"regular_hours_worked": 30.25, "overtime_hours_worked": 10, "double_overtime_hours_worked": 0, "pto_hours_used": 5.5, "sick_hours_used": 0}
       responses:
         "200":
-          application/json: [{"time_off_policy_uuid": "c3a15554-f124-415d-b2c4-90b430fd8eb1", "hours": "3.2"}, {"time_off_policy_uuid": "386fc48d-52d2-4009-87b3-368f74f6b3df", "hours": "6.0"}]
+          application/json: {"hours_earned": []}
     Basic:
       parameters:
         path:

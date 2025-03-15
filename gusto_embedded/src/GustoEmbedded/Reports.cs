@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `company_reports:write`
         /// </remarks>
         /// </summary>
-        Task<PostCompaniesCompanyUuidReportsResponse> CreateCustomAsync(string companyUuid, PostCompaniesCompanyUuidReportsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostCompaniesCompanyUuidReportsResponse> CreateCustomAsync(string companyUuid, PostCompaniesCompanyUuidReportsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get a report
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `company_reports:read`
         /// </remarks>
         /// </summary>
-        Task<GetReportsReportUuidResponse> GetAsync(string reportUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetReportsReportUuidResponse> GetAsync(string reportUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get a report template
@@ -56,17 +56,17 @@ namespace GustoEmbedded
         /// scope: `company_reports:write`
         /// </remarks>
         /// </summary>
-        Task<GetCompaniesCompanyUuidReportTemplatesReportTypeResponse> GetTemplateAsync(string companyUuid, string reportType, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetCompaniesCompanyUuidReportTemplatesReportTypeResponse> GetTemplateAsync(string companyUuid, string reportType, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class Reports: IReports
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.548.6";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.548.6 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -79,7 +79,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostCompaniesCompanyUuidReportsResponse> CreateCustomAsync(string companyUuid, PostCompaniesCompanyUuidReportsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostCompaniesCompanyUuidReportsResponse> CreateCustomAsync(string companyUuid, PostCompaniesCompanyUuidReportsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostCompaniesCompanyUuidReportsRequest()
             {
@@ -182,7 +182,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetReportsReportUuidResponse> GetAsync(string reportUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetReportsReportUuidResponse> GetAsync(string reportUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetReportsReportUuidRequest()
             {
@@ -268,7 +268,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetCompaniesCompanyUuidReportTemplatesReportTypeResponse> GetTemplateAsync(string companyUuid, string reportType, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetCompaniesCompanyUuidReportTemplatesReportTypeResponse> GetTemplateAsync(string companyUuid, string reportType, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetCompaniesCompanyUuidReportTemplatesReportTypeRequest()
             {
