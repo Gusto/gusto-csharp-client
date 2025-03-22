@@ -16,6 +16,8 @@
 * [GetOnboardingStatus](#getonboardingstatus) - Get the company's onboarding status
 * [FinishOnboarding](#finishonboarding) - Finish company onboarding
 * [GetCustomFields](#getcustomfields) - Get the custom fields of a company
+* [GetCompaniesCompanyUuidSuspensions](#getcompaniescompanyuuidsuspensions) - Get suspensions for this company
+* [PostCompaniesCompanyUuidSuspensions](#postcompaniescompanyuuidsuspensions) - Suspend a company's account
 
 ## CreatePartnerManaged
 
@@ -55,7 +57,7 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
             Name = "<value>",
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -99,7 +101,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Companies.GetAsync(
     companyId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -142,7 +144,7 @@ var res = await sdk.Companies.UpdateAsync(
     requestBody: new PutV1CompaniesRequestBody() {
         ContractorOnly = false,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -191,7 +193,7 @@ var res = await sdk.Companies.MigrateAsync(
         IpAddress = "198.52.136.51",
         ExternalUserId = "<id>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -239,7 +241,7 @@ var res = await sdk.Companies.AcceptTermsOfServiceAsync(
         IpAddress = "168.91.169.217",
         ExternalUserId = "<id>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -284,7 +286,7 @@ var res = await sdk.Companies.RetrieveTermsOfServiceAsync(
     requestBody: new PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody() {
         Email = "Erika_Schuster@yahoo.com",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -332,7 +334,7 @@ var res = await sdk.Companies.CreateAdminAsync(
         LastName = "Koch",
         Email = "Justine_Gusikowski92@yahoo.com",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -375,7 +377,7 @@ var res = await sdk.Companies.ListAdminsAsync(
     companyId: "<id>",
     page: 620604,
     per: 696322,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -418,7 +420,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Companies.GetOnboardingStatusAsync(
     companyUuid: "<id>",
     additionalSteps: "external_payroll",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -470,7 +472,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Companies.FinishOnboardingAsync(
     companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -512,7 +514,7 @@ var res = await sdk.Companies.GetCustomFieldsAsync(
     companyId: "<id>",
     page: 653170,
     per: 309220,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -536,3 +538,94 @@ var res = await sdk.Companies.GetCustomFieldsAsync(
 | Error Type                               | Status Code                              | Content Type                             |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
+
+## GetCompaniesCompanyUuidSuspensions
+
+Get existing suspension records for this company. A company may have multiple suspension records if they have suspended their Gusto account more than once. 
+
+> 📘 To check if company is already suspended
+>
+> To determine if a company is _currently_ suspended, use the `is_suspended` and `company_status` fields in the [Get a company](https://docs.gusto.com/embedded-payroll/reference/get-v1-companies) endpoint.
+
+scope: `company_suspensions:read`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.Companies.GetCompaniesCompanyUuidSuspensionsAsync(
+    companyUuid: "<id>",
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CompanyUuid`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[GetCompaniesCompanyUuidSuspensionsResponse](../../Models/Requests/GetCompaniesCompanyUuidSuspensionsResponse.md)**
+
+### Errors
+
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| GustoEmbedded.Models.Errors.APIException | 4XX, 5XX                                 | \*/\*                                    |
+
+## PostCompaniesCompanyUuidSuspensions
+
+Use this endpoint to suspend a company. After suspension, company will no longer be able to run payroll but will retain access to their information, such as retrieving employee info or retrieving past payrolls.
+
+scope: `company_suspensions:write`
+
+### Example Usage
+
+```csharp
+using GustoEmbedded;
+using GustoEmbedded.Models.Components;
+using GustoEmbedded.Models.Requests;
+
+var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.Companies.PostCompaniesCompanyUuidSuspensionsAsync(
+    companyUuid: "<id>",
+    requestBody: new PostCompaniesCompanyUuidSuspensionsRequestBody() {
+        FileQuarterlyForms = false,
+        FileYearlyForms = false,
+        ReconcileTaxMethod = ReconcileTaxMethod.PayTaxes,
+        Reason = Reason.SwitchingProvider,
+    },
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CompanyUuid`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The UUID of the company                                                                                                                                                                                                      |
+| `RequestBody`                                                                                                                                                                                                                | [PostCompaniesCompanyUuidSuspensionsRequestBody](../../Models/Requests/PostCompaniesCompanyUuidSuspensionsRequestBody.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `XGustoAPIVersion`                                                                                                                                                                                                           | [VersionHeader](../../Models/Components/VersionHeader.md)                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | Determines the date-based API version associated with your API call. If none is provided, your application's [minimum API version](https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version) is used. |
+
+### Response
+
+**[PostCompaniesCompanyUuidSuspensionsResponse](../../Models/Requests/PostCompaniesCompanyUuidSuspensionsResponse.md)**
+
+### Errors
+
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| GustoEmbedded.Models.Errors.UnprocessableEntityErrorObject | 422                                                        | application/json                                           |
+| GustoEmbedded.Models.Errors.APIException                   | 4XX, 5XX                                                   | \*/\*                                                      |

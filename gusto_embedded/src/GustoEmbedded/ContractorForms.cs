@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `contractor_forms:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorFormsResponse> ListAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1ContractorFormsResponse> ListAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get a contractor form
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `contractor_forms:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorFormResponse> GetAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1ContractorFormResponse> GetAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get the contractor form pdf
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `contractor_forms:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1ContractorFormPdfResponse> GetPdfAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1ContractorFormPdfResponse> GetPdfAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Generate a 1099 form [DEMO]
@@ -71,17 +71,17 @@ namespace GustoEmbedded
         /// scope: `contractors:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1SandboxGenerate1099Response> Generate1099Async(PostV1SandboxGenerate1099RequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostV1SandboxGenerate1099Response> Generate1099Async(PostV1SandboxGenerate1099RequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class ContractorForms: IContractorForms
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.559.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.559.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -94,7 +94,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1ContractorFormsResponse> ListAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1ContractorFormsResponse> ListAsync(string contractorUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1ContractorFormsRequest()
             {
@@ -180,7 +180,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorFormResponse> GetAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1ContractorFormResponse> GetAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1ContractorFormRequest()
             {
@@ -267,7 +267,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1ContractorFormPdfResponse> GetPdfAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1ContractorFormPdfResponse> GetPdfAsync(string contractorUuid, string formId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1ContractorFormPdfRequest()
             {
@@ -354,7 +354,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1SandboxGenerate1099Response> Generate1099Async(PostV1SandboxGenerate1099RequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostV1SandboxGenerate1099Response> Generate1099Async(PostV1SandboxGenerate1099RequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostV1SandboxGenerate1099Request()
             {

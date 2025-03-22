@@ -44,6 +44,6 @@ namespace GustoEmbedded.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("value")]
-        public Models.Requests.Value? Value { get; set; }
+        public PostV1EmployeesEmployeeIdEmployeeBenefitsValue? Value { get; set; }
     }
 }

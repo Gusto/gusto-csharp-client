@@ -43,7 +43,7 @@ var res = await sdk.Webhooks.CreateSubscriptionAsync(
             SubscriptionTypes.Employee,
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -91,7 +91,7 @@ var res = await sdk.Webhooks.ListSubscriptionsAsync(
     security: new GetV1WebhookSubscriptionsSecurity() {
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -145,7 +145,7 @@ var res = await sdk.Webhooks.UpdateSubscriptionAsync(
             PutV1WebhookSubscriptionUuidSubscriptionTypes.PaySchedule,
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -196,7 +196,7 @@ var res = await sdk.Webhooks.GetSubscriptionAsync(
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
     webhookSubscriptionUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -245,7 +245,7 @@ var res = await sdk.Webhooks.DeleteSubscriptionAsync(
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
     webhookSubscriptionUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -299,7 +299,7 @@ var res = await sdk.Webhooks.VerifyAsync(
     requestBody: new PutV1VerifyWebhookSubscriptionUuidRequestBody() {
         VerificationToken = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -350,7 +350,7 @@ var res = await sdk.Webhooks.RequestVerificationTokenAsync(
         SystemAccessAuth = "<YOUR_BEARER_TOKEN_HERE>",
     },
     webhookSubscriptionUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

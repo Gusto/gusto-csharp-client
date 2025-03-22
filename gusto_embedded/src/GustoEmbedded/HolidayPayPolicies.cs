@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `holiday_pay_policies:read`
         /// </remarks>
         /// </summary>
-        Task<GetCompaniesCompanyUuidHolidayPayPolicyResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetCompaniesCompanyUuidHolidayPayPolicyResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Create a holiday pay policy for a company
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `holiday_pay_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PostCompaniesCompanyUuidHolidayPayPolicyResponse> CreateAsync(string companyUuid, PostCompaniesCompanyUuidHolidayPayPolicyRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostCompaniesCompanyUuidHolidayPayPolicyResponse> CreateAsync(string companyUuid, PostCompaniesCompanyUuidHolidayPayPolicyRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update a company&apos;s holiday pay policy
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `holiday_pay_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PutCompaniesCompanyUuidHolidayPayPolicyResponse> UpdateAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutCompaniesCompanyUuidHolidayPayPolicyResponse> UpdateAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Delete a company&apos;s holiday pay policy
@@ -67,7 +67,7 @@ namespace GustoEmbedded
         /// scope: `holiday_pay_policies:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteCompaniesCompanyUuidHolidayPayPolicyResponse> DeleteAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<DeleteCompaniesCompanyUuidHolidayPayPolicyResponse> DeleteAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Add employees to a company&apos;s holiday pay policy
@@ -78,7 +78,7 @@ namespace GustoEmbedded
         /// scope: `holiday_pay_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PutCompaniesCompanyUuidHolidayPayPolicyAddResponse> AddEmployeesAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyAddRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutCompaniesCompanyUuidHolidayPayPolicyAddResponse> AddEmployeesAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyAddRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Remove employees from a company&apos;s holiday pay policy
@@ -89,7 +89,7 @@ namespace GustoEmbedded
         /// scope: `holiday_pay_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PutCompaniesCompanyUuidHolidayPayPolicyRemoveResponse> RemoveEmployeesAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyRemoveRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutCompaniesCompanyUuidHolidayPayPolicyRemoveResponse> RemoveEmployeesAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyRemoveRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Preview a company&apos;s paid holidays
@@ -100,17 +100,17 @@ namespace GustoEmbedded
         /// scope: `holiday_pay_policies:read`
         /// </remarks>
         /// </summary>
-        Task<GetCompaniesCompanyUuidPaidHolidaysResponse> PreviewPaidHolidaysAsync(string companyUuid, GetCompaniesCompanyUuidPaidHolidaysRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetCompaniesCompanyUuidPaidHolidaysResponse> PreviewPaidHolidaysAsync(string companyUuid, GetCompaniesCompanyUuidPaidHolidaysRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class HolidayPayPolicies: IHolidayPayPolicies
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.559.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.559.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -123,7 +123,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetCompaniesCompanyUuidHolidayPayPolicyResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetCompaniesCompanyUuidHolidayPayPolicyResponse> GetAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetCompaniesCompanyUuidHolidayPayPolicyRequest()
             {
@@ -209,7 +209,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostCompaniesCompanyUuidHolidayPayPolicyResponse> CreateAsync(string companyUuid, PostCompaniesCompanyUuidHolidayPayPolicyRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostCompaniesCompanyUuidHolidayPayPolicyResponse> CreateAsync(string companyUuid, PostCompaniesCompanyUuidHolidayPayPolicyRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostCompaniesCompanyUuidHolidayPayPolicyRequest()
             {
@@ -312,7 +312,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutCompaniesCompanyUuidHolidayPayPolicyResponse> UpdateAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutCompaniesCompanyUuidHolidayPayPolicyResponse> UpdateAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutCompaniesCompanyUuidHolidayPayPolicyRequest()
             {
@@ -415,7 +415,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteCompaniesCompanyUuidHolidayPayPolicyResponse> DeleteAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<DeleteCompaniesCompanyUuidHolidayPayPolicyResponse> DeleteAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new DeleteCompaniesCompanyUuidHolidayPayPolicyRequest()
             {
@@ -503,7 +503,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutCompaniesCompanyUuidHolidayPayPolicyAddResponse> AddEmployeesAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyAddRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutCompaniesCompanyUuidHolidayPayPolicyAddResponse> AddEmployeesAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyAddRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutCompaniesCompanyUuidHolidayPayPolicyAddRequest()
             {
@@ -606,7 +606,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutCompaniesCompanyUuidHolidayPayPolicyRemoveResponse> RemoveEmployeesAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyRemoveRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutCompaniesCompanyUuidHolidayPayPolicyRemoveResponse> RemoveEmployeesAsync(string companyUuid, PutCompaniesCompanyUuidHolidayPayPolicyRemoveRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutCompaniesCompanyUuidHolidayPayPolicyRemoveRequest()
             {
@@ -709,7 +709,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetCompaniesCompanyUuidPaidHolidaysResponse> PreviewPaidHolidaysAsync(string companyUuid, GetCompaniesCompanyUuidPaidHolidaysRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetCompaniesCompanyUuidPaidHolidaysResponse> PreviewPaidHolidaysAsync(string companyUuid, GetCompaniesCompanyUuidPaidHolidaysRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetCompaniesCompanyUuidPaidHolidaysRequest()
             {

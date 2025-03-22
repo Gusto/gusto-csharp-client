@@ -32,7 +32,7 @@ var res = await sdk.ContractorPaymentMethods.CreateBankAccountAsync(
         AccountNumber = "<value>",
         AccountType = PostV1ContractorsContractorUuidBankAccountsAccountType.Checking,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
