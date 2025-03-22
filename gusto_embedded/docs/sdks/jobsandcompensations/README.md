@@ -37,7 +37,7 @@ var res = await sdk.JobsAndCompensations.CreateJobAsync(
         Title = "<value>",
         HireDate = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -120,7 +120,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.JobsAndCompensations.GetJobAsync(
     jobId: "<id>",
     include: GetV1JobsJobIdQueryParamInclude.AllCompensations,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -164,7 +164,7 @@ var res = await sdk.JobsAndCompensations.UpdateAsync(
     requestBody: new PutV1JobsJobIdRequestBody() {
         Version = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -205,7 +205,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.JobsAndCompensations.DeleteAsync(
     jobId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -293,7 +293,7 @@ var res = await sdk.JobsAndCompensations.CreateCompensationAsync(
         PaymentUnit = PaymentUnit.Paycheck,
         FlsaStatus = FlsaStatusType.CommissionOnlyNonexempt,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -335,7 +335,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.JobsAndCompensations.GetCompensationAsync(
     compensationId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -378,7 +378,7 @@ var res = await sdk.JobsAndCompensations.UpdateCompensationAsync(
     requestBody: new PutV1CompensationsCompensationIdRequestBody() {
         Version = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -420,7 +420,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.JobsAndCompensations.DeleteCompensationAsync(
     compensationId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

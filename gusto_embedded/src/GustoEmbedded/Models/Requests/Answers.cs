@@ -9,14 +9,16 @@
 #nullable enable
 namespace GustoEmbedded.Models.Requests
 {
+    using GustoEmbedded.Models.Components;
+    using GustoEmbedded.Models.Requests;
     using GustoEmbedded.Utils;
     using Newtonsoft.Json;
     
     public class Answers
     {
 
-        [JsonProperty("value")]
-        public string Value { get; set; } = default!;
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
+        public Models.Requests.Value? Value { get; set; }
 
         [JsonProperty("valid_from")]
         public string ValidFrom { get; set; } = default!;

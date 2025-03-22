@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                                   | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `HttpMeta`                                              | [HTTPMetadata](../../Models/Components/HTTPMetadata.md) | :heavy_check_mark:                                      | N/A                                                     |
-| `PaySchedule`                                           | [PaySchedule](../../Models/Components/PaySchedule.md)   | :heavy_minus_sign:                                      | Example response                                        |
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `HttpMeta`                                                        | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)           | :heavy_check_mark:                                                | N/A                                                               |
+| `PayScheduleObject`                                               | [PayScheduleObject](../../Models/Components/PayScheduleObject.md) | :heavy_minus_sign:                                                | Example response                                                  |

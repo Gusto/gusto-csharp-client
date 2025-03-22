@@ -42,7 +42,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursResponse> CalculateAccruingTimeOffHoursAsync(string payrollId, string employeeId, PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursResponse> CalculateAccruingTimeOffHoursAsync(string payrollId, string employeeId, PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get a time off policy
@@ -53,7 +53,7 @@ namespace GustoEmbedded
         /// scope: `time_off_policies:read`
         /// </remarks>
         /// </summary>
-        Task<GetTimeOffPoliciesTimeOffPolicyUuidResponse> GetAsync(string timeOffPolicyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetTimeOffPoliciesTimeOffPolicyUuidResponse> GetAsync(string timeOffPolicyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update a time off policy
@@ -64,7 +64,7 @@ namespace GustoEmbedded
         /// scope: `time_off_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PutTimeOffPoliciesTimeOffPolicyUuidResponse> UpdateAsync(string timeOffPolicyUuid, PutTimeOffPoliciesTimeOffPolicyUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutTimeOffPoliciesTimeOffPolicyUuidResponse> UpdateAsync(string timeOffPolicyUuid, PutTimeOffPoliciesTimeOffPolicyUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get all time off policies
@@ -75,7 +75,7 @@ namespace GustoEmbedded
         /// scope: `time_off_policies:read`
         /// </remarks>
         /// </summary>
-        Task<GetCompaniesCompanyUuidTimeOffPoliciesResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetCompaniesCompanyUuidTimeOffPoliciesResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Create a time off policy
@@ -86,7 +86,7 @@ namespace GustoEmbedded
         /// scope: `time_off_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PostCompaniesCompanyUuidTimeOffPoliciesResponse> CreateAsync(string companyUuid, PostCompaniesCompanyUuidTimeOffPoliciesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostCompaniesCompanyUuidTimeOffPoliciesResponse> CreateAsync(string companyUuid, PostCompaniesCompanyUuidTimeOffPoliciesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Add employees to a time off policy
@@ -97,7 +97,7 @@ namespace GustoEmbedded
         /// scope: `time_off_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesResponse> AddEmployeesAsync(string timeOffPolicyUuid, PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesResponse> AddEmployeesAsync(string timeOffPolicyUuid, PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Remove employees from a time off policy
@@ -108,7 +108,7 @@ namespace GustoEmbedded
         /// scope: `time_off_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesResponse> RemoveEmployeesAsync(string timeOffPolicyUuid, PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesResponse> RemoveEmployeesAsync(string timeOffPolicyUuid, PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update employee time off hour balances
@@ -119,7 +119,7 @@ namespace GustoEmbedded
         /// scope: `time_off_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceResponse> UpdateBalanceAsync(string timeOffPolicyUuid, PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceResponse> UpdateBalanceAsync(string timeOffPolicyUuid, PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Deactivate a time off policy
@@ -130,17 +130,17 @@ namespace GustoEmbedded
         /// scope: `time_off_policies:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivateResponse> DeactivateAsync(string timeOffPolicyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivateResponse> DeactivateAsync(string timeOffPolicyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class TimeOffPolicies: ITimeOffPolicies
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.559.0";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.559.0 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -153,7 +153,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursResponse> CalculateAccruingTimeOffHoursAsync(string payrollId, string employeeId, PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursResponse> CalculateAccruingTimeOffHoursAsync(string payrollId, string employeeId, PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursRequest()
             {
@@ -220,7 +220,7 @@ namespace GustoEmbedded
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<AccruingTimeOffHour>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<AccruingTimeOffHourObject>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -257,7 +257,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetTimeOffPoliciesTimeOffPolicyUuidResponse> GetAsync(string timeOffPolicyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetTimeOffPoliciesTimeOffPolicyUuidResponse> GetAsync(string timeOffPolicyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetTimeOffPoliciesTimeOffPolicyUuidRequest()
             {
@@ -343,7 +343,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutTimeOffPoliciesTimeOffPolicyUuidResponse> UpdateAsync(string timeOffPolicyUuid, PutTimeOffPoliciesTimeOffPolicyUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutTimeOffPoliciesTimeOffPolicyUuidResponse> UpdateAsync(string timeOffPolicyUuid, PutTimeOffPoliciesTimeOffPolicyUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutTimeOffPoliciesTimeOffPolicyUuidRequest()
             {
@@ -446,7 +446,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetCompaniesCompanyUuidTimeOffPoliciesResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetCompaniesCompanyUuidTimeOffPoliciesResponse> GetAllAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetCompaniesCompanyUuidTimeOffPoliciesRequest()
             {
@@ -532,7 +532,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostCompaniesCompanyUuidTimeOffPoliciesResponse> CreateAsync(string companyUuid, PostCompaniesCompanyUuidTimeOffPoliciesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostCompaniesCompanyUuidTimeOffPoliciesResponse> CreateAsync(string companyUuid, PostCompaniesCompanyUuidTimeOffPoliciesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostCompaniesCompanyUuidTimeOffPoliciesRequest()
             {
@@ -635,7 +635,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesResponse> AddEmployeesAsync(string timeOffPolicyUuid, PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesResponse> AddEmployeesAsync(string timeOffPolicyUuid, PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutVersionTimeOffPoliciesTimeOffPolicyUuidAddEmployeesRequest()
             {
@@ -738,7 +738,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesResponse> RemoveEmployeesAsync(string timeOffPolicyUuid, PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesResponse> RemoveEmployeesAsync(string timeOffPolicyUuid, PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1TimeOffPoliciesTimeOffPolicyUuidRemoveEmployeesRequest()
             {
@@ -841,7 +841,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceResponse> UpdateBalanceAsync(string timeOffPolicyUuid, PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceResponse> UpdateBalanceAsync(string timeOffPolicyUuid, PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutVersionTimeOffPoliciesTimeOffPolicyUuidBalanceRequest()
             {
@@ -944,7 +944,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivateResponse> DeactivateAsync(string timeOffPolicyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivateResponse> DeactivateAsync(string timeOffPolicyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1TimeOffPoliciesTimeOffPolicyUuidDeactivateRequest()
             {

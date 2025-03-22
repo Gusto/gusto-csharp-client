@@ -45,7 +45,7 @@ var res = await sdk.Signatories.CreateAsync(
             Zip = "05065",
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -86,7 +86,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Signatories.ListAsync(
     companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -127,7 +127,7 @@ var res = await sdk.Signatories.InviteAsync(
     requestBody: new PostV1CompaniesCompanyUuidSignatoriesInviteRequestBody() {
         Email = "Maureen_Wyman@yahoo.com",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -171,7 +171,7 @@ var res = await sdk.Signatories.UpdateAsync(
     companyUuid: "<id>",
     signatoryUuid: "<id>",
     requestBody: new PutV1CompaniesCompanyUuidSignatoriesSignatoryUuidRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -214,7 +214,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Signatories.DeleteAsync(
     companyUuid: "<id>",
     signatoryUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

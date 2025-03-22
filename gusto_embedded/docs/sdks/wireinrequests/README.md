@@ -25,7 +25,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.WireInRequests.GetAsync(
     wireInRequestUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -70,7 +70,7 @@ var res = await sdk.WireInRequests.SubmitAsync(
         BankName = "<value>",
         AmountSent = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -111,7 +111,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.WireInRequests.ListAsync(
     companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

@@ -19,5 +19,23 @@ namespace GustoEmbedded.Models.Requests
 
         [JsonProperty("employee_compensations")]
         public List<Models.Requests.EmployeeCompensations> EmployeeCompensations { get; set; } = default!;
+
+        /// <summary>
+        /// The payment schedule tax rate the payroll is based on. Only relevant for off-cycle payrolls.
+        /// </summary>
+        [JsonProperty("withholding_pay_period")]
+        public PutV1CompaniesCompanyIdPayrollsWithholdingPayPeriod? WithholdingPayPeriod { get; set; }
+
+        /// <summary>
+        /// Block regular deductions and contributions for this payroll. Only relevant for off-cycle payrolls.
+        /// </summary>
+        [JsonProperty("skip_regular_deductions")]
+        public bool? SkipRegularDeductions { get; set; }
+
+        /// <summary>
+        /// Enable taxes to be withheld at the IRS&apos;s required rate of 22% for federal income taxes. State income taxes will be taxed at the state&apos;s supplemental tax rate. Otherwise, we&apos;ll sum the entirety of the employee&apos;s wages and withhold taxes on the entire amount at the rate for regular wages. Only relevant for off-cycle payrolls.
+        /// </summary>
+        [JsonProperty("fixed_withholding_rate")]
+        public bool? FixedWithholdingRate { get; set; }
     }
 }

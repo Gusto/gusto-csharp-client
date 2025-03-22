@@ -16,7 +16,7 @@ namespace GustoEmbedded.Models.Components
     public enum VersionHeader
     {
         [JsonProperty("2024-04-01")]
-        TwoThousandAndTwentyFour0401,
+        TwoThousandAndTwentyFourMinus04Minus01,
     }
 
     public static class VersionHeaderExtension

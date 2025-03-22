@@ -41,7 +41,7 @@ var res = await sdk.Reports.CreateCustomAsync(
         DismissedStartDate = LocalDate.FromDateTime(System.DateTime.Parse("2024-01-01")),
         DismissedEndDate = LocalDate.FromDateTime(System.DateTime.Parse("2024-04-01")),
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -82,7 +82,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Reports.GetAsync(
     reportUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -122,7 +122,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Reports.GetTemplateAsync(
     companyUuid: "<id>",
     reportType: "<value>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

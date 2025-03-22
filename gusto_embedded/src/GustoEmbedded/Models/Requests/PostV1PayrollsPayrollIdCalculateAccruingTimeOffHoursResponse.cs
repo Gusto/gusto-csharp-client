@@ -12,7 +12,6 @@ namespace GustoEmbedded.Models.Requests
     using GustoEmbedded.Models.Components;
     using GustoEmbedded.Utils;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     
     public class PostV1PayrollsPayrollIdCalculateAccruingTimeOffHoursResponse
     {
@@ -23,6 +22,6 @@ namespace GustoEmbedded.Models.Requests
         /// <summary>
         /// Example response
         /// </summary>
-        public List<AccruingTimeOffHour>? AccruingTimeOffHourObject { get; set; }
+        public AccruingTimeOffHourObject? AccruingTimeOffHourObject { get; set; }
     }
 }

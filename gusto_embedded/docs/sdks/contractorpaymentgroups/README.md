@@ -43,7 +43,7 @@ var res = await sdk.ContractorPaymentGroups.CreateAsync(
             },
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -141,7 +141,7 @@ var res = await sdk.ContractorPaymentGroups.PreviewAsync(
             },
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -182,7 +182,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.ContractorPaymentGroups.GetAsync(
     contractorPaymentGroupUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -221,7 +221,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.ContractorPaymentGroups.DeleteAsync(
     contractorPaymentGroupUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -265,7 +265,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.ContractorPaymentGroups.FundAsync(
     contractorPaymentGroupUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
