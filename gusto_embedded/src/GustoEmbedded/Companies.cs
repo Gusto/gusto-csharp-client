@@ -24,6 +24,7 @@ namespace GustoEmbedded
 
     public interface ICompanies
     {
+        public ISuspensions Suspensions { get; }
 
         /// <summary>
         /// Create a partner managed company
@@ -43,7 +44,7 @@ namespace GustoEmbedded
         /// &gt; this endpoint uses the <a href="https://docs.gusto.com/embedded-payroll/docs/system-access">Bearer Auth scheme with the system-level access token in the HTTP Authorization header</a>
         /// </remarks>
         /// </summary>
-        Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401, PostV1PartnerManagedCompaniesSecurity? security = null);
+        Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01, PostV1PartnerManagedCompaniesSecurity? security = null);
 
         /// <summary>
         /// Get a company
@@ -57,7 +58,7 @@ namespace GustoEmbedded
         /// scope: `companies:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompaniesResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update a company
@@ -68,7 +69,7 @@ namespace GustoEmbedded
         /// scope: `companies:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompaniesResponse> UpdateAsync(string companyId, PutV1CompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1CompaniesResponse> UpdateAsync(string companyId, PutV1CompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Migrate company to embedded payroll
@@ -81,7 +82,7 @@ namespace GustoEmbedded
         /// scope: `partner_managed_companies:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1PartnerManagedCompaniesCompanyUuidMigrateResponse> MigrateAsync(string companyUuid, PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1PartnerManagedCompaniesCompanyUuidMigrateResponse> MigrateAsync(string companyUuid, PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Accept terms of service for a company user
@@ -93,7 +94,7 @@ namespace GustoEmbedded
         /// scope: `terms_of_services:write`
         /// </remarks>
         /// </summary>
-        Task<PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceResponse> AcceptTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceResponse> AcceptTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Retrieve terms of service status for a company user
@@ -104,7 +105,7 @@ namespace GustoEmbedded
         /// scope: `terms_of_services:read`
         /// </remarks>
         /// </summary>
-        Task<PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceResponse> RetrieveTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceResponse> RetrieveTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Create an admin for the company
@@ -116,7 +117,7 @@ namespace GustoEmbedded
         /// scope: `company_admin:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdAdminsResponse> CreateAdminAsync(string companyId, PostV1CompaniesCompanyIdAdminsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostV1CompaniesCompanyIdAdminsResponse> CreateAdminAsync(string companyId, PostV1CompaniesCompanyIdAdminsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get all the admins at a company
@@ -127,7 +128,7 @@ namespace GustoEmbedded
         /// scope: `company_admin:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get the company&apos;s onboarding status
@@ -139,7 +140,7 @@ namespace GustoEmbedded
         /// scope: `company_onboarding_status:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, string? additionalSteps = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, string? additionalSteps = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Finish company onboarding
@@ -162,7 +163,7 @@ namespace GustoEmbedded
         /// scope: `companies:write`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyFinishOnboardingResponse> FinishOnboardingAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompanyFinishOnboardingResponse> FinishOnboardingAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get the custom fields of a company
@@ -173,20 +174,21 @@ namespace GustoEmbedded
         /// scope: `companies:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class Companies: ICompanies
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.562.3";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.562.3 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
+        public ISuspensions Suspensions { get; private set; }
 
         public Companies(ISpeakeasyHttpClient client, Func<GustoEmbedded.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
         {
@@ -194,9 +196,10 @@ namespace GustoEmbedded
             _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
+            Suspensions = new Suspensions(_client, _securitySource, _serverUrl, SDKConfiguration);
         }
 
-        public async Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401, PostV1PartnerManagedCompaniesSecurity? security = null)
+        public async Task<PostV1PartnerManagedCompaniesResponse> CreatePartnerManagedAsync(PostV1PartnerManagedCompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01, PostV1PartnerManagedCompaniesSecurity? security = null)
         {
             var request = new PostV1PartnerManagedCompaniesRequest()
             {
@@ -224,7 +227,7 @@ namespace GustoEmbedded
                 securitySource = () => security;
             }
 
-            var hookCtx = new HookContext("post-v1-partner-managed-companies", null, securitySource);
+            var hookCtx = new HookContext(baseUrl, "post-v1-partner-managed-companies", new List<string> {  }, securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -301,7 +304,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompaniesResponse> GetAsync(string companyId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompaniesRequest()
             {
@@ -320,7 +323,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-companies", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-companies", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -387,7 +390,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompaniesResponse> UpdateAsync(string companyId, PutV1CompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1CompaniesResponse> UpdateAsync(string companyId, PutV1CompaniesRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1CompaniesRequest()
             {
@@ -413,7 +416,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-companies", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-companies", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -490,7 +493,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1PartnerManagedCompaniesCompanyUuidMigrateResponse> MigrateAsync(string companyUuid, PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1PartnerManagedCompaniesCompanyUuidMigrateResponse> MigrateAsync(string companyUuid, PutV1PartnerManagedCompaniesCompanyUuidMigrateRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1PartnerManagedCompaniesCompanyUuidMigrateRequest()
             {
@@ -516,7 +519,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-partner-managed-companies-company-uuid-migrate", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-partner-managed-companies-company-uuid-migrate", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -593,7 +596,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceResponse> AcceptTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceResponse> AcceptTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostPartnerManagedCompaniesCompanyUuidAcceptTermsOfServiceRequest()
             {
@@ -619,7 +622,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("post-partner-managed-companies-company_uuid-accept_terms_of_service", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "post-partner-managed-companies-company_uuid-accept_terms_of_service", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -696,7 +699,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceResponse> RetrieveTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceResponse> RetrieveTermsOfServiceAsync(string companyUuid, PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequest()
             {
@@ -722,7 +725,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("post-partner-managed-companies-company_uuid-retrieve_terms_of_service", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "post-partner-managed-companies-company_uuid-retrieve_terms_of_service", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -799,7 +802,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1CompaniesCompanyIdAdminsResponse> CreateAdminAsync(string companyId, PostV1CompaniesCompanyIdAdminsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostV1CompaniesCompanyIdAdminsResponse> CreateAdminAsync(string companyId, PostV1CompaniesCompanyIdAdminsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostV1CompaniesCompanyIdAdminsRequest()
             {
@@ -825,7 +828,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("post-v1-companies-company_id-admins", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "post-v1-companies-company_id-admins", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -902,7 +905,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompaniesCompanyIdAdminsResponse> ListAdminsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompaniesCompanyIdAdminsRequest()
             {
@@ -923,7 +926,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-companies-company_id-admins", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-companies-company_id-admins", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -990,7 +993,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, string? additionalSteps = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompanyOnboardingStatusResponse> GetOnboardingStatusAsync(string companyUuid, string? additionalSteps = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompanyOnboardingStatusRequest()
             {
@@ -1010,7 +1013,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-company-onboarding-status", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-company-onboarding-status", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1077,7 +1080,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyFinishOnboardingResponse> FinishOnboardingAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompanyFinishOnboardingResponse> FinishOnboardingAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompanyFinishOnboardingRequest()
             {
@@ -1096,7 +1099,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-company-finish-onboarding", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-company-finish-onboarding", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1173,7 +1176,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompaniesCompanyIdCustomFieldsResponse> GetCustomFieldsAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompaniesCompanyIdCustomFieldsRequest()
             {
@@ -1194,7 +1197,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-companies-company_id-custom_fields", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-companies-company_id-custom_fields", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

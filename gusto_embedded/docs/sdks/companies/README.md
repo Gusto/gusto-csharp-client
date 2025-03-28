@@ -55,7 +55,7 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
             Name = "<value>",
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -99,7 +99,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Companies.GetAsync(
     companyId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -142,7 +142,7 @@ var res = await sdk.Companies.UpdateAsync(
     requestBody: new PutV1CompaniesRequestBody() {
         ContractorOnly = false,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -191,7 +191,7 @@ var res = await sdk.Companies.MigrateAsync(
         IpAddress = "198.52.136.51",
         ExternalUserId = "<id>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -239,7 +239,7 @@ var res = await sdk.Companies.AcceptTermsOfServiceAsync(
         IpAddress = "168.91.169.217",
         ExternalUserId = "<id>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -284,7 +284,7 @@ var res = await sdk.Companies.RetrieveTermsOfServiceAsync(
     requestBody: new PostPartnerManagedCompaniesCompanyUuidRetrieveTermsOfServiceRequestBody() {
         Email = "Erika_Schuster@yahoo.com",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -332,7 +332,7 @@ var res = await sdk.Companies.CreateAdminAsync(
         LastName = "Koch",
         Email = "Justine_Gusikowski92@yahoo.com",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -375,7 +375,7 @@ var res = await sdk.Companies.ListAdminsAsync(
     companyId: "<id>",
     page: 620604,
     per: 696322,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -418,7 +418,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Companies.GetOnboardingStatusAsync(
     companyUuid: "<id>",
     additionalSteps: "external_payroll",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -470,7 +470,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Companies.FinishOnboardingAsync(
     companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -512,7 +512,7 @@ var res = await sdk.Companies.GetCustomFieldsAsync(
     companyId: "<id>",
     page: 653170,
     per: 309220,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

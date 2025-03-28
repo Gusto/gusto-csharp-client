@@ -19,11 +19,11 @@ namespace GustoEmbedded.Models.Components
     public enum PaymentSpeedParam
     {
         [JsonProperty("1-day")]
-        OneDay,
+        OneMinusDay,
         [JsonProperty("2-day")]
-        TwoDay,
+        TwoMinusDay,
         [JsonProperty("4-day")]
-        FourDay,
+        FourMinusDay,
     }
 
     public static class PaymentSpeedParamExtension

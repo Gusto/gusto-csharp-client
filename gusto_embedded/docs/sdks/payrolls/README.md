@@ -53,7 +53,7 @@ var res = await sdk.Payrolls.CreateOffCycleAsync(
         StartDate = "<value>",
         EndDate = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -143,7 +143,7 @@ var res = await sdk.Payrolls.GetApprovedReversalsAsync(
     companyId: "<id>",
     page: 880741,
     per: 832368,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -198,7 +198,7 @@ var res = await sdk.Payrolls.GetAsync(
     include: new List<GetV1CompaniesCompanyIdPayrollsPayrollIdQueryParamInclude>() {
         GetV1CompaniesCompanyIdPayrollsPayrollIdQueryParamInclude.Taxes,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -250,7 +250,7 @@ var res = await sdk.Payrolls.UpdateAsync(
             new Models.Requests.EmployeeCompensations() {},
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -296,7 +296,7 @@ var res = await sdk.Payrolls.DeleteAsync(
     companyId: "<id>",
     payrollId: "<id>",
     asyncP: false,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -342,7 +342,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Payrolls.PrepareAsync(
     companyId: "<id>",
     payrollId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -387,7 +387,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Payrolls.GetReceiptAsync(
     payrollUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -428,7 +428,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Payrolls.GetBlockersAsync(
     companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -473,7 +473,7 @@ var res = await sdk.Payrolls.SkipAsync(
     requestBody: new PostCompaniesPayrollSkipCompanyUuidRequestBody() {
         PayrollType = PayrollType.Regular,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -522,7 +522,7 @@ var res = await sdk.Payrolls.CalculateGrossUpAsync(
         EmployeeUuid = "<id>",
         NetPay = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -568,7 +568,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Payrolls.CalculateAsync(
     companyId: "<id>",
     payrollId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -617,7 +617,7 @@ var res = await sdk.Payrolls.SubmitAsync(
     companyId: "<id>",
     payrollId: "<id>",
     requestBody: new PutV1CompaniesCompanyIdPayrollsPayrollIdSubmitRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -664,7 +664,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Payrolls.CancelAsync(
     companyId: "<id>",
     payrollId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -706,7 +706,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Payrolls.GetPayStubAsync(
     payrollId: "<id>",
     employeeId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -746,7 +746,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Payrolls.GetPayStubsAsync(
     employeeId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -789,7 +789,7 @@ var res = await sdk.Payrolls.GeneratePrintableChecksAsync(
     requestBody: new PostV1PayrollsPayrollUuidGeneratedDocumentsPrintablePayrollChecksRequestBody() {
         PrintingFormat = PrintingFormat.Bottom,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

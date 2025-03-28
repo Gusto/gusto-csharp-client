@@ -38,7 +38,7 @@ var res = await sdk.Employees.CreateAsync(
         FirstName = "Jed",
         LastName = "Johnson",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -122,7 +122,7 @@ var res = await sdk.Employees.CreateHistoricalAsync(
     historicalEmployeeBody: new HistoricalEmployeeBody() {
         FirstName = "Cortez",
         LastName = "Dickens",
-        DateOfBirth = "1995-12-06",
+        DateOfBirth = "1995-12-24",
         Ssn = "<value>",
         WorkAddress = new Models.Components.WorkAddress() {},
         HomeAddress = new HistoricalEmployeeBodyHomeAddress() {
@@ -134,7 +134,7 @@ var res = await sdk.Employees.CreateHistoricalAsync(
         Termination = new HistoricalEmployeeBodyTermination() {},
         Job = new HistoricalEmployeeBodyJob() {},
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -181,7 +181,7 @@ var res = await sdk.Employees.GetAsync(
     include: new List<QueryParamInclude>() {
         QueryParamInclude.CustomFields,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -225,7 +225,7 @@ var res = await sdk.Employees.UpdateAsync(
     requestBody: new PutV1EmployeesRequestBody() {
         Version = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -268,7 +268,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Employees.DeleteAsync(
     employeeId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -310,7 +310,7 @@ var res = await sdk.Employees.GetCustomFieldsAsync(
     employeeId: "<id>",
     page: 653170,
     per: 309220,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -353,7 +353,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Employees.UpdateOnboardingDocumentsConfigAsync(
     employeeId: "<id>",
     requestBody: new PutV1EmployeesEmployeeIdOnboardingDocumentsConfigRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -429,7 +429,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Employees.GetOnboardingStatusAsync(
     employeeId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -481,7 +481,7 @@ var res = await sdk.Employees.UpdateOnboardingStatusAsync(
     requestBody: new PutV1EmployeesEmployeeIdOnboardingStatusRequestBody() {
         OnboardingStatus = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -523,7 +523,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.Employees.GetTimeOffActivitiesAsync(
     employeeUuid: "<id>",
     timeOffType: "<value>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

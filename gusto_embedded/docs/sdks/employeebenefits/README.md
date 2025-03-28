@@ -33,7 +33,7 @@ var res = await sdk.EmployeeBenefits.CreateAsync(
     requestBody: new PostV1EmployeesEmployeeIdEmployeeBenefitsRequestBody() {
         CompanyBenefitUuid = "<id>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -80,7 +80,7 @@ var res = await sdk.EmployeeBenefits.GetAsync(
     employeeId: "<id>",
     page: 700347,
     per: 558834,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -123,7 +123,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.EmployeeBenefits.RetrieveAsync(
     employeeBenefitId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -166,7 +166,7 @@ var res = await sdk.EmployeeBenefits.UpdateAsync(
     requestBody: new PutV1EmployeeBenefitsEmployeeBenefitIdRequestBody() {
         Version = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -207,7 +207,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.EmployeeBenefits.DeleteAsync(
     employeeBenefitId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -250,7 +250,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.EmployeeBenefits.GetYtdBenefitAmountsFromDifferentCompanyAsync(
     employeeId: "<id>",
     taxYear: 2024,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -295,7 +295,7 @@ var res = await sdk.EmployeeBenefits.CreateYtdBenefitAmountsFromDifferentCompany
     postEmployeeYtdBenefitAmountsFromDifferentCompany: new PostEmployeeYtdBenefitAmountsFromDifferentCompany() {
         TaxYear = 5621.31D,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
