@@ -38,7 +38,7 @@ namespace GustoEmbedded.Models.Requests
         /// Determines the date-based API version associated with your API call. If none is provided, your application&apos;s <a href="https://docs.gusto.com/embedded-payroll/docs/api-versioning#minimum-api-version">minimum API version</a> is used.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Gusto-API-Version")]
-        public VersionHeader? XGustoAPIVersion { get; set; } = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401;
+        public VersionHeader? XGustoAPIVersion { get; set; } = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public PutV1EmployeeFormSignRequestBody RequestBody { get; set; } = default!;

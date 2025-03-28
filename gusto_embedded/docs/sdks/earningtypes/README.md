@@ -32,7 +32,7 @@ var res = await sdk.EarningTypes.CreateAsync(
     requestBody: new PostV1CompaniesCompanyIdEarningTypesRequestBody() {
         Name = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -79,7 +79,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.EarningTypes.ListAsync(
     companyId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -121,7 +121,7 @@ var res = await sdk.EarningTypes.UpdateAsync(
     companyId: "<id>",
     earningTypeUuid: "<id>",
     requestBody: new PutV1CompaniesCompanyIdEarningTypesEarningTypeUuidRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -164,7 +164,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.EarningTypes.DeleteAsync(
     companyId: "<id>",
     earningTypeUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

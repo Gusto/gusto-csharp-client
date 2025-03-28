@@ -22,6 +22,6 @@ namespace GustoEmbedded.Models.Requests
         /// <summary>
         /// Example response
         /// </summary>
-        public PaySchedule? PaySchedule { get; set; }
+        public PayScheduleObject? PayScheduleObject { get; set; }
     }
 }

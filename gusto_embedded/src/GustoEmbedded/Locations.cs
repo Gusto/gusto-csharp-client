@@ -36,7 +36,7 @@ namespace GustoEmbedded
         /// scope: `companies:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdLocationsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdLocationsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostV1CompaniesCompanyIdLocationsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdLocationsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get company locations
@@ -49,7 +49,7 @@ namespace GustoEmbedded
         /// scope: `companies:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdLocationsResponse> GetAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompaniesCompanyIdLocationsResponse> GetAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get a location
@@ -60,7 +60,7 @@ namespace GustoEmbedded
         /// scope: `companies:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1LocationsLocationIdResponse> RetrieveAsync(string locationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1LocationsLocationIdResponse> RetrieveAsync(string locationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update a location
@@ -71,7 +71,7 @@ namespace GustoEmbedded
         /// scope: `companies.write`
         /// </remarks>
         /// </summary>
-        Task<PutV1LocationsLocationIdResponse> UpdateAsync(string locationId, PutV1LocationsLocationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1LocationsLocationIdResponse> UpdateAsync(string locationId, PutV1LocationsLocationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get minimum wages for a location
@@ -82,17 +82,17 @@ namespace GustoEmbedded
         /// scope: `companies:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1LocationsLocationUuidMinimumWagesResponse> GetMinimumWagesAsync(string locationUuid, string? effectiveDate = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1LocationsLocationUuidMinimumWagesResponse> GetMinimumWagesAsync(string locationUuid, string? effectiveDate = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class Locations: ILocations
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.562.3";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.562.3 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -105,7 +105,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1CompaniesCompanyIdLocationsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdLocationsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostV1CompaniesCompanyIdLocationsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdLocationsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostV1CompaniesCompanyIdLocationsRequest()
             {
@@ -131,7 +131,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("post-v1-companies-company_id-locations", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "post-v1-companies-company_id-locations", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -208,7 +208,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdLocationsResponse> GetAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompaniesCompanyIdLocationsResponse> GetAsync(string companyId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompaniesCompanyIdLocationsRequest()
             {
@@ -229,7 +229,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-companies-company_id-locations", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-companies-company_id-locations", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -296,7 +296,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1LocationsLocationIdResponse> RetrieveAsync(string locationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1LocationsLocationIdResponse> RetrieveAsync(string locationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1LocationsLocationIdRequest()
             {
@@ -315,7 +315,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-locations-location_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-locations-location_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -382,7 +382,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1LocationsLocationIdResponse> UpdateAsync(string locationId, PutV1LocationsLocationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1LocationsLocationIdResponse> UpdateAsync(string locationId, PutV1LocationsLocationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1LocationsLocationIdRequest()
             {
@@ -408,7 +408,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-locations-location_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-locations-location_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -485,7 +485,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1LocationsLocationUuidMinimumWagesResponse> GetMinimumWagesAsync(string locationUuid, string? effectiveDate = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1LocationsLocationUuidMinimumWagesResponse> GetMinimumWagesAsync(string locationUuid, string? effectiveDate = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1LocationsLocationUuidMinimumWagesRequest()
             {
@@ -505,7 +505,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-locations-location_uuid-minimum_wages", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-locations-location_uuid-minimum_wages", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

@@ -39,7 +39,7 @@ var res = await sdk.CompanyBenefits.CreateAsync(
     requestBody: new PostV1CompaniesCompanyIdCompanyBenefitsRequestBody() {
         Description = "yuck vice between gee ugh ha",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -86,7 +86,7 @@ var res = await sdk.CompanyBenefits.ListAsync(
     companyId: "<id>",
     active: false,
     enrollmentCount: false,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -132,7 +132,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.CompanyBenefits.GetAsync(
     companyBenefitId: "<id>",
     withEmployeeBenefits: false,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -178,7 +178,7 @@ var res = await sdk.CompanyBenefits.UpdateAsync(
     requestBody: new PutV1CompanyBenefitsCompanyBenefitIdRequestBody() {
         Version = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -222,7 +222,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.CompanyBenefits.DeleteAsync(
     companyBenefitId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -262,7 +262,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.CompanyBenefits.GetAllAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.CompanyBenefits.GetAllAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
 // handle response
 ```
@@ -301,7 +301,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.CompanyBenefits.GetSupportedAsync(
     benefitId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -390,7 +390,7 @@ var res = await sdk.CompanyBenefits.GetEmployeeBenefitsAsync(
     companyBenefitId: "<id>",
     page: 983681,
     per: 707622,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -444,7 +444,7 @@ var res = await sdk.CompanyBenefits.UpdateEmployeeBenefitsAsync(
             },
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -485,7 +485,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.CompanyBenefits.GetRequirementsAsync(
     benefitId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

@@ -32,7 +32,7 @@ var res = await sdk.Garnishments.CreateAsync(
         Amount = "<value>",
         CourtOrdered = false,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -75,7 +75,7 @@ var res = await sdk.Garnishments.ListAsync(
     employeeId: "<id>",
     page: 768578,
     per: 547272,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -116,7 +116,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Garnishments.GetAsync(
     garnishmentId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -159,7 +159,7 @@ var res = await sdk.Garnishments.UpdateAsync(
     requestBody: new PutV1GarnishmentsGarnishmentIdRequestBody() {
         Version = "<value>",
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -198,7 +198,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Garnishments.GetChildSupportDataAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Garnishments.GetChildSupportDataAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
 // handle response
 ```

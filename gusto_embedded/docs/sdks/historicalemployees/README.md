@@ -29,7 +29,7 @@ var res = await sdk.HistoricalEmployees.UpdateAsync(
         Version = "<value>",
         FirstName = "Ruthe",
         LastName = "Hegmann",
-        DateOfBirth = "2006-08-25",
+        DateOfBirth = "2006-09-12",
         Ssn = "<value>",
         WorkAddress = new Models.Requests.WorkAddress() {},
         HomeAddress = new PutV1HistoricalEmployeesHomeAddress() {
@@ -41,7 +41,7 @@ var res = await sdk.HistoricalEmployees.UpdateAsync(
         Termination = new Models.Requests.Termination() {},
         Job = new Models.Requests.Job() {},
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

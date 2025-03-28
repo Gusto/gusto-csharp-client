@@ -36,7 +36,7 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdI9AuthorizationResponse> GetAuthorizationAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1EmployeesEmployeeIdI9AuthorizationResponse> GetAuthorizationAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Create or update an employee&apos;s I-9 authorization
@@ -65,7 +65,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdI9AuthorizationResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1EmployeesEmployeeIdI9AuthorizationResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get an employee&apos;s I-9 verification document options
@@ -76,7 +76,7 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse> GetDocumentOptionsAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse> GetDocumentOptionsAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get an employee&apos;s I-9 verification documents
@@ -87,7 +87,7 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> GetDocumentsAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> GetDocumentsAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Create an employee&apos;s I-9 authorization verification documents
@@ -105,7 +105,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> CreateDocumentsAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> CreateDocumentsAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Delete an employee&apos;s I-9 verification document
@@ -116,7 +116,7 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:manage`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdResponse> DeleteDocumentAsync(string employeeId, string documentId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdResponse> DeleteDocumentAsync(string employeeId, string documentId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Employer sign an employee&apos;s Form I-9
@@ -127,17 +127,17 @@ namespace GustoEmbedded
         /// scope: `i9_authorizations:manage`
         /// </remarks>
         /// </summary>
-        Task<PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignResponse> EmployerSignAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody requestBody, string? xGustoClientIp = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignResponse> EmployerSignAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody requestBody, string? xGustoClientIp = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class I9Verification: II9Verification
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.562.3";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.562.3 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -150,7 +150,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationResponse> GetAuthorizationAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationResponse> GetAuthorizationAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1EmployeesEmployeeIdI9AuthorizationRequest()
             {
@@ -169,7 +169,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-employees-employee_id-i9_authorization", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-employees-employee_id-i9_authorization", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -236,7 +236,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationResponse> UpdateAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1EmployeesEmployeeIdI9AuthorizationRequest()
             {
@@ -262,7 +262,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-employees-employee_id-i9_authorization", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-employees-employee_id-i9_authorization", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -339,7 +339,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse> GetDocumentOptionsAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsResponse> GetDocumentOptionsAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1EmployeesEmployeeIdI9AuthorizationDocumentOptionsRequest()
             {
@@ -358,7 +358,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-employees-employee_id-i9_authorization-document_options", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-employees-employee_id-i9_authorization-document_options", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -425,7 +425,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> GetDocumentsAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> GetDocumentsAsync(string employeeId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1EmployeesEmployeeIdI9AuthorizationDocumentsRequest()
             {
@@ -444,7 +444,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-employees-employee_id-i9_authorization-documents", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-employees-employee_id-i9_authorization-documents", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -511,7 +511,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> CreateDocumentsAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationDocumentsResponse> CreateDocumentsAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1EmployeesEmployeeIdI9AuthorizationDocumentsRequest()
             {
@@ -537,7 +537,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-employees-employee_id-i9_authorization-documents", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-employees-employee_id-i9_authorization-documents", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -614,7 +614,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdResponse> DeleteDocumentAsync(string employeeId, string documentId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdResponse> DeleteDocumentAsync(string employeeId, string documentId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new DeleteV1EmployeesEmployeeIdI9AuthorizationDocumentsDocumentIdRequest()
             {
@@ -634,7 +634,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("delete-v1-employees-employee_id-i9_authorization-documents-document_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "delete-v1-employees-employee_id-i9_authorization-documents-document_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -693,7 +693,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignResponse> EmployerSignAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody requestBody, string? xGustoClientIp = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignResponse> EmployerSignAsync(string employeeId, PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequestBody requestBody, string? xGustoClientIp = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1EmployeesEmployeeIdI9AuthorizationEmployerSignRequest()
             {
@@ -720,7 +720,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-employees-employee_id-i9_authorization-employer_sign", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-employees-employee_id-i9_authorization-employer_sign", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

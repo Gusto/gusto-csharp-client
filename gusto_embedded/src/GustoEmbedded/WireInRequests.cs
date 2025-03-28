@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetWireInRequestsWireInRequestUuidResponse> GetAsync(string wireInRequestUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetWireInRequestsWireInRequestUuidResponse> GetAsync(string wireInRequestUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Submit a wire in request
@@ -45,7 +45,7 @@ namespace GustoEmbedded
         /// scope: `payrolls:run`
         /// </remarks>
         /// </summary>
-        Task<PutWireInRequestsWireInRequestUuidResponse> SubmitAsync(string wireInRequestUuid, PutWireInRequestsWireInRequestUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutWireInRequestsWireInRequestUuidResponse> SubmitAsync(string wireInRequestUuid, PutWireInRequestsWireInRequestUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get all Wire In Requests for a company
@@ -56,17 +56,17 @@ namespace GustoEmbedded
         /// scope: `payrolls:read`
         /// </remarks>
         /// </summary>
-        Task<GetCompaniesCompanyUuidWireInRequestUuidResponse> ListAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetCompaniesCompanyUuidWireInRequestUuidResponse> ListAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class WireInRequests: IWireInRequests
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.562.3";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.562.3 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -79,7 +79,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<GetWireInRequestsWireInRequestUuidResponse> GetAsync(string wireInRequestUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetWireInRequestsWireInRequestUuidResponse> GetAsync(string wireInRequestUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetWireInRequestsWireInRequestUuidRequest()
             {
@@ -98,7 +98,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-wire_in_requests-wire_in_request_uuid", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-wire_in_requests-wire_in_request_uuid", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -165,7 +165,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutWireInRequestsWireInRequestUuidResponse> SubmitAsync(string wireInRequestUuid, PutWireInRequestsWireInRequestUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutWireInRequestsWireInRequestUuidResponse> SubmitAsync(string wireInRequestUuid, PutWireInRequestsWireInRequestUuidRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutWireInRequestsWireInRequestUuidRequest()
             {
@@ -191,7 +191,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-wire_in_requests-wire_in_request_uuid", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-wire_in_requests-wire_in_request_uuid", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -268,7 +268,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetCompaniesCompanyUuidWireInRequestUuidResponse> ListAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetCompaniesCompanyUuidWireInRequestUuidResponse> ListAsync(string companyUuid, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetCompaniesCompanyUuidWireInRequestUuidRequest()
             {
@@ -287,7 +287,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-companies-company_uuid-wire_in_request_uuid", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-companies-company_uuid-wire_in_request_uuid", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

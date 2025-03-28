@@ -36,8 +36,8 @@ namespace GustoEmbedded.Models.Components
         /// - Married, but withhold as Single (does not apply to rev_2020_w4 form)
         /// </remarks>
         /// </summary>
-        [JsonProperty("filing_status")]
-        public string FilingStatus { get; set; } = default!;
+        [JsonProperty("filing_status", NullValueHandling = NullValueHandling.Include)]
+        public string? FilingStatus { get; set; }
 
         /// <summary>
         /// An employee can request an additional amount to be withheld from each paycheck.

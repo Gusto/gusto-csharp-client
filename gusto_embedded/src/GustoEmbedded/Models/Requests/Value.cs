@@ -9,7 +9,6 @@
 #nullable enable
 namespace GustoEmbedded.Models.Requests
 {
-    using GustoEmbedded.Models.Requests;
     using GustoEmbedded.Utils;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -26,7 +25,9 @@ namespace GustoEmbedded.Models.Requests
         public string Value { get; private set; }
         public static ValueType Str { get { return new ValueType("str"); } }
         
-        public static ValueType ArrayOf2 { get { return new ValueType("arrayOf2"); } }
+        public static ValueType Number { get { return new ValueType("number"); } }
+        
+        public static ValueType Boolean { get { return new ValueType("boolean"); } }
         
         public static ValueType Null { get { return new ValueType("null"); } }
 
@@ -35,7 +36,8 @@ namespace GustoEmbedded.Models.Requests
         public static ValueType FromString(string v) {
             switch(v) {
                 case "str": return Str;
-                case "arrayOf2": return ArrayOf2;
+                case "number": return Number;
+                case "boolean": return Boolean;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ValueType");
             }
@@ -56,14 +58,6 @@ namespace GustoEmbedded.Models.Requests
     }
 
 
-    /// <summary>
-    /// For the `amount` and `percentage` contribution types, the value of the corresponding amount or percentage.<br/>
-    /// 
-    /// <remarks>
-    /// <br/>
-    /// For the `tiered` contribution type, an array of tiers.
-    /// </remarks>
-    /// </summary>
     [JsonConverter(typeof(Value.ValueConverter))]
     public class Value {
         public Value(ValueType type) {
@@ -74,7 +68,10 @@ namespace GustoEmbedded.Models.Requests
         public string? Str { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Models.Requests.Two>? ArrayOf2 { get; set; }
+        public double? Number { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public bool? Boolean { get; set; }
 
         public ValueType Type { get; set; }
 
@@ -87,11 +84,19 @@ namespace GustoEmbedded.Models.Requests
             return res;
         }
 
-        public static Value CreateArrayOf2(List<Models.Requests.Two> arrayOf2) {
-            ValueType typ = ValueType.ArrayOf2;
+        public static Value CreateNumber(double number) {
+            ValueType typ = ValueType.Number;
 
             Value res = new Value(typ);
-            res.ArrayOf2 = arrayOf2;
+            res.Number = number;
+            return res;
+        }
+
+        public static Value CreateBoolean(bool boolean) {
+            ValueType typ = ValueType.Boolean;
+
+            Value res = new Value(typ);
+            res.Boolean = boolean;
             return res;
         }
 
@@ -126,22 +131,28 @@ namespace GustoEmbedded.Models.Requests
 
                 try
                 {
-                    return new Value(ValueType.ArrayOf2)
+                    var converted = Convert.ToDouble(json);
+                    return new Value(ValueType.Number)
                     {
-                        ArrayOf2 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Models.Requests.Two>>(json)
+                        Number = converted
                     };
                 }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(List<Models.Requests.Two>), new Value(ValueType.ArrayOf2), "ArrayOf2"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
+                catch (System.FormatException)
                 {
                     // try next option
                 }
-                catch (Exception)
+
+                try
                 {
-                    throw;
+                    var converted = Convert.ToBoolean(json);
+                    return new Value(ValueType.Boolean)
+                    {
+                        Boolean = converted
+                    };
+                }
+                catch (System.FormatException)
+                {
+                    // try next option
                 }
 
                 if (fallbackCandidates.Count > 0)
@@ -184,9 +195,14 @@ namespace GustoEmbedded.Models.Requests
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
-                if (res.ArrayOf2 != null)
+                if (res.Number != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf2));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
+                    return;
+                }
+                if (res.Boolean != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
 

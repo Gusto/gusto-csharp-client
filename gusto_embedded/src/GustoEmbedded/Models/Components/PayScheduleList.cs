@@ -16,7 +16,7 @@ namespace GustoEmbedded.Models.Components
     /// <summary>
     /// The representation of a pay schedule.
     /// </summary>
-    public class PaySchedule
+    public class PayScheduleList
     {
 
         /// <summary>
@@ -78,5 +78,11 @@ namespace GustoEmbedded.Models.Components
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; }
+
+        /// <summary>
+        /// The current version of the object. See the <a href="https://docs.gusto.com/embedded-payroll/docs/idempotency">versioning guide</a> for information on how to use this field.
+        /// </summary>
+        [JsonProperty("version")]
+        public string Version { get; set; } = default!;
     }
 }

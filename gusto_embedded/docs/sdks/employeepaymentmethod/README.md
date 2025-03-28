@@ -36,7 +36,7 @@ var res = await sdk.EmployeePaymentMethod.CreateAsync(
         AccountNumber = "<value>",
         AccountType = PostV1EmployeesEmployeeIdBankAccountsAccountType.Checking,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -79,7 +79,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.EmployeePaymentMethod.DeleteBankAccountAsync(
     employeeId: "<id>",
     bankAccountUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -127,7 +127,7 @@ var res = await sdk.EmployeePaymentMethod.UpdateBankAccountAsync(
         AccountNumber = "<value>",
         AccountType = PutV1EmployeesEmployeeIdBankAccountsAccountType.Checking,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -171,7 +171,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.EmployeePaymentMethod.GetAsync(
     employeeId: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -216,7 +216,7 @@ var res = await sdk.EmployeePaymentMethod.UpdateAsync(
         Version = "<value>",
         Type = GustoEmbedded.Models.Requests.Type.Check,
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

@@ -67,7 +67,7 @@ var res = await sdk.TaxRequirements.GetAsync(
     companyUuid: "<id>",
     state: "Oklahoma",
     scheduling: false,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -111,7 +111,7 @@ var res = await sdk.TaxRequirements.UpdateStateAsync(
     companyUuid: "<id>",
     state: "Massachusetts",
     requestBody: new PutV1CompaniesCompanyUuidTaxRequirementsStateRequestBody() {},
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -153,7 +153,7 @@ var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.TaxRequirements.GetAllAsync(
     companyUuid: "<id>",
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response

@@ -36,7 +36,7 @@ namespace GustoEmbedded
         /// scope: `company_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompaniesCompanyIdCompanyBenefitsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdCompanyBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostV1CompaniesCompanyIdCompanyBenefitsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdCompanyBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get benefits for a company
@@ -51,7 +51,7 @@ namespace GustoEmbedded
         /// scope: `company_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListAsync(string companyId, bool? active = null, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListAsync(string companyId, bool? active = null, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get a company benefit
@@ -66,7 +66,7 @@ namespace GustoEmbedded
         /// scope: `company_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyBenefitsCompanyBenefitIdResponse> GetAsync(string companyBenefitId, bool? withEmployeeBenefits = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompanyBenefitsCompanyBenefitIdResponse> GetAsync(string companyBenefitId, bool? withEmployeeBenefits = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update a company benefit
@@ -79,7 +79,7 @@ namespace GustoEmbedded
         /// scope: `company_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompanyBenefitsCompanyBenefitIdResponse> UpdateAsync(string companyBenefitId, PutV1CompanyBenefitsCompanyBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1CompanyBenefitsCompanyBenefitIdResponse> UpdateAsync(string companyBenefitId, PutV1CompanyBenefitsCompanyBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Delete a company benefit
@@ -93,7 +93,7 @@ namespace GustoEmbedded
         /// scope: `company_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1CompanyBenefitsCompanyBenefitIdResponse> DeleteAsync(string companyBenefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<DeleteV1CompanyBenefitsCompanyBenefitIdResponse> DeleteAsync(string companyBenefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get all benefits supported by Gusto
@@ -106,7 +106,7 @@ namespace GustoEmbedded
         /// scope: `benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1BenefitsResponse> GetAllAsync(VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1BenefitsResponse> GetAllAsync(VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get a supported benefit by ID
@@ -119,7 +119,7 @@ namespace GustoEmbedded
         /// scope: `benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1BenefitsBenefitIdResponse> GetSupportedAsync(string benefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1BenefitsBenefitIdResponse> GetSupportedAsync(string benefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get company benefit summary by company benefit id.
@@ -147,7 +147,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> GetEmployeeBenefitsAsync(string companyBenefitId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> GetEmployeeBenefitsAsync(string companyBenefitId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Bulk update employee benefits for a company benefit
@@ -162,7 +162,7 @@ namespace GustoEmbedded
         /// scope: `employee_benefits:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> UpdateEmployeeBenefitsAsync(string companyBenefitId, PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> UpdateEmployeeBenefitsAsync(string companyBenefitId, PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get benefit fields requirements by ID
@@ -173,17 +173,17 @@ namespace GustoEmbedded
         /// scope: `benefits:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1BenefitsBenefitsIdRequirementsResponse> GetRequirementsAsync(string benefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1BenefitsBenefitsIdRequirementsResponse> GetRequirementsAsync(string benefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class CompanyBenefits: ICompanyBenefits
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.562.3";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.562.3 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -196,7 +196,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1CompaniesCompanyIdCompanyBenefitsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdCompanyBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostV1CompaniesCompanyIdCompanyBenefitsResponse> CreateAsync(string companyId, PostV1CompaniesCompanyIdCompanyBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostV1CompaniesCompanyIdCompanyBenefitsRequest()
             {
@@ -222,7 +222,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("post-v1-companies-company_id-company_benefits", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "post-v1-companies-company_id-company_benefits", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -299,7 +299,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListAsync(string companyId, bool? active = null, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompaniesCompanyIdCompanyBenefitsResponse> ListAsync(string companyId, bool? active = null, bool? enrollmentCount = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompaniesCompanyIdCompanyBenefitsRequest()
             {
@@ -320,7 +320,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-companies-company_id-company_benefits", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-companies-company_id-company_benefits", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -387,7 +387,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyBenefitsCompanyBenefitIdResponse> GetAsync(string companyBenefitId, bool? withEmployeeBenefits = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompanyBenefitsCompanyBenefitIdResponse> GetAsync(string companyBenefitId, bool? withEmployeeBenefits = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompanyBenefitsCompanyBenefitIdRequest()
             {
@@ -407,7 +407,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-company_benefits-company_benefit_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-company_benefits-company_benefit_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -474,7 +474,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompanyBenefitsCompanyBenefitIdResponse> UpdateAsync(string companyBenefitId, PutV1CompanyBenefitsCompanyBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1CompanyBenefitsCompanyBenefitIdResponse> UpdateAsync(string companyBenefitId, PutV1CompanyBenefitsCompanyBenefitIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1CompanyBenefitsCompanyBenefitIdRequest()
             {
@@ -500,7 +500,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-company_benefits-company_benefit_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-company_benefits-company_benefit_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -577,7 +577,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1CompanyBenefitsCompanyBenefitIdResponse> DeleteAsync(string companyBenefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<DeleteV1CompanyBenefitsCompanyBenefitIdResponse> DeleteAsync(string companyBenefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new DeleteV1CompanyBenefitsCompanyBenefitIdRequest()
             {
@@ -596,7 +596,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("delete-v1-company_benefits-company_benefit_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "delete-v1-company_benefits-company_benefit_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -670,7 +670,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1BenefitsResponse> GetAllAsync(VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1BenefitsResponse> GetAllAsync(VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1BenefitsRequest()
             {
@@ -689,7 +689,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-benefits", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-benefits", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -756,7 +756,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1BenefitsBenefitIdResponse> GetSupportedAsync(string benefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1BenefitsBenefitIdResponse> GetSupportedAsync(string benefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1BenefitsBenefitIdRequest()
             {
@@ -775,7 +775,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-benefits-benefit_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-benefits-benefit_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -856,7 +856,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-benefits-company_benefit_id-summary", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-benefits-company_benefit_id-summary", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -923,7 +923,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> GetEmployeeBenefitsAsync(string companyBenefitId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> GetEmployeeBenefitsAsync(string companyBenefitId, long? page = null, long? per = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsRequest()
             {
@@ -944,7 +944,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-company_benefits-company_benefit_id-employee_benefits", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-company_benefits-company_benefit_id-employee_benefits", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1011,7 +1011,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> UpdateEmployeeBenefitsAsync(string companyBenefitId, PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsResponse> UpdateEmployeeBenefitsAsync(string companyBenefitId, PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1CompanyBenefitsCompanyBenefitIdEmployeeBenefitsRequest()
             {
@@ -1037,7 +1037,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-company_benefits-company_benefit_id-employee_benefits", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-company_benefits-company_benefit_id-employee_benefits", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1114,7 +1114,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1BenefitsBenefitsIdRequirementsResponse> GetRequirementsAsync(string benefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1BenefitsBenefitsIdRequirementsResponse> GetRequirementsAsync(string benefitId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1BenefitsBenefitsIdRequirementsRequest()
             {
@@ -1133,7 +1133,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-benefits-benefits_id-requirements", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-benefits-benefits_id-requirements", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

@@ -61,7 +61,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
 // handle response
 ```
@@ -85,7 +85,7 @@ using GustoEmbedded.Models.Components;
 
 var sdk = new Gusto(companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
 // handle response
 ```
@@ -114,7 +114,7 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
             Name = "<value>",
         },
     },
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
@@ -151,6 +151,11 @@ var res = await sdk.Companies.CreatePartnerManagedAsync(
 * [GetOnboardingStatus](docs/sdks/companies/README.md#getonboardingstatus) - Get the company's onboarding status
 * [FinishOnboarding](docs/sdks/companies/README.md#finishonboarding) - Finish company onboarding
 * [GetCustomFields](docs/sdks/companies/README.md#getcustomfields) - Get the custom fields of a company
+
+#### [Companies.Suspensions](docs/sdks/suspensions/README.md)
+
+* [Get](docs/sdks/suspensions/README.md#get) - Get suspensions for this company
+* [Suspend](docs/sdks/suspensions/README.md#suspend) - Suspend a company's account
 
 ### [CompanyAttachment](docs/sdks/companyattachment/README.md)
 
@@ -572,7 +577,7 @@ try
                 Name = "<value>",
             },
         },
-        xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+        xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
     );
 
     // handle response
@@ -616,7 +621,7 @@ var sdk = new Gusto(
     companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
 // handle response
 ```
@@ -633,7 +638,7 @@ var sdk = new Gusto(
     companyAccessAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401);
+var res = await sdk.Introspection.GetInfoAsync(xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
 // handle response
 ```

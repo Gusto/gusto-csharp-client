@@ -1,9 +1,5 @@
 # Value
 
-For the `amount` and `percentage` contribution types, the value of the corresponding amount or percentage.
-
-For the `tiered` contribution type, an array of tiers.
-
 
 ## Supported Types
 
@@ -13,8 +9,14 @@ For the `tiered` contribution type, an array of tiers.
 Value.CreateStr(/* values here */);
 ```
 
-### ArrayOf2
+### Number
 
 ```csharp
-Value.CreateArrayOf2(/* values here */);
+Value.CreateNumber(/* values here */);
+```
+
+### Boolean
+
+```csharp
+Value.CreateBoolean(/* values here */);
 ```

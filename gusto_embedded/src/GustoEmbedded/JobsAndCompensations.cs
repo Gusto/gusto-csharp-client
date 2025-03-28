@@ -34,7 +34,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get jobs for an employee
@@ -56,7 +56,7 @@ namespace GustoEmbedded
         /// scope: `jobs:read`
         /// </remarks>
         /// </summary>
-        Task<GetV1JobsJobIdResponse> GetJobAsync(string jobId, GetV1JobsJobIdQueryParamInclude? include = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1JobsJobIdResponse> GetJobAsync(string jobId, GetV1JobsJobIdQueryParamInclude? include = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update a job
@@ -67,7 +67,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Delete an individual job
@@ -78,7 +78,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<DeleteV1JobsJobIdResponse> DeleteAsync(string jobId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<DeleteV1JobsJobIdResponse> DeleteAsync(string jobId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get compensations for a job
@@ -104,7 +104,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PostV1CompensationsCompensationIdResponse> CreateCompensationAsync(string jobId, PostV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PostV1CompensationsCompensationIdResponse> CreateCompensationAsync(string jobId, PostV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Get a compensation
@@ -116,7 +116,7 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Update a compensation
@@ -127,7 +127,7 @@ namespace GustoEmbedded
         /// scope: `jobs:write`
         /// </remarks>
         /// </summary>
-        Task<PutV1CompensationsCompensationIdResponse> UpdateCompensationAsync(string compensationId, PutV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<PutV1CompensationsCompensationIdResponse> UpdateCompensationAsync(string compensationId, PutV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
 
         /// <summary>
         /// Delete a compensation
@@ -139,17 +139,17 @@ namespace GustoEmbedded
         /// 
         /// </remarks>
         /// </summary>
-        Task<DeleteV1CompensationsCompensationIdResponse> DeleteCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401);
+        Task<DeleteV1CompensationsCompensationIdResponse> DeleteCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01);
     }
 
     public class JobsAndCompensations: IJobsAndCompensations
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.545.4";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.562.3";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.545.4 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.562.3 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
@@ -162,7 +162,7 @@ namespace GustoEmbedded
             SDKConfiguration = config;
         }
 
-        public async Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostV1JobsJobIdResponse> CreateJobAsync(string employeeId, PostV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostV1JobsJobIdRequest()
             {
@@ -188,7 +188,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("post-v1-jobs-job_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "post-v1-jobs-job_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -279,7 +279,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-employees-employee_id-jobs", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-employees-employee_id-jobs", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -346,7 +346,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1JobsJobIdResponse> GetJobAsync(string jobId, GetV1JobsJobIdQueryParamInclude? include = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1JobsJobIdResponse> GetJobAsync(string jobId, GetV1JobsJobIdQueryParamInclude? include = null, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1JobsJobIdRequest()
             {
@@ -366,7 +366,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-jobs-job_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-jobs-job_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -433,7 +433,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1JobsJobIdResponse> UpdateAsync(string jobId, PutV1JobsJobIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1JobsJobIdRequest()
             {
@@ -459,7 +459,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-jobs-job_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-jobs-job_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -536,7 +536,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1JobsJobIdResponse> DeleteAsync(string jobId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<DeleteV1JobsJobIdResponse> DeleteAsync(string jobId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new DeleteV1JobsJobIdRequest()
             {
@@ -555,7 +555,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("delete-v1-jobs-job_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "delete-v1-jobs-job_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -628,7 +628,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-jobs-job_id-compensations", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-jobs-job_id-compensations", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -695,7 +695,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PostV1CompensationsCompensationIdResponse> CreateCompensationAsync(string jobId, PostV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PostV1CompensationsCompensationIdResponse> CreateCompensationAsync(string jobId, PostV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PostV1CompensationsCompensationIdRequest()
             {
@@ -721,7 +721,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("post-v1-compensations-compensation_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "post-v1-compensations-compensation_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -798,7 +798,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<GetV1CompensationsCompensationIdResponse> GetCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new GetV1CompensationsCompensationIdRequest()
             {
@@ -817,7 +817,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("get-v1-compensations-compensation_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "get-v1-compensations-compensation_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -884,7 +884,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<PutV1CompensationsCompensationIdResponse> UpdateCompensationAsync(string compensationId, PutV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<PutV1CompensationsCompensationIdResponse> UpdateCompensationAsync(string compensationId, PutV1CompensationsCompensationIdRequestBody requestBody, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new PutV1CompensationsCompensationIdRequest()
             {
@@ -910,7 +910,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("put-v1-compensations-compensation_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "put-v1-compensations-compensation_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -987,7 +987,7 @@ namespace GustoEmbedded
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteV1CompensationsCompensationIdResponse> DeleteCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFour0401)
+        public async Task<DeleteV1CompensationsCompensationIdResponse> DeleteCompensationAsync(string compensationId, VersionHeader? xGustoAPIVersion = GustoEmbedded.Models.Components.VersionHeader.TwoThousandAndTwentyFourMinus04Minus01)
         {
             var request = new DeleteV1CompensationsCompensationIdRequest()
             {
@@ -1006,7 +1006,7 @@ namespace GustoEmbedded
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("delete-v1-compensations-compensation_id", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "delete-v1-compensations-compensation_id", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

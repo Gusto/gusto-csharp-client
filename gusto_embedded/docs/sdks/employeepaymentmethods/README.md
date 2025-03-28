@@ -25,7 +25,7 @@ var res = await sdk.EmployeePaymentMethods.GetBankAccountsAsync(
     employeeId: "<id>",
     page: 791208,
     per: 144106,
-    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFour0401
+    xGustoAPIVersion: VersionHeader.TwoThousandAndTwentyFourMinus04Minus01
 );
 
 // handle response
