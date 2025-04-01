@@ -11,9 +11,9 @@ Developer-friendly & type-safe C# client libraries built for Gusto’s Embedded
 ## Client Libraries
 
 <!-- Start Gusto C# Client Libraries -->
-| Library | Description |
-| :- |:- |
-| **[Gusto Embedded](https://github.com/Gusto/gusto-csharp-client/tree/main/gusto_embedded#gustoembedded)** | APIs for building an embedded payroll application |
+| Library | Description | nuget |
+| :- |:- | :- |
+| **[Gusto Embedded](https://github.com/Gusto/gusto-csharp-client/tree/main/gusto_embedded#gustoembedded)** | APIs for building an embedded payroll application | [![nuget](https://img.shields.io/nuget/v/GustoEmbedded?color=%230A8080)](https://www.nuget.org/packages/GustoEmbedded/) |
 <!-- End Gusto C# Client Libraries -->
 
 <!-- Start Gusto Support Notes -->
