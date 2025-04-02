@@ -35,7 +35,7 @@ namespace GustoEmbedded.Models.Components
         /// The company&apos;s primary signatory&apos;s middle initial.
         /// </summary>
         [JsonProperty("middle_initial")]
-        public string? MiddleInitial { get; set; }
+        public string? MiddleInitial { get; set; } = null;
 
         /// <summary>
         /// The company&apos;s primary signatory&apos;s last name.

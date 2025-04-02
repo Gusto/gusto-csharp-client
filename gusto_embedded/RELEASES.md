@@ -79,3 +79,13 @@ Based on:
 - [csharp v0.1.1] gusto_embedded
 ### Releases
 - [NuGet v0.1.1] https://www.nuget.org/packages/GustoEmbedded/0.1.1 - gusto_embedded
+
+## 2025-04-02 00:06:54
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.525.2 (2.562.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v0.1.2] gusto_embedded
+### Releases
+- [NuGet v0.1.2] https://www.nuget.org/packages/GustoEmbedded/0.1.2 - gusto_embedded

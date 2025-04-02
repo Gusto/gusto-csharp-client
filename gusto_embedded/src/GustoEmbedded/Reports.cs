@@ -29,7 +29,7 @@ namespace GustoEmbedded
         /// Create a custom report
         /// 
         /// <remarks>
-        /// Create a custom report for a company. This endpoint initiates creating a custom report with custom columns, groupings, and filters. The `request_uuid` in the response can then be used to poll for the status and report URL upon completion using the report GET endpoint.<br/>
+        /// Create a custom report for a company. This endpoint initiates creating a custom report with custom columns, groupings, and filters. The `request_uuid` in the response can then be used to poll for the status and report URL upon completion using the report GET endpoint. This URL is valid for 10 minutes.<br/>
         /// <br/>
         /// scope: `company_reports:write`
         /// </remarks>
@@ -63,10 +63,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.1";
+        private const string _sdkVersion = "0.1.2";
         private const string _sdkGenVersion = "2.562.3";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.562.3 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.2 2.562.3 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
