@@ -32,16 +32,16 @@ namespace GustoEmbedded.Models.Components
         public string? EntityUuid { get; set; }
 
         [JsonProperty("valid_from")]
-        public string? ValidFrom { get; set; }
+        public string? ValidFrom { get; set; } = null;
 
         [JsonProperty("valid_up_to")]
-        public string? ValidUpTo { get; set; }
+        public string? ValidUpTo { get; set; } = null;
 
         [JsonProperty("key")]
-        public string? Key { get; set; }
+        public string? Key { get; set; } = null;
 
         [JsonProperty("state")]
-        public string? State { get; set; }
+        public string? State { get; set; } = null;
 
         [JsonProperty("additionalProperties")]
         public Dictionary<string, object>? AdditionalProperties { get; set; }
