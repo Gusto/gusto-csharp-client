@@ -21,6 +21,6 @@ namespace GustoEmbedded.Models.Components
     {
 
         [JsonProperty("entities")]
-        public List<MetadataWithOneEntity>? Entities { get; set; }
+        public List<MetadataWithOneEntity> Entities { get; set; } = default!;
     }
 }
