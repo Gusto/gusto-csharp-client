@@ -57,6 +57,12 @@ namespace GustoEmbedded.Models.Components
         public bool? Actionable { get; set; }
 
         /// <summary>
+        /// Indicates whether a notification may block ability to run payroll. If true, we suggest that these notifications are prioritized to your end users.
+        /// </summary>
+        [JsonProperty("can_block_payroll")]
+        public bool? CanBlockPayroll { get; set; }
+
+        /// <summary>
         /// Timestamp of when the notification was published.
         /// </summary>
         [JsonProperty("published_at")]
