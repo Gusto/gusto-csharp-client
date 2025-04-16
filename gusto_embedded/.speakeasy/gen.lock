@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bf9ee6d5-b9a6-4e11-8e95-9b3170216677
 management:
-  docChecksum: 8764400991cdf06343b47fc35e98aae1
+  docChecksum: 26c6e9dd9582965db2b27bf7160719d6
   docVersion: "2024-04-01"
   speakeasyVersion: 1.525.2
   generationVersion: 2.562.3
-  releaseVersion: 0.1.3
-  configChecksum: 8aa009620ee7bd3a4f782147393b8408
+  releaseVersion: 0.1.4
+  configChecksum: 65c1298161f5bf97b81163d6b169329a
   repoURL: https://github.com/Gusto/gusto-csharp-client.git
   repoSubDirectory: gusto_embedded
   published: true
@@ -8919,7 +8919,7 @@ examples:
           X-Gusto-API-Version: "2024-04-01"
       responses:
         "200":
-          application/json: {"uuid": "7b1d0df1-6403-4a06-8768-c1dd7d24d27a", "company_uuid": "88f7cca1-dcad-4d20-84db-7fb80303d69f", "title": "Action required: Additional information needed to process payroll", "message": "If we do not receive this information as soon as possible, your payroll may not be processed on time.", "category": "information_request", "actionable": true, "published_at": "2022-01-01T00:00:00.000Z", "due_at": "2022-02-01T00:00:00.000Z", "resources": [{"entity_type": "Employee", "entity_uuid": "21b6f9ce-0ac4-4745-8d8a-127f8c0f00f2"}]}
+          application/json: {"uuid": "7b1d0df1-6403-4a06-8768-c1dd7d24d27a", "company_uuid": "88f7cca1-dcad-4d20-84db-7fb80303d69f", "title": "Action required: Additional information needed to process payroll", "message": "If we do not receive this information as soon as possible, your payroll may not be processed on time.", "category": "information_request", "actionable": true, "can_block_payroll": true, "published_at": "2022-01-01T00:00:00.000Z", "due_at": "2022-02-01T00:00:00.000Z", "resources": [{"entity_type": "Employee", "entity_uuid": "21b6f9ce-0ac4-4745-8d8a-127f8c0f00f2"}]}
     Basic:
       parameters:
         path:

@@ -81,7 +81,6 @@ namespace GustoEmbedded
         /// * Hour and dollar amounts are returned as string representations of numeric decimals.<br/>
         /// * Hours are represented to the thousands place; dollar amounts are represented to the cent.<br/>
         /// * Every eligible compensation is returned for each employee. If no data has yet be inserted for a given field, it defaults to “0.00” (for fixed amounts) or “0.000” (for hours ).<br/>
-        /// * To return future payrolls, you must include an `end_date` in the future.<br/>
         /// * When include parameter with benefits value is passed, employee_benefits:read scope is required to return benefits<br/>
         ///   * Benefits containing PHI are only visible with the `employee_benefits:read:phi` scope<br/>
         /// <br/>
@@ -268,10 +267,10 @@ namespace GustoEmbedded
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.3";
+        private const string _sdkVersion = "0.1.4";
         private const string _sdkGenVersion = "2.562.3";
         private const string _openapiDocVersion = "2024-04-01";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.3 2.562.3 2024-04-01 GustoEmbedded";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.4 2.562.3 2024-04-01 GustoEmbedded";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<GustoEmbedded.Models.Components.Security>? _securitySource;
