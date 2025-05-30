@@ -14,7 +14,7 @@ permissions:
   workflow_dispatch: {}
 jobs:
   publish:
-    uses: Gusto/sdk-generation-action/.github/workflows/workflow-executor.yaml@main
+    uses: Gusto/sdk-generation-action/.github/workflows/sdk-publish.yaml@main
     with:
       target: gusto
       runs-on: "{\"group\": \"gusto-ubuntu-default\"}"
