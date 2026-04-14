@@ -1,0 +1,16 @@
+# EmployeeCustomField
+
+A custom field of an employee
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `Id`                                                                              | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               |
+| `CompanyCustomFieldId`                                                            | *string*                                                                          | :heavy_check_mark:                                                                | This is the id of the response object from when you get the company custom fields |
+| `Name`                                                                            | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               |
+| `Type`                                                                            | [CustomFieldType](../../Models/Components/CustomFieldType.md)                     | :heavy_check_mark:                                                                | Input type for the custom field.                                                  |
+| `Description`                                                                     | *string*                                                                          | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Value`                                                                           | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               |
+| `SelectionOptions`                                                                | List<*string*>                                                                    | :heavy_minus_sign:                                                                | An array of options for fields of type radio. Otherwise, null.                    |

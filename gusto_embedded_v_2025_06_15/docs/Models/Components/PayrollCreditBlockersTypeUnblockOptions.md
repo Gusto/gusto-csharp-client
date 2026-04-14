@@ -1,0 +1,10 @@
+# PayrollCreditBlockersTypeUnblockOptions
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `UnblockType`                                                                                     | *string*                                                                                          | :heavy_minus_sign:                                                                                | The type of unblock option for the credit blocker.                                                |
+| `CheckDate`                                                                                       | *string*                                                                                          | :heavy_minus_sign:                                                                                | The payment check date associated with the unblock option.                                        |
+| `Metadata`                                                                                        | [PayrollCreditBlockersTypeMetadata](../../Models/Components/PayrollCreditBlockersTypeMetadata.md) | :heavy_minus_sign:                                                                                | Additional data associated with the unblock option.                                               |

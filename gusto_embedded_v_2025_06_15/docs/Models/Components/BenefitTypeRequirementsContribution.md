@@ -1,0 +1,13 @@
+# BenefitTypeRequirementsContribution
+
+An object representing the type and value of the company contribution.
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Required`                                                                                            | *bool*                                                                                                | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
+| `Editable`                                                                                            | *bool*                                                                                                | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
+| `DefaultValue`                                                                                        | [BenefitTypeRequirementsDefaultValue](../../Models/Components/BenefitTypeRequirementsDefaultValue.md) | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
+| `Choices`                                                                                             | List<*string*>                                                                                        | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |

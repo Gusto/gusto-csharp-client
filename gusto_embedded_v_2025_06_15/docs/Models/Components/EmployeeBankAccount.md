@@ -1,0 +1,15 @@
+# EmployeeBankAccount
+
+Example response
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `Uuid`                                                                                      | *string*                                                                                    | :heavy_check_mark:                                                                          | UUID of the bank account                                                                    |
+| `EmployeeUuid`                                                                              | *string*                                                                                    | :heavy_minus_sign:                                                                          | UUID of the employee                                                                        |
+| `AccountType`                                                                               | [EmployeeBankAccountAccountType](../../Models/Components/EmployeeBankAccountAccountType.md) | :heavy_minus_sign:                                                                          | Bank account type                                                                           |
+| `Name`                                                                                      | *string*                                                                                    | :heavy_minus_sign:                                                                          | Name for the bank account                                                                   |
+| `RoutingNumber`                                                                             | *string*                                                                                    | :heavy_minus_sign:                                                                          | The bank account's routing number                                                           |
+| `HiddenAccountNumber`                                                                       | *string*                                                                                    | :heavy_minus_sign:                                                                          | Masked bank account number                                                                  |

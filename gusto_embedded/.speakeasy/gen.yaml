@@ -1,3 +1,4 @@
+---
 configVersion: 2.0.0
 generation:
   sdkClassName: Gusto
@@ -14,8 +15,9 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
+  versioningStrategy: manual
 csharp:
-  version: 0.1.4
+  version: 20251115.1.4
   additionalDependencies: []
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
@@ -39,6 +41,6 @@ csharp:
   methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: GustoEmbedded
-  packageTags: ""
+  packageTags: ''
   responseFormat: envelope-http
   sourceDirectory: src

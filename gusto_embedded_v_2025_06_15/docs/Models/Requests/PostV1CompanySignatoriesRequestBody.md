@@ -1,0 +1,16 @@
+# PostV1CompanySignatoriesRequestBody
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Ssn`                                                               | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
+| `FirstName`                                                         | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
+| `MiddleInitial`                                                     | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `LastName`                                                          | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
+| `Email`                                                             | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
+| `Title`                                                             | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
+| `Phone`                                                             | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
+| `Birthday`                                                          | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
+| `HomeAddress`                                                       | [Models.Requests.HomeAddress](../../Models/Requests/HomeAddress.md) | :heavy_check_mark:                                                  | The signatory's home address                                        |

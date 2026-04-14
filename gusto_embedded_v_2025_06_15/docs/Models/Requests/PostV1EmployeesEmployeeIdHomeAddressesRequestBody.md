@@ -1,0 +1,14 @@
+# PostV1EmployeesEmployeeIdHomeAddressesRequestBody
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Street1`                                                           | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `Street2`                                                           | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `City`                                                              | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `State`                                                             | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `Zip`                                                               | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `EffectiveDate`                                                     | [LocalDate](https://nodatime.org/3.1.x/api/NodaTime.LocalDate.html) | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `CourtesyWithholding`                                               | *bool*                                                              | :heavy_minus_sign:                                                  | N/A                                                                 |

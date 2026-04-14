@@ -1,0 +1,9 @@
+# GetV1CompaniesCompanyIdContractorPaymentGroupsResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                      | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                         | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `ContractorPaymentGroupList`                                                                    | List<[ContractorPaymentGroupMinimal](../../Models/Components/ContractorPaymentGroupMinimal.md)> | :heavy_minus_sign:                                                                              | List of Contractor Payment Groups                                                               |
