@@ -1,0 +1,9 @@
+# GetV1CompaniesCompanyIdUnprocessedTerminationPayPeriodsResponse
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                          | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                             | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `UnprocessedTerminationPayPeriodList`                                                               | List<[UnprocessedTerminationPayPeriod](../../Models/Components/UnprocessedTerminationPayPeriod.md)> | :heavy_minus_sign:                                                                                  | Example response                                                                                    |

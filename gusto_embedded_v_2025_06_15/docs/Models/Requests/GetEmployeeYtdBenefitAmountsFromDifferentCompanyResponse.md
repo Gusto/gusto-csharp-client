@@ -1,0 +1,9 @@
+# GetEmployeeYtdBenefitAmountsFromDifferentCompanyResponse
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                                      | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                                         | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| `YtdBenefitAmountsFromDifferentCompanyList`                                                                     | List<[YtdBenefitAmountsFromDifferentCompany](../../Models/Components/YtdBenefitAmountsFromDifferentCompany.md)> | :heavy_minus_sign:                                                                                              | List of Ytd Benefit Amounts From Different Company List                                                         |

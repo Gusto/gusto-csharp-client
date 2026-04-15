@@ -1,0 +1,9 @@
+# PutV1ExternalPayrollRequestBody
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `ReplaceFields`                                                                                         | *bool*                                                                                                  | :heavy_minus_sign:                                                                                      | Patch update external payroll items when set to true, otherwise it will overwrite the previous changes. |
+| `ExternalPayrollItems`                                                                                  | List<[Models.Requests.ExternalPayrollItems](../../Models/Requests/ExternalPayrollItems.md)>             | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |

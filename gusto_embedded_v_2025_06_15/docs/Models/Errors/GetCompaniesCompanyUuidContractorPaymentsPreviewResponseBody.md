@@ -1,0 +1,11 @@
+# GetCompaniesCompanyUuidContractorPaymentsPreviewResponseBody
+
+Unprocessable Entity (WebDAV)
+
+
+## Fields
+
+| Field                                                                                                                                   | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `Errors`                                                                                                                                | [GetCompaniesCompanyUuidContractorPaymentsPreviewErrors](../../Models/Errors/GetCompaniesCompanyUuidContractorPaymentsPreviewErrors.md) | :heavy_minus_sign:                                                                                                                      | N/A                                                                                                                                     |
+| `HttpMeta`                                                                                                                              | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                                                                 | :heavy_check_mark:                                                                                                                      | N/A                                                                                                                                     |
