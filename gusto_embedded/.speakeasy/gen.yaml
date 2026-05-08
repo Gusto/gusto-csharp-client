@@ -14,10 +14,6 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
-  license:
-    disabled: false
-    licenseType: MIT
-    companyName: Gusto
 csharp:
   version: 0.1.4
   additionalDependencies: []
